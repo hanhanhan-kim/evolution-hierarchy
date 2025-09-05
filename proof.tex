@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Layout and formatting
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{parskip}
+\usepackage{microtype}
+
+% Theorems and proofs
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Title information
+\title{Exponential Separation of Singular Values in Random Matrix Products}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Proof: Exponential Separation of Singular Values in Random Matrix Products}
+
+\subsection{Setup}
+Let $X_1, X_2, ..., X_n$ be independent random matrices in $\mathbb{R}^{d \times d}$ with i.i.d. entries drawn from a distribution with mean 0 and variance $\sigma^2$.
+
+Let $P_n = X_n X_{n-1} ... X_1$ be their product.
+
+\subsection{Key Steps}
+
+\subsubsection{Singular Value Decomposition}
+For any matrix $A$, we can write its SVD as $A = U\Sigma V^T$ where:
+\begin{itemize}
+    \item $U, V$ are orthogonal matrices
+    \item $\Sigma$ is diagonal with singular values $\sigma_1(A) \geq \sigma_2(A) \geq ... \geq \sigma_d(A) \geq 0$
+\end{itemize}
+
+\subsubsection{Lyapunov Exponents}
+The key to understanding the asymptotic behavior is through Lyapunov exponents. For the product $P_n$, these are defined as:
+
+\[
+\lambda_i = \lim_{n \to \infty} \frac{1}{n} \log \sigma_i(P_n)
+\]
+
+\subsubsection{Oseledets Multiplicative Ergodic Theorem}
+This theorem guarantees that these limits exist and are non-random under mild conditions. Moreover:
+
+\begin{enumerate}
+    \item The Lyapunov exponents are ordered: $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_d$
+    \item With probability 1, at least $\lambda_1 - \lambda_d > 0$
+\end{enumerate}
+
+\subsubsection{Quantitative Bounds}
+For i.i.d. random matrices with finite moments:
+
+\[
+\sigma_1(P_n) \approx e^{n\lambda_1}
+\]
+\[
+\sigma_d(P_n) \approx e^{n\lambda_d}
+\]
+
+Therefore, the condition number grows exponentially:
+
+\[
+\kappa(P_n) = \frac{\sigma_1(P_n)}{\sigma_d(P_n)} \approx e^{n(\lambda_1 - \lambda_d)}
+\]
+
+\subsubsection{Explicit Values for Gaussian Case}
+When entries are i.i.d. Gaussian with variance $\sigma^2/d$:
+
+\[
+\lambda_1 \approx \log(2) + \frac{1}{2}\log(\sigma^2)
+\]
+\[
+\lambda_d \approx -\log(2) + \frac{1}{2}\log(\sigma^2)
+\]
+
+Thus $\lambda_1 - \lambda_d \approx 2\log(2)$, giving exponential growth of condition number:
+
+\[
+\kappa(P_n) \approx 4^n
+\]
+
+\subsection{Technical Details for Convergence}
+
+The convergence relies on several key properties:
+
+\begin{enumerate}
+    \item \textbf{Furstenberg-Kesten theorem} states that for any norm $\|\cdot\|$:
+    \[
+    \lim_{n \to \infty} \frac{1}{n} \log \|P_n\| = \lambda_1 \text{ almost surely}
+    \]
+
+    \item The \textbf{multiplicative ergodic theorem} provides a filtration:
+    \[
+    \{0\} = V_d \subset V_{d-1} \subset ... \subset V_1 = \mathbb{R}^d
+    \]
+    where vectors in $V_k \setminus V_{k+1}$ grow at rate $\lambda_k$
+
+    \item For any vector $v \in \mathbb{R}^d$, with probability 1:
+    \[
+    \lim_{n \to \infty} \frac{1}{n} \log \|P_n v\| = \lambda_k
+    \]
+    where $k = \max\{i : v \in V_i\}$
+\end{enumerate}
+
+\subsection{Implications}
+
+This exponential separation has several important implications:
+
+\begin{enumerate}
+    \item The product becomes increasingly ill-conditioned
+    \item Most directions in the input space get mapped to an exponentially small subspace
+    \item Gradient-based optimization becomes challenging due to the exponential spread of singular values
+\end{enumerate}
+
+These results help explain why deep linear networks are difficult to train and motivate architectural choices like skip connections and normalization layers in modern neural networks.
+
+\end{document}

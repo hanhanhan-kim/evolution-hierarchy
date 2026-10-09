@@ -4,6 +4,7 @@ Styling comes from plotting.py (plain matplotlib unless a local style is present
 """
 
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_rgba
 from matplotlib.ticker import FixedLocator, FormatStrFormatter, NullFormatter
 import numpy as np
 
@@ -119,6 +120,55 @@ def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
     print("generations to threshold  low:", low_gens, " high:", high_gens)
 
 
+def drift_map(path="paper/fig_framework.pdf", max_depth=46):
+    """Fig 3: where selection can see a change, by its depth below the phenotype
+    and the strength of selection on the phenotype relative to drift (N_e s).
+
+    A change m layers below the phenotype reaches it attenuated by S(m)/S(1),
+    with S the model's sensitivity curve (Fig 4B). It is visible to selection
+    when N_e s * S(m)/S(1) > 1, and effectively neutral otherwise.
+    """
+    medians, _, _ = measure_directional_robustness(
+        max_depth, n_models=25, use_sigmoid=False, rank_fraction=1.0
+    )
+    m = np.arange(1, max_depth + 1)
+    attenuation = np.minimum.accumulate(medians / medians[0])  # monotone: smooths model noise
+    boundary = 1 / attenuation  # N_e s needed for selection to see a change at depth m
+    ymin, ymax = 0.5, 100
+
+    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.5))
+    ax.fill_between(m, boundary, ymax, color="C2", alpha=0.12, linewidth=0)
+    light = 0.35 * np.array(to_rgba("C1")[:3]) + 0.65  # the drift colour, mixed with white
+    with plt.rc_context({"hatch.linewidth": 0.6}):
+        ax.fill_between(m, ymin, boundary, facecolor="none", edgecolor=tuple(light),
+                        hatch="////", linewidth=0)
+    ax.plot(m, boundary, color="0.25", linewidth=1.2)
+    ax.set_yscale("log")
+    ax.set_ylim(ymin, ymax)
+    ax.set_xlim(max_depth, 1)  # deep layers on the left, the phenotype on the right
+    ax.grid(False)
+    ax.yaxis.set_major_locator(FixedLocator([1, 10, 100]))
+    ax.yaxis.set_major_formatter(FormatStrFormatter("%g"))
+    ax.yaxis.set_minor_formatter(NullFormatter())
+    ax.set_xticks([max_depth, 1])
+    ax.set_xticklabels(["molecules", "phenotype"])
+    ax.set_xlabel("Layer at which a change occurs")
+    ax.set_ylabel("Selection on the phenotype\nrelative to drift ($N_e s$)")
+    ax.text(16, 42, "selection holds the phenotype", color="C2", fontsize=8,
+            fontweight="semibold", ha="center", va="center")
+    ax.text(16, 28, "insect eye, rod photon detection", color="C2", fontsize=7,
+            ha="center", va="center")
+    ax.text(44, 2.1, "changes are effectively neutral", color="C1", fontsize=8,
+            fontweight="semibold", ha="left", va="center")
+    ax.text(44, 1.5, "channel conductances, receptor genes", color="C1", fontsize=7,
+            ha="left", va="center")
+    ax.annotate("smaller $N_e$", xy=(3, 2.2), xytext=(3, 12), color="0.35", fontsize=7,
+                ha="center", arrowprops=dict(arrowstyle="->", color="0.35", lw=0.8))
+    fig.savefig(path)
+    return fig
+
+
 if __name__ == "__main__":
     sensitivity_by_depth()
     fitness_and_convergence()
+    drift_map()

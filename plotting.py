@@ -258,7 +258,7 @@ def plot_fitness_violin_by_layer(
 
 
 def plot_median_fitness_by_generation(
-    fitness_by_layer, figsize=(7, 4), threshold=0.9, save=False
+    fitness_by_layer, figsize=(4, 3), threshold=0.9, save=False
 ):
     """
     Plot a line graph of the median of np.ptp(fitness_gen) across all simulations
@@ -284,30 +284,17 @@ def plot_median_fitness_by_generation(
         fitness_runs = fitness_by_layer[
             layer
         ]  # shape: (n_runs, population_size, n_generations)
-        fitness_runs = (
-            fitness_runs * fitness_runs.shape[1]
-        )  # Multiply by population size
-        means = []
-
-        for gen in range(n_generations):
-            all_min = [np.min(run_fitness[:, gen]) for run_fitness in fitness_runs]
-            means.append(np.mean(all_min))
-
-        plt.plot(range(n_generations), means, label=f"{layer} layers", linewidth=2)
-
-        try:
-            generation_achieve_threshold[idx] = np.where(np.array(means) >= threshold)[
-                0
-            ][0]
-        except IndexError:
-            generation_achieve_threshold[idx] = -1  # or handle as appropriate
+        medians = np.median(fitness_runs, axis=(0, 1))
+        # get generation number when the median fitness is greater than the threshold
+        generation_achieve_threshold[idx] = np.argmax(medians > threshold)
+        plt.plot(range(n_generations), medians, label=f"{layer} layers", linewidth=2)
 
     # Axis settings
-    plt.xlabel("Generations", fontsize=16)
-    plt.ylabel("Mean (min fitness)", fontsize=16)
+    plt.xlabel("Generations", fontsize=12)
+    plt.ylabel("Median fitness", fontsize=12)
 
     # Legend settings
-    plt.legend(fontsize=11)
+    plt.legend(fontsize=11, frameon=False)
 
     # Remove grid and top/right spines
     ax = plt.gca()
@@ -316,13 +303,11 @@ def plot_median_fitness_by_generation(
     ax.spines["right"].set_visible(False)
 
     # Ticks font size
-    ax.tick_params(axis="both", which="major", labelsize=13)
+    ax.tick_params(axis="both", which="major", labelsize=11)
 
     # plot horizontal line at y=0.9
-    # plt.axhline(y=0.9, color="black", linestyle="--", linewidth=1)
-
-    # ax.set_ylim((0.88, 0.91))
-    # ax.set_xlim((12, 80))
+    plt.axhline(y=threshold, color="black", linestyle="--", linewidth=1)
+    # plt.yscale("log")
 
     plt.tight_layout()
 
@@ -333,29 +318,45 @@ def plot_median_fitness_by_generation(
     return layer_counts, generation_achieve_threshold
 
 
-def plot_generation_to_optimality(
-    layer_counts, generation_achieve_threshold, save=False
+def plot_convergence_rate(
+    layer_counts, generation_achieve_threshold, figsize=(5, 3), labels=None, save=False
 ):
-    # plot the generation to achieves the threshold against the layer
-    plt.figure(figsize=(5, 3))
-    plt.plot(
-        layer_counts,
-        generation_achieve_threshold,
-        marker="o",
-        linestyle="-",
-        linewidth=2,
-    )
-    plt.xlabel("Total number of layers", fontsize=14)
-    plt.ylabel("Avg. generation \n to convergence", fontsize=14)
+    # plot the convergence rate against the layer
+    plt.figure(figsize=figsize)
+
+    if labels is not None and len(labels) != len(generation_achieve_threshold):
+        raise ValueError(
+            "Length of labels must match the number of convergence rate series."
+        )
+
+    color_map = get_cmap("tab10", len(generation_achieve_threshold))
+
+    for idx, series in enumerate(generation_achieve_threshold):
+        current_label = labels[idx] if labels is not None else None
+        convergence = 1.0 / np.array(series, dtype=float)
+        plt.plot(
+            layer_counts,
+            convergence,
+            marker="o",
+            linestyle="-",
+            linewidth=2,
+            color=color_map(idx),
+            label=current_label,
+        )
+    plt.xlabel("Total number of layers", fontsize=12)
+    plt.ylabel("Mean convergence rate \n (1/generation to optimality)", fontsize=12)
 
     # remove top and right spines, remove grid
     plt.gca().spines["top"].set_visible(False)
     plt.gca().spines["right"].set_visible(False)
     plt.grid(False)
     plt.tight_layout()
+    plt.yscale("log")
+    if labels is not None or len(generation_achieve_threshold) > 1:
+        plt.legend(frameon=False, fontsize=12)
 
     if save:
-        plt.savefig("output/generation_to_optimality.pdf", format="pdf", dpi=300)
+        plt.savefig("output/convergence_rate.pdf", format="pdf", dpi=300)
 
     plt.show()
 

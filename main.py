@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.13.6"
+__generated_with = "0.12.7"
 app = marimo.App(width="medium")
 
 
@@ -46,7 +46,7 @@ def _(layer_stats, plotting):
 
 @app.cell
 def _(evolution):
-    list_of_max_depth = [1, 5, 10, 15]
+    list_of_max_depth = [1, 2, 4, 6]
 
     fitness = {}
     mean_optimality = {}
@@ -56,35 +56,66 @@ def _(evolution):
         fitness[str(max_depth)] = {}
         mean_optimality[str(max_depth)] = {}
         res = evolution.parallel_run_evolution(
-            32 * 200,
-            n_generations=80,
-            population_size=20,
-            mutation_std=0.1,
+            32 * 20,
+            n_generations=200,
+            population_size=5,
+            mutation_std=0.2,
             mutation_rate=1,
             eval_fraction=1,
             max_depth=max_depth,
-            dim=10,
-            normalize=True,
-            use_sigmoid=False,
+            dim=20,
+            normalize=False,
+            fix_initial_pop_distance=True,
         )
         fitness[str(max_depth)] = res["fitness"]
         mean_optimality[str(max_depth)] = res["mean"]
-    return mean_optimality, mock_fitness
+    return (
+        fitness,
+        list_of_max_depth,
+        max_depth,
+        mean_optimality,
+        mock_fitness,
+        res,
+    )
 
 
 @app.cell
-def _(mock_fitness, plotting):
-    (
-        layer_counts,
-        generation_achieve_threshold,
-    ) = plotting.plot_median_fitness_by_generation(mock_fitness, save=True)
+def _(fitness):
+    fitness
+    return
+
+
+@app.cell
+def _(fitness, plotting):
+    layer_counts, generation_achieve_threshold = (
+        plotting.plot_median_fitness_by_generation(
+            fitness, figsize=(4.5, 3), threshold=0.7, save=True
+        )
+    )
     return generation_achieve_threshold, layer_counts
 
 
 @app.cell
-def _(generation_achieve_threshold, layer_counts, plotting):
-    plotting.plot_generation_to_optimality(
-        layer_counts, generation_achieve_threshold, save=True
+def _(generation_achieve_threshold):
+    generation_achieve_threshold
+    return
+
+
+@app.cell
+def _():
+    high_pop = [23, 18, 13, 11]
+    low_pop = [190, 53, 28, 19]
+    return high_pop, low_pop
+
+
+@app.cell
+def _(high_pop, layer_counts, low_pop, plotting):
+    plotting.plot_convergence_rate(
+        layer_counts,
+        [high_pop, low_pop],
+        labels=["high population", "low population"],
+        figsize=(5, 3),
+        save=True,
     )
     return
 

@@ -64,6 +64,7 @@ def run_evolution(
     seed=None,
     nonlinear_fitness=False,
     omega=1.0,
+    fix_initial_pop_distance=False,
 ):
     """Run evolutionary simulation"""
     if seed is not None:
@@ -77,14 +78,36 @@ def run_evolution(
         use_sigmoid=use_sigmoid,
     )
 
+    # Generate optimal direction
+    optimal_direction = uniform_sphere_gaussian(1, dim=system.dim)[0]
+
+    # Compute optimal outputs at each layer using forward pass
+    optimal_outputs = system._forward_pass(optimal_direction.reshape(1, -1))
+
     # Initialize with random population
-    population = uniform_sphere_gaussian(population_size, dim=system.dim)
+    y_star = optimal_outputs[-1].reshape(-1)
+    y_star_col = y_star.reshape(-1, 1)
+    if fix_initial_pop_distance:
+        # generate a population of size population_size, where the cosine similarity between each vector and the optimal direction is zero at the final layer
+        I = np.eye(system.dim)
+        all_outputs = system._forward_pass(I)
+        A = all_outputs[-1]
+        v = A @ y_star_col
+        v = v.reshape(-1)
+        population = sample_input_orthogonal_to_v(v, num_samples=population_size)
+
+        # normalize population
+        population = population / np.linalg.norm(population, axis=1, keepdims=True)
+    else:
+        population = uniform_sphere_gaussian(population_size, dim=system.dim)
+
+    # check orthogonality of population
+    outputs = system._forward_pass(population)
+    dots = outputs[-1] @ y_star
+    print("Max abs dot product:", np.max(np.abs(dots)))
 
     # Initialize ancestry
     ancestry = np.eye(population_size)
-
-    # Generate optimal direction
-    optimal_direction = uniform_sphere_gaussian(1, dim=system.dim)[0]
 
     # Select subset of dimensions for fitness evaluation
     eval_dims = np.random.choice(
@@ -98,9 +121,6 @@ def run_evolution(
         "ancestry_proportions": np.zeros((population_size, n_generations)),
         "fitness": np.zeros((population_size, n_generations)),
     }
-
-    # Compute optimal outputs at each layer using forward pass
-    optimal_outputs = system._forward_pass(optimal_direction.reshape(1, -1))
 
     for gen in range(n_generations):
         # Forward pass through all layers
@@ -145,6 +165,32 @@ def run_evolution(
     return layer_stats
 
 
+def sample_input_orthogonal_to_v(v, num_samples=1, rng=None):
+    """
+    Returns `num_samples` random row-vectors x such that x·v = 0.
+    v: 1D numpy array of shape (d_in,)
+    """
+    if rng is None:
+        rng = np.random.default_rng()
+
+    v = np.asarray(v, dtype=float)
+    d_in = v.size
+    v_norm_sq = np.dot(v, v)
+    if v_norm_sq == 0:
+        raise ValueError(
+            "v is the zero vector; orthogonality constraint is trivial (any x works)."
+        )
+
+    xs = []
+    for _ in range(num_samples):
+        z = rng.standard_normal(d_in)
+        alpha = np.dot(z, v) / v_norm_sq
+        x = z - alpha * v
+        xs.append(x)
+
+    return np.stack(xs, axis=0)  # shape: (num_samples, d_in)
+
+
 def run_evolution_with_kwargs(kwargs):
     return run_evolution(**kwargs)
 
@@ -182,7 +228,7 @@ if __name__ == "__main__":
     import plotting
 
     layer_stats = parallel_run_evolution(
-        64,
+        1,
         n_generations=10000,
         population_size=1000,
         mutation_std=0.3,
@@ -194,5 +240,6 @@ if __name__ == "__main__":
         use_sigmoid=False,
         nonlinear_fitness=True,
         omega=1.0,
+        fix_initial_pop_distance=True,
     )
     plotting.plot_layer_evolution(layer_stats, save=False)

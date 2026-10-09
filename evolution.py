@@ -94,7 +94,9 @@ def run_evolution(
         A = all_outputs[-1]
         v = A @ y_star_col
         v = v.reshape(-1)
-        population = sample_input_orthogonal_to_v(v, num_samples=population_size)
+        population = sample_input_orthogonal_to_v(
+            v, num_samples=population_size, rng=np.random.default_rng(np.random.randint(2**31))
+        )
 
         # normalize population
         population = population / np.linalg.norm(population, axis=1, keepdims=True)

@@ -7,7 +7,7 @@ The manuscript (LaTeX source, bibliography, figures) lives in [`paper/`](paper/)
 
 ```bash
 git subtree pull --prefix=paper overleaf master -m "Pull from Overleaf"  # bring in Overleaf edits
-git subtree push --prefix=paper overleaf master                         # send local edits to Overleaf
+git subtree push --prefix=paper overleaf master --rejoin                # send local edits to Overleaf (--rejoin keeps later pulls clean)
 ```
 
 This guide will walk you through setting up and running this package using `uv` for package management and `marimo` for execution.

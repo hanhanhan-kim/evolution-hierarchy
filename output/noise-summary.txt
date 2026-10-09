@@ -1,0 +1,129 @@
+Experiment I2: measurement-error floors (cell type / connection / strength)
+Data: /root/data; observed: /root/evolution-hierarchy/output/connectome.json (/root/data)
+Replicates per setting=100; seed=0; sample=False
+White A/Cook: 180 shared neurons, 97 merged classes; 0.0000/0.4953/0.1456
+A/whole audit: 1414 shared neuronal chemical edges; 0 A edges absent from whole; 38 changed weights.
+A is anterior coverage consistent with N2U; whole adds ventral cord/tail/pharyngeal coverage. N2U identity comes from supplied provenance, not specimen metadata in these tables.
+
+Simulation means (grid plus central; MC uncertainty retained in JSON)
+ r     p       fly cell/connection/strength       worm cell/connection/strength
+0.70  0.70      0.0000/0.2229/0.0273      0.0000/0.2837/0.0881
+0.70  0.80      0.0000/0.2099/0.0248      0.0000/0.2485/0.0775
+0.70  0.90      0.0000/0.1945/0.0219      0.0000/0.2158/0.0680
+0.70  0.95      0.0000/0.1855/0.0203      0.0000/0.2024/0.0640
+0.80  0.70      0.0000/0.2056/0.0232      0.0000/0.2558/0.0738
+0.80  0.80      0.0000/0.1882/0.0201      0.0000/0.2105/0.0642
+0.80  0.90      0.0000/0.1662/0.0165      0.0000/0.1676/0.0512
+0.80  0.95      0.0000/0.1534/0.0145      0.0000/0.1469/0.0452
+0.90  0.70      0.0000/0.1880/0.0195      0.0000/0.2335/0.0638
+0.90  0.80      0.0000/0.1647/0.0156      0.0000/0.1748/0.0512
+0.90  0.90      0.0000/0.1340/0.0113      0.0000/0.1187/0.0360
+0.90  0.95      0.0000/0.1138/0.0088      0.0000/0.0924/0.0273
+0.95  0.70      0.0000/0.1794/0.0177      0.0000/0.2213/0.0584
+0.95  0.80      0.0000/0.1525/0.0135      0.0000/0.1539/0.0440
+0.95  0.90      0.0000/0.1149/0.0087      0.0000/0.0935/0.0283
+0.95  0.95      0.0000/0.0882/0.0060      0.0000/0.0642/0.0191
+0.85  0.85      0.0000/0.1645/0.0159      0.0000/0.1673/0.0507
+
+Excess = observed - floor; intervals span grid means (not confidence intervals).
+FW-L/FW-R     observed 0.0587/0.4394/0.1071
+  simulated     0.0587/0.2748/0.0911; cell < connection < strength: False
+  grid interval [0.0587,0.0587]/[0.2164,0.3512]/[0.0797,0.1010]; increasing at 0/16 valid grid settings
+FW-R/HB       observed 0.2727/0.5564/0.1904
+  simulated     0.2727/0.3919/0.1745; cell < connection < strength: False
+  grid interval [0.2727,0.2727]/[0.3335,0.4682]/[0.1630,0.1844]; increasing at 0/16 valid grid settings
+FW-L/HB       observed 0.2692/0.5676/0.1847
+  simulated     0.2692/0.4030/0.1688; cell < connection < strength: False
+  grid interval [0.2692,0.2692]/[0.3446,0.4794]/[0.1573,0.1787]; increasing at 0/16 valid grid settings
+CE7 L/R       observed 0.0000/0.5405/0.2159
+  simulated     0.0000/0.3732/0.1652; cell < connection < strength: False
+  reannotation  0.0000/0.0451/0.0703; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.2567,0.4762]/[0.1278,0.1968]; increasing at 0/16 valid grid settings
+CE8 L/R       observed 0.0000/0.4807/0.1809
+  simulated     0.0000/0.3134/0.1302; cell < connection < strength: False
+  reannotation  0.0000/-0.0146/0.0353; cell < connection < strength: False
+  grid interval [0.0000,0.0000]/[0.1970,0.4165]/[0.0927,0.1617]; increasing at 0/16 valid grid settings
+N2U L/R       observed 0.0000/0.5985/0.2233
+  simulated     0.0000/0.4312/0.1726; cell < connection < strength: False
+  reannotation  0.0000/0.1031/0.0777; cell < connection < strength: False
+  grid interval [0.0000,0.0000]/[0.3147,0.5342]/[0.1351,0.2042]; increasing at 0/16 valid grid settings
+S14 L/R       observed 0.0000/0.5832/0.2397
+  simulated     0.0000/0.4159/0.1890; cell < connection < strength: False
+  reannotation  0.0000/0.0879/0.0941; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.2995,0.5190]/[0.1515,0.2206]; increasing at 0/16 valid grid settings
+S15 L/R       observed 0.0000/0.6886/0.4111
+  simulated     0.0000/0.5213/0.3604; cell < connection < strength: False
+  reannotation  0.0000/0.1932/0.2655; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4048,0.6243]/[0.3230,0.3920]; increasing at 0/16 valid grid settings
+CE7/CE8       observed 0.0000/0.4333/0.1347
+  simulated     0.0000/0.2660/0.0841; cell < connection < strength: False
+  reannotation  0.0000/-0.0620/-0.0108; cell < connection < strength: False
+  grid interval [0.0000,0.0000]/[0.1495,0.3691]/[0.0466,0.1156]; increasing at 0/16 valid grid settings
+CE7/N2U       observed 0.0000/0.5591/0.2313
+  simulated     0.0000/0.3918/0.1806; cell < connection < strength: False
+  reannotation  0.0000/0.0638/0.0857; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.2754,0.4949]/[0.1431,0.2121]; increasing at 0/16 valid grid settings
+CE8/N2U       observed 0.0000/0.5342/0.2612
+  simulated     0.0000/0.3669/0.2105; cell < connection < strength: False
+  reannotation  0.0000/0.0389/0.1156; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.2505,0.4700]/[0.1731,0.2421]; increasing at 0/16 valid grid settings
+S14/S15       observed 0.0000/0.6503/0.3274
+  simulated     0.0000/0.4831/0.2767; cell < connection < strength: False
+  reannotation  0.0000/0.1550/0.1818; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.3666,0.5861]/[0.2392,0.3082]; increasing at 0/16 valid grid settings
+CE7/S14       observed 0.0000/0.7127/0.5198
+  simulated     0.0000/0.5454/0.4691; cell < connection < strength: False
+  reannotation  0.0000/0.2174/0.3742; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4290,0.6485]/[0.4316,0.5006]; increasing at 1/16 valid grid settings
+CE7/S15       observed 0.0000/0.7682/0.5200
+  simulated     0.0000/0.6009/0.4693; cell < connection < strength: False
+  reannotation  0.0000/0.2729/0.3744; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4845,0.7040]/[0.4319,0.5009]; increasing at 0/16 valid grid settings
+CE8/S14       observed 0.0000/0.6992/0.5143
+  simulated     0.0000/0.5319/0.4636; cell < connection < strength: False
+  reannotation  0.0000/0.2039/0.3688; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4155,0.6350]/[0.4262,0.4952]; increasing at 1/16 valid grid settings
+CE8/S15       observed 0.0000/0.7585/0.5722
+  simulated     0.0000/0.5912/0.5215; cell < connection < strength: False
+  reannotation  0.0000/0.2631/0.4266; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4747,0.6942]/[0.4841,0.5531]; increasing at 1/16 valid grid settings
+N2U/S14       observed 0.0000/0.7204/0.5219
+  simulated     0.0000/0.5531/0.4712; cell < connection < strength: False
+  reannotation  0.0000/0.2251/0.3763; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.4367,0.6562]/[0.4337,0.5027]; increasing at 0/16 valid grid settings
+N2U/S15       observed 0.0000/0.7847/0.5872
+  simulated     0.0000/0.6174/0.5365; cell < connection < strength: False
+  reannotation  0.0000/0.2893/0.4416; cell < connection < strength: True
+  grid interval [0.0000,0.0000]/[0.5009,0.7204]/[0.4991,0.5681]; increasing at 0/16 valid grid settings
+
+Category mean excess: cell / connection / strength (unweighted comparison means).
+fly between-animal simulated: 0.2710/0.3975/0.1716; cell < connection < strength: False
+fly within-animal simulated: 0.0587/0.2748/0.0911; cell < connection < strength: False
+worm between-species simulated: 0.0000/0.5733/0.4886; cell < connection < strength: False
+worm between-species reannotation: 0.0000/0.2453/0.3937; cell < connection < strength: True
+worm within-CE simulated: 0.0000/0.3416/0.1584; cell < connection < strength: False
+worm within-CE reannotation: 0.0000/0.0135/0.0635; cell < connection < strength: True
+worm within-PP simulated: 0.0000/0.4831/0.2767; cell < connection < strength: False
+worm within-PP reannotation: 0.0000/0.1550/0.1818; cell < connection < strength: True
+worm within-animal simulated: 0.0000/0.4110/0.2035; cell < connection < strength: False
+worm within-animal reannotation: 0.0000/0.0829/0.1086; cell < connection < strength: True
+
+Category contrasts: unweighted means of available comparisons, not significance tests.
+fly simulated: between-animal > within-animal (cell/connection/strength): True/True/True; differences=0.2123/0.1226/0.0805
+worm simulated: between-animal > within-animal (cell/connection/strength): False/False/False; differences=0.0000/-0.0340/-0.0155
+worm reannotation: between-animal > within-animal (cell/connection/strength): False/False/False; differences=0.0000/-0.0340/-0.0155
+worm simulated: between-species > within-species (cell/connection/strength): False/True/True; differences=0.0000/0.1964/0.3006
+worm reannotation: between-species > within-species (cell/connection/strength): False/True/True; differences=0.0000/0.1964/0.3006
+
+White A/Cook uses identical-tissue provenance supplied with the task; tables alone cannot establish section equivalence. 1986/2019 annotation conventions differ: treat this as an upper-bound proxy for modern pure annotation noise.
+White whole/Cook on the same neurons is saved as sensitivity only, never used as the floor: whole compiles animals.
+Names, neuronal filter, L/R classes, shared-node metrics and strength clipping follow connectome.py. White/Cook intersect individual neurons before L/R merging; worm cell dissimilarity is zero by construction.
+Model: independent Binomial(w,r) detections; conditional expected false positives D*(1-p)/p; Poisson allocation with 95.0% proportional to reference edge weight and 5.0% uniform over directed reference non-edges (self-pairs included). If no non-edges exist, use existing edges only.
+Synapse-only simulation holds neurons and type counts fixed. Zero cell-type floor does not establish error-free cell identification.
+Grid r,p = 0.7,0.8,0.9,0.95; central r=p=0.85. User-supplied literature ranges: Buhmann et al. 2021 automated fly synapses roughly 0.7-0.9; Scheffer et al. 2020 proofread T-bars/PSDs about 0.8-0.9. These motivate sensitivity settings, not validated independent edge-error rates. No network/literature retrieval performed.
+Manual worm EM annotation error rates are not well established; the same grid is exploratory.
+Grid bounds span setting means, not sampling CIs. JSON separately stores Monte Carlo SE and replicate percentiles. Undefined strength correlations stay null; valid replicate counts accompany all means.
+Floors use one FW-R and one CE8 reference; transferring them to other coverage, species or within-side subnetworks is an assumption. FW-R/HB uses the requested common-quality floor, not separate calibrated FlyWire and hemibrain error models.
+Excess is a signed descriptive subtraction, not a calibrated biological distance. The three metrics have different scales. Do not interpret negative excess as negative biological variation.
+A common per-system floor cancels from category differences, at every grid setting. Worm between-animal here means within-CE/within-PP pairs; between-species is compared with those within-species pairs.
+Observed values are read from the saved experiment I JSON, not recomputed. Its bootstrap uncertainty is not propagated into excess intervals.

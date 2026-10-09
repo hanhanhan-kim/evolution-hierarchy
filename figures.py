@@ -25,8 +25,8 @@ def panel_letter(ax, letter):
             fontweight="semibold", va="bottom", ha="left")
 
 
-def run_fig5(population_size, seed, n_runs=32 * 20, n_generations=200):
-    """Fig 5 simulations (parameters from Jerry's scratch/hpc main.py). Returns
+def run_simulation(population_size, seed, n_runs=32 * 20, n_generations=200):
+    """Figure 4 simulations (parameters from Jerry's scratch/hpc main.py). Returns
     {layers: median fitness per generation} and generations to reach THRESHOLD."""
     np.random.seed(seed)  # parallel_run_evolution draws per-run seeds from this
     medians, gens = {}, {}
@@ -44,7 +44,7 @@ def run_fig5(population_size, seed, n_runs=32 * 20, n_generations=200):
 
 
 def sensitivity_by_depth(path="paper/fig_model_b.pdf", max_depth=50, step=5):
-    """Fig 4B: sensitivity at each layer to a random perturbation of layer 0."""
+    """Figure 3B: sensitivity at each layer to a random perturbation of layer 0."""
     medians, q1s, q3s = measure_directional_robustness(
         max_depth, n_models=25, use_sigmoid=False, rank_fraction=1.0
     )
@@ -68,10 +68,10 @@ def sensitivity_by_depth(path="paper/fig_model_b.pdf", max_depth=50, step=5):
 
 def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
                             path_c="paper/fig_sim_c.pdf", seed=0):
-    """Fig 5B (median fitness over generations, low population) and
-    Fig 5C (convergence rate, low vs high population)."""
-    low_med, low_gens = run_fig5(LOW_POP, seed)
-    _, high_gens = run_fig5(HIGH_POP, seed + 1)
+    """Figure 4B (median fitness over generations, low population) and
+    Figure 4C (convergence rate, low vs high population)."""
+    low_med, low_gens = run_simulation(LOW_POP, seed)
+    _, high_gens = run_simulation(HIGH_POP, seed + 1)
 
     n_gen = len(low_med[LAYERS[0]])
     fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.15))
@@ -122,11 +122,11 @@ def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
 
 
 def drift_map(path="paper/fig_framework.pdf", max_depth=46):
-    """Fig 3: where selection can see a change, by its depth below the phenotype
+    """Figure 2: where selection can see a change, by its depth below the phenotype
     and the strength of selection on the phenotype relative to drift (N_e s).
 
     A change m layers below the phenotype reaches it attenuated by S(m)/S(1),
-    with S the model's sensitivity curve (Fig 4B). It is visible to selection
+    with S the model's sensitivity curve (Figure 3B). It is visible to selection
     when N_e s * S(m)/S(1) > 1, and effectively neutral otherwise.
     """
     medians, _, _ = measure_directional_robustness(

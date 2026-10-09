@@ -6,6 +6,21 @@
 \usepackage{verbatim}
 \usepackage{pifont}
 \usepackage{authblk}
+\usepackage[font=small,labelfont=bf,skip=6pt]{caption}
+
+% Let figures share pages with text instead of being exiled to float pages,
+% and pin any float page that does occur to the top.
+\setcounter{topnumber}{3}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\dblfloatpagefraction}{0.8}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@dblfptop}{0pt}
+\makeatother
 % \usepackage{natbib}
 
 \begin{document}
@@ -117,7 +132,7 @@ Not every apparent inefficiency in the nervous system is the product of drift. T
 
 Finally, we note two comparisons between vertebrates and invertebrates that are consistent with, but by no means demonstrate, a greater contribution from drift in the smaller $N_e$ vertebrates. Vertebrate neurons are typically multipolar, integrating their inputs at the cell body before producing a single output \cite{hu_bean_2018, kandel2013principles}, whereas invertebrate neurons are typically unipolar, and can multiplex several computations in spatially separate compartments of a single neurite \cite{watson_burrows_1985, Hendricks_Ha_Maffey_Zhang_2012}. And brainwide recordings reveal that ongoing behaviour is represented redundantly across much of the vertebrate brain, including primary sensory areas, whereas the sensory neurons of \textit{C. elegans} do not participate in this representation \cite{stringer_harris_2019, kato_2015, kaplan_zimmer_2020, aimon_2019, schaffer_2021}. These comparisons are confounded by many differences besides $N_e$, and we offer them only as speculations worth testing.
 
-\begin{figure*}[htp]
+\begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{fig_layers.pdf}
 \caption{\textbf{Phenotypes held in place by selection, above layers that vary.} Each column is an example from the text; each row is a layer of phenotype, from the phenotype under selection down to its molecular basis. Blue: conserved between individuals or species. Ochre: varies between individuals or species, or turns over during evolution. Dashed: not examined in the cited work. Neural systems: the pyloric rhythm of the crab stomatogastric ganglion, produced by identified neurons whose potassium conductances vary two- to four-fold between animals \cite{Schulz_Goaillard_2006}, and by disparate synaptic strengths in models \cite{prinz_marder_2004}; swimming in the nudibranchs \textit{Melibe} and \textit{Dendronotus}, where homologous neurons play different roles in the swim circuit \cite{Sakurai_Newcomb_2011}; and human and mouse cortical cell types, matched across species but divergent in gene expression \cite{Hodge_Bakken_2019}. Developmental systems: stripe 2 of \textit{even-skipped} expression, conserved over divergent enhancer binding sites \cite{Ludwig_Bergman_2000}; the gap gene pattern of \textit{Megaselia} and \textit{Drosophila}, reached through different maternal inputs and interaction strengths \cite{Wotton_JimenezGuri_2015, Crombach_Wotton_2016}; and the nematode vulva, induced by EGF signalling in \textit{C. elegans} and Wnt signalling in \textit{P. pacificus} \cite{Tian_Schlager_2008}, with cryptic variation in Ras activity within \textit{C. elegans} \cite{Milloz_Duveau_2008}.}
@@ -134,7 +149,7 @@ Most accounts of evolution express themselves in genetic terms. In the populatio
 
 We propose the divvying of phenotypes into constituent `layers' \cite{Ho_Ohya_Zhang_2017, mayr_1997, wideman_doolittle_2019, Zhang_2018}. Elements of a lower layer can afford to vary or drift, provided that their effects do not impinge on the integrity of the layer directly above. In other words, intermediary layers `buffer' the effects that bottom layers have on the highest layers, such as animal fitness. Natural selection acts directly on phenotype, rather than genotype \cite{mayr_1997}, and so change occurring at a layer to which selection is blind will be neutral, provided that it does not affect the layer above \cite{mayr_1997, wideman_doolittle_2019, Zhang_2018}. The probability of a given change being neutral is greater, the lower the layer of the change. The relative contribution of natural selection is, in this view, a function of two parameters: the effective population size, and the layer at which variation is observed (Figure \ref{fig_framework}).
 
-\begin{figure}[htp]
+\begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_framework.pdf}
 \caption{\textbf{Where selection can see a change.} A change at a given layer reaches the phenotype under selection only after passing through the layers above it, which attenuate its effect. Selection can act on the change only when the strength of selection on the phenotype, relative to drift ($N_e s$), multiplied by this attenuation, exceeds roughly one; otherwise the change is effectively neutral. The boundary uses the attenuation measured in our model (Figure \ref{fig:model_1}B), and is illustrative rather than quantitative. Phenotypes under very strong selection, such as the facets of the insect eye or the photon sensitivity of rods, are held in place even in species with small $N_e$, while changes deep beneath them, such as in channel conductances or receptor genes, can drift. A smaller $N_e$ lowers $N_e s$, and so enlarges the region in which changes are effectively neutral.}
@@ -174,7 +189,7 @@ x_0^i \leftarrow x_0^i + \epsilon, \quad \epsilon \sim \mathcal{N}(0, s^2).
 \]
 This cycle of selection and mutation then repeats \textit{ad infinitum}.
 
-\begin{figure}[!ht]
+\begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_model_a.pdf}\\[4pt]
 \includegraphics[width=\columnwidth]{fig_model_b.pdf}
@@ -184,11 +199,15 @@ This cycle of selection and mutation then repeats \textit{ad infinitum}.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_sim_a.pdf}\\[6pt]
-\includegraphics[width=\columnwidth]{fig_sim_b.pdf}\hfill
-\includegraphics[width=\columnwidth]{fig_sim_c.pdf}
+\begin{minipage}[c]{\columnwidth}
+\includegraphics[width=\linewidth]{fig_sim_a.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{\columnwidth}
 \caption{\textbf{Simulating evolution across hierarchy of phenotype.} A) In our evolution model, selection probability is higher for vectors that are closer to the optimal vector (black square), in terms of fitness layer, followed by mutation occurring at layer $0$ of the selected individuals. B) Median fitness over generations for organisms with different numbers of phenotypic layers, in a population of 5 individuals, across 640 runs. The dashed line at a median fitness of 0.65 indicates the threshold used in C. C) The convergence rate---the inverse of the number of generations needed to reach a median fitness of 0.65---for species with different numbers of layers, in populations of 5 (low) and 75 (high) individuals.}
 \label{fig:model_2}
+\end{minipage}\\[10pt]
+\includegraphics[width=\columnwidth]{fig_sim_b.pdf}\hfill
+\includegraphics[width=\columnwidth]{fig_sim_c.pdf}
 \end{figure*}
 
 

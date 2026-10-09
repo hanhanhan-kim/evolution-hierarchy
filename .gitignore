@@ -76,3 +76,6 @@ dmypy.json
 
 # Playwright MCP snapshots and logs
 .playwright-mcp/
+
+# Bulky raw results live in gs://fearn-neuro-evo, not git
+output/hybrids.json

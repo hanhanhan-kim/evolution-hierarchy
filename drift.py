@@ -1,6 +1,6 @@
 """Developmental systems drift with evolving genotypes and developmental maps.
 
-Run: python drift.py [check | quick | figure] [--tanh] [--seed SEED]
+Run: python drift.py [check | quick | figure] [--tanh] [--seed SEED] [--workers N]
 The default is the full 10-process grid; quick keeps B=2000 but uses L=6,
 K=8 and T=3000. Both write output/drift.json (including parameters and timings).
 States and maps use cosine divergence; omega is measured at the first recorded
@@ -8,6 +8,11 @@ neutral x0 divergence >= 0.25, or left undefined if that threshold is not reache
 Stiff drift uses each run's own fork Jacobian and normalized consensus genomes.
 Its isotropic reference rank/genome_size is a reference, not a fitted baseline.
 """
+
+import os
+
+for _variable in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ[_variable] = "1"
 
 import json
 from concurrent.futures import ProcessPoolExecutor
@@ -116,7 +121,7 @@ def measure(g, optimum, s, d, tanh):
 
 
 def run(L=6, N=100, s=100, init="gaussian", B=2000, K=32, T=20000,
-        every=100, d=10, u=1e-3, sigma=0.1, seed=0, tanh=False):
+        every=100, d=10, u=1e-3, sigma=0.1, seed=0, tanh=False, on_record=None):
     if init not in ("gaussian", "orthogonal"):
         raise ValueError(init)
     if min(L, N, d, every) < 1 or K < 2 or min(B, T) < 0:
@@ -157,6 +162,8 @@ def run(L=6, N=100, s=100, init="gaussian", B=2000, K=32, T=20000,
                 record["stiff_by_lineage"] = [float(f) if np.isfinite(f) else None for f in fractions]
                 valid = fractions[np.isfinite(fractions)]
                 record["stiff_fraction"] = float(valid.mean()) if valid.size else None
+            if on_record is not None:
+                record["hybrids"] = on_record(t, g, optimum)
             records.append(record)
         if t < T:
             g = step(g, optimum, s, d, u, sigma, tanh, rng)
@@ -196,7 +203,7 @@ def worker(params):
     return run(**params)
 
 
-def main(quick=False, seed=0, tanh=False):
+def main(quick=False, seed=0, tanh=False, workers=10):
     from tqdm import tqdm
     configs = [dict(L=L, N=N, s=s, init="gaussian")
                for L in ((6,) if quick else (1, 3, 6)) for N in (10, 100) for s in (0, 10, 100)]
@@ -205,7 +212,7 @@ def main(quick=False, seed=0, tanh=False):
         config.update(K=8 if quick else 32, T=3000 if quick else 20000,
                       seed=seed, tanh=tanh)
     start = perf_counter()
-    with ProcessPoolExecutor(max_workers=10) as pool:
+    with ProcessPoolExecutor(max_workers=workers) as pool:
         rows = list(tqdm(pool.map(worker, configs), total=len(configs), desc="drift configs"))
     add_omega(rows)
     OUTPUT.mkdir(exist_ok=True)
@@ -358,10 +365,13 @@ if __name__ == "__main__":
     parser.add_argument("command", nargs="?", choices=("check", "quick", "figure", "run"), default="run")
     parser.add_argument("--tanh", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--workers", type=int, default=10)
     args = parser.parse_args()
+    if args.workers < 1:
+        parser.error("--workers must be at least 1")
     if args.command == "check":
         check()
     elif args.command == "figure":
         figure()
     else:
-        main(quick=args.command == "quick", seed=args.seed, tanh=args.tanh)
+        main(quick=args.command == "quick", seed=args.seed, tanh=args.tanh, workers=args.workers)

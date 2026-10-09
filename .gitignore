@@ -73,3 +73,6 @@ dmypy.json
 
 # Local, private figure styling. Never commit or publish.
 /design/
+
+# Playwright MCP snapshots and logs
+.playwright-mcp/

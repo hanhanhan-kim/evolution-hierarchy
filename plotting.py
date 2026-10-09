@@ -11,6 +11,8 @@ _DESIGN = Path(__file__).parent / "design"
 if (_DESIGN / "figures.mplstyle").exists():
     for _font in (_DESIGN / "fonts").glob("*.ttf"):
         font_manager.fontManager.addfont(str(_font))
+    if (_DESIGN / "extras.py").exists():  # registers local colormaps used by the style
+        exec((_DESIGN / "extras.py").read_text())
     plt.style.use(_DESIGN / "figures.mplstyle")
 
 

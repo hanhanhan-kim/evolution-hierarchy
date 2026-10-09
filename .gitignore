@@ -82,3 +82,4 @@ output/hybrids.json
 
 # Downloaded third-party datasets (mirrored in gs://fearn-neuro-evo/I-data/)
 /data/
+output/code.json

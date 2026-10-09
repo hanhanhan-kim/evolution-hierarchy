@@ -1,0 +1,39 @@
+F3 equilibration, load and interference
+Completed 48/48 arms; sigma_n=0.0128; U=.784; K replicates, not time points, determine errors.
+Tail = last quarter; equilibrium evidence = starts agree and tails stable within .01 including 95% replicate intervals.
+N      Ns mode     mean    consensus best    genetic distance z variance  equilibrium
+  10     300 clonal  0.96140 0.97482 0.97832 0.00152 0.00270  unresolved (start gap=-0.0070, stable=False)
+  10    3000 clonal  0.99147 0.99691 0.99734 0.00085 0.00065  supported (start gap=+0.0012, stable=True)
+  30     300 clonal  0.95891 0.97953 0.98042 0.00497 0.00348  unresolved (start gap=+0.0028, stable=False)
+  30    3000 clonal  0.98259 0.99512 0.99529 0.00199 0.00185  unresolved (start gap=-0.0054, stable=True)
+ 100     300 clonal  0.93220 0.97300 0.97437 0.01635 0.00894  unresolved (start gap=-0.0092, stable=False)
+ 100    3000 clonal  0.98411 0.99689 0.99664 0.00805 0.00253  supported (start gap=-0.0002, stable=True)
+ 300     300 clonal  0.89928 0.95840 0.96461 0.04673 0.02029  unresolved (start gap=-0.0098, stable=False)
+ 300    3000 clonal  0.97966 0.99667 0.99617 0.02491 0.00482  supported (start gap=-0.0004, stable=True)
+1000     300 clonal  0.86240 0.94781 0.96664 0.13376 0.04425  unresolved (start gap=-0.0022, stable=False)
+1000    3000 clonal  0.96635 0.99217 0.99432 0.09247 0.01294  supported (start gap=+0.0008, stable=True)
+3000     300 clonal  0.78113 0.89475 0.95382 0.30690 0.10605  unresolved (start gap=-0.0058, stable=False)
+3000    3000 clonal  0.94441 0.98087 0.99127 0.20947 0.02644  supported (start gap=-0.0007, stable=True)
+  10     300 block   0.96525 0.97716 0.97962 0.00191 0.00163  unresolved (start gap=-0.0027, stable=False)
+  30     300 block   0.95872 0.97914 0.98066 0.00557 0.00300  unresolved (start gap=-0.0052, stable=True)
+ 100     300 block   0.93219 0.96807 0.97270 0.01908 0.00596  unresolved (start gap=-0.0099, stable=True)
+ 300     300 block   0.90819 0.97325 0.97884 0.05487 0.01358  unresolved (start gap=-0.0052, stable=False)
+1000     300 block   0.85073 0.95492 0.97069 0.15268 0.03225  unresolved (start gap=-0.0003, stable=False)
+3000     300 block   0.74885 0.90697 0.95130 0.35994 0.07598  unresolved (start gap=+0.0017, stable=False)
+  10     300 free    0.96672 0.98026 0.98322 0.00192 0.00179  unresolved (start gap=-0.0056, stable=False)
+  30     300 free    0.96174 0.98213 0.98373 0.00687 0.00272  unresolved (start gap=-0.0056, stable=False)
+ 100     300 free    0.92740 0.96588 0.96836 0.02297 0.00579  unresolved (start gap=-0.0174, stable=False)
+ 300     300 free    0.88814 0.95660 0.96266 0.05900 0.00992  unresolved (start gap=-0.0226, stable=False)
+1000     300 free    0.85463 0.95777 0.96665 0.14643 0.01707  unresolved (start gap=-0.0135, stable=False)
+3000     300 free    0.82555 0.94060 0.95728 0.34356 0.02269  unresolved (start gap=-0.0420, stable=False)
+VERDICT: UNRESOLVED equilibrium: starts do not meet or tails remain unstable; non-equilibrium is not excluded.
+  non_equilibrium: +1.32 percentage points, +6.8% of F2 gap; descriptive/unresolved
+  variation_load: +10.02 percentage points, +51.8% of F2 gap; descriptive/unresolved
+  block_interference: -3.61 percentage points, -18.7% of F2 gap; descriptive/unresolved
+  free_interference: +3.91 percentage points, +20.2% of F2 gap; descriptive/unresolved
+Effects overlap; do not sum percentages. Recombination rescue is evidence consistent with interference, not a unique causal identification.
+Theory: unresolved: need equilibrated clonal cells at >=3 N and both Ns
+delta=1-eta; drift=q/(4Ns), q=15 (also fit a/Ns); mutation=b*NU/Ns; Gaussian=b*sqrt(NU/Ns). U=784u.
+Assumptions: local quadratic haploid WF drift; independent deleterious house-of-cards mutations or small Gaussian effects. Coefficients fitted, not universal.
+95%/99% equilibrium thresholds and the '1% information loss costs >30/Ne' claim remain unresolved; do not infer them from this run.
+B300 projection: 3.42 h at measured F2 throughput; 4.28 h scheduling budget; compilation/contention can change this.

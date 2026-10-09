@@ -74,7 +74,7 @@ def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
     _, high_gens = run_fig5(HIGH_POP, seed + 1)
 
     n_gen = len(low_med[LAYERS[0]])
-    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.3))
+    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.15))
     panel_letter(ax, "B")
     ends = {}
     for i, depth in enumerate(LAYERS):
@@ -97,7 +97,7 @@ def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
     ax.set_ylabel("Median fitness")
     fig.savefig(path_b)
 
-    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.3))
+    fig, ax = plt.subplots(figsize=(COLUMN_WIDTH, 2.15))
     panel_letter(ax, "C")
     for i, (label, gens) in enumerate([("high population", high_gens), ("low population", low_gens)]):
         xs = [d for d in LAYERS if gens[d]]

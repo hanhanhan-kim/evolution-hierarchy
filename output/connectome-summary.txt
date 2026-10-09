@@ -1,0 +1,45 @@
+Experiment I: shared-node dissimilarity (95% paired node bootstrap CIs)
+Data: /root/data; resamples=200; seed=0
+Pair          category          shared drop A/B  thr    cell    connection [95% CI]    strength [95% CI]      SD(count) SD(weight)  rho
+FW-L/FW-R     within-animal      3662  535/538    5   0.059   0.439 [0.431,0.445]       0.107 [0.099,0.112]         0.253      0.744  0.893
+FW-R/HB       between-animal     3674 526/1880    5   0.273   0.556 [0.544,0.567]       0.190 [0.179,0.198]         0.544      1.020  0.810
+FW-L/HB       between-animal     3670 527/1884    5   0.269   0.568 [0.555,0.580]       0.185 [0.173,0.196]         0.535      1.013  0.815
+CE7 L/R       within-animal        83      0/0    1   0.000   0.540 [0.452,0.630]       0.216 [0.138,0.327]            NA      0.926  0.784
+CE8 L/R       within-animal        83      0/0    1   0.000   0.481 [0.420,0.557]       0.181 [0.106,0.294]            NA      0.812  0.819
+N2U L/R       within-animal        83      0/0    1   0.000   0.598 [0.562,0.670]       0.223 [0.145,0.354]            NA      1.175  0.777
+S14 L/R       within-animal        84      1/0    1   0.000   0.583 [0.513,0.663]       0.240 [0.158,0.379]            NA      0.962  0.760
+S15 L/R       within-animal        78      2/2    1   0.000   0.689 [0.619,0.767]       0.411 [0.217,0.659]            NA      1.036  0.589
+CE7/CE8       within-CE            97      0/0    1   0.000   0.433 [0.379,0.492]       0.135 [0.096,0.205]            NA      0.842  0.865
+CE7/N2U       within-CE            97      0/5    1   0.000   0.559 [0.516,0.612]       0.231 [0.169,0.299]            NA      1.132  0.769
+CE8/N2U       within-CE            97      0/5    1   0.000   0.534 [0.486,0.576]       0.261 [0.199,0.350]            NA      1.209  0.739
+S14/S15       within-PP            97      4/4    1   0.000   0.650 [0.605,0.704]       0.327 [0.250,0.487]            NA      1.209  0.673
+CE7/S14       between-species      95      2/6    1   0.000   0.713 [0.662,0.763]       0.520 [0.367,0.691]            NA      1.557  0.480
+CE7/S15       between-species      94      3/7    1   0.000   0.768 [0.728,0.812]       0.520 [0.360,0.715]            NA      1.583  0.480
+CE8/S14       between-species      95      2/6    1   0.000   0.699 [0.641,0.750]       0.514 [0.367,0.671]            NA      1.614  0.486
+CE8/S15       between-species      94      3/7    1   0.000   0.758 [0.711,0.805]       0.572 [0.409,0.764]            NA      1.667  0.428
+N2U/S14       between-species      97      5/4    1   0.000   0.720 [0.678,0.768]       0.522 [0.393,0.705]            NA      1.686  0.478
+N2U/S15       between-species      97      5/4    1   0.000   0.785 [0.748,0.824]       0.587 [0.434,0.775]            NA      1.790  0.413
+
+Fly threshold sensitivity: pair / threshold / 1-Jaccard [95% CI] / common,union edges
+FW-L/FW-R        1   0.585 [0.577,0.590]     262042,631639
+FW-L/FW-R        3   0.485 [0.478,0.491]     128659,249698
+FW-L/FW-R        5   0.439 [0.431,0.445]     92424,164858
+FW-L/FW-R       10   0.397 [0.388,0.404]     56532,93709
+FW-R/HB          1   0.627 [0.618,0.633]     282973,759082
+FW-R/HB          3   0.574 [0.564,0.585]     133378,313445
+FW-R/HB          5   0.556 [0.544,0.567]     93636,211102
+FW-R/HB         10   0.551 [0.537,0.565]     55476,123472
+FW-L/HB          1   0.635 [0.626,0.641]     274047,750991
+FW-L/HB          3   0.585 [0.574,0.595]     127235,306897
+FW-L/HB          5   0.568 [0.555,0.580]     88869,205514
+FW-L/HB         10   0.561 [0.545,0.574]     52543,119555
+
+Shared-node restriction excludes missing reconstruction; dropped A/B are node counts, with identities in JSON.
+Worm cell dissimilarity is zero by construction after intersection, not evidence of conservation.
+Worm count measures synapse records; sum measures section extent. _roi aliases are summed; bilateral homologs are merged.
+Within-animal worm baselines compare bilateral within-side subnetworks; main worm graphs include all merged homolog edges.
+Hemibrain truncation, P. pacificus coverage (especially s15), and biological side asymmetry remain confounds.
+Strength input totals use all edges within shared nodes. SD uses ddof=0; undefined correlation is NA/null.
+Figure strength is clip(1-rho,0,1); raw 1-rho and rho are retained. Metrics are not biologically calibrated.
+CIs: paired node resampling, recomputed input totals and weighted tied ranks; 2.5/97.5 percentiles of valid replicates.
+Worm: CE7/CE8/N2U = C. elegans; S14/S15 = P. pacificus. Category means in the figure are descriptive.

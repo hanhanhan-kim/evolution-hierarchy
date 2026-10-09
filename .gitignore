@@ -79,3 +79,6 @@ dmypy.json
 
 # Bulky raw results live in gs://fearn-neuro-evo, not git
 output/hybrids.json
+
+# Downloaded third-party datasets (mirrored in gs://fearn-neuro-evo/I-data/)
+/data/

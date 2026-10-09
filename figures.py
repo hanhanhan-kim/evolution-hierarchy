@@ -4,6 +4,7 @@ Styling comes from plotting.py (plain matplotlib unless a local style is present
 """
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator, FormatStrFormatter, NullFormatter
 import numpy as np
 
 import plotting  # noqa: F401  (applies the figure style on import)
@@ -11,7 +12,7 @@ from evolution import parallel_run_evolution
 from robustness import measure_directional_robustness
 
 LAYERS = [1, 2, 4, 6]
-THRESHOLD = 0.7
+THRESHOLD = 0.65  # 0.7 sat on the 1-layer, low-population plateau (~0.69), so crossing it was noise
 LOW_POP, HIGH_POP = 5, 75  # HIGH_POP reconstructed: the original run's size was not recorded
 
 
@@ -64,8 +65,8 @@ def sensitivity_by_depth(path="paper/fig_model_b.pdf", max_depth=50, step=5):
     return fig
 
 
-def fitness_and_convergence(path_b="output/median_fitness_by_layers.pdf",
-                            path_c="output/convergence_rate.pdf", seed=0):
+def fitness_and_convergence(path_b="paper/fig_sim_b.pdf",
+                            path_c="paper/fig_sim_c.pdf", seed=0):
     """Fig 5B (median fitness over generations, low population) and
     Fig 5C (convergence rate, low vs high population)."""
     low_med, low_gens = run_fig5(LOW_POP, seed)
@@ -90,6 +91,7 @@ def fitness_and_convergence(path_b="output/median_fitness_by_layers.pdf",
                 color=f"C{LAYERS.index(depth)}", fontsize=7, va="center")
     ax.axhline(THRESHOLD, color="0.45", linewidth=0.8, linestyle=(0, (3, 3)))
     ax.text(n_gen + 3, THRESHOLD, "threshold", color="0.45", fontsize=7, va="center")
+    ax.set_xlim(0, n_gen)
     ax.set_xlabel("Generation")
     ax.set_ylabel("Median fitness")
     fig.savefig(path_b)
@@ -106,6 +108,9 @@ def fitness_and_convergence(path_b="output/median_fitness_by_layers.pdf",
             ax.text(d + 0.15, 1 / 200, "not reached\nin 200 gen.", color=f"C{i}", fontsize=6, va="center")
         ax.text(xs[-1] + 0.15, ys[-1], label, color=f"C{i}", fontsize=7, va="center")
     ax.set_yscale("log")
+    ax.yaxis.set_major_locator(FixedLocator([0.02, 0.05, 0.1]))
+    ax.yaxis.set_major_formatter(FormatStrFormatter("%g"))
+    ax.yaxis.set_minor_formatter(NullFormatter())
     ax.set_xticks(LAYERS)
     ax.set_xlim(0.5, 7.8)
     ax.set_xlabel("Number of layers")

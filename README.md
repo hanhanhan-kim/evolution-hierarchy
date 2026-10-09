@@ -3,6 +3,13 @@
 
 The manuscript (LaTeX source, bibliography, figures) lives in [`paper/`](paper/). Preprint: https://arxiv.org/abs/2203.09719
 
+`paper/` is synced with Overleaf (remote `overleaf`) via git subtree:
+
+```bash
+git subtree pull --prefix=paper overleaf master -m "Pull from Overleaf"  # bring in Overleaf edits
+git subtree push --prefix=paper overleaf master                         # send local edits to Overleaf
+```
+
 This guide will walk you through setting up and running this package using `uv` for package management and `marimo` for execution.
 
 ## Prerequisites

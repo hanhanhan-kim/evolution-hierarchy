@@ -1,6 +1,8 @@
 
 # Evolutionary dynamic across hierarchy of phenotype
 
+The manuscript (LaTeX source, bibliography, figures) lives in [`paper/`](paper/). Preprint: https://arxiv.org/abs/2203.09719
+
 This guide will walk you through setting up and running this package using `uv` for package management and `marimo` for execution.
 
 ## Prerequisites

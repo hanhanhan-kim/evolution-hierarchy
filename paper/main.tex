@@ -1,0 +1,249 @@
+\documentclass[twocolumn]{article}
+\usepackage{fullpage}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{pifont}
+\usepackage{authblk}
+% \usepackage{natbib}
+
+\begin{document}
+
+
+\title{Evolution as Explanation:  \\The Origins of Neural Codes and their Efficiencies}
+\author[1,\ding{41}]{Han Kim}
+\author[2,\ding{41}]{Po-Yi Ho}
+\author[2,\ding{41}]{Zitong Jerry Wang}
+\affil[1]{Fearn AI, Inc.}
+\affil[2]{Center for Interdisciplinary Studies (CIS), School of Science, Westlake University, Zhejiang, China}
+\affil[\ding{41}]{ \texttt{han@fearn.ai}, \texttt{poyi@westlake.edu.cn}, \texttt{jerry@westlake.edu.cn}}
+
+\date{\today}
+
+
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \maketitle
+    \begin{abstract}
+      \noindent Neural codes appear efficient, yet the species that possess nervous systems have small effective population sizes ($N_e$)---a condition under which random evolutionary forces, not natural selection, tend to dominate. Why, then, are some neural codes efficient? And why are others not? In this paper, we address these questions by considering the full repertoire of evolutionary forces, including neutral stochastic processes. We survey efficient codes across sensory, motor, and central systems, and contrast them with clear inefficiencies, such as the inverted vertebrate retina and the biophysical degeneracy of the lobster stomatogastric ganglion. We propose a framework in which the relative contributions of adaptive and non-adaptive forces depend on two parameters: the effective population size, and the phenotypic `level' at which variation occurs. We present a computational model in which organisms are represented as layered systems. The model shows that phenotypic layers confer robustness to genetic perturbation and accelerate convergence to fitness optima, even for small $N_e$ species. This framework explains both the efficient codes observed across neuroscience and the inefficiencies predicted by evolutionary theory. We advocate for a pluralistic neuroscience capable of appealing to both adaptive and non-adaptive evolutionary explanations.
+      \\\\\\\
+    \end{abstract}
+  \end{@twocolumnfalse}
+]
+
+
+
+
+\section{Introduction}
+
+Many neural codes are efficient. The efficient coding hypothesis---the idea that neural systems optimally represent the statistics of an animal's natural environment---has provided immense explanatory power for neuroscience \cite{Barlow_1961, barlow_2001, simoncelli_olshausen_2001}. Natural selection is the process typically invoked to explain how such codes arose. The logic is intuitive: an efficient code requires an efficient process, and natural selection is adaptive. Although natural selection is adaptive, however, it is not goal-oriented \cite{mayr_1961}. Goals and adaptive processes are two different things.
+
+More importantly, evolution is not natural selection. It consists of four forces: natural selection, mutation\footnote{A novel change in genetic sequence. In nature, is the result of a random process.}, recombination\footnote{The rearrangement of genetic material. In nature, is the result of a random process.}, and genetic drift\footnote{The random sampling of genetic material from the parental generation, to produce the offspring generation. Results in differing genetic compositions between the parental and offspring generations.}. Of these, only natural selection is adaptive. The remaining three are stochastic and neutral---they do not depend on an organism's fitness. When a species' effective population size ($N_e$) is small, these neutral forces dominate the course of evolution \cite{kimura1983neutral, Lynch_2007}. Nervous system-possessing animals have the smallest $N_e$ values of any phyla \cite{Lynch_Conery_2003}.
+
+Why, then, are so many neural codes efficient? And why are some neural features obviously not? In this paper, we address these questions. We first survey efficient codes across the nervous system, and then introduce the population genetics that makes these efficiencies surprising. We present examples of neural inefficiencies, and show that they vary with both effective population size and phenotypic `level'. We propose a computational model in which organisms are layered systems, and demonstrate that layers confer robustness to drift and accelerate convergence to fitness optima. We close with a discussion of the difficulties of defining optimality, and in support of a neuroscience that appeals to both adaptive and non-adaptive evolutionary explanations.
+
+\section{Efficient codes across the nervous system}
+
+\subsection{Sensory systems}
+
+In feline, human, and grasshopper auditory systems \cite{Machens_Gollisch_Kolesnikova_Herz_2005, smith_lewicki_2006}, sensory systems use a sparse spike code to represent acoustic stimuli. Kernel functions for an optimal sparse representation learned from auditory stimuli closely approximate the physiological reverse-correlation filters \cite{smith_lewicki_2006}. These efficient codes succeed only when the auditory stimulus derives from natural scene statistics. In other words, efficient neural codes are correlated with the germane particulars of the animal's natural environment. Selective forces encompass ethological cues, and animals that fail to efficiently respond to those cues are selected against. Indeed, efficient codes match not only the ethological sensory space, but are especially tuned for behaviourally relevant stimuli \cite{Machens_Gollisch_Kolesnikova_Herz_2005, machens_herz_2001}.
+
+Efficient coding extends beyond audition. A survey of ommatidia diameter and eye height from 27 \textit{Hymenoptera} species reveals that their facets maximize visual sampling while minimizing blur from diffraction \cite{barlow_1952}. The optimal resolving power of a lens with diameter $d$ is $\sqrt{a\lambda}$, where $a$ is the angle subtended by two point sources that can still be detected as double, and $\lambda$ is the wavelength of incoming light. The surveyed insects possess a linear and proportional relationship between $\sqrt{a}$ and $d$ \cite{barlow_1952}. In terms of neural coding, the retinal ganglion cells of both salamanders and macaques decorrelate spatial features of visual inputs, achieving sparse spiking and optimizing visual coding efficiency \cite{Pitkow_Meister_2012}.
+
+\subsection{Motor systems}
+
+Efficiency also appears at the motor periphery, although not necessarily in terms of neural coding. Most examples of efficient motor control concern the energy expended in muscles to achieve a particular task. Given that muscle energy vastly exceeds that needed for neural spiking \cite{ortega_2015, sengupta_2010}, the relevant cost function at the motor periphery likely relates to joules of muscle work, rather than sparse spike codes. Classic work on horse gaits shows that freely moving horses self-optimize their movement speeds. Under naturalistic conditions, they operate in locomotor regimes that require minimal oxygen consumption per unit distance, across walks, trots, and gallops \cite{hoyt_taylor_1981}. Similar self-optimization with respect to gross energy expenditure has been reported in human ergometer studies \cite{sparrow_newell_1998}.
+
+Despite the primacy of muscle expenditure for motoric efficiency, some evidence suggests that the encoding of naturalistic behaviours also has an efficient basis. Simultaneous microdrive recordings and 3D posture tracking of freely moving rats reveal that proportionately fewer cells in posterior parietal and motor cortices fire during common `default' postures \cite{Mimica_Dunn_Tombaz_Bojja_Whitlock_2018}. The encoding of naturalistic poses uses a minimal number of cells to represent the repertoire of ethological motor ensembles.
+
+\subsection{Central systems}
+
+Further examples of efficiency appear in deeper processing regions, albeit with different---and arguably more ambiguous---objectives from the sparse coding seen at the periphery \cite{simoncelli_2003}. Learning algorithms that maximize sparseness recapitulate the spatially localized, oriented, and bandpass features of mammalian visual cortical cells \cite{olshausen_field_1996}. Sparse codes in the visual cortex appear useful for learning and processing incoming spike patterns \cite{olshausen_field_1996}, and for parsing signal from noise \cite{ringach_malone_2007}, in the face of overcomplete representations. Although these objective functions differ from those at the periphery---where the goal is to minimize spikes needed for expressing some maximal description of the environment---both scenarios offer examples of efficient coding.
+
+An appeal to natural selection as the process behind these findings is reasonable---it is likely the most appropriate explanation for many efficient neural codes. Given the efficiency surveyed above, however, a worthwhile question arises: why do species with the smallest effective population sizes possess such efficient codes? And when, if ever, should we appeal to non-adaptive explanations?
+
+\section{Effective population size and neutral evolutionary forces}
+
+Under what conditions will neutral forces dominate over natural selection? To answer this, we introduce key concepts from population genetics.
+
+\subsection{The effective population size defines drift}
+
+Sewall Wright first sketched the concept of the effective population size ($N_e$) to calculate the rate of evolutionary change caused by the random sampling of allele\footnote{One of two or more versions of a gene. They arise by mutation.} frequencies---that is, genetic drift \cite{wright_1931}. An intuition for $N_e$, and how it differs from the `regular' population size of breeding individuals ($N$), is essential for understanding neutral forces.
+
+$N_e$ is best understood via the Wright-Fisher population, a highly idealized but important model of random sampling \cite{wright_1931, fisher_1923, fisher_1931}. The Wright-Fisher population assumes a randomly mating population of diploid\footnote{A cell or organism with two complete sets of genetic information. If the cell or organism has only one complete set of genetic information, it is haploid.} hermaphroditic individuals. These $N$ individuals reproduce with discrete generations, counted at the time of breeding. Each new generation results from random sampling, with replacement, from the gametes of the parents, who die immediately after reproduction. Under these idealized assumptions, the rate at which drift produces differing genetic compositions in the offspring is $\frac{1}{2N}$. The coefficient `2' reflects the diploid nature of the parents. If the members were haploid or triploid, the drift rate would be $\frac{1}{N}$ or $\frac{1}{3N}$, respectively.
+
+Most biological populations, however, do not reproduce like the sampling from a bag of marbles. Many species have two sexes, select mates non-randomly, and produce offspring asynchronously. For these populations, we invoke the \textit{effective} population size, $N_e$. The effective population size absorbs all relevant biological complications that distinguish a real population from a Wright-Fisher population, such that we can substitute $N_e$ for $N$ in most expressions. For example, in a diploid non-Wright-Fisher population, the drift rate becomes $\frac{1}{2N_e}$ instead of $\frac{1}{2N}$. In other words, we defer. The consideration for any biological complications is offloaded from the expression and its use of $N$, to $N_e$. Many theoretical and computational methods, such as coalescent theory, exist for inferring $N_e$ \cite{charlesworth_2009}, but they are outside our scope. The reader needs know only that $\frac{1}{N_e}$ approximates the neutral force that is drift\footnote{Some authors distinguish between various types of effective population sizes, such as $N_e$, $N_l$, and $N_g$, which all take into account different factors such as timescales, genome linkage effects, and the ploidy of a species \cite{Lynch_2007, lynch2007origins}. For our purposes, we will not be making such distinctions, because they do not matter for our arguments with the reader. We will use exclusively $N_e$ when referring to the effective population size.}.
+
+\subsection{The selection coefficient expresses the strength of natural selection}
+
+To understand when neutral forces outweigh adaptive forces, we introduce the selection coefficient, $s$. This requires an understanding of fitness. In the broadest sense, fitness involves the ability of organisms or populations to survive and reproduce in their environment \cite{orr_2009}. Natural selection requires differing levels of fitness across members of a population, and that some of those fitness differences be inheritable---that is, that they have a genetic basis.
+
+Evolutionary biologists distinguish between two fitness metrics \cite{orr_2009}. Absolute fitness, $W$, refers to a genotype's expected total fitness, encapsulating complexities such as viability, mating success, and fecundity. $W$ must be greater than or equal to zero. Relative fitness, $w$, is more commonly used. It is the absolute fitness of a genotype, normalized---most commonly by dividing by the absolute fitness of the fittest genotype. In this normalization, $w$ is bound between 0 and 1. The selection coefficient follows directly: $s = 1 - w$. If a genotype is maximally fit ($w=1$), then $s=0$, and selection against that genotype is non-existent. If a genotype is maximally deleterious ($w=0$), then $s=1$, and selection is total. Like $N_e$, several methods exist for empirically estimating $s$ \cite{orr_2009}, but they are outside our scope.
+
+\subsection{Random forces can dominate evolution} \label{Random forces can dominate evolution}
+From the above definitions, we can express the relative contributions of drift and natural selection. Drift scales as $\frac{1}{N_e}$, and natural selection as $s$. Their ratio is $\frac{\text{selection}}{\text{drift}} = \frac{s}{\frac{1}{N_e}} = N_es$.
+
+To appreciate this ratio, consider a diploid species in which a gene has two alleles, \textbf{A} and \textbf{a}, where \textbf{A} has a slight selective advantage, $s$, over \textbf{a}. Will natural selection always ensure the fixation of \textbf{A}? No. If the mutation rate of \textbf{a $\rightarrow$ A} is $m$ times greater than the rate of \textbf{A $\rightarrow$ a}, then standard population genetics theory \cite{kimura1983neutral, guy_hirsh_2005, Lynch_2007, lynch_hagner_2015, lynch_2020} shows that the probability of fixing \textbf{A} is $e^{2N_es}$ times that of fixing \textbf{a}. The ratio of fixation probabilities is $me^{2N_es}$. When $\frac{1}{N_e} \gg |s|$---that is, when $N_e$ is extremely small---this ratio approaches $m$, the ratio of mutation rates alone. Under small $N_e$, random forces dominate. We can plot this relationship and observe the effects of altering $N_es$ (Figure \ref{fig_neutralforces}A). Small $N_es$ ratios result in evolutionary trajectories that are nothing more than the product of mutation rates, a neutral stochastic force.
+
+\subsection{Empirical estimates of $N_e$ across species} \label{Empirical support for predictions on biological coding inefficiency}
+
+\begin{figure*}[htp]
+\centering
+\includegraphics[width=16.5 cm]{fig_2.png}
+\caption{\textbf{Stochastic forces make non-negligible contributions to evolution.} A) As the effective population size increases, relative to the selection coefficient, the probability that an advantageous allele fixates approaches the fixation probability driven by mutation rates alone. This figure is a modified reproduction \cite{Lynch_2007}. B) Organisms with nervous systems possess smaller effective population sizes. Values of $N_e\mu$ for different species are depicted, from which $N_e$ values can be estimated, because $\mu$ ranges, at most, by an order of magnitude across known phyla (see text for details). In bold and in colour on the x-axis are popular model organism species for neuroscience research. This figure is a modified reproduction \cite{Lynch_Conery_2003}.}
+\label{fig_neutralforces}
+\end{figure*}
+
+What sorts of species possess small effective population sizes? To answer this, we introduce the composite parameter $N_e \mu$: the effective population size scaled by the mutation rate, $\mu$. This parameter determines the standing equilibrium level of approximately neutral genetic variability in a population \cite{kimura1983neutral, Lynch_Conery_2003, charlesworth_2009}. It can be estimated empirically by quantifying synonymous mutations\footnote{Mutations in the genetic sequence that do not result in the encoding of different amino acids. For example, both GCA and GCG genetic triplets, or codons, encode for the alanine amino acid, even though the sequences differ by a base pair. The GCA $\rightarrow$ GCG mutation is synonymous or silent.} in a species, because synonymous mutations are neutral \cite{Lynch_Conery_2003}. Given that $\mu$ ranges from $5\times 10^{-11} \text{ to } 5\times10^{-10}$ per base per cell division across species \cite{drake_1998}---a single order of magnitude---we can interpret $N_e\mu$ as a proxy for $N_e$. Doing so yields estimates of $N_e$ for prokaryotes of at least $10^8$, for unicellular eukaryotes of $10^7$ to $10^8$, for invertebrates of $10^5$ to $10^6$, and for vertebrates of $10^4$ to $10^5$ \cite{Lynch_Conery_2003} (Figure \ref{fig_neutralforces}B). The effective population sizes of nervous system-possessing animals are far smaller than those without. Within nervous system-possessing animals, invertebrates are less susceptible to random drift than vertebrates\footnote{An interesting observation for the invertebrate neuroscientist. Its consequences are slightly outside the scope of this paper.}. Estimates of $N_e$ are also generally much smaller than estimates of the true number of breeding individuals, $N$ \cite{lynch2007origins, crow_newton_1955, frankham_1995}. Most biological populations differ from Wright-Fisher dynamics in ways that promote drift.
+
+\subsection{Biological coding inefficiency is consistent with small $N_e$}
+
+The contrast between the genomic architectures of small and large $N_e$ species illustrates the explanatory power of non-adaptive forces. Prokaryotes possess the largest $N_e$ values, and their genomes are remarkably efficient. Nearly all of their genomic content codes for proteins, with virtually no non-coding sequences such as introns or non-coding RNA \cite{lynch2007origins, milo2016cell}. Genes that function in common biological processes are adjacent, enabling co-expression \cite{overbeek_matlsev_1999}. Prokaryotic genes can also be polycistronic: a single mRNA transcript encodes multiple proteins \cite{kozak_1999}.
+
+Genetic coding in multicellular eukaryotes, in contrast, appears anything but efficient. Eukaryotes are monocistronic, requiring more energy and molecular machinery per coding unit \cite{kozak_1999}. Less than 2\% of human genes are protein-coding, whereas 90\% to 100\% of prokaryotic genomes encode functional units \cite{milo2016cell}. Most of the eukaryotic genome is transcribed, yet only a small fraction of transcripts undergo maturation and translation \cite{menet_rosbash_2012}. The rest are digested and decayed \cite{mcnicoll_neugebauer_2014}. This massive investment in intermediary products, most of which are degraded, illustrates a highly inefficient coding process.
+
+These observations are readily explained without invoking efficiency or natural selection \cite{Lynch_2007}. Seemingly inefficient biological features are outcomes contributed by random sampling processes. Populations with smaller $N_e$ are simply more prone to such processes. The small $N_e$ of nervous system-possessing animals does not, however, mean those species are impervious to natural selection. The survey of efficient neural codes in the previous section argues otherwise. A given $N_e$ should be considered small only relative to some selection coefficient, $s$, and quantifying $s$ for the heritable basis of a species' neural coding is incredibly challenging. The purpose of highlighting small $N_e$ is to argue that these species are more---but not entirely---susceptible to stochastic evolutionary processes. Where, then, do we observe such processes in neural systems?
+
+\section{Inefficiencies across nervous systems}
+
+We have surveyed two bodies of evidence in apparent tension. Efficient codes abound across the nervous system, yet species with nervous systems have the smallest $N_e$ values, and evolutionary theory predicts susceptibility to drift. In this section, we present neurobiological examples of clear inefficiency, and show that they vary with both $N_e$ and phenotypic level.
+
+\subsection{Biophysical degeneracy in the lobster stomatogastric ganglion}
+
+The lobster stomatogastric ganglion consists of a small, defined network of neurons that fire in a precisely ordered and periodic manner, producing the pyloric rhythm that enables digestion. Simulation of more than 20 million biophysical models of this pyloric rhythm reveals that 20\% can multiply realize the same pyloric-like rhythms. These 4 million successful models, despite producing the same network activity, were non-similar. Each comprised disparate biophysical parameter combinations \cite{prinz_marder_2004}.
+
+An appeal to adaptive processes alone struggles to explain this wanton biophysical degeneracy. Biophysical circuit parameters can vary freely, provided they produce the same network dynamics required for organismal function (Figure \ref{fig_examples}A). In this sense, the biophysical `level' is free to drift, while the network `level' above it remains subject to selection. The relatively small $N_e$ of nervous system-possessing lobsters predicts exactly this kind of lower-level variability.
+
+\subsection{Vertebrate and invertebrate neurons}
+
+Vertebrates have smaller $N_e$ than invertebrates. When comparing the same level of phenotype across the two groups, we might expect more inefficiency for vertebrates.
+
+Vertebrate neurons are typically multi-polar\footnote{We emphasize that they are \textit{typically} multi-polar. They are not always multi-polar.}. Dendritic processes converge onto a cell body before becoming a pre-synaptic axon. Neural impulses must pass through the cell body to exit and pass on to a post-synaptic cell \cite{Goaillard_2020, kandel2013principles}. Simultaneous voltage recordings of a mammalian cortical neuron's cell body and axon show correlated signals of identical sign and similar shape, with reduced amplitude and slightly delayed onset for the axonal signal \cite{hu_bean_2018}. The cell body integrates and then propagates a single signal to the axon (Figure \ref{fig_examples}B). Multi-polar neurons are limited to a single computation, whose dynamics a single cell body recording can represent.
+
+Invertebrate neurons, in contrast, are almost always unipolar: the cell possesses only a single neurite. The cell body is not a point of information convergence. Rather, the neurite branches in complex patterns, with some arbours pre-synaptic and others post-synaptic. Information can pass through various branches independently, and multiple computations can be spatially multiplexed onto a single neuron. Two studies demonstrate this. First, anatomically: spiking local interneurons in the locust metathoracic ganglion reveal two distinct fields of neuropilar branches linked by a single process. One field, located ventrally where leg hair afferents terminate, consists of numerous fine neurites with uniform diameters. The other, located dorsally alongside leg motor neuron neurites, consists of sparser, more varicose neurites. The dorsal field contains mostly output synapses, while the ventral field consists mostly of input synapses \cite{watson_burrows_1985}. These two fields, both belonging to a single interneuron, likely participate in two distinct and compartmentalized functions.
+
+\begin{figure*}[htp]
+\centering
+\includegraphics[width=15 cm]{fig_4.png}
+\caption{\textbf{Differing contributions of adaptive and non-adaptive evolutionary forces can explain neurobiological phenomena.} A) For a given species, like the lobster, \textit{Homarus americanus}, multiple biophysical parameter combinations can realize the same higher level network phenotype. Lower phenotypic levels can afford to vary or drift more than higher level phenotypes. This figure is a modified reproduction \cite{prinz_marder_2004}. B) For a given phenotype level, like a circuit, or a neuron, non-adaptive forces make stronger contributions to the evolution of species with smaller effective population sizes. Vertebrates possess inverted retina with blind spots and most vertebrate neurons are multipolar cells that perform single computations. Invertebrates possess everted retina without blind spots and most invertebrate neurons are unipolar and can perform multiple computations. For the retina schematics, arrows refer to the direction of information flow, and yellow refers to the photoreceptive cells. The non-retinal figures are modified reproductions \cite{hu_bean_2018, Hendricks_Ha_Maffey_Zhang_2012}.}
+\label{fig_examples}
+\end{figure*}
+
+Recording data support this further. Calcium imaging in \textit{Caenorhabditis  elegans} reveals spatially compartmentalized and multiplexed computations within a single interneuron, RIA. The RIA neuron consists of three axonal segments: the loop, the nrV, and the nrD (Figure \ref{fig_examples}B). Calcium transients in the nrV and nrD correlate with ventral and dorsal head bends, respectively. The loop segment exhibits distinct dynamics. The cell body shows no calcium responses \cite{Hendricks_Ha_Maffey_Zhang_2012}. This multiplexing of computations in single neurons is largely absent from the multi-polar neurons typical of smaller $N_e$ vertebrates. A consideration of both effective population size and phenotypic level informs a context-dependent worldview for appealing to both adaptive and non-adaptive evolutionary processes.
+
+\subsection{Vertebrate and invertebrate optics}
+Vertebrates and invertebrates also differ in grosser anatomical features, again suggesting greater contributions from neutral forces for smaller $N_e$ vertebrates.
+
+The vertebrate eye appears inefficient when compared to its invertebrate counterpart. An intuitive and optimal design would place photo-sensors at the front of the eye and pass signals to neural processing cells behind them. Instead, the vertebrate retina lies directly on the optical path: light passes through the ganglion cells, inner synaptic layer, amacrine cells, bipolar cells, horizontal cells, outer synaptic layer, photoreceptor cell bodies, and finally the photoreceptive rods and cones \cite{sterling_laughlin_principles, land_nilsson_2012}. The retina then processes the received light back the way it came, such that the ganglion cells perform the final computations, despite being the first retinal cells the light encounters.
+
+This inverted configuration not only scatters the incoming light, but produces a literal blind spot \cite{land_nilsson_2012}. Retinal information must, at some point, route through all lower cell layers, including the rods and cones, to leave the eye and enter the central nervous system. The spot where the neural information exits cannot receive stimulus (Figure \ref{fig_examples}B). An everted retina---photoreceptive cells at the front, neurons behind---would both preclude the blind spot and mitigate light scattering \cite{land_nilsson_2012}.
+
+Such an everted structure is not theoretical. Invertebrate eyes possess exactly this configuration (Figure \ref{fig_examples}B). The apposition compound eyes of most diurnal insects and the superposition compound eyes of nocturnal insects and deep-water crustaceans position photoreceptive cells closest to incoming light, routing neural processing behind them \cite{land_nilsson_2012}. This comparison is somewhat incommensurable, because compound eyes operate quite differently from the cornea-lens mechanism of terrestrial animals. A more apt comparison involves spiders: the anterior median eyes of spiders possess everted retina, free from the light scattering and blind spots of vertebrate eyes \cite{land_nilsson_2012, norgaard_2008}. Several ancient invertebrate phyla---polychaetes \cite{richter_2010}, scyphomedusae, and hydromedusae jellyfish \cite{garm_2010}---also possess everted retina. Given the relatively small $N_e$ of the more recent vertebrate species, the inverted retina may have originated via a series of drift-driven contributions.
+
+Despite this evidence, the inverted retina is often investigated as a design problem. The inverted configuration has been argued to afford modest space-saving efficiency, compacting more retinal cells into a given volume \cite{kroger_2009}. This argument does not address whether such a modest advantage is worth the light scattering and blind spot. Similar arguments contend that the retina has optimized itself to be as thin as possible, to minimize light scatter \cite{sterling_laughlin_principles}. An everted retina would circumvent these problems entirely. We do not contend that natural selection has failed to contribute significantly to vertebrate retinal structures. We merely aim to identify contexts where non-adaptive forces provide needed explanatory power. The small $N_e$ of vertebrates, relative to invertebrates, at a given phenotypic level, is one such context.
+
+\subsection{Brainwide activity across species}
+Recent innovations have enabled recordings at unprecedented scale and resolution across species. These brainwide recordings reveal highly redundant representations of spontaneous behaviours across the entire brain. Smaller $N_e$ vertebrates appear to dedicate a larger fraction of neural activity to representing behaviours, such that even dedicated visual areas like V1 represent ongoing motor actions \cite{stringer_harris_2019, kato_2015, aimon_2019, schaffer_2021, kaplan_zimmer_2020}. In contrast, in \textit{C. elegans}, sensory neurons fail to represent ongoing behaviours and do not contribute to the dominant redundant representation \cite{kato_2015, kaplan_zimmer_2020}. In flies, although a significant fraction of brainwide activity represents ongoing behaviours, residual activity is high-dimensional and appears to represent non-behavioural information such as sensory cues and internal states \cite{aimon_2019, schaffer_2021}. Neutral evolutionary forces may, in part, explain this greater redundancy in small $N_e$ vertebrates over large $N_e$ invertebrates. For all species, the central nervous system's limited interaction with the natural environment, relative to peripheral processing, may further explain the susceptibility to neutral forces and the resulting neural redundancy.
+
+Such redundancy does not mean natural selection is inoperative. For many macroevolutionary processes, the outcomes of neutral events can be co-opted for adaptive means, facilitating functional dependencies and neofunctionalizations \cite{Lynch_2007, bruckner_2021, kebschull_luo_2020}. Speculating on systems-level functions remains essential. Evolutionary explanations are simply more powerful when one can appeal to both non-adaptive and adaptive processes.
+
+\section{A model of layered phenotypic evolution}
+
+The examples above reveal a pattern. Lower-level features---biophysical parameters, single-cell morphology---appear more subject to drift than higher-level phenotypes like network dynamics or behavioural output. And species with smaller $N_e$ exhibit more inefficiency at a given phenotypic level than their larger $N_e$ counterparts. In this section, we formalize these observations.
+
+\subsection{Phenotypes as a hierarchy}
+
+Most accounts of evolution express themselves in genetic terms. In the allele fixation case from Section \ref{Random forces can dominate evolution}, a biological trait's prevalence in a population is described through its underlying genetics---the fixation of allele \textbf{A}. In reality, however, one or two genes rarely encode for a phenotype, and theorizing about gene fixation dynamics is not identical to theorizing about the fixation dynamics of the phenotypes those genes contribute to. Although genetic material is the unit of inheritance and ultimately encodes for all biological processes, theories about genes do not, by mere substitution, extend to their products. The central dogma of molecular biology \cite{crick_1970} explains how genetic material encodes for proteins, but it does not explain how those proteins encode for organismal function. Even Motoo Kimura, the founder of neutral theory, speculated that the relevance of neutral theory is likely minimal with respect to phenotypic evolution \cite{kimura1983neutral, kimura2020my, Zhang_2018}.
+
+An account of evolution that acknowledges the gap between genotypes and phenotypes will best inform intuitions about when to appeal to adaptive or non-adaptive explanations. We propose dividing phenotypes into constituent `layers' \cite{Ho_Ohya_Zhang_2017, mayr_1997, wideman_doolittle_2019, Zhang_2018}. The key insight is this: elements of a lower layer can afford to vary or drift, provided their effects do not compromise the layer directly above. Intermediary layers `buffer' the effects that bottom layers have on the highest layers, such as fitness. In this way, small $N_e$ species may possess many neutral mutations and drifting genetics, yet maintain efficient higher-level physiologies, including neural coding. In contrast, a `layer-free' conception---where genes directly encode for organismal attributes---places unrealistic emphasis on the genetic level's impact on fitness. Such a conception is inconsistent with existing evidence: alleles that are slightly deleterious at biochemical and cell-biological levels can exist without dramatically compromising fitness \cite{wideman_doolittle_2019}.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\columnwidth]{fig_3_final.png}
+\caption{\textbf{Phenotypic evolution is a function of two variables.} Classical frameworks of evolution appeal to population size, $N_e$, to explain observed phenotypes. However, we provide a framework for phenotypic evolution based on two variables: population size, $N_e$, and the number of phenotypic layers. If a species possesses a small $N_e$ and a small number of layers, the species exhibits low fitness. If a species possesses a small $N_e$ and a large number of layers, or a large $N_e$ and a small number of layers, the species possesses intermediary fitness. If a species possesses both a large $N_e$ and a large number of layers, the species possesses high fitness.}
+\label{fig_framework}
+\end{figure}
+
+Given that natural selection acts on phenotype rather than genotype \cite{mayr_1997}, this stratification means that the relative contribution of natural selection is a function of two parameters (Figure \ref{fig_framework}). One is the effective population size, $N_e$. The other is the phenotypic level at which variation is observed. Change occurring at a level to which selection is blind will be neutral, provided it does not affect the higher level \cite{mayr_1997, wideman_doolittle_2019, Zhang_2018}. The probability of a given change being neutral is greater, the lower the level.
+
+This framework explains the efficiency of neural codes despite small $N_e$. The proximity of neural coding to the highest level of phenotype---behaviour and fitness---means that these codes interact directly with the environment and, by extension, with selective forces. The fact that most efficient neural coding evidence relates to peripheral sensory processing and the control of naturalistic behaviours is likely not a coincidence. Indeed, in the case of optimal \textit{Hymenoptera} ommatidia \cite{barlow_1952}, the efficient implementation involves an apparatus that routinely interacts with the environment. The relevant parameter is proximity to phenotype, rather than it being neural, \textit{per se}. For this reason, the framework applies broadly to phenotypic attributes beyond nervous systems. That being said, we argue it is of special relevance to neuroscience, because of the unusual success that an optimization-based worldview has had for the field.
+
+\subsection{A computational model}
+
+We now test this framework computationally. We model an organism as a layered system, where a `lower' layer encodes the layer immediately above via a linear function. We show that layered organisms are 1) more robust to perturbations, and 2) more likely to possess efficient phenotypes over evolutionary time, compared to organisms without layers. The rate at which a species finds the fitness optimum increases sublinearly with the number of layers, suggesting that the accrual of layers may eventually itself be subject to drift. Hence, species in nature are unlikely to possess an alarmingly high number of layers.
+
+Our model consists of two processes. The first determines how information at the lowest layer propagates to determine phenotypes at higher layers (\autoref{fig:model_1}A). The second determines how the species population changes across generations (\autoref{fig:model_2}A). We represent each individual $i$ by its phenotype at $N$ different layers, where $x_l^i \in \mathbb{R}^n$ denotes its phenotype at layer $l$. The lowest layer, $l=0$, represents the genotype, and the highest layer, $l=N$, represents fitness. Each subsequent layer is a linear function of the layer below,
+\[ x_{l+1}^i = M_{l}x_l^{i}.\]
+The linear maps, $M_l \in \mathbb{R}^{n \times n}$, are random Gaussian matrices with independent entries sampled as
+\[
+(M_l)_{ij} \sim \mathcal{N}(0, \sigma^2).
+\]
+We interpret these maps as developmental processes that propagate information from one layer to the next. These processes are influenced by the environment. Each environment has a different set of randomly sampled transformations, $\{M_l\}_{l=0}^N$.
+
+We combine this with classical evolutionary dynamics (\autoref{fig:model_2}A). We impose natural selection on the highest layer and mutation on the lowest. A population of $M$ organisms has fitness $\{x_N^i\}_{i=1}^{M}$, where $x_{\text{opt}}$ is the optimal fitness vector with unit length. An individual's selection probability, $p_i$, (red vector in \autoref{fig:model_2}A) is
+\[p_i \propto x_N^i \cdot x_{\text{opt}}.\]
+
+Natural selection favours organisms with fitness vectors similar in direction to the optimal fitness vector, which is randomly generated but fixed for each environment.
+
+Offspring genotypes are obtained by sampling with replacement, with probabilities $\{p_i\}^M$, maintaining constant population size. Mutation is simulated by adding Gaussian noise to each sampled genotype:
+\[
+x_0^i \leftarrow x_0^i + \epsilon, \quad \epsilon \sim \mathcal{N}(0, s^2).
+\]
+This cycle of selection and mutation then repeats \textit{ad infinitum}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{assets/fig_4_simulation.pdf}
+\caption{\textbf{A model representing hierarchy of phenotype.} A) Population represented by a collection of $n$-dimensional vectors. The layer $0$ phenotype, e.g., genetic information, propagates to determine a higher layer phenotype, via random linear maps ($M_i$), up until the final layer, e.g., the fitness layer. Fitness of an individual is defined as the cosine similarity between the individual's vector at layer N and the optimal fitness vector (re-scaled to be between $0$ and $1$). B) The effect size or `sensitivity' at the various layer depths, in response to a random perturbation at the lowest layer, for a singular species with 50 layers, across 1000 simulations. The line trace represent median, and the shading represents the first to third quartile, across the 1000 simulations.}
+\label{fig:model_1}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{fig_5_simulation.pdf}
+\caption{\textbf{Simulating evolution across hierarchy of phenotype.} A) In our evolution model, selection probability is higher for vectors that are closer to the optimal vector (red), in terms of fitness layer, followed by mutation occurring at layer $0$ of the selected individuals. B) Median fitness over generations simulated for organisms with different numbers of phenotypic layers, obtained over 640 runs. The dashed line at a 0.7 median fitness indicates the set threshold for optimality, which is used to inform Figure \ref{fig:model_2}C) Line plot showing the convergence rate---inverse of the number of generations needed to obtain median fitness of $0.7$---for species with different numbers of layers and population size.}
+\label{fig:model_2}
+\end{figure}
+
+
+\subsection{Results}
+
+Our model reveals two key results. First, when an organism is perturbed at the lowest layer, higher-layer phenotypes are more robust to the perturbation than any layers underneath (Figure~\ref{fig:model_1}B). The perturbation is a Gaussian noise injection at $l=0$, and the sensitivity is the cosine distance between the perturbed and unperturbed vectors at each higher layer. Lower layers exhibit greater cosine distance---greater sensitivity---than higher layers. In biological terms, perturbations at the genetic level, such as deleterious mutations, have limited effects on tissue physiology and even further limited effects on organismal fitness. Mathematically, this finding is congruent with a result from random matrix theory: a composition of random matrix transformations tends to concentrate inputs in lower-dimensional subspaces, attenuating the impact of upstream noise and perturbations \cite{anderson2010introduction}.
+
+Second, organisms with more layers converge towards the fitness optimum faster than organisms with fewer layers (\autoref{fig:model_2}B). We quantify this by determining the number of generations needed to achieve a threshold median fitness, and defining the inverse as the convergence rate. When population size is low (small $N_e$), the convergence rate can be an order of magnitude higher for 6-layered species compared to single-layered species, approaching the convergence rate observed for high $N_e$ species (\autoref{fig:model_2}C). In other words, a species with low $N_e$ can achieve the same optimal fitness as high $N_e$ species by increasing the number of phenotypic layers.
+
+
+\section{Conclusion}
+
+Evolution explains the origins of biological things. It provides a process-based explanation for how a biological observation came to be. It can explain the efficiencies of neural codes, but it can also explain relative inefficiencies seen across phyla. Doing so, however, requires the full repertoire of evolutionary forces---not just natural selection.
+
+In this paper, we addressed a puzzle: many neural codes are efficient, yet the species that possess them have small effective population sizes, under which random forces should dominate. We surveyed efficient codes across sensory, motor, and central systems, and then introduced the population genetics that makes these efficiencies surprising. We presented examples of clear inefficiency---biophysical degeneracy in the lobster stomatogastric ganglion, the computational limitations of multi-polar vertebrate neurons, the inverted vertebrate retina---and showed that they vary with both $N_e$ and phenotypic level. We proposed a framework in which the relative contributions of adaptive and non-adaptive forces depend on two parameters: the effective population size and the phenotypic level under consideration. A computational model of organisms as layered systems demonstrated that layers confer robustness to genetic perturbation and accelerate convergence to fitness optima, even for small $N_e$ species.
+
+A note on the difficulties of defining optimality. Both optimization-based and non-adaptive explanations face an epistemological difficulty: they are unfalsifiable. We can interpret all observable phenomena in optimization terms. Either a fitting cost function has already been derived, or we can contend that the right function has not yet occurred to us. An automated appeal to adaptive explanations can be a sufficient heuristic, but when a fitting cost function proves elusive, a more useful approach is to interpret the observation as the result of a historical process agnostic to any speculative goal. Historical non-adaptive explanations are also unfalsifiable---all observations can be interpreted as the result of preceding events. This paper does not denigrate one type of explanation in favour of another. Both have merits. We are concerned with deriving appropriate contexts for each. When an efficient code is observed at the periphery, natural selection is likely the most appropriate explanation. When biophysical parameters show wanton degeneracy, or when grosser anatomical features appear obviously inefficient, non-adaptive forces provide needed explanatory power.
+
+Evolution is a complex process. Rarely does it operate exclusively in adaptive or non-adaptive terms \cite{Gould_Lewontin_1979}. We can rightfully appeal to natural selection when explaining the efficiencies of neural coding, and we can speculate on the contributions of stochastic forces when we observe obvious inefficiency. Cost functions and goals for neural systems are still worth hypothesizing, but need not be hypothesized without acknowledging the non-teleological evolutionary means by which those functions arose. A careful consideration for all evolutionary forces has the greatest explanatory power. Evolution explains the origins of neural codes, including the occasional inefficiency.
+
+\newpage
+\section*{Acknowledgements}
+We thank Joseph Parker, Markus Meister, Bingni W. Brunton, Kelly Kadlec, Guruprasad Raghavan, and Tara Chari for critical discussions and/or careful readings of the evolving manuscript. HK thanks Markus Meister for teaching Principles of Neural Science (Bi154) at the California Institute of Technology and for encouraging HK to share the paper with a broader audience. We are extremely grateful to Joseph Parker for his invaluable support, trust, and encouragement. HK was supported by the Natural Sciences and Engineering Research Council of Canada's Postgraduate Scholarship and the Tianqiao and Chrissy Chen Institute for Neuroscience, for a significant portion of the work. ZJW is supported by the Westlake Fellows program at Westlake University.
+
+\section*{Competing interests}
+The authors have no competing interests.
+
+\section*{Code availability}
+Code is available at \url{github.com/cellethology/evolution-hierarchy}.
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
+
+
+% \newcommand{\quickwordcount}[1]{%
+%   \immediate\write18{texcount -1 -sum -merge -q #1.tex output.bbl > #1-words.sum }%
+%   \input{#1-words.sum} words%
+% }
+
+% \quickwordcount{main}
+
+\end{document}

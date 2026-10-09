@@ -51,6 +51,17 @@ keeps genomes and precomputed matched random draws on device, and uses float32.
 Figures retain 0.5-ms traces; check also records every integration step.
 A failing canonical assay produces a clearly marked quick diagnostic artifact,
 not invented evolutionary trajectories. Check and quick then exit nonzero.
+
+E2: replicates defaults to R=8 independent runs (seed+r), each with its own
+selected burn-in and matched selected/neutral fork. The legacy run/quick
+commands accept --replicates (default 1) without changing their default path.
+Use --chunk-size to bound networks per simulation batch; random plans are
+always bounded to 32 generations. Correlations use all final individuals or
+one mean-log-conductance point per lineage. CIs and paired arm tests use
+independent replicates. figure-replicates reads stg-replicates.json;
+bench-replicates times a precompiled generation and projects runtime, not biology.
+Example pipeline test: replicates --replicates 2 --N 8 --K 2 --B 5 --T 10
+  --every 5 --output output/stg-replicates-quick.json
 """
 
 import os
@@ -537,7 +548,13 @@ def clean(value):
 
 
 def run(N=64, K=16, B=200, T=2000, every=20, u=.02, sigma=.05, s=1., seed=0,
-        dt=.05, hybrid_samples=64, duration_ms=DURATION, window_start_ms=WINDOW):
+        dt=.05, hybrid_samples=64, duration_ms=DURATION, window_start_ms=WINDOW,
+        replicates=1, chunk_size=None):
+    if replicates != 1 or chunk_size is not None:
+        return run_replicates(N=N, K=K, B=B, T=T, every=every, u=u, sigma=sigma, s=s,
+                              seed=seed, dt=dt, hybrid_samples=hybrid_samples,
+                              duration_ms=duration_ms, window_start_ms=window_start_ms,
+                              replicates=replicates, chunk_size=chunk_size)
     validate_assay(dt, duration_ms, window_start_ms)
     if N < 1 or K < 2 or min(B, T) < 0 or every < 1 or hybrid_samples < 1:
         raise ValueError("Require N>=1, K>=2, B,T>=0, every,hybrid_samples>=1")
@@ -650,6 +667,8 @@ def figure(path=OUTPUT / "stg.json"):
 
     path = Path(path)
     data = json.loads(path.read_text())
+    if data.get("experiment") == "E2":
+        return figure_replicates(path)
     if data.get("status") == "canonical_validation_failed":
         return diagnostic_figure(data, path, plt)
     gs = np.vstack([CANONICAL, 10**np.asarray(data["examples"]["genomes"])])
@@ -1001,6 +1020,7 @@ def check(duration_ms=DURATION, window_start_ms=WINDOW):
     omega = add_omega(selected, neutral)
     test("fixed-time omega and zero denominator", np.allclose(omega["per_site"][:30], .25) and
          np.isnan(omega["per_site"][-1]))
+    check_replicates(test, duration_ms, window_start_ms)
     assay = Assay(.05, duration_ms, window_start_ms)
     genomes = np.broadcast_to(ANCESTOR, (2, 8, 31)).copy()
     assay(genomes)
@@ -1020,6 +1040,509 @@ def check(duration_ms=DURATION, window_start_ms=WINDOW):
     return not failures
 
 
+# Experiment E2 is additive: the original E runner and output schema stay intact.
+ARMS = ("selected", "neutral")
+
+
+def check_replicates(test, duration_ms, window_start_ms):
+    seeds = replicate_streams(0, 3)
+    streams = [np.random.default_rng(x[1]).random(128) for x in seeds]
+    test("replicate streams differ", all(not np.array_equal(streams[i], streams[j])
+                                         for i in range(3) for j in range(i+1, 3)))
+    test("replicate r has standalone seed r stream", all(np.array_equal(
+        streams[r], np.random.default_rng(np.random.SeedSequence(r).spawn(3)[1]).random(128))
+        for r in range(3)))
+    test("seed offset and replicate count preserve streams", all(np.array_equal(
+        streams[r], np.random.default_rng(replicate_streams(r, 1)[0][1]).random(128)) for r in range(3)))
+    phase_draws = [[np.random.default_rng(seed).random(32) for seed in phases] for phases in seeds]
+    test("burn, fork and hybrid streams are independent across replicates", all(
+        not np.array_equal(phase_draws[i][phase], phase_draws[j][phase])
+        for phase in range(3) for i in range(3) for j in range(i+1, 3)))
+    full = random_plan((2, 4, 31), 5, .2, .05, np.random.default_rng(seeds[0][1]))
+    blocked = ReplicatePlans((2, 4, 31), 5, .2, .05, [seeds[0][1]], block_size=2)
+    g = jnp.broadcast_to(jnp.asarray(ANCESTOR), (2, 4, 31))
+    a, b = g, g
+    f = np.broadcast_to([500., .2, .2, .2, .35, .55, .65, .85], (2, 4, 8))
+    valid = np.ones((2, 4), bool)
+    for t in range(5):
+        plans, index = blocked.at(t)
+        a = planned_step(a, f, valid, f[0, 0], 0., full, jnp.int32(t))
+        b = planned_step(b, f, valid, f[0, 0], 0., plans[0], index)
+        if t == 0:
+            traces = STEP_TRACES
+    test("bounded plans preserve exact draws across block boundaries", np.array_equal(a, b))
+    test("bounded plans do not retrace at block boundaries", STEP_TRACES == traces)
+    ci = replicate_ci([1., 2., None])
+    test("replicate CI counts missing values and uses replicate sample size",
+         ci["n"] == 2 and ci["mean"] == 1.5 and ci["ci95"][0] < 1 and ci["ci95"][1] > 2)
+    test("single replicate CI is undefined", np.isnan(replicate_ci([1.])["ci95"]).all())
+    def correlation_fixture(selected, neutral):
+        fixtures = []
+        for rs, rn in zip(selected, neutral):
+            result = {arm: {} for arm in ARMS}
+            for arm, value in zip(ARMS, (rs, rn)):
+                for level in ("individual", "lineage"):
+                    matrix = np.full((8, 8), np.nan)
+                    matrix[0, 3] = matrix[3, 0] = value
+                    result[arm][level] = {cell: dict(matrix=matrix.tolist()) for cell in CELLS}
+            fixtures.append(dict(correlations=result))
+        return replicate_correlations(fixtures, 16)["lineage"][2]  # AB NaV-A
+    rs, rn = np.linspace(.6, .7, 8), np.linspace(.1, .12, 8)
+    supported = correlation_fixture(rs, rn)
+    test("consistent selected correlation differs from paired neutrals", supported["selection_associated"] and
+         supported["selected"]["same_sign"] == 8 and supported["paired_holm_p"] < .05)
+    test("matching selected/neutral correlations are not selection-associated",
+         not correlation_fixture(rs, rs)["selection_associated"])
+    rs[:2] *= -1
+    test("six of eight selected signs do not pass consistency",
+         not correlation_fixture(rs, rn)["selection_associated"])
+    # Exercise actual burn-in, fork, selection, neutral control and hybrid paths.
+    kwargs = dict(N=2, K=2, B=1, T=2, every=1, seed=9, hybrid_samples=2,
+                  duration_ms=duration_ms, window_start_ms=window_start_ms)
+    legacy = run(**kwargs)
+    batched = run_replicates(**kwargs, replicates=1)
+    one = batched["replicates"][0]
+    for key in ("fork_mean", "trajectories", "omega"):
+        test(f"R=1 exactly preserves legacy short-run {key}", one[key] == legacy[key])
+    test("R=1 exactly preserves individual correlations", all(
+        one["correlations"][arm]["individual"] == legacy["correlations"][arm] for arm in ARMS))
+    test("R=1 exactly preserves hybrid sampling and results", one["hybrids"] == legacy["hybrids"])
+    test("K=2 never produces selection-associated calls", not any(
+        row["selection_associated"] for row in batched["aggregate"]["correlations"]["lineage"]))
+    # Test the chunk boundary and output order independently of phenotype dynamics.
+    probe = ReplicateAssay(.05, 100., 0., 4, chunk_size=3)
+    genomes = np.broadcast_to(ANCESTOR, (2, 2, 31)).copy()
+    genomes[1, 0, 0] += .1
+    cf, cv = probe(genomes)
+    reference = Assay(.05, 100., 0.)
+    reference.unroll = probe.unroll
+    ff, fv = reference(genomes)
+    test("assay chunks preserve shape, order and classification", cf.shape == ff.shape and
+         np.array_equal(cv, fv) and np.array_equal(cf, ff, equal_nan=True))
+
+
+class ReplicateAssay(Assay):
+    """Flatten R x arms x K x N into the existing vmap; optionally bound memory."""
+    def __init__(self, dt, duration_ms, window_start_ms, batch_size, chunk_size=None):
+        if chunk_size is not None and chunk_size < 1:
+            raise ValueError("chunk-size must be positive")
+        self.chunk_size = chunk_size
+        super().__init__(dt, duration_ms, window_start_ms,
+                         min(batch_size, chunk_size) if chunk_size else batch_size)
+
+    def __call__(self, g):
+        if not self.chunk_size or np.prod(g.shape[:-1]) <= self.chunk_size:
+            return super().__call__(g)
+        shape = g.shape[:-1]
+        flat = g.reshape(-1, 31)
+        results = [super(ReplicateAssay, self).__call__(flat[i:i+self.chunk_size])
+                   for i in range(0, len(flat), self.chunk_size)]
+        return (np.concatenate([x[0] for x in results]).reshape(*shape, 8),
+                np.concatenate([x[1] for x in results]).reshape(shape))
+
+
+def replicate_streams(seed, replicates):
+    """Index r is the legacy standalone seed seed+r, including r=0 exactly."""
+    return [np.random.SeedSequence(seed + r).spawn(3) for r in range(replicates)]
+
+
+class ReplicatePlans:
+    """Bound storage to 32 generations with fixed shapes and unchanged RNG order.
+
+    Padding to the maximum mutation count avoids recompiling reproduction at
+    every block. At R=8, K=16, N=64 the fork plans occupy about 66 MB.
+    """
+    def __init__(self, shape, generations, u, sigma, seeds, block_size=32):
+        self.shape, self.generations = shape, generations
+        self.u, self.sigma, self.block_size = u, sigma, block_size
+        self.rngs = [np.random.default_rng(seed) for seed in seeds]
+        self.plans = None
+
+    def at(self, t):
+        if t % self.block_size == 0:
+            self.plans = []
+            length = min(self.block_size, self.generations-t)
+            size = int(np.prod(self.shape))
+            for rng in self.rngs:
+                raw = random_plan(self.shape, length, self.u, self.sigma, rng)
+                draws = np.zeros((self.block_size, *self.shape[:2], 1), dtype=np.float32)
+                sites = np.full((self.block_size, size), size, dtype=np.int32)
+                changes = np.zeros((self.block_size, size), dtype=np.float32)
+                draws[:length] = np.asarray(raw[0])
+                sites[:length, :raw[1].shape[1]] = np.asarray(raw[1])
+                changes[:length, :raw[2].shape[1]] = np.asarray(raw[2])
+                self.plans.append(tuple(jnp.asarray(x) for x in (draws, sites, changes)))
+        return self.plans, jnp.int32(t % self.block_size)
+
+
+def replicate_hybrid_group(g, rng, samples):
+    """Same parent sampling and recombination draws as hybrids(), before assay."""
+    K, N = g.shape[:2]
+    a = rng.integers(K, size=samples)
+    b = (a + rng.integers(1, K, size=samples)) % K
+    p = g[a, rng.integers(N, size=samples)]
+    q = g[b, rng.integers(N, size=samples)]
+    r = g[a, rng.integers(N, size=samples)]
+    cross = np.where(rng.random(p.shape) < .5, p, q)
+    within = np.where(rng.random(p.shape) < .5, p, r)
+    return np.concatenate([p, q, r, cross, within])
+
+
+def replicate_ci(values):
+    """Pointwise Student-t CI across independent replicates, never individuals.
+
+    Missing measurements are excluded explicitly; n is reported at each point.
+    One observation has a mean but no estimable confidence interval.
+    """
+    from scipy.stats import t
+    x = np.asarray(values, dtype=float)
+    finite = np.isfinite(x)
+    n = finite.sum(axis=0)
+    mean = np.sum(np.where(finite, x, 0), axis=0) / np.maximum(n, 1)
+    ss = np.sum(np.where(finite, (x - mean)**2, 0), axis=0)
+    se = np.sqrt(ss / np.maximum(n - 1, 1) / np.maximum(n, 1))
+    half = t.ppf(.975, np.maximum(n - 1, 1)) * se
+    return dict(mean=np.where(n > 0, mean, np.nan).tolist(),
+                ci95=np.stack([np.where(n > 1, mean-half, np.nan),
+                               np.where(n > 1, mean+half, np.nan)], axis=-1).tolist(),
+                n=n.tolist())
+
+
+def replicate_signs(values):
+    from scipy.stats import binomtest
+    x = np.asarray(values, dtype=float)
+    x = x[np.isfinite(x)]
+    pos, neg = int((x > 0).sum()), int((x < 0).sum())
+    return dict(**replicate_ci(x), positive=pos, negative=neg, zero=int((x == 0).sum()),
+                same_sign=max(pos, neg), majority_sign=1 if pos > neg else -1 if neg > pos else 0,
+                sign_test_p=float(binomtest(pos, pos+neg, .5).pvalue) if pos+neg else None)
+
+
+def replicate_correlations(results, K):
+    """Raw-r paired t tests, with Holm correction over 84 pairs per level."""
+    from scipy.stats import t
+    R = len(results)
+    levels = {}
+    for level in ("individual", "lineage"):
+        rows = []
+        for cell in CELLS:
+            for i in range(8):
+                for j in range(i+1, 8):
+                    values = {arm: np.array([r["correlations"][arm][level][cell]["matrix"][i][j]
+                                             for r in results], dtype=float) for arm in ARMS}
+                    delta = values["selected"] - values["neutral"]
+                    delta = delta[np.isfinite(delta)]
+                    p = None
+                    if len(delta) >= 2:
+                        se = delta.std(ddof=1) / np.sqrt(len(delta))
+                        p = float(2*t.sf(abs(delta.mean()/se), len(delta)-1)) if se > 0 else (1. if delta.mean() == 0 else 0.)
+                    rows.append(dict(cell=cell, pair=[CHANNELS[i], CHANNELS[j]],
+                                     **{arm: replicate_signs(x) for arm, x in values.items()},
+                                     paired_difference=replicate_ci(delta), paired_t_p=p,
+                                     paired_holm_p=None, selection_associated=False))
+        ordered = sorted((i for i, row in enumerate(rows) if row["paired_t_p"] is not None),
+                         key=lambda i: rows[i]["paired_t_p"])
+        adjusted = 0.
+        for rank, i in enumerate(ordered):
+            # Keep the full prespecified family even if some pairs are undefined.
+            adjusted = max(adjusted, min(1., (len(rows)-rank)*rows[i]["paired_t_p"]))
+            rows[i]["paired_holm_p"] = adjusted
+            rows[i]["selection_associated"] = bool(
+                level == "lineage" and K >= 3 and R >= 3 and
+                rows[i]["selected"]["same_sign"] >= int(np.ceil(.875*R)) and
+                rows[i]["paired_difference"]["n"] == R and adjusted < .05)
+        levels[level] = rows
+    return levels
+
+
+def aggregate_replicates(results, K):
+    aggregate = dict(trajectories={}, hybrids={}, omega={}, correlations=replicate_correlations(results, K))
+    metrics = ("fraction_pyloric", "feature_divergence_normalized", "conductance_divergence_sum",
+               "conductance_divergence", "mean_fitness")
+    for arm in ARMS:
+        aggregate["trajectories"][arm] = [dict(t=record["t"], **{
+            metric: replicate_ci([r["trajectories"][arm][i][metric] for r in results])
+            for metric in metrics}) for i, record in enumerate(results[0]["trajectories"][arm])]
+        aggregate["hybrids"][arm] = {group: {
+            metric: replicate_ci([r["hybrids"][arm][group][metric] for r in results])
+            for metric in ("fraction_pyloric", "mean_fitness")}
+            for group in results[0]["hybrids"][arm]}
+    aggregate["omega"] = {key: replicate_ci([r["omega"][key] for r in results])
+                          for key in ("per_site", "summed")}
+    return aggregate
+
+
+def run_replicates(N=64, K=16, B=200, T=2000, every=20, u=.02, sigma=.05, s=1., seed=0,
+                   dt=.05, hybrid_samples=64, duration_ms=DURATION, window_start_ms=WINDOW,
+                   replicates=8, chunk_size=None):
+    validate_assay(dt, duration_ms, window_start_ms)
+    if N < 1 or K < 2 or min(B, T) < 0 or every < 1 or hybrid_samples < 1 or replicates < 1 or seed < 0:
+        raise ValueError("Require N,R>=1, K>=2, B,T,seed>=0, every,hybrid-samples>=1")
+    if not 0 <= u <= 1 or not np.isfinite([sigma, s]).all() or min(sigma, s) < 0:
+        raise ValueError("Require u in [0,1], finite sigma,s>=0")
+    start = perf_counter()
+    optimum, ok, cv, n = features(dt=dt, duration_ms=duration_ms, window_start_ms=window_start_ms)
+    if not ok:
+        raise RuntimeError(f"Canonical validation failed: features={optimum.tolist()}, bursts={n.tolist()}, CV={cv.tolist()}")
+    R = replicates
+    params = dict(N=N, K=K, B=B, T=T, every=every, u=u, sigma=sigma, s=s, seed=seed, dt=dt,
+                  hybrid_samples=hybrid_samples, duration_ms=duration_ms, window_start_ms=window_start_ms,
+                  zero_floor=FLOOR, replicates=R, chunk_size=chunk_size)
+    assay = ReplicateAssay(dt, duration_ms, window_start_ms, R*2*K*N, chunk_size)
+    seeds = replicate_streams(seed, R)
+    burn = ReplicatePlans((1, N, 31), B, u, sigma, [x[0] for x in seeds])
+    fork = ReplicatePlans((K, N, 31), T, u, sigma, [x[1] for x in seeds])
+    g = jnp.broadcast_to(jnp.asarray(ANCESTOR), (R, 1, N, 31))
+    f, valid = assay(g)
+
+    def require_parents(valid, phase, generation):
+        if s != 0 and np.any(~valid.any(-1)):
+            raise RuntimeError(f"No pyloric parents: {phase} generation {generation}, "
+                               f"[replicate, lineage] {np.argwhere(~valid.any(-1)).tolist()}")
+
+    for t in trange(B, desc="replicate burn-in"):
+        require_parents(valid, "burn-in", t)
+        plans, index = burn.at(t)
+        g = jnp.stack([planned_step(g[r], f[r], valid[r], optimum, s, plans[r], index) for r in range(R)])
+        f, valid = assay(g)
+    fork_means = np.asarray(g[:, 0].mean(1))
+    arms = jnp.broadcast_to(g[:, None], (R, 2, K, N, 31))
+    results = [dict(index=r, seed=seed+r, fork_mean=fork_means[r].tolist(),
+                    trajectories={arm: [] for arm in ARMS}) for r in range(R)]
+    compile_count = None
+    for t in trange(T+1, desc="replicate forked lineages"):
+        all_f, all_valid = assay(arms)
+        if compile_count is None:
+            compile_count = assay.compile_count
+        assert assay.compile_count == compile_count, "Generation assay recompiled"
+        if t % every == 0 or t == T:
+            for r in range(R):
+                for a, arm in enumerate(ARMS):
+                    record = dict(t=t, **measure(arms[r, a], all_f[r, a], all_valid[r, a], optimum, s))
+                    record["mean_reproductive_weight"] = record["mean_fitness"] if a == 0 and s != 0 else 1.
+                    results[r]["trajectories"][arm].append(record)
+        if t < T:
+            require_parents(all_valid[:, 0], "selected fork", t)
+            plans, index = fork.at(t)
+            arms = jnp.stack([jnp.stack([
+                planned_step(arms[r, a], all_f[r, a], all_valid[r, a], optimum,
+                             s if a == 0 else 0., plans[r], index) for a in range(2)]) for r in range(R)])
+    arms = np.asarray(arms)
+    # Batch every replicate's matched parents and hybrids into the same assay.
+    groups = np.stack([np.stack([replicate_hybrid_group(
+        arms[r, a], np.random.default_rng(seeds[r][2]), hybrid_samples) for a in range(2)]) for r in range(R)])
+    hf, hv = assay(groups)
+    m = hybrid_samples
+    for r in range(R):
+        results[r]["correlations"], results[r]["hybrids"] = {}, {}
+        for a, arm in enumerate(ARMS):
+            results[r]["correlations"][arm] = dict(individual=correlations(arms[r, a]),
+                lineage=correlations(arms[r, a].astype(float).mean(1)))
+            weights, _ = fitness(hf[r, a], hv[r, a], optimum, s)
+            results[r]["hybrids"][arm] = {}
+            for group, ids in (("cross_parents", np.r_[0:2*m]), ("within_parents", np.r_[0:m, 2*m:3*m]),
+                               ("cross_lineage", np.r_[3*m:4*m]), ("within_lineage", np.r_[4*m:5*m])):
+                results[r]["hybrids"][arm][group] = dict(n=len(ids),
+                    fraction_pyloric=float(hv[r, a, ids].mean()), mean_fitness=float(weights[ids].mean()))
+        results[r]["omega"] = add_omega(*(results[r]["trajectories"][arm] for arm in ARMS))
+    return clean(dict(experiment="E2", params=params, sites=SITES, feature_names=FEATURES,
+                      canonical=dict(features=optimum.tolist(), cv=cv.tolist()), replicates=results,
+                      aggregate=aggregate_replicates(results, K), throughput=assay.report(),
+                      elapsed_seconds=perf_counter()-start,
+                      inference=dict(seed_rule="standalone seed = seed + zero-based replicate index",
+                        ci="pointwise 95% Student-t across finite replicate values; n reported; undefined if n<2",
+                        test="two-sided paired t-test on selected minus neutral raw r; Holm across 84 pairs per level",
+                        selection_associated="lineage level only: >=ceil(0.875*R) same selected sign, all R paired, Holm p<0.05, R>=3, K>=3",
+                        rhythm="conditioned on pyloricity; undefined if any lineage has no pyloric networks",
+                        measurement="Model gbar correlations are not the same measurement as mRNA correlations.")))
+
+
+def summary_replicates(data):
+    p, a = data["params"], data["aggregate"]
+    def fmt(x):
+        if x["mean"] is None:
+            return f"undefined (n={x['n']})"
+        lo, hi = x["ci95"]
+        interval = f"[{lo:.4g}, {hi:.4g}]" if lo is not None else "undefined"
+        return f"{x['mean']:.4g} CI95 {interval} (n={x['n']})"
+    lines = [f"Experiment E2: R={p['replicates']} N={p['N']} K={p['K']} B={p['B']} T={p['T']} seed={p['seed']}"]
+    lines.extend(data["inference"].values())
+    if p["K"] < 3 or p["replicates"] < 3:
+        lines.append("PIPELINE TEST ONLY: K=2 gives degenerate +/-1 lineage correlations; R<3 cannot establish consistency. No selection-associated calls.")
+    for arm in ARMS:
+        last = a["trajectories"][arm][-1]
+        for metric in ("fraction_pyloric", "feature_divergence_normalized", "conductance_divergence_sum"):
+            lines.append(f"{arm} {metric}: {fmt(last[metric])}")
+        for group, values in a["hybrids"][arm].items():
+            lines.append(f"{arm} hybrid {group}: {fmt(values['fraction_pyloric'])}")
+    lines.append("Omega summed: " + fmt(a["omega"]["summed"]))
+    for i, site in enumerate(SITES):
+        value = {k: v[i] for k, v in a["omega"]["per_site"].items()}
+        lines.append(f"Omega {site}: {fmt(value)}")
+    lines.append("Per-replicate final metrics (rhythm divergence conditions on pyloricity):")
+    for r in data["replicates"]:
+        for arm in ARMS:
+            last = r["trajectories"][arm][-1]
+            lines.append(f"replicate {r['index']} seed={r['seed']} {arm}: pyloric={last['fraction_pyloric']:.4g}, "
+                         f"rhythm={last['feature_divergence_normalized']}, log-g={last['conductance_divergence_sum']:.4g}, "
+                         f"between/within hybrids={r['hybrids'][arm]['cross_lineage']['fraction_pyloric']:.4g}/"
+                         f"{r['hybrids'][arm]['within_lineage']['fraction_pyloric']:.4g}")
+    lines.extend(["Schulz et al. (2006) comparison: requested candidate pairs, motivated by the supplied LP/PD context.",
+                  "The supplied context describes positive Na-A and IA-IKd associations, especially LP and PD; NaV-Kd and CaS-A are additional model comparisons.",
+                  "Model AB represents the coupled AB/PD pacemaker; it is not a separate measured PD neuron.",
+                  "Model gbar correlations are not the same measurement as mRNA correlations; these are exploratory comparisons, not a replication.",
+                  "Cell | pair | selected lineage r (95% CI) | neutral lineage r (95% CI) | sign count | paired Holm p | selection-associated"])
+    candidates = {("NaV", "A"), ("A", "Kd"), ("NaV", "Kd"), ("CaS", "A")}
+    def row_text(row):
+        return (f"{row['cell']} | {'-'.join(row['pair'])} | {fmt(row['selected'])} | {fmt(row['neutral'])} | "
+                f"{row['selected']['same_sign']}/{p['replicates']} | {row['paired_holm_p']} | {row['selection_associated']}")
+    lines.extend(row_text(row) for row in a["correlations"]["lineage"] if tuple(row["pair"]) in candidates)
+    for level, rows in a["correlations"].items():
+        lines.append(f"All {level} pairs: mean r, CI, same-sign counts and two-sided sign tests; paired arm tests")
+        for row in rows:
+            lines.append(row_text(row) + f" | neutral sign={row['neutral']['same_sign']}/{p['replicates']} "
+                         f"| sign p S/N={row['selected']['sign_test_p']}/{row['neutral']['sign_test_p']} "
+                         f"| paired p={row['paired_t_p']}")
+    lines.append("Throughput: " + str(data["throughput"]))
+    return "\n".join(lines) + "\n"
+
+
+def figure_replicates(path=OUTPUT / "stg-replicates.json"):
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    if not hasattr(cm, "get_cmap"):
+        cm.get_cmap = plt.get_cmap
+    import plotting  # noqa: F401
+    path = Path(path)
+    data = json.loads(path.read_text())
+    aggregate = data["aggregate"]
+    with plt.rc_context({"font.size": 7, "axes.labelsize": 7, "xtick.labelsize": 6,
+                         "ytick.labelsize": 6, "lines.linewidth": .55}):
+        fig, axes = plt.subplots(1, 3, figsize=(7, 2.3))
+        fig.subplots_adjust(left=.075, right=.975, bottom=.22, top=.85, wspace=.7)
+        for ax, letter in zip(axes, "ABC"):
+            panel_letter(ax, letter)
+            ax.spines[["top", "right"]].set_visible(False)
+        ax = axes[0]
+        for c, cell in enumerate(CELLS):
+            for row in aggregate["correlations"]["lineage"]:
+                if row["cell"] != cell:
+                    continue
+                x, y = row["selected"], row["neutral"]
+                if x["mean"] is None or y["mean"] is None:
+                    continue
+                def error(v):
+                    ci = np.asarray(v["ci95"], float)
+                    # Correlation means lie in [-1,1]; truncate displayed t intervals.
+                    return np.abs(np.clip(ci, -1, 1) - v["mean"]).reshape(2, 1) if np.isfinite(ci).all() else None
+                ax.errorbar(x["mean"], y["mean"], xerr=error(x), yerr=error(y),
+                            fmt="*" if row["selection_associated"] else "o", color=f"C{c}",
+                            ms=4 if row["selection_associated"] else 2, alpha=.6, elinewidth=.3)
+            ax.plot([], [], "o", color=f"C{c}", ms=3, label=cell)
+        ax.axhline(0, color=".7", lw=.4)
+        ax.axvline(0, color=".7", lw=.4)
+        ax.set(xlabel="Selected mean lineage r", ylabel="Neutral mean lineage r", xlim=(-1.08, 1.08), ylim=(-1.08, 1.08))
+        ax.legend(fontsize=4, frameon=False, loc="upper left", ncol=3, columnspacing=.5, handletextpad=.3)
+        ax.text(.02, -.31, "95% CI clipped to ±1; * consistency + Holm p < .05",
+                transform=ax.transAxes, fontsize=4)
+        ax = axes[1]
+        inset = ax.inset_axes([.16, .57, .60, .36])
+        for arm, color, style in (("selected", "C0", "-"), ("neutral", "C1", "--")):
+            records = aggregate["trajectories"][arm]
+            times = [r["t"] for r in records]
+            for target, metric in ((ax, "conductance_divergence_sum"), (inset, "feature_divergence_normalized")):
+                means = np.asarray([r[metric]["mean"] for r in records], float)
+                ci = np.asarray([r[metric]["ci95"] for r in records], float)
+                target.plot(times, means, color=color, ls=style, label=arm)
+                target.fill_between(times, np.maximum(0, ci[:, 0]), ci[:, 1], color=color, alpha=.15, lw=0)
+            ax.text(.04, .44 if arm == "selected" else .34, arm, color=color, transform=ax.transAxes,
+                    fontsize=5, family="monospace")
+        ax.set(xlabel="Generation", ylabel="Log-conductance divergence", ylim=(0, None))
+        inset.set_title("Rhythm divergence", fontsize=5, family="monospace")
+        inset.tick_params(labelsize=4, length=2)
+        inset.spines[["top", "right"]].set_visible(False)
+        inset.set_ylim(bottom=0)
+        ax = axes[2]
+        for a, arm in enumerate(ARMS):
+            for g, group in enumerate(("cross_lineage", "within_lineage")):
+                x = g + (a-.5)*.25
+                y = [r["hybrids"][arm][group]["fraction_pyloric"] for r in data["replicates"]]
+                ax.scatter(x+np.linspace(-.055, .055, len(y)), y, s=9, color=f"C{a}", alpha=.65,
+                           marker="o" if a == 0 else "s", label=arm if g == 0 else None)
+                ax.plot([x-.09, x+.09], [np.mean(y)]*2, color=f"C{a}", lw=1.3)
+        ax.set(xticks=[0, 1], xticklabels=["Between", "Within"], xlabel="Hybrid parent lineages",
+               ylabel="Fraction pyloric", ylim=(-.05, 1.05), xlim=(-.4, 1.4))
+        ax.legend(fontsize=4, frameon=False, loc="center")
+        p = data["params"]
+        title = f"E2: R={p['replicates']}, N={p['N']}, K={p['K']}, B={p['B']}, T={p['T']}"
+        if p["K"] < 3 or p["replicates"] < 3:
+            title += " — pipeline test only"
+        fig.suptitle(title, fontsize=6, family="monospace", y=.99)
+        for suffix in (".pdf", ".png"):
+            fig.savefig(path.with_suffix(suffix), dpi=200)
+        plt.close(fig)
+    print(f"Wrote {path.with_suffix('.pdf')} and {path.with_suffix('.png')}")
+
+
+def replicate_work(R, N, K, B, T, hybrid_samples, duration_ms):
+    # Initial/burn assays, t=0..T fork assays, five hybrid groups per arm.
+    return R*((B+1)*N + (T+1)*2*K*N + 10*hybrid_samples)*duration_ms/1000
+
+
+def bench_replicates(replicates=8, N=64, K=16, B=200, T=2000, hybrid_samples=64,
+                     dt=.05, duration_ms=DURATION, window_start_ms=WINDOW, chunk_size=None):
+    validate_assay(dt, duration_ms, window_start_ms)
+    if min(replicates, N, hybrid_samples) < 1 or K < 2 or min(B, T) < 0:
+        raise ValueError("Require R,N,hybrid-samples>=1, K>=2, B,T>=0")
+    assay = ReplicateAssay(dt, duration_ms, window_start_ms, replicates*2*K*N, chunk_size)
+    g = jnp.broadcast_to(jnp.asarray(ANCESTOR), (replicates, 2, K, N, 31))
+    print(f"Precompiling one generation: {replicates*2*K*N} networks on {jax.devices()[0]}", flush=True)
+    # The unroll probes warm execution for 100 ms. Compile the full-duration
+    # executable separately so CPU benchmarking needs only one full generation.
+    flat = g.reshape(-1, 31)
+    stride = chunk_size or len(flat)
+    for offset in range(0, len(flat), stride):
+        sample = flat[offset:offset+stride]
+        if sample.shape not in assay.compiled:
+            assay.compiled[sample.shape] = evaluate.lower(
+                sample, dt, duration_ms, window_start_ms, assay.unroll).compile()
+            assay.compile_count += 1
+    plan_blocks = ReplicatePlans((K, N, 31), 1, .02, .05,
+                                [x[1] for x in replicate_streams(0, replicates)])
+    plans, index = plan_blocks.at(0)
+    optimum = np.asarray(features(dt=dt, duration_ms=duration_ms, window_start_ms=window_start_ms)[0])
+    f = np.broadcast_to(optimum, (*g.shape[:-1], 8))
+    valid = np.ones(g.shape[:-1], dtype=bool)
+    def reproduction(f, valid):
+        return jax.block_until_ready(jnp.stack([jnp.stack([
+            planned_step(g[r, a], f[r, a], valid[r, a], optimum, 1. if a == 0 else 0.,
+                         plans[r], index) for a in range(2)]) for r in range(replicates)]))
+    reproduction(f, valid)  # Warm reproduction too; timed call has no compilation.
+    count = assay.compile_count
+    print("Timing the full assay plus reproduction (compilation excluded).", flush=True)
+    start = perf_counter()
+    f, valid = assay(g)
+    reproduction(f, valid)
+    elapsed = perf_counter()-start
+    assert assay.compile_count == count
+    work = replicate_work(replicates, N, K, B, T, hybrid_samples, duration_ms)
+    rate = replicates*2*K*N*duration_ms/1000/elapsed
+    report = dict(assay.report(), replicates=replicates, networks=replicates*2*K*N,
+                  N=N, K=K, B=B, T=T, hybrid_samples=hybrid_samples, chunk_size=chunk_size,
+                  duration_ms=duration_ms, window_start_ms=window_start_ms, dt=dt,
+                  wall_seconds_per_generation=elapsed, full_run_network_seconds=work,
+                  generation_network_seconds_per_wall_second=rate,
+                  timing_protocol="one precompiled full generation after warmed 100-ms probes and warmed reproduction",
+                  projected_full_run_hours=work/rate/3600,
+                  b300_baseline_network_seconds_per_second=3100,
+                  b300_constant_throughput_hours=work/3100/3600,
+                  b300_ideal_batch_scaling_hours=work/(3100*replicates)/3600,
+                  projection_note="CPU projection scales measured generation by network work; burn/hybrid shapes and host overhead may differ. B300 scenarios are extrapolations, not measured R=8 timings; ideal assumes R-fold throughput.")
+    print(json.dumps(clean(report)), flush=True)
+    return report
+
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1029,8 +1552,21 @@ def main():
         check_cli.add_argument("--" + flag, type=float, default=default)
     fig = sub.add_parser("figure")
     fig.add_argument("--input", type=Path, default=OUTPUT / "stg.json")
-    for name in ("quick", "run"):
+    fig_r = sub.add_parser("figure-replicates")
+    fig_r.add_argument("--input", type=Path, default=OUTPUT / "stg-replicates.json")
+    bench_r = sub.add_parser("bench-replicates")
+    for flag, default in dict(replicates=8, N=64, K=16, B=200, T=2000, hybrid_samples=64).items():
+        bench_r.add_argument("--"+flag.replace("_", "-"), type=int, default=default)
+    for flag, default in dict(dt=.05, duration_ms=DURATION, window_start_ms=WINDOW).items():
+        bench_r.add_argument("--"+flag.replace("_", "-"), type=float, default=default)
+    bench_r.add_argument("--chunk-size", type=int, default=None)
+    for name in ("quick", "run", "replicates"):
         cli = sub.add_parser(name)
+        cli.add_argument("--replicates", type=int, default=8 if name == "replicates" else 1)
+        cli.add_argument("--chunk-size", type=int, default=None,
+                         help="Maximum networks per assay chunk (default: entire batch)")
+        if name == "replicates":
+            cli.add_argument("--output", type=Path, default=OUTPUT / "stg-replicates.json")
         for flag, default in dict(N=64, K=16, B=200, T=2000, every=20, seed=0, hybrid_samples=64).items():
             cli.add_argument("--"+flag.replace("_", "-"), type=int, default=default)
         for flag, default in dict(dt=.05, u=.02, sigma=.05, s=1., duration_ms=DURATION, window_start_ms=WINDOW).items():
@@ -1040,14 +1576,33 @@ def main():
     if command == "bench":
         bench()
         return
+    if command == "bench-replicates":
+        bench_replicates(**args)
+        return
     if command == "check":
         raise SystemExit(0 if check(**args) else 1)
     if command == "figure":
         figure(args["input"])
         return
+    if command == "figure-replicates":
+        figure_replicates(args["input"])
+        return
+    if command == "replicates":
+        path = args.pop("output")
+        data = run_replicates(**args)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(data, separators=(",", ":"), allow_nan=False)+"\n")
+        text = summary_replicates(data)
+        path.with_name(path.stem+"-summary.txt").write_text(text)
+        print(text)
+        return
     quick = command == "quick"
     if quick:
         args.update(N=8, K=2, B=5, T=10, every=5)
+    if args["replicates"] == 1 and args["chunk_size"] is None:
+        # Keep even the legacy quick diagnostic's params/output unchanged.
+        args.pop("replicates")
+        args.pop("chunk_size")
     try:
         data = run(**args)
     except RuntimeError as error:
@@ -1064,7 +1619,7 @@ def main():
     OUTPUT.mkdir(exist_ok=True)
     stem = "stg-quick" if quick else "stg"
     (OUTPUT / f"{stem}.json").write_text(json.dumps(data, separators=(",", ":"), allow_nan=False)+"\n")
-    text = summary(data)
+    text = summary_replicates(data) if data.get("experiment") == "E2" else summary(data)
     (OUTPUT / f"{stem}-summary.txt").write_text(text)
     print(text)
     if data.get("status") == "canonical_validation_failed":

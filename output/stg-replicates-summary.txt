@@ -1,0 +1,258 @@
+Experiment E2: R=8 N=64 K=16 B=200 T=2000 seed=0
+standalone seed = seed + zero-based replicate index
+pointwise 95% Student-t across finite replicate values; n reported; undefined if n<2
+two-sided paired t-test on selected minus neutral raw r; Holm across 84 pairs per level
+lineage level only: >=ceil(0.875*R) same selected sign, all R paired, Holm p<0.05, R>=3, K>=3
+conditioned on pyloricity; undefined if any lineage has no pyloric networks
+Model gbar correlations are not the same measurement as mRNA correlations.
+selected fraction_pyloric: 0.9756 CI95 [0.9709, 0.9802] (n=8)
+selected feature_divergence_normalized: 0.0409 CI95 [0.03499, 0.04681] (n=8)
+selected conductance_divergence_sum: 1.237 CI95 [1.139, 1.336] (n=8)
+selected hybrid cross_parents: 0.9814 CI95 [0.971, 0.9919] (n=8)
+selected hybrid within_parents: 0.9834 CI95 [0.9769, 0.9899] (n=8)
+selected hybrid cross_lineage: 0.4219 CI95 [0.3586, 0.4851] (n=8)
+selected hybrid within_lineage: 0.9531 CI95 [0.936, 0.9702] (n=8)
+neutral fraction_pyloric: 0.00354 CI95 [-0.001118, 0.008198] (n=8)
+neutral feature_divergence_normalized: undefined (n=0)
+neutral conductance_divergence_sum: 2.816 CI95 [2.637, 2.994] (n=8)
+neutral hybrid cross_parents: 0.00293 CI95 [-0.00193, 0.007789] (n=8)
+neutral hybrid within_parents: 0.0009766 CI95 [-0.001333, 0.003286] (n=8)
+neutral hybrid cross_lineage: 0.007812 CI95 [-0.006152, 0.02178] (n=8)
+neutral hybrid within_lineage: 0.001953 CI95 [-0.002665, 0.006572] (n=8)
+Omega summed: 0.4434 CI95 [0.3854, 0.5013] (n=8)
+Omega AB.NaV: 0.1693 CI95 [0.1217, 0.2168] (n=8)
+Omega AB.CaT: 0.3956 CI95 [0.2146, 0.5767] (n=8)
+Omega AB.CaS: 0.05579 CI95 [0.02859, 0.08299] (n=8)
+Omega AB.A: 0.1883 CI95 [-0.02593, 0.4025] (n=8)
+Omega AB.KCa: 0.1339 CI95 [0.06118, 0.2067] (n=8)
+Omega AB.Kd: 0.4433 CI95 [0.2269, 0.6597] (n=8)
+Omega AB.H: 0.101 CI95 [0.04344, 0.1585] (n=8)
+Omega AB.leak: 1.177 CI95 [0.6019, 1.752] (n=8)
+Omega LP.NaV: 0.1736 CI95 [0.04064, 0.3066] (n=8)
+Omega LP.CaT: 1.491 CI95 [1.015, 1.968] (n=8)
+Omega LP.CaS: 0.07276 CI95 [0.04144, 0.1041] (n=8)
+Omega LP.A: 0.1934 CI95 [0.1287, 0.2582] (n=8)
+Omega LP.KCa: 0.9492 CI95 [0.7087, 1.19] (n=8)
+Omega LP.Kd: 0.2974 CI95 [0.1513, 0.4435] (n=8)
+Omega LP.H: 0.516 CI95 [0.3696, 0.6624] (n=8)
+Omega LP.leak: 0.7393 CI95 [0.3614, 1.117] (n=8)
+Omega PY.NaV: 0.1982 CI95 [0.1215, 0.2749] (n=8)
+Omega PY.CaT: 0.0112 CI95 [0.007274, 0.01513] (n=8)
+Omega PY.CaS: 0.01542 CI95 [0.007859, 0.02299] (n=8)
+Omega PY.A: 0.007537 CI95 [0.004621, 0.01045] (n=8)
+Omega PY.KCa: 1.827 CI95 [0.9026, 2.751] (n=8)
+Omega PY.Kd: 0.03138 CI95 [0.009691, 0.05306] (n=8)
+Omega PY.H: 0.2096 CI95 [0.1665, 0.2526] (n=8)
+Omega PY.leak: 0.4515 CI95 [0.09384, 0.8091] (n=8)
+Omega AB-LP-chol: 0.6472 CI95 [0.1982, 1.096] (n=8)
+Omega AB-PY-chol: 1.465 CI95 [0.125, 2.805] (n=8)
+Omega AB-LP-glut: 1.253 CI95 [0.6996, 1.806] (n=8)
+Omega AB-PY-glut: 0.9654 CI95 [0.063, 1.868] (n=8)
+Omega LP-PY-glut: 0.879 CI95 [0.5256, 1.232] (n=8)
+Omega PY-LP-glut: 0.3985 CI95 [0.2695, 0.5275] (n=8)
+Omega LP-AB-glut: 0.8388 CI95 [0.6889, 0.9887] (n=8)
+Per-replicate final metrics (rhythm divergence conditions on pyloricity):
+replicate 0 seed=0 selected: pyloric=0.9766, rhythm=0.028529528376323224, log-g=1.2, between/within hybrids=0.5312/0.9219
+replicate 0 seed=0 neutral: pyloric=0, rhythm=None, log-g=2.83, between/within hybrids=0/0
+replicate 1 seed=1 selected: pyloric=0.9658, rhythm=0.04485020267013855, log-g=1.137, between/within hybrids=0.4375/0.9531
+replicate 1 seed=1 neutral: pyloric=0, rhythm=None, log-g=3.012, between/within hybrids=0/0
+replicate 2 seed=2 selected: pyloric=0.9707, rhythm=0.04683820059193861, log-g=1.425, between/within hybrids=0.4219/0.9688
+replicate 2 seed=2 neutral: pyloric=0.01367, rhythm=None, log-g=2.485, between/within hybrids=0.04688/0
+replicate 3 seed=3 selected: pyloric=0.9717, rhythm=0.04657807782316365, log-g=1.249, between/within hybrids=0.4844/0.9844
+replicate 3 seed=3 neutral: pyloric=0, rhythm=None, log-g=2.911, between/within hybrids=0/0
+replicate 4 seed=4 selected: pyloric=0.9785, rhythm=0.04350518133742641, log-g=1.319, between/within hybrids=0.4375/0.9375
+replicate 4 seed=4 neutral: pyloric=0.003906, rhythm=None, log-g=2.843, between/within hybrids=0/0
+replicate 5 seed=5 selected: pyloric=0.9805, rhythm=0.03188627350705281, log-g=1.108, between/within hybrids=0.4219/0.9531
+replicate 5 seed=5 neutral: pyloric=0, rhythm=None, log-g=3.137, between/within hybrids=0/0
+replicate 6 seed=6 selected: pyloric=0.9814, rhythm=0.039299191262083616, log-g=1.114, between/within hybrids=0.2812/0.9688
+replicate 6 seed=6 neutral: pyloric=0, rhythm=None, log-g=2.604, between/within hybrids=0/0
+replicate 7 seed=7 selected: pyloric=0.9795, rhythm=0.045693311880641026, log-g=1.347, between/within hybrids=0.3594/0.9375
+replicate 7 seed=7 neutral: pyloric=0.01074, rhythm=None, log-g=2.704, between/within hybrids=0.01562/0.01562
+Schulz et al. (2006) comparison: requested candidate pairs, motivated by the supplied LP/PD context.
+The supplied context describes positive Na-A and IA-IKd associations, especially LP and PD; NaV-Kd and CaS-A are additional model comparisons.
+Model AB represents the coupled AB/PD pacemaker; it is not a separate measured PD neuron.
+Model gbar correlations are not the same measurement as mRNA correlations; these are exploratory comparisons, not a replication.
+Cell | pair | selected lineage r (95% CI) | neutral lineage r (95% CI) | sign count | paired Holm p | selection-associated
+AB | NaV-A | 0.3483 CI95 [0.06179, 0.6348] (n=8) | 0.03759 CI95 [-0.1504, 0.2256] (n=8) | 6/8 | 1.0 | False
+AB | NaV-Kd | -0.1468 CI95 [-0.2805, -0.01299] (n=8) | -0.00948 CI95 [-0.2106, 0.1917] (n=8) | 7/8 | 1.0 | False
+AB | CaS-A | 0.3988 CI95 [0.2308, 0.5667] (n=8) | -0.02039 CI95 [-0.1992, 0.1584] (n=8) | 8/8 | 0.03985352386641694 | True
+AB | A-Kd | -0.2443 CI95 [-0.4147, -0.07395] (n=8) | 0.05885 CI95 [-0.1928, 0.3105] (n=8) | 7/8 | 1.0 | False
+LP | NaV-A | -0.1378 CI95 [-0.2452, -0.03037] (n=8) | -0.09303 CI95 [-0.3003, 0.1142] (n=8) | 6/8 | 1.0 | False
+LP | NaV-Kd | -0.007456 CI95 [-0.2518, 0.2369] (n=8) | -0.1619 CI95 [-0.4675, 0.1436] (n=8) | 5/8 | 1.0 | False
+LP | CaS-A | 0.6594 CI95 [0.5429, 0.776] (n=8) | -0.05551 CI95 [-0.2301, 0.1191] (n=8) | 8/8 | 0.01465893754326521 | True
+LP | A-Kd | -0.004058 CI95 [-0.2242, 0.2161] (n=8) | 0.01635 CI95 [-0.2822, 0.3149] (n=8) | 5/8 | 1.0 | False
+PY | NaV-A | -0.03702 CI95 [-0.4594, 0.3853] (n=8) | -0.03114 CI95 [-0.2217, 0.1594] (n=8) | 5/8 | 1.0 | False
+PY | NaV-Kd | -0.1751 CI95 [-0.4338, 0.08354] (n=8) | -0.01425 CI95 [-0.2348, 0.2063] (n=8) | 4/8 | 1.0 | False
+PY | CaS-A | 0.2726 CI95 [0.007478, 0.5378] (n=8) | 0.02581 CI95 [-0.1992, 0.2508] (n=8) | 6/8 | 1.0 | False
+PY | A-Kd | -0.2388 CI95 [-0.3914, -0.08616] (n=8) | 0.1187 CI95 [-0.06503, 0.3024] (n=8) | 7/8 | 0.004149913404140535 | True
+All individual pairs: mean r, CI, same-sign counts and two-sided sign tests; paired arm tests
+AB | NaV-CaT | 0.3266 CI95 [0.1487, 0.5045] (n=8) | 0.1266 CI95 [-0.05094, 0.3041] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.13031200845472599
+AB | NaV-CaS | 0.03486 CI95 [-0.1903, 0.26] (n=8) | 0.04435 CI95 [-0.2096, 0.2983] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.9036300561777362
+AB | NaV-A | 0.3406 CI95 [0.06506, 0.6161] (n=8) | 0.03505 CI95 [-0.1483, 0.2184] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.12254954154644708
+AB | NaV-KCa | 0.5345 CI95 [0.3351, 0.7339] (n=8) | 0.05847 CI95 [-0.1629, 0.2798] (n=8) | 8/8 | 0.9655937600188544 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.013048564324579114
+AB | NaV-Kd | -0.1416 CI95 [-0.2713, -0.01194] (n=8) | -0.01019 CI95 [-0.2006, 0.1802] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.33202728676452026
+AB | NaV-H | -0.2601 CI95 [-0.4227, -0.09757] (n=8) | 0.09972 CI95 [-0.1327, 0.3321] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.021297374775280955
+AB | NaV-leak | 0.02606 CI95 [-0.1646, 0.2167] (n=8) | 0.2018 CI95 [0.06018, 0.3434] (n=8) | 5/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=0.7265625/0.0703125 | paired p=0.1502972590196194
+AB | CaT-CaS | -0.1918 CI95 [-0.3457, -0.03782] (n=8) | -0.01128 CI95 [-0.2118, 0.1893] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.11295943408419104
+AB | CaT-A | 0.07765 CI95 [-0.1622, 0.3175] (n=8) | 0.1169 CI95 [-0.1075, 0.3414] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.7839354314505417
+AB | CaT-KCa | 0.01134 CI95 [-0.09505, 0.1177] (n=8) | 0.03524 CI95 [-0.1862, 0.2567] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.8257428833244325
+AB | CaT-Kd | 0.4134 CI95 [0.2444, 0.5825] (n=8) | 0.08691 CI95 [-0.2487, 0.4225] (n=8) | 8/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.12387556650240783
+AB | CaT-H | 0.04733 CI95 [-0.1371, 0.2318] (n=8) | 0.0737 CI95 [-0.1228, 0.2702] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.815936370301353
+AB | CaT-leak | -0.03282 CI95 [-0.2964, 0.2308] (n=8) | -0.00349 CI95 [-0.2341, 0.2271] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.8371471880133109
+AB | CaS-A | 0.3896 CI95 [0.2268, 0.5525] (n=8) | -0.02032 CI95 [-0.1951, 0.1544] (n=8) | 8/8 | 0.03719065478433759 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.00045914388622639
+AB | CaS-KCa | 0.5016 CI95 [0.3623, 0.6409] (n=8) | 0.02555 CI95 [-0.2133, 0.2644] (n=8) | 8/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.014613958067338733
+AB | CaS-Kd | 0.2553 CI95 [0.03344, 0.4771] (n=8) | 0.01886 CI95 [-0.1154, 0.1531] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.12150624530742131
+AB | CaS-H | -0.2249 CI95 [-0.4455, -0.004245] (n=8) | 0.04779 CI95 [-0.2169, 0.3125] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.1538721267742744
+AB | CaS-leak | 0.05339 CI95 [-0.2154, 0.3221] (n=8) | -0.1154 CI95 [-0.3236, 0.09278] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.3323367987743678
+AB | A-KCa | -0.06101 CI95 [-0.2377, 0.1157] (n=8) | 0.1055 CI95 [-0.09345, 0.3045] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.16128799613559028
+AB | A-Kd | -0.2386 CI95 [-0.4057, -0.0715] (n=8) | 0.05158 CI95 [-0.1892, 0.2923] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.060870563099144404
+AB | A-H | 0.1351 CI95 [-0.04641, 0.3166] (n=8) | -0.09524 CI95 [-0.2698, 0.07933] (n=8) | 6/8 | 0.049455392024034164 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.0006181924003004271
+AB | A-leak | -0.03403 CI95 [-0.2398, 0.1718] (n=8) | 0.036 CI95 [-0.1409, 0.2129] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6367992996649556
+AB | KCa-Kd | 0.1214 CI95 [-0.08464, 0.3274] (n=8) | -0.04475 CI95 [-0.3373, 0.2478] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.43289686431461105
+AB | KCa-H | -0.4466 CI95 [-0.6454, -0.2478] (n=8) | 0.08204 CI95 [-0.1243, 0.2884] (n=8) | 8/8 | 0.6442477703718174 | False | neutral sign=6/8 | sign p S/N=0.0078125/0.2890625 | paired p=0.00858997027162423
+AB | KCa-leak | 0.1119 CI95 [-0.03603, 0.2599] (n=8) | -0.05573 CI95 [-0.2435, 0.1321] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.14023610740632417
+AB | Kd-H | 0.02003 CI95 [-0.1774, 0.2174] (n=8) | -0.03245 CI95 [-0.2239, 0.159] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6587621466630051
+AB | Kd-leak | -0.0458 CI95 [-0.2069, 0.1153] (n=8) | -0.06773 CI95 [-0.3194, 0.1839] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.8656348522246532
+AB | H-leak | -0.1249 CI95 [-0.3107, 0.06081] (n=8) | 0.01918 CI95 [-0.1661, 0.2044] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.166053598254713
+LP | NaV-CaT | -0.08205 CI95 [-0.2769, 0.1128] (n=8) | 0.009052 CI95 [-0.1633, 0.1815] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.49195177225294806
+LP | NaV-CaS | 0.1932 CI95 [0.08879, 0.2977] (n=8) | 0.06906 CI95 [-0.1281, 0.2662] (n=8) | 8/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.0078125/0.2890625 | paired p=0.19010912139004618
+LP | NaV-A | -0.1274 CI95 [-0.2277, -0.02715] (n=8) | -0.08644 CI95 [-0.2876, 0.1148] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.6835899137403052
+LP | NaV-KCa | -0.02753 CI95 [-0.1749, 0.1199] (n=8) | 0.0766 CI95 [-0.0656, 0.2188] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.22763197143042163
+LP | NaV-Kd | -0.01881 CI95 [-0.2322, 0.1946] (n=8) | -0.1589 CI95 [-0.4549, 0.137] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.22041829375861885
+LP | NaV-H | -0.1452 CI95 [-0.3943, 0.104] (n=8) | -0.07209 CI95 [-0.2323, 0.08812] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.508403347707136
+LP | NaV-leak | 0.07062 CI95 [-0.2005, 0.3417] (n=8) | 0.02671 CI95 [-0.1171, 0.1705] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.766594580701887
+LP | CaT-CaS | -0.05845 CI95 [-0.2827, 0.1658] (n=8) | 0.09584 CI95 [-0.1731, 0.3648] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.3771525003351981
+LP | CaT-A | 0.03932 CI95 [-0.1302, 0.2088] (n=8) | 0.007478 CI95 [-0.2474, 0.2624] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.8260481381852082
+LP | CaT-KCa | 0.04329 CI95 [-0.138, 0.2246] (n=8) | -0.04495 CI95 [-0.3001, 0.2102] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.4811682886795636
+LP | CaT-Kd | 0.05005 CI95 [-0.1026, 0.2027] (n=8) | 0.1588 CI95 [-0.02021, 0.3378] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.23667972713753044
+LP | CaT-H | -0.1678 CI95 [-0.3029, -0.03274] (n=8) | -0.03948 CI95 [-0.254, 0.175] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.34268581614023136
+LP | CaT-leak | -0.01202 CI95 [-0.1718, 0.1477] (n=8) | -0.01007 CI95 [-0.1862, 0.1661] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.9862970295281159
+LP | CaS-A | 0.6407 CI95 [0.5248, 0.7565] (n=8) | -0.05314 CI95 [-0.2252, 0.119] (n=8) | 8/8 | 0.015871648090061127 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.0001935566840251357
+LP | CaS-KCa | -0.0547 CI95 [-0.2609, 0.1515] (n=8) | -0.06662 CI95 [-0.2847, 0.1514] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.9005006786474776
+LP | CaS-Kd | 0.4235 CI95 [0.2854, 0.5616] (n=8) | -0.08054 CI95 [-0.3422, 0.1812] (n=8) | 8/8 | 0.23806853636481357 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.003052160722625815
+LP | CaS-H | -0.1701 CI95 [-0.4303, 0.09006] (n=8) | -0.05074 CI95 [-0.2692, 0.1677] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.35045193434218097
+LP | CaS-leak | 0.01641 CI95 [-0.1484, 0.1812] (n=8) | -0.09853 CI95 [-0.2787, 0.08166] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.38389784722706616
+LP | A-KCa | -0.08575 CI95 [-0.3355, 0.164] (n=8) | -0.004331 CI95 [-0.1284, 0.1197] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.5776312736832272
+LP | A-Kd | -0.008506 CI95 [-0.2222, 0.2052] (n=8) | 0.01423 CI95 [-0.2735, 0.3019] (n=8) | 5/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.7265625/1.0 | paired p=0.841872744724851
+LP | A-H | -0.07265 CI95 [-0.3527, 0.2074] (n=8) | -0.09821 CI95 [-0.2533, 0.05684] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.8836226475855973
+LP | A-leak | 0.07258 CI95 [-0.1379, 0.2831] (n=8) | 0.0342 CI95 [-0.163, 0.2314] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.76246767112385
+LP | KCa-Kd | -0.006821 CI95 [-0.223, 0.2094] (n=8) | -0.06579 CI95 [-0.2311, 0.09955] (n=8) | 5/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.7265625/1.0 | paired p=0.5752929700741505
+LP | KCa-H | 0.06845 CI95 [-0.04063, 0.1775] (n=8) | 0.03311 CI95 [-0.1642, 0.2304] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.7291917895249084
+LP | KCa-leak | -0.1276 CI95 [-0.3319, 0.07669] (n=8) | 0.1218 CI95 [-0.1925, 0.4361] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.07030594809196607
+LP | Kd-H | -0.08928 CI95 [-0.4035, 0.2249] (n=8) | 0.1897 CI95 [-0.01135, 0.3907] (n=8) | 4/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=1.0/0.0703125 | paired p=0.17945592726324963
+LP | Kd-leak | -0.2031 CI95 [-0.3974, -0.008869] (n=8) | -0.04971 CI95 [-0.1759, 0.07646] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.24884023225855806
+LP | H-leak | 0.07639 CI95 [-0.122, 0.2748] (n=8) | 0.11 CI95 [-0.1468, 0.3669] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.745480778981274
+PY | NaV-CaT | 0.1313 CI95 [-0.134, 0.3966] (n=8) | -0.1473 CI95 [-0.2648, -0.02979] (n=8) | 6/8 | 0.43345032961743885 | False | neutral sign=7/8 | sign p S/N=0.2890625/0.0703125 | paired p=0.005629225059966738
+PY | NaV-CaS | 0.001622 CI95 [-0.1607, 0.1639] (n=8) | -0.02569 CI95 [-0.2193, 0.1679] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.813048243777595
+PY | NaV-A | -0.0343 CI95 [-0.4055, 0.3369] (n=8) | -0.03164 CI95 [-0.2148, 0.1515] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.9902253958161485
+PY | NaV-KCa | 0.2334 CI95 [-0.04505, 0.5118] (n=8) | -0.03191 CI95 [-0.3028, 0.239] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.17826054985418588
+PY | NaV-Kd | -0.1662 CI95 [-0.4041, 0.07161] (n=8) | -0.01005 CI95 [-0.2215, 0.2014] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.295781409121301
+PY | NaV-H | -0.2924 CI95 [-0.4093, -0.1755] (n=8) | 0.03752 CI95 [-0.1897, 0.2647] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.021841999784452785
+PY | NaV-leak | -0.05572 CI95 [-0.1983, 0.08687] (n=8) | 0.007196 CI95 [-0.2223, 0.2367] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.6188859031739321
+PY | CaT-CaS | -0.2006 CI95 [-0.4035, 0.002342] (n=8) | -0.01596 CI95 [-0.2035, 0.1716] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.2422542919319049
+PY | CaT-A | 0.2161 CI95 [0.05386, 0.3784] (n=8) | -0.07979 CI95 [-0.2102, 0.05062] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.017241608828302203
+PY | CaT-KCa | 0.2368 CI95 [0.08715, 0.3864] (n=8) | -0.02083 CI95 [-0.1938, 0.1522] (n=8) | 8/8 | 0.15123784389145728 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.0019144030872336366
+PY | CaT-Kd | 0.3399 CI95 [0.182, 0.4978] (n=8) | -0.1016 CI95 [-0.3333, 0.1302] (n=8) | 8/8 | 0.015776386626651494 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.00019007694730905416
+PY | CaT-H | 0.164 CI95 [-0.005887, 0.3338] (n=8) | -0.0545 CI95 [-0.163, 0.05403] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.03500516950160888
+PY | CaT-leak | 0.1186 CI95 [-0.1244, 0.3616] (n=8) | -0.03383 CI95 [-0.1782, 0.1105] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.18299976629381837
+PY | CaS-A | 0.2476 CI95 [0.008848, 0.4863] (n=8) | 0.02271 CI95 [-0.1913, 0.2367] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.10920028427459055
+PY | CaS-KCa | 0.04975 CI95 [-0.08835, 0.1878] (n=8) | -0.1054 CI95 [-0.3145, 0.1038] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.20786995932608215
+PY | CaS-Kd | 0.2385 CI95 [0.05563, 0.4213] (n=8) | -0.1273 CI95 [-0.2889, 0.03425] (n=8) | 7/8 | 0.4398879355272506 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.0057879991516743496
+PY | CaS-H | -0.153 CI95 [-0.2618, -0.04414] (n=8) | -0.1492 CI95 [-0.2984, 1.824e-05] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.96617472293649
+PY | CaS-leak | 0.2765 CI95 [0.1683, 0.3847] (n=8) | 0.03248 CI95 [-0.2686, 0.3336] (n=8) | 8/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.1734345288434496
+PY | A-KCa | 0.05534 CI95 [-0.1204, 0.2311] (n=8) | 0.05547 CI95 [-0.1078, 0.2187] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.9991634407365766
+PY | A-Kd | -0.2233 CI95 [-0.3536, -0.09296] (n=8) | 0.1078 CI95 [-0.06978, 0.2853] (n=8) | 8/8 | 0.0033613802078868 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=4.001643104627143e-05
+PY | A-H | 0.118 CI95 [-0.06142, 0.2973] (n=8) | 0.1028 CI95 [-0.1216, 0.3272] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.9244400828462733
+PY | A-leak | -0.08145 CI95 [-0.2236, 0.06068] (n=8) | 0.05007 CI95 [-0.003838, 0.104] (n=8) | 6/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=0.2890625/0.0703125 | paired p=0.07152966523226835
+PY | KCa-Kd | 0.07048 CI95 [-0.069, 0.21] (n=8) | 0.01444 CI95 [-0.2424, 0.2712] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6446177392315261
+PY | KCa-H | 0.006792 CI95 [-0.1666, 0.1801] (n=8) | -0.00551 CI95 [-0.2516, 0.2406] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.8946139243719007
+PY | KCa-leak | 0.1119 CI95 [-0.1497, 0.3735] (n=8) | -0.1133 CI95 [-0.2113, -0.01536] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.06328130124716728
+PY | Kd-H | -0.227 CI95 [-0.4361, -0.01798] (n=8) | 0.02504 CI95 [-0.1974, 0.2474] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.16540703448698632
+PY | Kd-leak | -0.1572 CI95 [-0.3736, 0.05914] (n=8) | 0.01892 CI95 [-0.2079, 0.2457] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.26473540529618456
+PY | H-leak | 0.3409 CI95 [0.2437, 0.4381] (n=8) | 0.08579 CI95 [-0.08024, 0.2518] (n=8) | 8/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.02858390886037914
+All lineage pairs: mean r, CI, same-sign counts and two-sided sign tests; paired arm tests
+AB | NaV-CaT | 0.3413 CI95 [0.1564, 0.5262] (n=8) | 0.1296 CI95 [-0.05491, 0.3142] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.1292140342378053
+AB | NaV-CaS | 0.04315 CI95 [-0.1913, 0.2776] (n=8) | 0.04442 CI95 [-0.2168, 0.3057] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.9873941088257833
+AB | NaV-A | 0.3483 CI95 [0.06179, 0.6348] (n=8) | 0.03759 CI95 [-0.1504, 0.2256] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.12750890505675663
+AB | NaV-KCa | 0.5498 CI95 [0.3439, 0.7557] (n=8) | 0.06359 CI95 [-0.1645, 0.2916] (n=8) | 8/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.013962478209094561
+AB | NaV-Kd | -0.1468 CI95 [-0.2805, -0.01299] (n=8) | -0.00948 CI95 [-0.2106, 0.1917] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.33059523225692017
+AB | NaV-H | -0.2902 CI95 [-0.4727, -0.1077] (n=8) | 0.09664 CI95 [-0.1463, 0.3396] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.02098860182411039
+AB | NaV-leak | 0.02637 CI95 [-0.1696, 0.2223] (n=8) | 0.2071 CI95 [0.05994, 0.3542] (n=8) | 5/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=0.7265625/0.0703125 | paired p=0.1519207073332312
+AB | CaT-CaS | -0.1997 CI95 [-0.3549, -0.04456] (n=8) | -0.01013 CI95 [-0.2155, 0.1953] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.10633080139707936
+AB | CaT-A | 0.07734 CI95 [-0.1688, 0.3235] (n=8) | 0.1258 CI95 [-0.1041, 0.3558] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.7347042518367244
+AB | CaT-KCa | 0.01181 CI95 [-0.09728, 0.1209] (n=8) | 0.04107 CI95 [-0.1879, 0.2701] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.7941886969624129
+AB | CaT-Kd | 0.4239 CI95 [0.2489, 0.5989] (n=8) | 0.0929 CI95 [-0.2543, 0.4401] (n=8) | 8/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.13030119878076407
+AB | CaT-H | 0.05478 CI95 [-0.1472, 0.2568] (n=8) | 0.07769 CI95 [-0.1275, 0.2829] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.8519088578629415
+AB | CaT-leak | -0.03464 CI95 [-0.3051, 0.2359] (n=8) | -0.005349 CI95 [-0.2409, 0.2302] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.8398136252083107
+AB | CaS-A | 0.3988 CI95 [0.2308, 0.5667] (n=8) | -0.02039 CI95 [-0.1992, 0.1584] (n=8) | 8/8 | 0.03985352386641694 | True | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.0004920188131656413
+AB | CaS-KCa | 0.5194 CI95 [0.3726, 0.6661] (n=8) | 0.02888 CI95 [-0.2145, 0.2723] (n=8) | 8/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.014635630933245816
+AB | CaS-Kd | 0.2605 CI95 [0.0324, 0.4886] (n=8) | 0.01924 CI95 [-0.1201, 0.1586] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.12357920381856476
+AB | CaS-H | -0.2417 CI95 [-0.4812, -0.002155] (n=8) | 0.05155 CI95 [-0.2234, 0.3264] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.1459534366382405
+AB | CaS-leak | 0.05532 CI95 [-0.2215, 0.3321] (n=8) | -0.1173 CI95 [-0.3299, 0.09531] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.33471340246392733
+AB | A-KCa | -0.05651 CI95 [-0.2373, 0.1243] (n=8) | 0.106 CI95 [-0.1002, 0.3122] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.17989286200150156
+AB | A-Kd | -0.2443 CI95 [-0.4147, -0.07395] (n=8) | 0.05885 CI95 [-0.1928, 0.3105] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.05909243656118353
+AB | A-H | 0.1466 CI95 [-0.04748, 0.3406] (n=8) | -0.1039 CI95 [-0.293, 0.08518] (n=8) | 6/8 | 0.040035821337040214 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.0005004477667130027
+AB | A-leak | -0.0346 CI95 [-0.2467, 0.1775] (n=8) | 0.03068 CI95 [-0.1624, 0.2238] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6786711042667348
+AB | KCa-Kd | 0.1261 CI95 [-0.08638, 0.3386] (n=8) | -0.04821 CI95 [-0.3504, 0.254] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.4262054383233615
+AB | KCa-H | -0.4969 CI95 [-0.7208, -0.273] (n=8) | 0.08685 CI95 [-0.1251, 0.2987] (n=8) | 8/8 | 0.5743139927065598 | False | neutral sign=6/8 | sign p S/N=0.0078125/0.2890625 | paired p=0.007556763061928419
+AB | KCa-leak | 0.116 CI95 [-0.0352, 0.2671] (n=8) | -0.06089 CI95 [-0.2541, 0.1323] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.13120593085920823
+AB | Kd-H | 0.02273 CI95 [-0.1868, 0.2322] (n=8) | -0.02824 CI95 [-0.2307, 0.1742] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6904022091366356
+AB | Kd-leak | -0.04727 CI95 [-0.2124, 0.1179] (n=8) | -0.07155 CI95 [-0.3281, 0.185] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.854150108583407
+AB | H-leak | -0.1368 CI95 [-0.3371, 0.0635] (n=8) | 0.02026 CI95 [-0.1726, 0.2131] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.15338295799492657
+LP | NaV-CaT | -0.08692 CI95 [-0.2889, 0.115] (n=8) | 0.01144 CI95 [-0.167, 0.1899] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.46927196227779355
+LP | NaV-CaS | 0.1958 CI95 [0.08644, 0.3051] (n=8) | 0.07238 CI95 [-0.1303, 0.2751] (n=8) | 8/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.0078125/0.2890625 | paired p=0.19727371541924135
+LP | NaV-A | -0.1378 CI95 [-0.2452, -0.03037] (n=8) | -0.09303 CI95 [-0.3003, 0.1142] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.669296662738878
+LP | NaV-KCa | -0.03007 CI95 [-0.1855, 0.1253] (n=8) | 0.07951 CI95 [-0.07185, 0.2309] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.2285774129298429
+LP | NaV-Kd | -0.007456 CI95 [-0.2518, 0.2369] (n=8) | -0.1619 CI95 [-0.4675, 0.1436] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.21068165997457008
+LP | NaV-H | -0.1544 CI95 [-0.4177, 0.1089] (n=8) | -0.07368 CI95 [-0.2414, 0.09402] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.4918095272372911
+LP | NaV-leak | 0.07952 CI95 [-0.2166, 0.3756] (n=8) | 0.02443 CI95 [-0.1271, 0.176] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.7315491388142147
+LP | CaT-CaS | -0.0598 CI95 [-0.2907, 0.1711] (n=8) | 0.09598 CI95 [-0.1856, 0.3775] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.3891841348725944
+LP | CaT-A | 0.04199 CI95 [-0.1337, 0.2177] (n=8) | 0.009579 CI95 [-0.2529, 0.272] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.828163995980415
+LP | CaT-KCa | 0.04439 CI95 [-0.1384, 0.2272] (n=8) | -0.04565 CI95 [-0.3147, 0.2234] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.4928732947474129
+LP | CaT-Kd | 0.04864 CI95 [-0.1073, 0.2045] (n=8) | 0.165 CI95 [-0.02112, 0.3511] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.22273225031890065
+LP | CaT-H | -0.1741 CI95 [-0.3121, -0.03607] (n=8) | -0.04031 CI95 [-0.2609, 0.1803] (n=8) | 7/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0703125/1.0 | paired p=0.33690937018370126
+LP | CaT-leak | -0.01123 CI95 [-0.1747, 0.1522] (n=8) | -0.01395 CI95 [-0.1967, 0.1688] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.9816913891855895
+LP | CaS-A | 0.6594 CI95 [0.5429, 0.776] (n=8) | -0.05551 CI95 [-0.2301, 0.1191] (n=8) | 8/8 | 0.01465893754326521 | True | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.0001787675310154294
+LP | CaS-KCa | -0.05585 CI95 [-0.2685, 0.1568] (n=8) | -0.07007 CI95 [-0.2956, 0.1554] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.8841059620662788
+LP | CaS-Kd | 0.4444 CI95 [0.3001, 0.5887] (n=8) | -0.08208 CI95 [-0.3499, 0.1857] (n=8) | 8/8 | 0.19103135878671842 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.002449119984445108
+LP | CaS-H | -0.1824 CI95 [-0.4565, 0.09181] (n=8) | -0.05516 CI95 [-0.2822, 0.1719] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.3444539239824656
+LP | CaS-leak | 0.0132 CI95 [-0.1612, 0.1875] (n=8) | -0.1082 CI95 [-0.2948, 0.07848] (n=8) | 4/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=1.0/0.2890625 | paired p=0.3852822693466734
+LP | A-KCa | -0.08685 CI95 [-0.3414, 0.1677] (n=8) | 0.0003309 CI95 [-0.1301, 0.1308] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.5642393820122603
+LP | A-Kd | -0.004058 CI95 [-0.2242, 0.2161] (n=8) | 0.01635 CI95 [-0.2822, 0.3149] (n=8) | 5/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.7265625/1.0 | paired p=0.8604282792436023
+LP | A-H | -0.079 CI95 [-0.3687, 0.2107] (n=8) | -0.1026 CI95 [-0.2632, 0.05808] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.8963849757849452
+LP | A-leak | 0.07419 CI95 [-0.1481, 0.2964] (n=8) | 0.03603 CI95 [-0.1674, 0.2395] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.772367124268029
+LP | KCa-Kd | -0.004671 CI95 [-0.2281, 0.2188] (n=8) | -0.06945 CI95 [-0.242, 0.1031] (n=8) | 5/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.7265625/1.0 | paired p=0.549803922525061
+LP | KCa-H | 0.07053 CI95 [-0.04234, 0.1834] (n=8) | 0.03456 CI95 [-0.1714, 0.2405] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.7343651641306856
+LP | KCa-leak | -0.1324 CI95 [-0.3437, 0.07897] (n=8) | 0.1276 CI95 [-0.2065, 0.4617] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.07522278498783631
+LP | Kd-H | -0.08584 CI95 [-0.4144, 0.2427] (n=8) | 0.1986 CI95 [-0.008817, 0.406] (n=8) | 4/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=1.0/0.0703125 | paired p=0.18892054603237163
+LP | Kd-leak | -0.2111 CI95 [-0.4143, -0.007883] (n=8) | -0.05125 CI95 [-0.1827, 0.08017] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.24678969700613967
+LP | H-leak | 0.08203 CI95 [-0.1213, 0.2854] (n=8) | 0.116 CI95 [-0.1517, 0.3838] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.7574506529117685
+PY | NaV-CaT | 0.1437 CI95 [-0.1542, 0.4416] (n=8) | -0.153 CI95 [-0.2724, -0.03364] (n=8) | 6/8 | 0.6965363960908879 | False | neutral sign=7/8 | sign p S/N=0.2890625/0.0703125 | paired p=0.009287151947878505
+PY | NaV-CaS | 0.006067 CI95 [-0.1748, 0.187] (n=8) | -0.02887 CI95 [-0.2275, 0.1698] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.7792299379891182
+PY | NaV-A | -0.03702 CI95 [-0.4594, 0.3853] (n=8) | -0.03114 CI95 [-0.2217, 0.1594] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.9804275085931562
+PY | NaV-KCa | 0.2459 CI95 [-0.04607, 0.5379] (n=8) | -0.03445 CI95 [-0.317, 0.2481] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.1745793877417535
+PY | NaV-Kd | -0.1751 CI95 [-0.4338, 0.08354] (n=8) | -0.01425 CI95 [-0.2348, 0.2063] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.31519777067092214
+PY | NaV-H | -0.3135 CI95 [-0.4363, -0.1908] (n=8) | 0.03828 CI95 [-0.1932, 0.2698] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.017458540693213138
+PY | NaV-leak | -0.05577 CI95 [-0.2086, 0.09709] (n=8) | 0.007014 CI95 [-0.2301, 0.2441] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.6341936428150411
+PY | CaT-CaS | -0.2016 CI95 [-0.4439, 0.04064] (n=8) | -0.01612 CI95 [-0.2106, 0.1784] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.2881148523696964
+PY | CaT-A | 0.2405 CI95 [0.07135, 0.4096] (n=8) | -0.08389 CI95 [-0.2218, 0.05402] (n=8) | 7/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.013920160040360499
+PY | CaT-KCa | 0.2548 CI95 [0.09394, 0.4156] (n=8) | -0.01862 CI95 [-0.1966, 0.1594] (n=8) | 8/8 | 0.10480289096216908 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.0013266188729388491
+PY | CaT-Kd | 0.3562 CI95 [0.1938, 0.5187] (n=8) | -0.1091 CI95 [-0.348, 0.1298] (n=8) | 7/8 | 0.014565574722628153 | True | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.00017548885207985726
+PY | CaT-H | 0.1807 CI95 [-0.008802, 0.3701] (n=8) | -0.05344 CI95 [-0.1682, 0.06126] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.03684229639774101
+PY | CaT-leak | 0.1353 CI95 [-0.1316, 0.4021] (n=8) | -0.03737 CI95 [-0.1891, 0.1143] (n=8) | 6/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.2890625/1.0 | paired p=0.16609455789711347
+PY | CaS-A | 0.2726 CI95 [0.007478, 0.5378] (n=8) | 0.02581 CI95 [-0.1992, 0.2508] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.11004898511159245
+PY | CaS-KCa | 0.05522 CI95 [-0.09241, 0.2029] (n=8) | -0.111 CI95 [-0.3315, 0.1095] (n=8) | 5/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.7265625/0.7265625 | paired p=0.20546249619886894
+PY | CaS-Kd | 0.2524 CI95 [0.05575, 0.4491] (n=8) | -0.1345 CI95 [-0.303, 0.03392] (n=8) | 7/8 | 0.539315268678074 | False | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=0.007004094398416546
+PY | CaS-H | -0.1654 CI95 [-0.2827, -0.04804] (n=8) | -0.1534 CI95 [-0.3068, -1.863e-05] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.8983490652861715
+PY | CaS-leak | 0.2931 CI95 [0.1698, 0.4163] (n=8) | 0.03104 CI95 [-0.2828, 0.3449] (n=8) | 8/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=0.0078125/1.0 | paired p=0.16757247321629815
+PY | A-KCa | 0.05533 CI95 [-0.14, 0.2506] (n=8) | 0.05861 CI95 [-0.1099, 0.2271] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.9807859036991905
+PY | A-Kd | -0.2388 CI95 [-0.3914, -0.08616] (n=8) | 0.1187 CI95 [-0.06503, 0.3024] (n=8) | 7/8 | 0.004149913404140535 | True | neutral sign=5/8 | sign p S/N=0.0703125/0.7265625 | paired p=4.940373100167303e-05
+PY | A-H | 0.1279 CI95 [-0.07016, 0.326] (n=8) | 0.11 CI95 [-0.1224, 0.3424] (n=8) | 5/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.7265625/0.2890625 | paired p=0.915571232459941
+PY | A-leak | -0.08269 CI95 [-0.2417, 0.0763] (n=8) | 0.04816 CI95 [-0.007148, 0.1035] (n=8) | 6/8 | 1.0 | False | neutral sign=7/8 | sign p S/N=0.2890625/0.0703125 | paired p=0.09422005113492705
+PY | KCa-Kd | 0.07673 CI95 [-0.06957, 0.223] (n=8) | 0.01586 CI95 [-0.2489, 0.2806] (n=8) | 4/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=1.0/0.7265625 | paired p=0.6288186121639611
+PY | KCa-H | 0.007653 CI95 [-0.1731, 0.1884] (n=8) | -0.007666 CI95 [-0.2647, 0.2493] (n=8) | 4/8 | 1.0 | False | neutral sign=4/8 | sign p S/N=1.0/1.0 | paired p=0.8751429439934761
+PY | KCa-leak | 0.1138 CI95 [-0.1521, 0.3798] (n=8) | -0.1174 CI95 [-0.2125, -0.02224] (n=8) | 6/8 | 1.0 | False | neutral sign=6/8 | sign p S/N=0.2890625/0.2890625 | paired p=0.060623455374228155
+PY | Kd-H | -0.2469 CI95 [-0.4732, -0.02071] (n=8) | 0.02426 CI95 [-0.2056, 0.2542] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.15872443962489144
+PY | Kd-leak | -0.1689 CI95 [-0.4005, 0.06262] (n=8) | 0.02048 CI95 [-0.2141, 0.255] (n=8) | 6/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.2890625/0.7265625 | paired p=0.25446645286068287
+PY | H-leak | 0.3592 CI95 [0.2595, 0.4589] (n=8) | 0.08693 CI95 [-0.08926, 0.2631] (n=8) | 8/8 | 1.0 | False | neutral sign=5/8 | sign p S/N=0.0078125/0.7265625 | paired p=0.027602766897582134
+Throughput: {'device': 'cuda:0', 'evaluation_wall_seconds': 10371.854613091797, 'network_simulated_seconds': 394708992.0, 'including_compile': np.float64(38055.777556097004), 'warmed': np.float64(38219.87185285216), 'unroll': 32, 'compile_count': 3, 'dtype': 'float32', 'unit': 'networks * simulated seconds / wall second'}

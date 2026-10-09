@@ -178,7 +178,7 @@ The linear maps, $M_l \in \mathbb{R}^{n \times n}$, are random Gaussian matrices
 \]
 We interpret these maps as developmental processes that propagate information from one layer to the next. These processes are influenced by the environment. Each environment has a different set of randomly sampled transformations, $\{M_l\}_{l=0}^N$.
 
-We combine this with classical evolutionary dynamics (\autoref{fig:model_2}A). We impose natural selection on the highest layer and mutation on the lowest. A population of $M$ organisms has fitness $\{x_N^i\}_{i=1}^{M}$, where $x_{\text{opt}}$ is the optimal fitness vector with unit length. An individual's selection probability, $p_i$, (red vector in \autoref{fig:model_2}A) is
+We combine this with classical evolutionary dynamics (\autoref{fig:model_2}A). We impose natural selection on the highest layer and mutation on the lowest. A population of $M$ organisms has fitness $\{x_N^i\}_{i=1}^{M}$, where $x_{\text{opt}}$ is the optimal fitness vector with unit length. An individual's selection probability, $p_i$, (\autoref{fig:model_2}A) is
 \[p_i \propto x_N^i \cdot x_{\text{opt}}.\]
 
 Natural selection favours organisms with fitness vectors similar in direction to the optimal fitness vector, which is randomly generated but fixed for each environment. Selection, in our model, acts only on the highest layer, in keeping with our argument that it is the phenotype interacting with the environment that is held in place by selection, while the layers beneath it are free to vary.

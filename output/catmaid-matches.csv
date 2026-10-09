@@ -1,0 +1,577 @@
+skeleton_id,name,role,catmaid_type,id_source,root_id,confidence,margin,nonzero,sampled,nonzero_fraction,transformed,error,flywire_type,flywire_side,in_annotations,compatible,conflict,accepted,reason
+23569,PN glomerulus VA4 23570 AA,PN,VA4,bouton,720575940617668747,1.0,1.0,50,50,1.0,50,,VA4_lPN,left,True,True,False,True,accepted
+67637,PN glomerulus DL2v 67638 BH,PN,DL2v,bouton,720575940627772009,0.94,0.92,50,50,1.0,50,,DL2v_adPN,left,True,True,False,True,accepted
+56424,PN glomerulus DM2 56425 BH,PN,DM2,bouton,720575940638633535,0.98,0.96,50,50,1.0,50,,DM2_lPN,left,True,True,False,True,accepted
+27246,PN glomerulus VM3 27247 JMR,PN,VM3,bouton,720575940610048981,0.98,0.96,50,50,1.0,50,,VM3_adPN,left,True,True,False,True,accepted
+30891,PN glomerulus DM1 30892 BH,PN,DM1,bouton,720575940630770042,0.96,0.94,50,50,1.0,50,,DM1_lPN,left,True,True,False,True,accepted
+51886,PN glomerulus VM2 51887 AA,PN,VM2,bouton,720575940640697808,0.96,0.94,50,50,1.0,50,,VM2_adPN,left,True,True,False,True,accepted
+28876,PN glomerulus DM3 28877 JMR,PN,DM3,bouton,720575940614727903,0.9,0.88,50,50,1.0,50,,DM3_adPN,left,True,True,False,True,accepted
+39682,PN glomerulus DM4 39683 JMR,PN,DM4,bouton,720575940623528925,0.98,0.96,50,50,1.0,50,,DM4_adPN,left,True,True,False,True,accepted
+56623,PN glomerulus DL2v 56624 BH,PN,DL2v,bouton,720575940611022515,1.0,1.0,50,50,1.0,50,,DL2v_adPN,left,True,True,False,True,accepted
+54072,PN glomerulus VM2 54073 JMR,PN,VM2,bouton,720575940617179451,1.0,1.0,50,50,1.0,50,,VM2_adPN,left,True,True,False,True,accepted
+58686,PN glomerulus DP1m 22768 BH ASB,PN,DP1m,bouton,720575940618308825,0.98,0.96,50,50,1.0,50,,DP1m_adPN,left,True,True,False,True,accepted
+61773,PN glomerulus DL2v 61774 JMR,PN,DL2v,bouton,720575940628181520,0.96,0.94,50,50,1.0,50,,DL2v_adPN,left,True,True,False,True,accepted
+67408,PN glomerulus DM2 67409 BH,PN,DM2,bouton,720575940630024566,0.94,0.92,50,50,1.0,50,,DM2_lPN,left,True,True,False,True,accepted
+41308,PN glomerulus VM3 41309 BH,PN,VM3,bouton,720575940627480586,0.96,0.94,50,50,1.0,50,,VM3_adPN,left,True,True,False,True,accepted
+23432,PN glomerulus VA2 23433 AA,PN,VA2,bouton,720575940611079236,0.96,0.94,50,50,1.0,50,,VA2_adPN,left,True,True,False,True,accepted
+22422,PN glomerulus DL2v 22423 JMR,PN,DL2v,bouton,720575940620467438,0.98,0.96,50,50,1.0,50,,DL2v_adPN,left,True,True,False,True,accepted
+11544074,PN glomerulus DL1 27304 JMR,PN,DL1,bouton,720575940622368792,0.96,0.94,50,50,1.0,50,,DL1_adPN,left,True,True,False,True,accepted
+16,PN glomerulus VA6 017 DB,PN,VA6,bouton,720575940636873791,1.0,1.0,50,50,1.0,50,,VA6_adPN,left,True,True,False,True,accepted
+57361,PN glomerulus VA5 57362 ML,PN,VA5,bouton,720575940637009636,1.0,1.0,50,50,1.0,50,,VA5_lPN,left,True,True,False,True,accepted
+43539,PN glomerulus VM7v 43540 CF,PN,VM7v,bouton,720575940621256212,1.0,1.0,50,50,1.0,50,,VM7v_adPN,left,True,True,False,True,accepted
+57365,PN glomerulus VA5 57366 NS,PN,VA5,bouton,720575940637231593,0.96,0.92,50,50,1.0,50,,VA5_lPN,left,True,True,False,True,accepted
+36390,PN glomerulus VA1d 36391 BH,PN,VA1d,bouton,720575940640804853,1.0,1.0,50,50,1.0,50,,VA1d_adPN,left,True,True,False,True,accepted
+57385,PN glomerulus DM5 57386 HG,PN,DM5,bouton,720575940640032896,0.96,0.94,50,50,1.0,50,,DM5_lPN,left,True,True,False,True,accepted
+23597,PN glomerulus VM4 23598 BH,PN,VM4,bouton,720575940640971995,0.84,0.8,50,50,1.0,50,,VM4_adPN,left,True,True,False,True,accepted
+24622,PN glomerulus D 24623 CF,PN,D,bouton,720575940627844734,1.0,1.0,50,50,1.0,50,,D_adPN,left,True,True,False,True,accepted
+37935,PN glomerulus VC4 37936 CF,PN,VC4,bouton,720575940624001321,0.98,0.96,50,50,1.0,50,,VC4_adPN,left,True,True,False,True,accepted
+400943,PN glomerulus VC3m 24596 BH,PN,VC3m,bouton,720575940608199748,1.0,1.0,50,50,1.0,50,,VC5_lvPN,left,True,False,False,False,incompatible-type
+775731,PN glomerulus VM1 39831 JMR,PN,VM1,bouton,720575940628077568,1.0,1.0,50,50,1.0,50,,VM1_lPN,left,True,True,False,True,accepted
+11544121,PN glomerulus VM7d 40791 BH,PN,VM7d,bouton,720575940628524292,0.98,0.96,50,50,1.0,50,,VM7d_adPN,left,True,True,False,True,accepted
+57402,PN glomerulus DC2 57403 SM,PN,DC2,bouton,720575940616824588,0.98,0.96,50,50,1.0,50,,DC2_adPN,left,True,True,False,True,accepted
+22594,PN glomerulus DM5 22595 BH,PN,DM5,bouton,720575940629926159,0.9375,0.9166666666666666,48,50,0.96,50,,DM5_lPN,left,True,True,False,True,accepted
+57410,PN glomerulus VA7l 57411 NS,PN,VA7l,bouton,720575940625784153,0.88,0.84,50,50,1.0,50,,VA7l_adPN,left,True,True,False,True,accepted
+57414,PN glomerulus DC3 57415 LK,PN,DC3,bouton,720575940613419695,1.0,1.0,50,50,1.0,50,,DC3_adPN,left,True,True,False,True,accepted
+30791,PN glomerulus DL2d 30792 BH,PN,DL2d,bouton,720575940628316047,0.94,0.92,50,50,1.0,50,,DL2d_adPN,left,True,True,False,True,accepted
+68697,PN glomerulus DM6 68698 BH,PN,DM6,bouton,720575940631328104,0.9,0.86,50,50,1.0,50,,DM6_adPN,left,True,True,False,True,accepted
+1775706,PN glomerulus DL1 22153 JMR,PN,DL1,bouton,720575940616079035,1.0,1.0,50,50,1.0,50,,DL1_adPN,left,True,True,False,True,accepted
+23134,PN glomerulus VC3l 23135 BH,PN,VC3l,bouton,720575940615394719,0.98,0.96,50,50,1.0,50,,VC3_adPN,left,True,False,False,False,incompatible-type
+41578,PN glomerulus VC3l 41579 AJ,PN,VC3l,bouton,720575940619902598,0.96,0.94,50,50,1.0,50,,VC3_adPN,left,True,False,False,False,incompatible-type
+33903,PN glomerulus DL3 33904 JMR,PN,DL3,bouton,720575940619807397,1.0,1.0,50,50,1.0,50,,DL3_lPN,left,True,True,False,True,accepted
+22132,PN glomerulus VC1 22133 BH,PN,VC1,bouton,720575940637526190,0.94,0.92,50,50,1.0,50,,VC1_lPN,left,True,True,False,True,accepted
+35447,PN glomerulus VM5d 35448 AA,PN,VM5d,bouton,720575940627035388,0.98,0.96,50,50,1.0,50,,VM5d_adPN,left,True,True,False,True,accepted
+32399,PN glomerulus DC3 32400 AA,PN,DC3,bouton,720575940630131663,0.98,0.96,50,50,1.0,50,,DC3_adPN,left,True,True,False,True,accepted
+24726,PN glomerulus VM1 24727 BH,PN,VM1,bouton,720575940623444715,0.96,0.94,50,50,1.0,50,,VM1_lPN,left,True,True,False,True,accepted
+771242,PN glomerulus DC1 23665 AA,PN,DC1,bouton,720575940637056887,0.9,0.86,50,50,1.0,50,,DC1_adPN,left,True,True,False,True,accepted
+57003,PN glomerulus lvVM4 57004 ML,PN,VM4,bouton,720575940618461121,1.0,1.0,50,50,1.0,50,,VM4_lvPN,left,True,True,False,True,accepted
+45242,PN glomerulus VC2 45243 AA,PN,VC2,bouton,720575940628739560,0.96,0.94,50,50,1.0,50,,VC2_lPN,left,True,True,False,True,accepted
+24251,PN glomerulus VM7v 24252 LK,PN,VM7v,bouton,720575940619337536,0.98,0.96,50,50,1.0,50,,VM7v_adPN,left,True,True,False,True,accepted
+40637,PN glomerulus D 40638 BH,PN,D,bouton,720575940603985952,1.0,1.0,50,50,1.0,50,,D_adPN,left,True,True,False,True,accepted
+49865,PN glomerulus VM5d 49866 JMR,PN,VM5d,bouton,720575940644961588,0.94,0.92,50,50,1.0,50,,VM5d_adPN,left,True,True,False,True,accepted
+46800,PN glomerulus VC3l 46801 JMR,PN,VC3l,bouton,720575940619928429,0.98,0.96,50,50,1.0,50,,VC3_adPN,left,True,False,False,False,incompatible-type
+22744,PN glomerulus VC3m 22745 JMR,PN,VC3m,bouton,720575940624515571,0.94,0.92,50,50,1.0,50,,VC5_lvPN,left,True,False,False,False,incompatible-type
+30434,PN glomerulus VM5v 30435 BH,PN,VM5v,bouton,720575940620189790,1.0,1.0,50,50,1.0,50,,VM5v_adPN,left,True,True,False,True,accepted
+39139,PN glomerulus VM5d 39140 CF,PN,VM5d,bouton,720575940635082871,0.98,0.96,50,50,1.0,50,,VM5d_adPN,left,True,True,False,True,accepted
+65762,PN glomerulus DC2 65763 AJ,PN,DC2,bouton,720575940627160322,0.94,0.92,50,50,1.0,50,,DC2_adPN,left,True,True,False,True,accepted
+39668,PN glomerulus DL5 39669 JMR,PN,DL5,bouton,720575940617207185,0.96,0.94,50,50,1.0,50,,DL5_adPN,left,True,True,False,True,accepted
+22277,PN glomerulus VC3m 22278 AA,PN,VC3m,bouton,720575940608845525,0.98,0.96,50,50,1.0,50,,VC5_lvPN,left,True,False,False,False,incompatible-type
+23829,PN glomerulus DL4 23830 JMR,PN,DL4,bouton,720575940627708688,0.9,0.86,50,50,1.0,50,,DL4_adPN,left,True,True,False,True,accepted
+40749,PN glomerulus DA4l 40750 BH,PN,DA4l,bouton,720575940608970197,0.94,0.92,50,50,1.0,50,,DA4l_adPN,left,True,True,False,True,accepted
+55085,PN glomerulus VC4 55086 AJ,PN,VC4,bouton,720575940609454603,1.0,1.0,50,50,1.0,50,,VC4_adPN,left,True,True,False,True,accepted
+55125,PN glomerulus VA1v 55126 BH,PN,VA1v,bouton,720575940629733626,0.96,0.94,50,50,1.0,50,,VA1v_adPN,left,True,True,False,True,accepted
+39254,PN putative glomerulus VC5 39255 JMR,PN,VC5,bouton,720575940624057853,0.98,0.96,50,50,1.0,50,,VM6_adPN,left,True,False,False,False,incompatible-type
+40306,PN glomerulus VM7d 40307 CF,PN,VM7d,bouton,720575940613167007,0.94,0.92,50,50,1.0,50,,VM7d_adPN,left,True,True,False,True,accepted
+22906,PN glomerulus VA5 22907 JMR,PN,VA5,bouton,720575940619838912,0.98,0.96,50,50,1.0,50,,VA5_lPN,left,True,True,False,True,accepted
+60799,PN glomerulus DM6 60800 JMR,PN,DM6,bouton,720575940622785062,1.0,1.0,50,50,1.0,50,,DM6_adPN,left,True,True,False,True,accepted
+51080,PN glomerulus VA1v 57251 LK,PN,VA1v,bouton,720575940628283560,1.0,1.0,50,50,1.0,50,,VA1v_adPN,left,True,True,False,True,accepted
+52106,PN glomerulus VA1v 52107 AA,PN,VA1v,bouton,720575940629097922,1.0,1.0,50,50,1.0,50,,VA1v_adPN,left,True,True,False,True,accepted
+57241,PN glomerulus DC3 57242 ML,PN,DC3,bouton,720575940634939327,0.98,0.96,50,50,1.0,50,,DC3_adPN,left,True,True,False,True,accepted
+46493,PN glomerulus DC4 46494 JMR,PN,DC4,bouton,720575940613579943,0.98,0.96,50,50,1.0,50,,DC4_adPN,left,True,True,False,True,accepted
+57246,PN glomerulus VA1v 57247 HG,PN,VA1v,bouton,720575940620199962,0.98,0.96,50,50,1.0,50,,VA1v_adPN,left,True,True,False,True,accepted
+581536,PN glomerulus DL3 47095 JMR,PN,DL3,bouton,720575940630778428,1.0,1.0,50,50,1.0,50,,DL3_lPN,left,True,True,False,True,accepted
+53671,PN glomerulus VM5v 53672 AA,PN,VM5v,bouton,720575940625431866,0.98,0.96,50,50,1.0,50,,VM5v_adPN,left,True,True,False,True,accepted
+27048,PN glomerulus DP1l 27049 BH,PN,DP1l,bouton,720575940648650884,0.98,0.96,50,50,1.0,50,,DP1l_adPN,left,True,True,False,True,accepted
+35246,PN glomerulus D 35247 AA,PN,D,bouton,720575940633804212,1.0,1.0,50,50,1.0,50,,D_adPN,left,True,True,False,True,accepted
+42927,PN glomerulus VC4 42928 JMR,PN,VC4,bouton,720575940635933119,0.98,0.96,50,50,1.0,50,,VC4_adPN,left,True,True,False,True,accepted
+42421,PN glomerulus VA1d 42422 JMR,PN,VA1d,bouton,720575940622811430,1.0,1.0,50,50,1.0,50,,VA1d_adPN,left,True,True,False,True,accepted
+165303,PN glomerulus VA3 34321 JMR,PN,VA3,bouton,720575940656090017,0.98,0.96,50,50,1.0,50,,VA3_adPN,left,True,True,False,True,accepted
+22976,PN glomerulus VL2p 22977 JMR,PN,VL2p,bouton,720575940628467611,0.96,0.94,50,50,1.0,50,,VL2p_adPN,left,True,False,False,False,incompatible-type
+23512,PN glomerulus VM5v 23513 CF,PN,VM5v,bouton,720575940610505170,1.0,1.0,50,50,1.0,50,,VM5v_adPN,left,True,True,False,True,accepted
+27611,PN glomerulus DM5 27612 JMR,PN,DM5,bouton,720575940644258327,0.96,0.94,50,50,1.0,50,,DM5_lPN,left,True,True,False,True,accepted
+57307,PN glomerulus DM6 57308 ML,PN,DM6,bouton,720575940620437339,0.98,0.96,50,50,1.0,50,,DM6_adPN,left,True,True,False,True,accepted
+62434,PN glomerulus VM5d 62435 AJ,PN,VM5d,bouton,720575940611372714,1.0,1.0,50,50,1.0,50,,VM5d_adPN,left,True,True,False,True,accepted
+57319,PN glomerulus VA3 57320 IJA,PN,VA3,bouton,720575940604431584,0.98,0.96,50,50,1.0,50,,VA3_adPN,left,True,True,False,True,accepted
+21999,PN glomerulus VL2a 22000 JMR,PN,VL2a,bouton,720575940618295454,1.0,1.0,50,50,1.0,50,,VL2a_adPN,left,True,False,False,False,incompatible-type
+57333,PN glomerulus DL2d 57334 IJA,PN,DL2d,bouton,720575940630928715,0.98,0.96,50,50,1.0,50,,DL2d_adPN,left,True,True,False,True,accepted
+57337,PN glomerulus DL2d 57338 IJA,PN,DL2d,bouton,720575940620103590,1.0,1.0,50,50,1.0,50,,DL2d_adPN,left,True,True,False,True,accepted
+57341,PN glomerulus DL2d 57342 ML,PN,DL2d,bouton,720575940642046453,0.96,0.94,50,50,1.0,50,,DL2d_adPN,left,True,True,False,True,accepted
+2863104,PN glomerulus DA1 57316 ML 2863105,PN,DA1,bouton,720575940605102694,0.98,0.96,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+57349,PN glomerulus DA3 57350 HG,PN,DA3,bouton,720575940625924618,0.96,0.92,50,50,1.0,50,,DA3_adPN,left,True,True,False,True,accepted
+57353,PN glomerulus DA1 57354 GA,PN,DA1,bouton,720575940621185050,0.94,0.92,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+11524119,PN glomerulus VP1m lALT 65701 AJ ECM,PN,VP1,bouton,720575940619411147,0.96,0.94,50,50,1.0,50,,VP1m_l2PN,left,True,True,False,True,accepted
+192547,PN glomerulus V bilateral 192548 EAM GSXEJ RJVR,PN,V,bouton,720575940630546540,0.98,0.96,50,50,1.0,50,,V_ilPN,left,True,True,False,True,accepted
+57381,PN glomerulus DA1 57382 ML,PN,DA1,bouton,720575940626034819,0.92,0.88,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+57418,PN glomerulus DA2 57419 LK,PN,DA2,bouton,720575940622734835,1.0,1.0,50,50,1.0,50,,DA2_lPN,left,True,True,False,True,accepted
+57422,PN glomerulus DA2 57423 NS A,PN,DA2,bouton,720575940611849187,1.0,1.0,50,50,1.0,50,,DA2_lPN,left,True,True,False,True,accepted
+37513,VP3 PN mALT bilateral 37489 AJ,PN,VP3,bouton,720575940613203119,0.88,0.8,50,50,1.0,50,,VP3+VP1l_ivPN,right,True,True,False,True,accepted
+57499,PN glomerulus VL1 57500 ML,PN,VL1,bouton,720575940620595053,0.92,0.9,50,50,1.0,50,,VL1_ilPN,left,True,True,False,True,accepted
+27295,PN glomerulus DA1 27296 BH,PN,DA1,bouton,720575940637208718,0.96,0.94,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+57516,VP2 PN mALT 57517 LK ECM,PN,VP2,bouton,720575940619895125,0.96,0.94,50,50,1.0,50,,VP2_adPN,left,True,True,False,True,accepted
+1785034,PN glomerulus DA2 57399 LK,PN,DA2,bouton,720575940626937617,0.9,0.88,50,50,1.0,50,,DA2_lPN,left,True,True,False,True,accepted
+186573,PN glomerulus VA7m 21764 AA,PN,VA7m,bouton,720575940620068518,1.0,1.0,50,50,1.0,50,,VA7m_lPN,left,True,True,False,True,accepted
+73937,PN glomerulus VL1 73938 LK,PN,VL1,bouton,720575940615160386,0.94,0.92,50,50,1.0,50,,VL1_ilPN,right,True,True,False,True,accepted
+27884,PN glomerulus V bilateral 27885 JMR,PN,V,bouton,720575940626143806,0.92,0.88,50,50,1.0,50,,V_ilPN,right,True,True,False,True,accepted
+36108,PN glomerulus VA7m 36109 BH,PN,VA7m,bouton,720575940639680957,0.94,0.9,50,50,1.0,50,,VA7m_lPN,left,True,True,False,True,accepted
+61221,PN glomerulus DA1 61222 AJ,PN,DA1,bouton,720575940614309535,1.0,1.0,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+45882,VP3 PN mALT bilateral 45883 AA ECM,PN,VP3,bouton,720575940611352014,0.86,0.72,50,50,1.0,50,,VP3+VP1l_ivPN,left,True,True,False,True,accepted
+755022,PN glomerulus DA1 57358 IJA,PN,DA1,bouton,720575940603231916,1.0,1.0,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+53631,PN glomerulus DA2 53632 AA,PN,DA2,bouton,720575940622364184,1.0,1.0,50,50,1.0,50,,DA2_lPN,left,True,True,False,True,accepted
+37250,PN glomerulus DA4m 37251 JMR,PN,DA4m,bouton,720575940631930828,1.0,1.0,50,50,1.0,50,,DA4m_adPN,left,True,True,False,True,accepted
+65465,PN glomerulus DA3 57407 ML,PN,DA3,bouton,720575940659400577,0.96,0.94,50,50,1.0,50,,DA3_adPN,left,True,True,False,True,accepted
+32214,PN glomerulus VA7m 32215 BH,PN,VA7m,bouton,720575940640398477,0.96,0.92,50,50,1.0,50,,VA7m_lPN,left,True,True,False,True,accepted
+57311,PN glomerulus DA1 57312 LK,PN,DA1,bouton,720575940613345442,1.0,1.0,49,50,0.98,50,,DA1_lPN,left,True,True,False,True,accepted
+38885,PN glomerulus DA2 38886 BH,PN,DA2,bouton,720575940638719104,0.92,0.88,50,50,1.0,50,,DA2_lPN,left,True,True,False,True,accepted
+57323,PN glomerulus DA1 57324 LK JSL,PN,DA1,bouton,720575940619385765,0.96,0.92,50,50,1.0,50,,DA1_lPN,left,True,True,False,True,accepted
+14342,KCa'B'm 14343 CF,KC,KCapbp,bouton,720575940629893162,0.7,0.64,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+3104789,KCy 16943 BH,KC,KCg,bouton,720575940630792399,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16406,KCa'B'ap 16407 BH,KC,KCapbp,bouton,720575940622838797,0.92,0.9,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+8218,KCy 8219 JMR,KC,KCg,bouton,720575940628137478,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16410,KCa'B'ap 16411 IJA,KC,KCapbp,bouton,720575940605436262,0.82,0.78,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+16418,KCa'B'ap 16419 AJ,KC,KCapbp,bouton,720575940610921642,0.96,0.94,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+2050082,KCy 2050083 JMR-EM-JG,KC,KCg,bouton,720575940630767703,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+2238508,KCa'B'm 2238509 NS,KC,KCapbp,bouton,720575940617771421,0.92,0.9,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+36909,KCy 36910 ARH SAC,KC,KCg,bouton,720575940608530955,0.92,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8238,KCy 8239 CF,KC,KCg,bouton,720575940652403446,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+59438,KCy 59439 ZSG,KC,KCg,bouton,720575940619964916,0.88,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8242,KCy 8243 JMR,KC,KCg,bouton,720575940615604363,0.8,0.78,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+59446,KCy 59447 EAM,KC,KCg,bouton,720575940617035521,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+204856,KCy 204857 MR,KC,KCg,bouton,720575940625683740,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8250,KCy 8251 AA,KC,KCg,bouton,720575940626724946,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+4927553,KCy 4927554 IJA,KC,KCg,bouton,720575940617692962,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10306,KCaBs 10307 ECS,KC,KCab,bouton,720575940637945670,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14430,KCa'B'ap 14431 ARH,KC,KCapbp,bouton,720575940624243388,0.92,0.88,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+8290,KCa'B'ap 8291 IJA,KC,KCapbp,bouton,720575940643473056,0.52,0.1,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,False,low-confidence
+14434,KCa'B'm 14435 SMM,KC,KCapbp,bouton,720575940612169709,0.92,0.9,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+8302,KCy 8303 NS,KC,KCg,bouton,720575940636698286,0.8,0.78,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8306,KCy 8307 NS,KC,KCg,bouton,720575940631555128,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+59512,KCy 59513 CLM,KC,KCg,bouton,720575940631769145,0.94,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+5824641,LAC KCa'B'ap 5824642 ECM,KC,KCapbp,bouton,720575940638578510,0.9,0.86,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+8322,KCa'B'm 8323 NS,KC,KCapbp,bouton,720575940616502017,0.7,0.66,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+14466,KCaBs 14467 NAS,KC,KCab,bouton,720575940617293396,0.96,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10378,KCaBs 10379 NS,KC,KCab,bouton,720575940621966827,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16522,KCa'B'ap 16523 NS,KC,KCapbp,bouton,720575940619472225,0.8,0.72,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+14478,KCaBs 14479 BG,KC,KCab,bouton,720575940654643617,0.8958333333333334,0.8541666666666666,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+8342,KCy 8343 NS,KC,KCg,bouton,720575940627153668,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10410,KCaBs 10411 SAC,KC,KCab,bouton,720575940615755921,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16570,KCy 16571 SAC,KC,KCg,bouton,720575940631471185,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8382,KCy 8383 SAC,KC,KCg,bouton,720575940626524691,0.78,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16574,KCy 16575 BH,KC,KCg,bouton,720575940623003016,0.8,0.64,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10463422,KCy 9379 Li,KC,KCg,bouton,720575940624144107,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+186561,KCaBs 186562 ARH,KC,KCab,bouton,720575940629132288,0.9795918367346939,0.9591836734693877,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+10442,KCaBs 10443 CF,KC,KCab,bouton,720575940616235810,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+4323562,KCaBc 4323563 NS,KC,KCab,bouton,720575940624229322,0.74,0.66,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424175,KCaBc 424176 CF,KC,KCab,bouton,720575940639534909,0.9791666666666666,0.9583333333333334,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+10482,KCaBs 10483 IJA,KC,KCab,bouton,720575940632060641,0.82,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424185,KCaBc 424186 BG,KC,KCab,bouton,720575940650760438,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+319740,KCy 319741 CLM SAC,KC,KCg,bouton,720575940623976521,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12550,KCaBs 12551 IJA,KC,KCab,bouton,720575940604500448,0.82,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16646,KCy 16647 IJA,KC,KCg,bouton,720575940622830856,0.84,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+205065,KCy 205066 IJA,KC,KCg,bouton,720575940630464271,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14602,KCaBc 14603 SAC,KC,KCab,bouton,720575940616134630,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+1796364,KCy 1796365 IJA,KC,KCg,bouton,720575940620737121,0.9,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14618,KCaBs 14619 NS,KC,KCab,bouton,720575940610609075,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424220,KCaBs 424221 SI,KC,KCab,bouton,720575940623959881,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10094877,KCaBx 12555 SAC,KC,KCab,bouton,720575940629148672,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10526,KCaBs 10527 AJ,KC,KCab,bouton,720575940618714351,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12586,KCy 12587 IJA,KC,KCg,bouton,720575940622878477,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8494,KCy 8495 IJA,KC,KCg,bouton,720575940610359650,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12590,KCy 12591 IJA,KC,KCg,bouton,720575940604103200,0.78,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424239,KCaBc 424240 CF,KC,KCab,bouton,720575940626787313,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514351,KCaBs 514352 RAC IJA,KC,KCab,bouton,720575940627022664,0.9795918367346939,0.9591836734693877,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+12594,KCaBs 12595 NS,KC,KCab,bouton,720575940632738093,0.82,0.76,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+3027248,KCy 3027249 LF-IJA,KC,KCg,bouton,720575940632745261,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8302896,KCy 11571 IJA,KC,KCg,bouton,720575940617942326,0.8571428571428571,0.8163265306122449,49,50,0.98,50,,KCg-m,left,True,True,False,True,accepted
+424245,KCaBc 424246 NS,KC,KCab,bouton,720575940621876830,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12602,KCaBs 12603 AES,KC,KCab,bouton,720575940624147976,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+424251,KCaBs 424252 BAK,KC,KCab,bouton,720575940639497789,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514367,KCaBc 514368 NM,KC,KCab,bouton,720575940614143942,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16706,KCy 16707 CLM AEB,KC,KCg,bouton,720575940622307096,0.8,0.66,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12618,KCa'B'm 12619 CF,KC,KCapbp,bouton,720575940608571145,0.78,0.74,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+9533778,KCy 6667 NM,KC,KCg,bouton,720575940628265039,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424277,KCaBc 424278 LK,KC,KCab,bouton,720575940615281291,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14678,KCy 14679 ECS,KC,KCg,bouton,720575940629899511,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8538,KCy 8539 CF,KC,KCg,bouton,720575940634811743,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12634,KCaBs 12635 NS,KC,KCab,bouton,720575940623004685,0.82,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8391002,KCa'B'x 16475 IJA,KC,KCapbp,bouton,720575940650740982,0.68,0.62,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+12638,KCaBs 12639 CF,KC,KCab,bouton,720575940632525071,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424289,KCaBc 424290 NM,KC,KCab,bouton,720575940621646728,0.82,0.7,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14690,KCa'B'ap 14691 JMR,KC,KCapbp,bouton,720575940632030412,0.98,0.96,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+10598,KCaBc 10599 LK,KC,KCab,bouton,720575940614783042,0.8775510204081632,0.8571428571428571,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+514407,KCaBc 514408 BG,KC,KCab,bouton,720575940609006712,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8280422,KCy 11447 LF-NS,KC,KCg,bouton,720575940617865117,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424301,KCaBc 424302 BAK,KC,KCab,bouton,720575940626311623,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6510,KCy 6511 IJA,KC,KCg,bouton,720575940631926599,0.9,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16750,KCy 16751 SM,KC,KCg,bouton,720575940630067968,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514414,KCaBs 514415 BAK,KC,KCab,bouton,720575940622293091,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12658,KCaBs 12659 SAC,KC,KCab,bouton,720575940620759105,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16754,KCy 16755 SAC,KC,KCg,bouton,720575940626102628,0.7,0.64,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514420,KCaBs 514421 BG,KC,KCab,bouton,720575940630999327,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424319,KCaBc 424320 BG,KC,KCab,bouton,720575940659763329,0.96,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514434,KCaBs 514435 TN,KC,KCab,bouton,720575940623461134,0.9183673469387755,0.8775510204081632,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+10630,KCaBs 10631 LK,KC,KCab,bouton,720575940647242116,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514440,KCaBs 514441 BK-NM,KC,KCab,bouton,720575940626275656,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16778,KCy 16779 CF,KC,KCg,bouton,720575940622245708,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424331,KCaBs 424332 SAC,KC,KCab,bouton,720575940616580182,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12686,KCaBs 12687 IJA,KC,KCab,bouton,720575940626161154,0.8,0.76,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514448,KCaBs 514449 RAC NM,KC,KCab,bouton,720575940627667355,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16790,KCy 16791 NS,KC,KCg,bouton,720575940611489010,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424343,KCaBs 424344 BG,KC,KCab,bouton,720575940623095276,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514462,KCaBs 514463 JH,KC,KCab,bouton,720575940617717917,0.8958333333333334,0.875,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+14330,KCa'B'ap 14331 SAC,KC,KCapbp,bouton,720575940637124422,0.74,0.7,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+16806,KCy 16807 IJA,KC,KCg,bouton,720575940617534438,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424373,KCaBs 424374 NM,KC,KCab,bouton,720575940634992735,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6582,KCy 6583 SAC,KC,KCg,bouton,720575940611983322,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424379,KCaBs 424380 LK,KC,KCab,bouton,720575940621419032,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8638,KCy 8639 AA,KC,KCg,bouton,720575940635006559,0.94,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8262078,KCy 17159 NS,KC,KCg,bouton,720575940612680818,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8646,KCy 8647 IJA,KC,KCg,bouton,720575940645221742,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10694,KCaBc 10695 CF,KC,KCab,bouton,720575940638195773,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10698,KCaBc 10699 SI,KC,KCab,bouton,720575940638469190,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424397,KCaBs 424398 NS,KC,KCab,bouton,720575940636848710,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8654,KCy 8655 AJ,KC,KCg,bouton,720575940644157463,0.96,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514521,KCaBs 514522 NM,KC,KCab,bouton,720575940637683790,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6618,KCy 6619 BH,KC,KCg,bouton,720575940615257942,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10714,KCaBc 10715 JMR,KC,KCab,bouton,720575940643495840,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+188893,KCaBs 188894 ARH-NS,KC,KCab,bouton,720575940604576689,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9447905,KCaBx 13059 CF,KC,KCab,bouton,720575940629296684,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10722,KCaBc 10723 RT - IJA,KC,KCab,bouton,720575940659301249,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424421,KCaBc 424422 IJA,KC,KCab,bouton,720575940631587897,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6630,KCy 6631 IJA,KC,KCg,bouton,720575940637255221,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+188907,KCaBs 188908 ARH,KC,KCab,bouton,720575940612436264,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514539,KCaBs 514540 AF,KC,KCab,bouton,720575940627252267,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+16878,KCy 16879 AA,KC,KCg,bouton,720575940624514535,0.92,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424433,KCaBs 424434 NS,KC,KCab,bouton,720575940614252967,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12786,KCaBs 12787 IJA,KC,KCab,bouton,720575940609781966,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14838,KCaBs 14839 NS,KC,KCab,bouton,720575940623643832,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424445,KCaBs 424446 NM,KC,KCab,bouton,720575940610393842,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+8706,KCy  8707 NS,KC,KCg,bouton,720575940626509830,0.76,0.7,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10754,KCaBc 10755 IJA,KC,KCab,bouton,720575940621552372,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424451,KCaBc 424452 NS,KC,KCab,bouton,720575940614769567,0.9387755102040817,0.8775510204081632,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+6662,KCy 6663 CF,KC,KCg,bouton,720575940604493024,0.92,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424457,KCaBc 424458 NM,KC,KCab,bouton,720575940620316766,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514569,KCaBc 514570 SI,KC,KCab,bouton,720575940628079872,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14862,KCaBs 14863 CF,KC,KCab,bouton,720575940638436405,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424463,KCaBc 424464 SI,KC,KCab,bouton,720575940621388301,0.9591836734693877,0.9183673469387755,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+211473,KCaBs 211474 EW AEB,KC,KCab,bouton,720575940611597795,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16914,KCy 16915 AJ,KC,KCg,bouton,720575940616072665,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424469,KCaBs 424470 SI,KC,KCab,bouton,720575940622861960,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8726,KCy 8727 NS,KC,KCg,bouton,720575940604126129,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424475,KCaBc 424476 BAK,KC,KCab,bouton,720575940616746891,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12830,KCaBc 12831 IJA,KC,KCab,bouton,720575940643380759,0.88,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+31267,KCaBs 31268 IJA,KC,KCab,bouton,720575940621862405,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514596,KCaBs 514597 BAK,KC,KCab,bouton,720575940606687499,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12838,KCaBs 12839 NS,KC,KCab,bouton,720575940652109046,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12842,KCaBs 12843 BH,KC,KCab,bouton,720575940610214769,0.9387755102040817,0.9183673469387755,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+14890,KCaBs 14891 IJA,KC,KCab,bouton,720575940624290855,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424493,KCaBc 424494 BG,KC,KCab,bouton,720575940624975760,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8750,KCy 8751 IJA,KC,KCg,bouton,720575940617410705,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+424499,KCaBs 424500 SM,KC,KCab,bouton,720575940615125877,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12854,KCaBs 12855 IJA,KC,KCab,bouton,720575940606948188,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10814,KCaBc 10815 NS,KC,KCab,bouton,720575940621392901,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14910,KCaBs 14911 SAC,KC,KCab,bouton,720575940633771256,0.8,0.74,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424511,KCaBs 424512 NS,KC,KCab,bouton,720575940629201871,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+1677889,KCaBs 1677890 AJES-SAC,KC,KCab,bouton,720575940622628104,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10818,KCaBc 10819 AJ,KC,KCab,bouton,720575940627936784,0.9791666666666666,0.9583333333333334,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+8297026,KCy 9951 IJA,KC,KCg,bouton,720575940613049315,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12874,KCa'B'm 12875 ARH,KC,KCapbp,bouton,720575940628641847,0.78,0.74,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+3023434,KCy 11587 NS,KC,KCg,bouton,720575940623969684,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+189008,KCaBs 189009 ARH,KC,KCab,bouton,720575940610856874,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+424535,KCaBc 424536 BG,KC,KCab,bouton,720575940634759359,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+14938,KCy 14939 SAC,KC,KCg,bouton,720575940659323009,0.6,0.34,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514652,KCaBs 514653 RP,KC,KCab,bouton,720575940612930710,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+16990,KCy 16991 SAC,KC,KCg,bouton,720575940620283227,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10850,KCaBc 10851 CF,KC,KCab,bouton,720575940614749883,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+356962,KCa'B'm 356963 NS,KC,KCapbp,bouton,720575940622467293,0.82,0.78,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+424547,KCaBc 424548 SM,KC,KCab,bouton,720575940627200923,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514658,KCaBs 514659 AW CF NS,KC,KCab,bouton,720575940632529439,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6826598,KCy 6826599 IJA,KC,KCg,bouton,720575940636297700,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8262248,KCaBs 14851 IJA,KC,KCab,bouton,720575940644598819,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+6762,KCy 6763 ARH IJA,KC,KCg,bouton,720575940608544011,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14954,KCy 14955 ZSG,KC,KCg,bouton,720575940624265998,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8278640,KCaBs 13795 CF,KC,KCab,bouton,720575940631451897,0.74,0.7,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+531058,KCy 531059 PR,KC,KCg,bouton,720575940615980850,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514676,KCaBs 514677 TN,KC,KCab,bouton,720575940620442885,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12918,KCaBs 12919 SAC,KC,KCab,bouton,720575940613224446,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+2812539,KCaBs 182146 EW-NS,KC,KCab,bouton,720575940614625211,0.94,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10882,KCaBc 10883 NS,KC,KCab,bouton,720575940634236015,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12934,KCaBs 12935 IJA,KC,KCab,bouton,720575940626086728,0.66,0.6,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10894,KCaBs 10895 EW,KC,KCab,bouton,720575940631626809,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+205490,KCy 205491 ARH,KC,KCg,bouton,720575940616428917,0.78,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+6838,KCy 6839 IJA,KC,KCg,bouton,720575940632835298,0.84,0.8,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+4209341,KCy 4209342 MP-IJA,KC,KCg,bouton,720575940617015750,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+527040,KCa'B'ap 527041 CF-NS,KC,KCapbp,bouton,720575940615283618,0.58,0.54,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+10946,KCaBs 10947 IJA,KC,KCab,bouton,720575940613961403,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8902,KCy 8903 IJA,KC,KCg,bouton,720575940614793026,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+1399495,KCaBs 10151 SAC,KC,KCab,bouton,720575940606890370,0.86,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514761,KCaBs 514762 SAC,KC,KCab,bouton,720575940629529088,0.9183673469387755,0.8775510204081632,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+15050,KCy 15051 SAC,KC,KCg,bouton,720575940627343108,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+17110,KCy 17111 SAC,KC,KCg,bouton,720575940607185074,0.8163265306122449,0.7755102040816326,49,50,0.98,50,,KCg-m,left,True,True,False,True,accepted
+13018,KCaBc 13019 AA,KC,KCab,bouton,720575940604626912,0.9583333333333334,0.9375,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+514778,KCaBs 514779 BG,KC,KCab,bouton,720575940636528959,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514784,KCaBs 514785 BG,KC,KCab,bouton,720575940639441653,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+162532,KCa'B'ap 162533 CLM,KC,KCapbp,bouton,720575940614308002,0.94,0.92,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+13030,KCaBs 13031 IJA,KC,KCab,bouton,720575940616627851,0.84,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8938,KCy 8939 AA,KC,KCg,bouton,720575940630961464,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10986,KCaBs 10987 BH,KC,KCab,bouton,720575940615528251,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+17130,KCy 17131 HG,KC,KCg,bouton,720575940629299500,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+205547,KCy 205548 ECS/LK,KC,KCg,bouton,720575940608810709,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+162545,KCy 162546 ECS EAM,KC,KCg,bouton,720575940625853477,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8958,KCy 8959 NS,KC,KCg,bouton,720575940621749253,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15102,KCy 15103 NS,KC,KCg,bouton,720575940627869928,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11010,KCaBs  11011 NS,KC,KCab,bouton,720575940626793502,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514820,KCaBc 514821 IJA,KC,KCab,bouton,720575940615638540,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15114,KCy 15115 IJA,KC,KCg,bouton,720575940616358715,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15118,KCy 15119 SAC,KC,KCg,bouton,720575940624006477,0.74,0.7,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+70417,KCy 70418 ARH-SAC,KC,KCg,bouton,720575940630789071,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+3445525,KCy 6487 ML-NS,KC,KCg,bouton,720575940624934800,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+6934,KCy 6935 IJA,KC,KCg,bouton,720575940615577542,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514849,KCaBc 514850 IJA,KC,KCab,bouton,720575940639624253,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13098,KCaBs 13099 SAC,KC,KCab,bouton,720575940629322746,0.78,0.74,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+17194,KCy 17195 EAM,KC,KCg,bouton,720575940638936629,0.92,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514860,KCaBs 514861 BG,KC,KCab,bouton,720575940637953764,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13102,KCaBs 13103 NS,KC,KCab,bouton,720575940630849311,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10029882,KCaBx 14471 NM,KC,KCab,bouton,720575940633247935,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8936254,KCaBx 10899 NS,KC,KCab,bouton,720575940617174365,0.86,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8336193,KCa'B'm 11695 LF-NS,KC,KCapbp,bouton,720575940634959461,0.82,0.76,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+11078,KCaBs 11079 IJA,KC,KCab,bouton,720575940635753071,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+17238,KCy 17239 LF IJA,KC,KCg,bouton,720575940628651575,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13146,KCaBs 13147 IJA,KC,KCab,bouton,720575940637685476,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11102,KCaBs 11103 NS,KC,KCab,bouton,720575940624125584,0.9183673469387755,0.8775510204081632,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+35679,KCa'B'ap 8315 AJ,KC,KCapbp,bouton,720575940622768152,1.0,1.0,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+11106,KCaBs 11107 CF,KC,KCab,bouton,720575940622857801,0.8,0.76,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+205669,KCy 205670 EAM,KC,KCg,bouton,720575940633755828,0.88,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13158,KCaBs 13159 NS,KC,KCab,bouton,720575940624737464,0.8,0.76,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15214,KCy 15215 CF,KC,KCg,bouton,720575940612099309,0.84,0.8,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11122,KCaBs 11123 BH,KC,KCab,bouton,720575940619793012,1.0,1.0,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+15218,KCy 15219 IJA,KC,KCg,bouton,720575940633058897,0.84,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+70516,KCy 70517 EW,KC,KCg,bouton,720575940614785130,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+205686,KCy 205687 ARH-NS,KC,KCg,bouton,720575940621280545,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+17278,KCy 17279 NS,KC,KCg,bouton,720575940613197608,0.88,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11138,KCaBs 11139 NS,KC,KCab,bouton,720575940628675644,0.8958333333333334,0.875,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+514946,KCaBs 514947 SI,KC,KCab,bouton,720575940632928173,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10746756,KCaBx 10795 Li,KC,KCab,bouton,720575940614033932,0.9,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11142,KCaBs 11143 JSL,KC,KCab,bouton,720575940623943316,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11146,KCaBs 11147 SAC,KC,KCab,bouton,720575940623171268,0.76,0.74,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13202,KCaBs 13203 SJW AEB JMR,KC,KCab,bouton,720575940608177988,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+514965,KCaBs 514966 NM,KC,KCab,bouton,720575940635291247,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+175008,KCy 175009 AJ AEB,KC,KCg,bouton,720575940626674584,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514979,KCaBs 514980 NS,KC,KCab,bouton,720575940621851174,0.94,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9528229,KCy 11847 SAC,KC,KCg,bouton,720575940621764385,0.66,0.6,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+514985,KCaBs 514986 NM,KC,KCab,bouton,720575940605421670,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+3021737,KCy 8223 JMR,KC,KCg,bouton,720575940642193608,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+2290613,KCy 2290614 RJVR-NS,KC,KCg,bouton,720575940630682449,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+175032,KCa'B'ap 175033 AJ,KC,KCapbp,bouton,720575940612723409,0.96,0.94,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+515015,KCaBs 515016 BG,KC,KCab,bouton,720575940628610012,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15306,KCy 15307 IJA,KC,KCg,bouton,720575940619742144,0.92,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+7118,KCy 7119 AA,KC,KCg,bouton,720575940623386762,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9178,KCy 9179 BAK,KC,KCg,bouton,720575940624738232,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+3828700,KCy 3828701 SAC,KC,KCg,bouton,720575940615090444,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13278,KCaBs 13279 JMR,KC,KCab,bouton,720575940643406615,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+13290,KCaBs 13291 GA,KC,KCab,bouton,720575940628107249,0.96,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7150,KCy 7151 SAC,KC,KCg,bouton,720575940626540042,0.84,0.8,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515058,KCaBs 515059 IJA,KC,KCab,bouton,720575940630668751,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13302,KCaBs 13303 IJA,KC,KCab,bouton,720575940613442154,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515065,KCaBs 515066 LK,KC,KCab,bouton,720575940611657881,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9210,KCy 9211 SAC,KC,KCg,bouton,720575940611052517,0.7,0.62,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13310,KCaBs 13311 AJ,KC,KCab,bouton,720575940648139129,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515071,KCaBs 515072 LK,KC,KCab,bouton,720575940619205103,0.84,0.74,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13314,KCaBs 13315 IJA,KC,KCab,bouton,720575940620544182,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515077,KCaBs 515078 IJA,KC,KCab,bouton,720575940622229836,0.8571428571428571,0.8163265306122449,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+15370,KCy 15371 IJA,KC,KCg,bouton,720575940617341597,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515083,KCaBs 515084 NS,KC,KCab,bouton,720575940636695982,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15374,KCy 15375 AJ,KC,KCg,bouton,720575940608682453,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15378,KCy 15379 BAK,KC,KCg,bouton,720575940630170967,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+31772,KCa'B'ap 31773 AEB-SAC-CF,KC,KCapbp,bouton,720575940644974644,0.84,0.82,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+515108,KCaBs 515109 NS,KC,KCab,bouton,720575940615892966,0.84,0.68,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9254,KCa'B'm 9255 AEB,KC,KCapbp,bouton,720575940625030233,0.94,0.9,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+7222,KCy 7223 LF IJA,KC,KCg,bouton,720575940619659969,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515126,KCaBs 515127 NM,KC,KCab,bouton,720575940627138888,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10239037,KCy 9699 NS,KC,KCg,bouton,720575940611655288,0.9,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13374,KCaBs 13375 IJA,KC,KCab,bouton,720575940629979897,0.82,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15422,KCy 15423 NS,KC,KCg,bouton,720575940629724354,1.0,1.0,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13378,KCaBc 13379 NS,KC,KCab,bouton,720575940612287283,0.78,0.6,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515138,KCaBs 515139 NM,KC,KCab,bouton,720575940626199324,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8217673,KCaBs 10991 IJA,KC,KCab,bouton,720575940638724186,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9294,KCa'B'm 9295 CLM,KC,KCapbp,bouton,720575940628385546,0.9,0.88,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+8076373,KCa'B'm 15687 CF,KC,KCapbp,bouton,720575940631275821,0.76,0.72,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+7282,KCa'B'ap 7283 IJA,KC,KCapbp,bouton,720575940620311430,0.84,0.8,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+7286,KCa'B'ap 7287 EAM,KC,KCapbp,bouton,720575940604168224,0.96,0.94,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+8139894,LAC KCa'B'ap 9943 IJA ECM,KC,KCapbp,bouton,720575940627282408,0.8,0.76,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+205947,KCaBs 205948 ARH CF,KC,KCab,bouton,720575940609573842,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+212096,KCaBs 212097 IJA,KC,KCab,bouton,720575940633569215,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515201,KCaBs 515202 NM,KC,KCab,bouton,720575940613939090,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7302,KCy 7303 BG,KC,KCg,bouton,720575940623067114,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15502,KCy 15503 IJA,KC,KCg,bouton,720575940617540838,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13466,KCaBc 13467 SJW,KC,KCab,bouton,720575940619311286,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515226,KCaBs 515227 NS,KC,KCab,bouton,720575940636272862,0.9375,0.9166666666666666,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+9374,KCy 9375 SAC,KC,KCg,bouton,720575940614605458,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515233,KCaBs 515234 NM,KC,KCab,bouton,720575940624024555,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7330,KCa'B'ap 7331 BH,KC,KCapbp,bouton,720575940624894308,0.98,0.96,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+515239,KCaBs 515240 AF,KC,KCab,bouton,720575940617444219,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+212136,KCaBs 10955 GA,KC,KCab,bouton,720575940627804136,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+15530,KCy 15531 AJ,KC,KCg,bouton,720575940617363156,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11438,KCy 11439 NS-SAC,KC,KCg,bouton,720575940610218360,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15534,KCy 15535 SA EAM,KC,KCg,bouton,720575940633289111,0.9,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+318639,KCy 162566 CLM,KC,KCg,bouton,720575940609963248,0.88,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515246,KCaBs 515247 NM,KC,KCab,bouton,720575940613315309,0.86,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9394,KCy 9395 JMR,KC,KCg,bouton,720575940654810017,0.96,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515258,KCaBs 515259 LK,KC,KCab,bouton,720575940626569112,0.7959183673469388,0.7346938775510204,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+58561,KCaBs 58562 ARH,KC,KCab,bouton,720575940614761026,0.9387755102040817,0.9183673469387755,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+515266,KCaBs 515267 SAC,KC,KCab,bouton,720575940618158160,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7362,KCa'B'ap 7363 IJA,KC,KCapbp,bouton,720575940614180714,0.78,0.72,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+9410,KCy 9411 NS,KC,KCg,bouton,720575940624013309,0.74,0.52,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10581191,KCy 15351 NM,KC,KCg,bouton,720575940631003410,0.84,0.78,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515272,KCaBs 515273 LK,KC,KCab,bouton,720575940624946446,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13518,KCaBs 13519 JMR,KC,KCab,bouton,720575940636316137,0.94,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8189134,KCa'B'm 14991 IJA,KC,KCapbp,bouton,720575940623881801,0.56,0.5,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+9426,KCy 9427 NS,KC,KCg,bouton,720575940627491861,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+52434,KCa'B'm 52435 JH-NS,KC,KCapbp,bouton,720575940633620940,0.74,0.66,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+515287,KCaBs 515288 ALS,KC,KCab,bouton,720575940627342674,0.9795918367346939,0.9591836734693877,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+11482,KCy 11483 HG,KC,KCg,bouton,720575940620179309,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9438,KCy 9439 NS,KC,KCg,bouton,720575940616343611,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515300,KCaBs 515301 NM,KC,KCab,bouton,720575940625059917,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+25841,KCaBs 13599 CF,KC,KCab,bouton,720575940604318129,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7410,KCa'B'm 7411 IJA,KC,KCapbp,bouton,720575940618469725,0.86,0.84,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+9458,KCa'B'ap 9459 NS,KC,KCapbp,bouton,720575940620355934,0.8,0.76,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+7414,KCa'B'm 7415 IJA,KC,KCapbp,bouton,720575940620363885,0.64,0.6,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+7418,KCa'B'm 7419 EAM,KC,KCapbp,bouton,720575940606954763,0.82,0.8,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+15614,KCy 15615 LK,KC,KCg,bouton,720575940617334430,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9592065,KCaBx 13447 JH,KC,KCab,bouton,720575940621708638,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515331,KCaBs 515332 NM,KC,KCab,bouton,720575940629717034,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7430,KCa'B'm 7431 IJA,KC,KCapbp,bouton,720575940611591829,0.82,0.8,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+11534,KCy 11535 NS,KC,KCg,bouton,720575940622993800,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11538,KCy 11539 JMR,KC,KCg,bouton,720575940642106824,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515347,KCaBs 515348 NM,KC,KCab,bouton,720575940627588337,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9494,KCy 9495 NS,KC,KCg,bouton,720575940629535738,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13590,KCaBs 13591 JMR,KC,KCab,bouton,720575940617899403,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7454,KCaBs 7455 IJA,KC,KCab,bouton,720575940634903397,0.72,0.68,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9502,KCy 9503 SAC,KC,KCg,bouton,720575940637143262,0.64,0.56,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15646,KCy 15647 CF,KC,KCg,bouton,720575940611615986,0.76,0.72,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515358,KCaBs 515359 LK,KC,KCab,bouton,720575940606725131,0.9,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11558,KCy 11559 NS,KC,KCg,bouton,720575940617178717,0.88,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+7466,KCaBs 7467 IJA,KC,KCab,bouton,720575940631027148,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+3859754,KCy 3859755 SAC,KC,KCg,bouton,720575940619743680,0.88,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8252716,KCy 6823 NS,KC,KCg,bouton,720575940644170519,0.82,0.78,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15662,KCa'B'm 15663 CF,KC,KCapbp,bouton,720575940610012024,0.84,0.82,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+30008,KCaBc 30009 EAM SAC,KC,KCab,bouton,720575940627519748,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11582,KCy 11583 SAC,KC,KCg,bouton,720575940632447827,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+515393,KCaBs 515394 BG,KC,KCab,bouton,720575940624277040,0.88,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9558,KCy 9559 AEB,KC,KCg,bouton,720575940618125893,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+52569,KCaBs 52570 NSR EAM,KC,KCab,bouton,720575940622054340,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11622,KCy 11623 NS,KC,KCg,bouton,720575940613793602,0.72,0.66,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9578,KCy 9579 EAM,KC,KCg,bouton,720575940636562921,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13682,KCaBs 13683 EAM,KC,KCab,bouton,720575940637508917,0.8979591836734694,0.8571428571428571,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+15730,KCa'B'm 15731 NS,KC,KCapbp,bouton,720575940629282391,0.72,0.66,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+7542,KCa'B'ap 7543 IJA,KC,KCapbp,bouton,720575940632704941,0.82,0.8,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+9590,KCy 9591 SAC,KC,KCg,bouton,720575940617696769,0.84,0.8,50,50,1.0,50,,KCg-d,left,True,True,False,True,accepted
+13686,KCaBs 13687 AJ,KC,KCab,bouton,720575940619604134,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+200094,KCaBs 7675 EW AJ,KC,KCab,bouton,720575940627626695,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+52651,KCaBs 52652 AES,KC,KCab,bouton,720575940629261159,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9654,KCy 9655 IJA,KC,KCg,bouton,720575940617567390,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15798,KCaBs 15799 MR,KC,KCab,bouton,720575940623170055,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9658,KCy 9659 NS,KC,KCg,bouton,720575940628318193,0.84,0.8,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+206268,KCy 206269 SM,KC,KCg,bouton,720575940617648507,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11714,KCa'B'm 11715 LK,KC,KCapbp,bouton,720575940630488827,0.98,0.96,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+177602,KCaBs 189029 ZSG AEB,KC,KCab,bouton,720575940625513616,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7634,KCa'B'ap 7635 BH,KC,KCapbp,bouton,720575940617010240,0.88,0.8,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+13782,KCaBs 13783 IJA,KC,KCab,bouton,720575940612613551,0.94,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13786,KCaBs 13787 NS,KC,KCab,bouton,720575940619259374,0.9183673469387755,0.8979591836734694,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+7646,KCa'B'm 7647 LK,KC,KCapbp,bouton,720575940614304012,0.94,0.92,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+11742,KCa'B'm 11743 BAK,KC,KCapbp,bouton,720575940608184156,0.92,0.88,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+9702,KCy 9703 JMR,KC,KCg,bouton,720575940649008761,0.98,0.96,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+1746412,KCaBc 424308 CF,KC,KCab,bouton,720575940616270453,0.96,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+30201,KCaBc 30202 SM,KC,KCab,bouton,720575940610380498,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13818,KCaBs 13819 LK,KC,KCab,bouton,720575940624586900,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8279560,KCy 16935 LF-NS,KC,KCg,bouton,720575940613200918,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9738,KCy 9739 SI,KC,KCg,bouton,720575940617954075,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9742,KCy 9743 AJ,KC,KCg,bouton,720575940624709925,1.0,1.0,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9989648,KCaBx 14547 JH,KC,KCab,bouton,720575940630469647,0.76,0.72,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7702,KCaBs 7703 AEB,KC,KCab,bouton,720575940620929238,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9754,KCy 9755 SAC,KC,KCg,bouton,720575940631034955,0.72,0.68,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9762,KCy 9763 CF,KC,KCg,bouton,720575940637965028,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+11822,KCy 11823 SAC,KC,KCg,bouton,720575940619319512,0.76,0.7,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+538159,KCaBs 538160 PR,KC,KCab,bouton,720575940634608791,0.96,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11826,KCy 11827 SM,KC,KCg,bouton,720575940608437769,0.84,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+7734,KCy 7735 IJA,KC,KCg,bouton,720575940638474112,0.78,0.66,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13886,KCaBc 13887 SAC,KC,KCab,bouton,720575940610649464,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13890,KCaBc 13891 BH,KC,KCab,bouton,720575940630823239,0.9795918367346939,0.9591836734693877,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+2543170,KCaBs 2543171 NM-NS,KC,KCab,bouton,720575940610410609,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+13894,KCaBc 13895 CF,KC,KCab,bouton,720575940625502608,0.86,0.82,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11850,KCy 11851 IJA,KC,KCg,bouton,720575940627947792,0.8,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15958,KCaBc 15959 SI,KC,KCab,bouton,720575940631262125,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+40538,KCaBc 10827 AJ,KC,KCab,bouton,720575940607721923,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+30300,KCy 30301 NAS AEB,KC,KCg,bouton,720575940624300984,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15966,KCaBc 15967 BH,KC,KCab,bouton,720575940618112459,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11878,KCy 11879 CF,KC,KCg,bouton,720575940638936885,0.82,0.78,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+13926,KCaBc 13927 LK,KC,KCab,bouton,720575940617497925,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+4056680,KCaBs 4056681 NS,KC,KCab,bouton,720575940626757209,0.92,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9842,KCy 9843 NS,KC,KCg,bouton,720575940639023011,0.84,0.8,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+15990,KCaBc 15991 BH,KC,KCab,bouton,720575940618889387,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7806,KCy 7807 NS,KC,KCg,bouton,720575940659392385,0.88,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8474260,KCaBx 10399 IJA,KC,KCab,bouton,720575940629633406,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+30358,KCy 30359 ARH,KC,KCg,bouton,720575940616929766,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+7834,KCy 7835 IJA,KC,KCg,bouton,720575940614781546,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+206512,KCaBc 206513 NAS,KC,KCab,bouton,720575940622742477,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+11958,KCa'B'm 11959 SAC,KC,KCapbp,bouton,720575940624653299,0.7,0.66,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+7870,KCy 7871 IJA,KC,KCg,bouton,720575940621097855,0.72,0.68,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+9930,KCy 9931 SAC,KC,KCg,bouton,720575940616788409,0.78,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8279765,KCaBs 7463 NS-SAC,KC,KCab,bouton,720575940629916972,0.9387755102040817,0.8979591836734694,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+14050,KCaBs 14051 ML,KC,KCab,bouton,720575940634842292,1.0,1.0,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10467043,KCaBx 14103 NM,KC,KCab,bouton,720575940605841074,0.9,0.88,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+7910,KCy 7911 BG,KC,KCg,bouton,720575940634107292,0.86,0.82,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14054,KCaBs 14055 IJA,KC,KCab,bouton,720575940627435592,0.82,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12014,KCa'B'm 12015 AJ,KC,KCapbp,bouton,720575940628876860,0.98,0.96,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+2334463,KCaBs 2334464 AJES MVP2 downstream pedc,KC,KCab,bouton,720575940637389902,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+9258758,KCy 6963 NM,KC,KCg,bouton,720575940638469309,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12066,KCa'B'ap 12067 AJ,KC,KCapbp,bouton,720575940617172573,0.9,0.86,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+12070,KCa'B'ap 12071 BH,KC,KCapbp,bouton,720575940625146882,0.98,0.96,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+206630,KCy 206631 ML EAM ,KC,KCg,bouton,720575940625490788,0.9,0.88,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+288558,KCaBc 288559 AEB-CF,KC,KCab,bouton,720575940621720959,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8006,KCy 8007 SAC,KC,KCg,bouton,720575940645220718,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14154,KCaBs 14155 BAK,KC,KCab,bouton,720575940618975936,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+239442,KCaBs 239443 LF IJA,KC,KCab,bouton,720575940610497731,0.82,0.78,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10078,KCaBs 10079 NSR,KC,KCab,bouton,720575940614969055,0.96,0.94,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12126,KCy 12127 IJA,KC,KCg,bouton,720575940631587129,0.8,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+10082,KCaBs 10083 AEB,KC,KCab,bouton,720575940624041545,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12134,KCy 12135 SAC,KC,KCg,bouton,720575940625655088,0.9,0.86,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12142,KCy 12143 CF,KC,KCg,bouton,720575940629342458,0.86,0.84,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+12150,KCa'B'ap 12151 NS,KC,KCapbp,modal_name_rule,720575940607168779,0.92,0.88,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+9691005,KCaBx 14515 JH,KC,KCab,bouton,720575940627372284,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+176001,KCy 16351 EAM,KC,KCg,bouton,720575940631713384,0.92,0.9,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+30598,KCy 30599 ARH CF,KC,KCg,bouton,720575940639859840,0.78,0.76,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16274,LAC KCa'B'ap 16275 IJA IS,KC,KCapbp,bouton,720575940606694748,0.72,0.62,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+12190,KCy 12191 IJA,KC,KCg,bouton,720575940638492349,0.78,0.68,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+14238,KCa'B'ap 14239 JMR,KC,KCapbp,bouton,720575940624829198,0.98,0.96,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+16286,KCa'B'ap 16287 IJA,KC,KCapbp,bouton,720575940616008309,0.78,0.74,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+198563,KCaBc 198564 EAM,KC,KCab,bouton,720575940613317738,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8220583,KCaBc 10811 NS,KC,KCab,bouton,720575940627988474,0.88,0.86,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+470953,KCaBs 470954 NM CF,KC,KCab,bouton,720575940623879312,0.88,0.84,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+169900,KCaBs 11151 LK,KC,KCab,bouton,720575940610159480,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12210,KCa'B'ap 12211 SMM,KC,KCapbp,bouton,720575940614984927,0.98,0.96,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+10166,KCaBs 10167 JMR,KC,KCab,bouton,720575940628593884,0.9583333333333334,0.9375,48,50,0.96,50,,KCab,left,True,True,False,True,accepted
+10170,KCaBs 10171 ZSG,KC,KCab,bouton,720575940623229927,0.98,0.96,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+12230,KCa'B'ap 12231 SAC,KC,KCapbp,bouton,720575940612737233,0.74,0.7,50,50,1.0,50,,KCapbp-ap2,left,True,True,False,True,accepted
+8277965,KCy 9507 NS-SAC,KC,KCg,bouton,720575940622392790,0.8,0.74,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+8142,KCy 8143 NM,KC,KCg,bouton,720575940625508733,0.94,0.92,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+16342,KCy 16343 AA,KC,KCg,bouton,720575940627441169,0.96,0.94,50,50,1.0,50,,KCg-m,left,True,True,False,True,accepted
+573398,KCaBs 573399 LK,KC,KCab,bouton,720575940604050110,0.94,0.92,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+10202,KCaBs 10203 AA,KC,KCab,bouton,720575940623781965,0.9591836734693877,0.9387755102040817,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+12266,KCa'B'm 12267 CF,KC,KCapbp,bouton,720575940622353622,0.72,0.68,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+10153962,KCaBx 13027 SAC,KC,KCab,bouton,720575940620273344,0.84,0.8,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+8198124,KCa'B'ap 9771 IJA,KC,KCapbp,bouton,720575940608633045,0.86,0.84,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+14322,KCa'B'ap 14323 IJA,KC,KCapbp,bouton,720575940634510703,0.86,0.82,50,50,1.0,50,,KCapbp-ap1,left,True,True,False,True,accepted
+12282,KCa'B'm 12283 IJA,KC,KCapbp,bouton,720575940604824236,0.86,0.84,50,50,1.0,50,,KCapbp-m,left,True,True,False,True,accepted
+8190,KCy 8191 IJA,KC,KCg,bouton,720575940627054725,0.7959183673469388,0.7551020408163265,49,50,0.98,50,,KCg-m,left,True,True,False,True,accepted
+23005,Multiglomerular lALT l2PN VP1d+VP1l+VP1m+8 LTS 0.9 bilateral 23006 AA ECM,annotation-only,,annotation,720575940612284569,0.92,0.9,50,50,1.0,50,,VP1d+VP4_l2PN1,left,True,False,False,False,incompatible-type
+30591,MBON-Calyx#1 30592 ARH ASB JSL,annotation-only,,annotation,720575940616463477,0.94,0.92,50,50,1.0,50,,MBON22,left,True,False,False,False,incompatible-type
+37212,Multiglomerular mALT lPN VP1d+VA3+VP1m+10 LTS 0.87 37213 JMR,annotation-only,,annotation,720575940628954112,0.84,0.8,50,50,1.0,50,,M_lPNm11D,left,True,False,False,False,incompatible-type
+37235,Multiglomerular mALT lPN VP1d+VP2+DC2+13 LTS 0.72 37236 JMR,annotation-only,,annotation,720575940613809554,0.94,0.92,50,50,1.0,50,,M_lPNm11D,left,True,False,False,False,incompatible-type
+46105,Biglomerular mALT VP1m + VP5 ilPN bilateral 46106 AA ECM,annotation-only,,annotation,720575940621753377,0.94,0.92,50,50,1.0,50,,VP1m+VP5_ilPN,right,True,False,False,False,incompatible-type
+49026,Multiglomerular mALT adPN VC3l+VM4+VC3m+9 LTS 0.89 polyL 49027 AJ,annotation-only,,annotation,720575940610752068,0.9,0.86,50,50,1.0,50,,M_adPNm4,left,True,False,False,False,incompatible-type
+57254,Multiglomerular mALT adPN VC3m+VC3l+VM4+8 LTS 0.87 polyL 57255 NS,annotation-only,,annotation,720575940620551259,0.96,0.92,50,50,1.0,50,,M_adPNm4,left,True,False,False,False,incompatible-type
+57266,Multiglomerular mALT adPN VC3l+DC4+VC3m+9 LTS 0.84 polyL 57267 ML,annotation-only,,annotation,720575940624039560,0.92,0.9,50,50,1.0,50,,M_adPNm5,left,True,False,False,False,incompatible-type
+57274,Multiglomerular mALT adPN VL2p+VL2a+DP1l+1 LTS 0.94 57275 LK,annotation-only,,annotation,720575940614009827,0.88,0.8,50,50,1.0,50,,M_adPNm7,left,True,False,False,False,incompatible-type
+57426,Multiglomerular mALT lPN VP1d+DM4+VC1+5 LTS 0.94 57427 NS,annotation-only,,annotation,720575940644238871,0.98,0.96,50,50,1.0,50,,M_lPNm11D,left,True,False,False,False,incompatible-type
+57503,Biglomerular mALT VP1m + VP5 ilPN bilateral 57504 LK ECM,annotation-only,,annotation,720575940624770791,0.94,0.92,50,50,1.0,50,,VP1m+VP5_ilPN,left,True,False,False,False,incompatible-type
+59129,Uniglomerular mALT VC3l adPN 59130 AJ,PN,VC3l,annotation,720575940620465904,1.0,1.0,50,50,1.0,50,,VC3_adPN,left,True,False,False,False,incompatible-type
+60445,putative MB-C1 32768 JMR,annotation-only,,annotation,720575940618932603,0.92,0.9,50,50,1.0,50,,MB-C1,left,True,False,False,False,incompatible-type
+192423,Uniglomerular dALT VP1d il2PN 192424 CLM NM ,PN,VP1d,annotation,720575940629011655,0.94,0.92,50,50,1.0,50,,VP1d_il2PN,left,True,True,False,True,accepted
+203504,Uniglomerular dALT VP1d il2PN 71750 ARH NM ,PN,VP1d,annotation,720575940623913364,1.0,1.0,50,50,1.0,50,,VP1d_il2PN,right,True,True,False,True,accepted
+203840,APL 203841 MR JSL,annotation-only,,annotation,720575940624547622,0.9,0.88,50,50,1.0,50,,APL,left,True,False,False,False,incompatible-type
+424295,KCaBc 424296 NS,KC,KCab,annotation,720575940618407589,0.92,0.9,50,50,1.0,50,,KCab,left,True,True,False,True,accepted
+515387,KCaBs 515388 IJA,KC,KCab,annotation,720575940620382854,0.8979591836734694,0.8775510204081632,49,50,0.98,50,,KCab,left,True,True,False,True,accepted
+535060,MB-C1#1 535061 JSL,annotation-only,,annotation,720575940606769854,0.96,0.94,50,50,1.0,50,,MB-C1,left,True,False,False,False,incompatible-type
+1149173,Uniglomerular t5-mlALT VP4 vPN 282136 RJVR ECM,PN,VP4,annotation,720575940627245585,0.86,0.84,50,50,1.0,50,,VP4_vPN,left,True,True,False,True,accepted
+1530770,MB-CP2 SCL fragment 68908,annotation-only,,annotation,720575940615438495,0.66,0.6,50,50,1.0,50,,LHPV3c1,left,True,False,False,False,incompatible-type
+1549518,contralateral MB-CP2 1549519 SAC,annotation-only,,annotation,720575940630914245,0.82,0.8,50,50,1.0,50,,LHPV3c1,right,True,False,False,False,incompatible-type
+14003783,Uniglomerular mALT VP5 + SEZ adPN 57472 LK ECM,PN,VP5,annotation,720575940620445062,0.9,0.88,50,50,1.0,50,,VP5+Z_adPN,left,True,True,False,True,accepted

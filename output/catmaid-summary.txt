@@ -1,0 +1,35 @@
+I3: same FAFB brain, CATMAID versus FlyWire v783
+Accepted matrix neurons: 104 PNs, 439 KCs
+Primary floor: all / type / threshold 5
+Cell floor is conditional, zero by selection; cell recovery/typing noise is not estimated.
+bock/all: median FW/CAT=0.8333333333333334; total ratio=0.8564537392138063
+  neuron, t=1: cell=0.0; connection=0.1556233653007847; strength 1-rho=0.2223825188452303; SD log2=0.6309567444280929
+  neuron, t=3: cell=0.0; connection=0.10466269841269837; strength 1-rho=0.24021121013221824; SD log2=0.5343468441259283
+  neuron, t=5: cell=0.0; connection=0.15148413510747183; strength 1-rho=0.23548996926369314; SD log2=0.46912877505974365
+  type, t=1: cell=0.0; connection=0.014184397163120588; strength 1-rho=0.08068255068955354; SD log2=0.49822001919665904
+  type, t=3: cell=0.0; connection=0.007246376811594235; strength 1-rho=0.08326711588948577; SD log2=0.4583758102381632
+  type, t=5: cell=0.0; connection=0.02898550724637683; strength 1-rho=0.08532452143338354; SD log2=0.41778418290965713
+  Neuron-pair accuracy at 5=0.9935167338356404; supplied Buhmann benchmark=0.96 (different evaluation population).
+connectivity/all: median FW/CAT=0.8333333333333334; total ratio=0.8490257811571819
+  neuron, t=1: cell=0.0; connection=0.15228645383951678; strength 1-rho=0.21326735661752105; SD log2=0.6230689622158473
+  neuron, t=3: cell=0.0; connection=0.09861248761149655; strength 1-rho=0.23440875391901173; SD log2=0.5255452102102056
+  neuron, t=5: cell=0.0; connection=0.14570552147239269; strength 1-rho=0.23266982239409473; SD log2=0.46563828623246606
+  type, t=1: cell=0.0; connection=0.014184397163120588; strength 1-rho=0.0793891781521957; SD log2=0.49860472460932415
+  type, t=3: cell=0.0; connection=0.007246376811594235; strength 1-rho=0.0819162366053986; SD log2=0.4590473811581594
+  type, t=5: cell=0.0; connection=0.02898550724637683; strength 1-rho=0.08406321529868399; SD log2=0.41946643584403936
+  Neuron-pair accuracy at 5=0.9937576660241808; supplied Buhmann benchmark=0.96 (different evaluation population).
+FW-L/FW-R excess cell/connection/strength=[0.05871108683779355, 0.4103865584101276, 0.021738987268801746]; strictly increasing=False
+FW-R/HB excess cell/connection/strength=[0.2727272727272727, 0.5274564023518269, 0.10505363663322576]; strictly increasing=False
+FW-L/HB excess cell/connection/strength=[0.26920980926430516, 0.5385913974900401, 0.09937338897433234]; strictly increasing=False
+FW-R/HB > FW-L/FW-R at all levels: True; delta={'cell_type': 0.21401618588947915, 'connection': 0.11706984394169928, 'strength': 0.08331464936442401}
+FW-L/HB > FW-L/FW-R at all levels: True; delta={'cell_type': 0.2104987224265116, 'connection': 0.12820483907991254, 'strength': 0.0776344017055306}
+Matching: {"total": 576, "eligible": 560, "accepted": 549, "match_rate": 0.9803571428571428, "reasons": {"accepted": 549, "incompatible-type": 26, "low-confidence": 1}, "conflicts": {}}
+Fetch audit: {"annotation_targets": 145, "fetched_skeletons": 576, "name_rule": {"PN": {"explicit_names": 113, "modal_name_minus_skeleton": 1, "obey_modal": 96, "exceptions": 17, "fallback": []}, "KC": {"explicit_names": 439, "modal_name_minus_skeleton": 1, "obey_modal": 388, "exceptions": 51, "fallback": [{"name": "KCa'B'ap 12151 NS", "skeleton_id": 12150}]}}, "matrix_vs_live": {"possible_pairs": 49720, "positive_union_pairs": 2311, "exact_positive_union": 0.9498052790999567, "exact_all_pairs": 0.9976669348350764, "total_a": 37418.0, "total_b": 37738.0, "mismatch_examples": [{"source": 22906, "target": 3104789, "a": 10.0, "b": 12.0}, {"source": 57418, "target": 3104789, "a": 10.0, "b": 16.0}, {"source": 39254, "target": 36909, "a": 26.0, "b": 28.0}, {"source": 57246, "target": 8302, "a": 23.0, "b": 24.0}, {"source": 11544121, "target": 424220, "a": 9.0, "b": 10.0}, {"source": 23829, "target": 8302896, "a": 6.0, "b": 5.0}, {"source": 21999, "target": 8302896, "a": 29.0, "b": 30.0}, {"source": 46493, "target": 514367, "a": 30.0, "b": 31.0}, {"source": 40749, "target": 8538, "a": 14.0, "b": 15.0}, {"source": 39682, "target": 16750, "a": 7.0, "b": 28.0}, {"source": 57319, "target": 16790, "a": 16.0, "b": 17.0}, {"source": 57410, "target": 6582, "a": 6.0, "b": 26.0}, {"source": 23597, "target": 424379, "a": 19.0, "b": 21.0}, {"source": 39668, "target": 424379, "a": 17.0, "b": 19.0}, {"source": 51080, "target": 424379, "a": 12.0, "b": 13.0}, {"source": 28876, "target": 10722, "a": 7.0, "b": 8.0}, {"source": 62434, "target": 424445, "a": 18.0, "b": 19.0}, {"source": 46493, "target": 424457, "a": 37.0, "b": 38.0}, {"source": 40749, "target": 211473, "a": 12.0, "b": 11.0}, {"source": 40749, "target": 16914, "a": 11.0, "b": 10.0}]}}
+Conditional verdict: {"hierarchy_increases_in_all_comparisons": false, "between_exceeds_within_at_every_level": true, "interpretation": "Descriptive conditional excess, not established biological noise removal."}
+One same-brain PN->KC calyx circuit, with random-like connectivity; transferring its floor to the whole brain is an assumption.
+Cell-type/count floor is conditional on compatible one-to-one matches and is zero by construction; cell recovery and typing errors are unmeasured.
+Rejected matches are selection/coverage losses, not biological differences. Both reconstructions may share errors; neither is ground truth.
+Strength uses shared above-threshold edges and input normalization over all matched PN inputs, not every input to a KC.
+Excess is observed minus floor (negative values retained), not an additive decomposition or statistical noise removal.
+Subtracting a common floor preserves between-minus-within differences algebraically; the three metrics are not a calibrated common distance.
+Buhmann et al. 2021: supplied benchmark 96% calyx pair classification at 5 synapses; pair accuracy includes true negatives, unlike Jaccard.

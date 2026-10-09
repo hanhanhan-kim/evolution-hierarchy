@@ -1,6 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.cm import get_cmap
+from matplotlib import font_manager
+from pathlib import Path
+
+# Optional local house style. design/ is gitignored, so a public checkout renders
+# in plain matplotlib; figure code should use the colour cycle (C0, C1, ...)
+# rather than named colours so it looks right either way.
+_DESIGN = Path(__file__).parent / "design"
+if (_DESIGN / "figures.mplstyle").exists():
+    for _font in (_DESIGN / "fonts").glob("*.ttf"):
+        font_manager.fontManager.addfont(str(_font))
+    plt.style.use(_DESIGN / "figures.mplstyle")
 
 
 def plot_layer_evolution(layer_stats, layers_to_plot=None, figsize=(8, 6), save=False):

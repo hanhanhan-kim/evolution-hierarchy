@@ -70,3 +70,6 @@ coverage.xml
 # MyPy
 .mypy_cache/
 dmypy.json
+
+# Local, private figure styling. Never commit or publish.
+/design/

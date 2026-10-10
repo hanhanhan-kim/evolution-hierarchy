@@ -1,0 +1,197 @@
+Experiment E3: complete
+{'R': 4, 'N': 64, 'K': 16, 'B': 200, 'T': 1000, 'every': 20, 'seed': 0, 'n_reg': 12, 'hybrid_samples': 64, 'hybrid_iters': 12, 'validation_iters': 24, 'u': 0.02, 'sigma': 0.05, 's': 1.0, 'dt': 0.05, 'duration_ms': 12000.0, 'window_start_ms': 4000.0, 'reg_window_ms': 2000.0, 'reg_transient_ms': 1000.0, 'reg_gain': 0.3, 'controller_seconds': 300.0, 'ca_tol': 0.02, 'chunk_size': None, 'baseline': '/root/evolution-hierarchy/output/stg-replicates.json'}
+Model g correlations are not the same measurement as mRNA correlations. Development from zero fixes inverse-tau directions; within-cell correlations among regulated conductances come from shared alpha variation plus variation in tau_m ratios.
+E2 individual r pools animals across lineages; within-lineage E2 r is unavailable without saved populations. shab/shaw both map to Kd; these are not independent model pairs.
+Final alpha is used even without convergence. Mean-calcium convergence does not imply a pyloric fixed point; selection acts on the developed rhythm. Acute hybrids mix parental endpoint g; rescued hybrids develop from scratch. Unconverged parental endpoints are not steady states.
+E2 raw-r paired t, Holm over 84 pairs per level; independent-replicate CIs/sign tests. Individual level here means mean of within-lineage r. Consistency calls require R>=3 and K>=3.
+Canonical mean Ca targets: [143.49241638183594, 40.31889343261719, 28.739974975585938]
+Canonical features (period_ms, AB_duty, LP_duty, PY_duty, LP_on, LP_off, PY_on, PY_off): [1792.7047119140625, 0.31599926948547363, 0.22296251356601715, 0.2985709309577942, 0.5003215670585632, 0.7232840657234192, 0.569490909576416, 0.868061900138855]
+Short-window fixed-point max relative g error: 0
+Validation passed: True
+Schulz 2007 Table 1 | E2 pooled individual r (within-lineage unavailable) | E3 mean within-lineage r
+PD IH-shal: 0.76 | 0.135088169015944 | 0.6252186307683587
+PD IH-BKKCa: 0.87 | -0.44659296539612114 | 0.6145161871099845
+PD IH-para: 0.91 | -0.26013572700321674 | 0.6323691199577297
+PD BKKCa-shal: 0.89 | -0.061014788574539125 | 0.746585447457619
+PD BKKCa-para: 0.9 | 0.5345296626910567 | 0.8123516887426376
+LP IH-shal: 0.92 | -0.07264518178999424 | 0.7515895853284746
+LP IH-shab: 0.87 | -0.08928112708963454 | 0.7096622455937904
+LP IH-shaw: 0.9 | -0.08928112708963454 | 0.7096622455937904
+LP shal-shab: 0.88 | -0.008506467565894127 | 0.7490430522011593
+LP shal-shaw: 0.97 | -0.008506467565894127 | 0.7490430522011593
+replicate 0 omega classes: {'Ca_targets': 0.26928534529868353, 'tau_m': 0.3082773603709953, 'leaks': 1.0204761827997724, 'synapses': 0.470798182810964, 'emergent_g': 0.013658080656499694}
+replicate 1 omega classes: {'Ca_targets': 0.2093364785569616, 'tau_m': 0.3626794986318418, 'leaks': 1.289065813769884, 'synapses': 0.9673063666555826, 'emergent_g': 0.017193199598433188}
+replicate 2 omega classes: {'Ca_targets': 0.16307034965631334, 'tau_m': 0.44454285000724697, 'leaks': 0.8284621435429558, 'synapses': 0.9020028888977402, 'emergent_g': 0.02486550496520927}
+replicate 3 omega classes: {'Ca_targets': 0.20352894508220937, 'tau_m': 0.3273957963550657, 'leaks': 0.9635814934258219, 'synapses': 0.7666621870055542, 'emergent_g': 0.01847627763212556}
+individual correlations: selected/neutral r, consistency, paired Holm
+AB NaV-CaT: 0.675296294502914 / 0.8332545652519912; signs 4/4; Holm=1.0; associated=False
+AB NaV-CaS: 0.8167174686677754 / 0.8430699540767819; signs 4/4; Holm=1.0; associated=False
+AB NaV-A: 0.8142188396304846 / 0.8614687206572853; signs 4/4; Holm=1.0; associated=False
+AB NaV-KCa: 0.8123516887426376 / 0.8468297326471657; signs 4/4; Holm=1.0; associated=False
+AB NaV-Kd: 0.728783864993602 / 0.8062657614646014; signs 4/4; Holm=1.0; associated=False
+AB NaV-H: 0.6323691199577297 / 0.791397998778848; signs 4/4; Holm=1.0; associated=False
+AB NaV-leak: -0.029279897429255977 / 0.024210916528130295; signs 3/4; Holm=1.0; associated=False
+AB CaT-CaS: 0.6314089573861565 / 0.8586145774461329; signs 4/4; Holm=0.3585910937043737; associated=False
+AB CaT-A: 0.6444005455123261 / 0.8657226581126451; signs 4/4; Holm=0.8873796280319133; associated=False
+AB CaT-KCa: 0.6022288432286587 / 0.8431058521382511; signs 4/4; Holm=1.0; associated=False
+AB CaT-Kd: 0.5970745912054554 / 0.8396427695988677; signs 4/4; Holm=0.5084185284601508; associated=False
+AB CaT-H: 0.45482719485880807 / 0.7890251928474754; signs 4/4; Holm=1.0; associated=False
+AB CaT-leak: 0.009512500876250371 / 0.0020080755672830398; signs 3/4; Holm=1.0; associated=False
+AB CaS-A: 0.8316735606640577 / 0.8601695522665977; signs 4/4; Holm=1.0; associated=False
+AB CaS-KCa: 0.8272028425708413 / 0.8523791395127773; signs 4/4; Holm=1.0; associated=False
+AB CaS-Kd: 0.7542768041603267 / 0.8199666284490377; signs 4/4; Holm=1.0; associated=False
+AB CaS-H: 0.6375235963023442 / 0.773547462769784; signs 4/4; Holm=1.0; associated=False
+AB CaS-leak: 0.03369884486973104 / 0.008065075889202484; signs 2/4; Holm=1.0; associated=False
+AB A-KCa: 0.746585447457619 / 0.8805220983922482; signs 4/4; Holm=1.0; associated=False
+AB A-Kd: 0.7067410818417557 / 0.8410127103561535; signs 4/4; Holm=1.0; associated=False
+AB A-H: 0.6252186307683587 / 0.8255437053740025; signs 4/4; Holm=1.0; associated=False
+AB A-leak: 0.03900562261373529 / 0.041312508291953785; signs 4/4; Holm=1.0; associated=False
+AB KCa-Kd: 0.723048054613173 / 0.8331139143556356; signs 4/4; Holm=1.0; associated=False
+AB KCa-H: 0.6145161871099845 / 0.7776291249319911; signs 4/4; Holm=1.0; associated=False
+AB KCa-leak: -0.02074282173028526 / 0.01584933334279246; signs 2/4; Holm=1.0; associated=False
+AB Kd-H: 0.5702005450730212 / 0.7712457760353573; signs 4/4; Holm=0.5562591221758522; associated=False
+AB Kd-leak: 0.000497898688384648 / 0.03593294565999137; signs 2/4; Holm=1.0; associated=False
+AB H-leak: 0.004024725135726232 / 0.030611269826269043; signs 2/4; Holm=1.0; associated=False
+LP NaV-CaT: 0.6912231864464102 / 0.868212914768429; signs 4/4; Holm=1.0; associated=False
+LP NaV-CaS: 0.8057251796126366 / 0.8888900140300393; signs 4/4; Holm=1.0; associated=False
+LP NaV-A: 0.7476645101269241 / 0.9078583987429738; signs 4/4; Holm=0.6840698545371602; associated=False
+LP NaV-KCa: 0.7079533327016093 / 0.866076766380242; signs 4/4; Holm=0.352282371426713; associated=False
+LP NaV-Kd: 0.6821651257487247 / 0.8897746317088604; signs 4/4; Holm=1.0; associated=False
+LP NaV-H: 0.6884671144653112 / 0.8920311794499867; signs 4/4; Holm=1.0; associated=False
+LP NaV-leak: 0.1349800193493138 / 0.10777324478476658; signs 4/4; Holm=1.0; associated=False
+LP CaT-CaS: 0.7771993857893078 / 0.8677377482787485; signs 4/4; Holm=1.0; associated=False
+LP CaT-A: 0.7655560699601969 / 0.8792476272299177; signs 4/4; Holm=1.0; associated=False
+LP CaT-KCa: 0.731891629039236 / 0.8676270958353449; signs 4/4; Holm=0.07291168080219228; associated=False
+LP CaT-Kd: 0.6845119767229666 / 0.856936120751336; signs 4/4; Holm=1.0; associated=False
+LP CaT-H: 0.6849146892288418 / 0.8526882844622292; signs 4/4; Holm=1.0; associated=False
+LP CaT-leak: 0.1071991582573956 / 0.09896621945289164; signs 4/4; Holm=1.0; associated=False
+LP CaS-A: 0.9086259598843753 / 0.9130265219137073; signs 4/4; Holm=1.0; associated=False
+LP CaS-KCa: 0.7651323039262068 / 0.8637784781998822; signs 4/4; Holm=1.0; associated=False
+LP CaS-Kd: 0.8425413058139384 / 0.8738288162276149; signs 4/4; Holm=1.0; associated=False
+LP CaS-H: 0.7698727452661842 / 0.8818537346087396; signs 4/4; Holm=1.0; associated=False
+LP CaS-leak: 0.2004699147746578 / 0.12659503623581259; signs 4/4; Holm=1.0; associated=False
+LP A-KCa: 0.7257853506044263 / 0.8559145042007523; signs 4/4; Holm=1.0; associated=False
+LP A-Kd: 0.7490430522011593 / 0.8755944264121354; signs 4/4; Holm=1.0; associated=False
+LP A-H: 0.7515895853284746 / 0.8919043818023056; signs 4/4; Holm=1.0; associated=False
+LP A-leak: 0.11335985019104555 / 0.13069349597935798; signs 3/4; Holm=1.0; associated=False
+LP KCa-Kd: 0.6709008529072716 / 0.8529690620489419; signs 4/4; Holm=0.44017471148244713; associated=False
+LP KCa-H: 0.6464988883103832 / 0.8585280539201838; signs 4/4; Holm=1.0; associated=False
+LP KCa-leak: 0.17787291873502822 / 0.07470182926148741; signs 4/4; Holm=1.0; associated=False
+LP Kd-H: 0.7096622455937904 / 0.8642068996559829; signs 4/4; Holm=1.0; associated=False
+LP Kd-leak: 0.16944710053212475 / 0.150141190373688; signs 4/4; Holm=1.0; associated=False
+LP H-leak: 0.10072171708361566 / 0.1328359686449403; signs 3/4; Holm=1.0; associated=False
+PY NaV-CaT: 0.8533771666698158 / 0.8009873502451228; signs 4/4; Holm=1.0; associated=False
+PY NaV-CaS: 0.843933826778084 / 0.8138739195419475; signs 4/4; Holm=1.0; associated=False
+PY NaV-A: 0.8673792090266943 / 0.8406693681026809; signs 4/4; Holm=1.0; associated=False
+PY NaV-KCa: 0.6312122489057594 / 0.7484307142393865; signs 4/4; Holm=1.0; associated=False
+PY NaV-Kd: 0.8517750410828739 / 0.8397465000161901; signs 4/4; Holm=1.0; associated=False
+PY NaV-H: 0.7321126043098047 / 0.7948269767221063; signs 4/4; Holm=1.0; associated=False
+PY NaV-leak: 0.11053141915181186 / 0.05944480758626014; signs 3/4; Holm=1.0; associated=False
+PY CaT-CaS: 0.9483946729451418 / 0.794536147499457; signs 4/4; Holm=1.0; associated=False
+PY CaT-A: 0.98039217479527 / 0.8771263901144266; signs 4/4; Holm=1.0; associated=False
+PY CaT-KCa: 0.6949784340449806 / 0.7988850612874703; signs 4/4; Holm=1.0; associated=False
+PY CaT-Kd: 0.9704885799437761 / 0.8475519034545869; signs 4/4; Holm=1.0; associated=False
+PY CaT-H: 0.7781585594639182 / 0.7919093883538153; signs 4/4; Holm=1.0; associated=False
+PY CaT-leak: 0.16063046891940758 / 0.16119695184170268; signs 4/4; Holm=1.0; associated=False
+PY CaS-A: 0.9692328730598092 / 0.8897470652591437; signs 4/4; Holm=0.08915926229963686; associated=False
+PY CaS-KCa: 0.7122405947552938 / 0.7881984763012724; signs 4/4; Holm=1.0; associated=False
+PY CaS-Kd: 0.9595862096175551 / 0.8843164085410535; signs 4/4; Holm=1.0; associated=False
+PY CaS-H: 0.7512950585223734 / 0.7738280186313204; signs 4/4; Holm=1.0; associated=False
+PY CaS-leak: 0.15701147979780217 / 0.13114103296538815; signs 4/4; Holm=1.0; associated=False
+PY A-KCa: 0.7043683189672953 / 0.8169884534867166; signs 4/4; Holm=1.0; associated=False
+PY A-Kd: 0.9692460633814335 / 0.8922543483786285; signs 4/4; Holm=1.0; associated=False
+PY A-H: 0.7858518715947866 / 0.8711870693368837; signs 4/4; Holm=1.0; associated=False
+PY A-leak: 0.13020645489450544 / 0.13148450941662304; signs 4/4; Holm=1.0; associated=False
+PY KCa-Kd: 0.698868495728256 / 0.7929589804519952; signs 4/4; Holm=1.0; associated=False
+PY KCa-H: 0.6399767437441782 / 0.7423281736188121; signs 4/4; Holm=1.0; associated=False
+PY KCa-leak: 0.03078505461374086 / 0.08292390864989539; signs 3/4; Holm=1.0; associated=False
+PY Kd-H: 0.7758454130962491 / 0.8414969528093934; signs 4/4; Holm=1.0; associated=False
+PY Kd-leak: 0.13222422639955766 / 0.13828356606245507; signs 4/4; Holm=1.0; associated=False
+PY H-leak: 0.09462205394987677 / 0.13177465978515102; signs 4/4; Holm=1.0; associated=False
+lineage correlations: selected/neutral r, consistency, paired Holm
+AB NaV-CaT: 0.6783364581949028 / 0.9723290376274452; signs 4/4; Holm=0.3345926339100532; associated=False
+AB NaV-CaS: 0.5603294306881038 / 0.969665086164593; signs 4/4; Holm=1.0; associated=False
+AB NaV-A: 0.6307797092571681 / 0.972980654297477; signs 4/4; Holm=1.0; associated=False
+AB NaV-KCa: 0.6860663271127055 / 0.970664624453689; signs 4/4; Holm=0.08945758310064783; associated=False
+AB NaV-Kd: 0.14209791367056313 / 0.9663746410560151; signs 3/4; Holm=0.20867708543440308; associated=False
+AB NaV-H: -0.23805212574706866 / 0.9680012879639787; signs 3/4; Holm=0.4327598608048736; associated=False
+AB NaV-leak: -0.03291030627618331 / -0.1611971814490267; signs 2/4; Holm=1.0; associated=False
+AB CaT-CaS: 0.3834856091645331 / 0.9607775118720667; signs 4/4; Holm=0.9095630564224928; associated=False
+AB CaT-A: 0.555220935501567 / 0.9693057840980335; signs 4/4; Holm=1.0; associated=False
+AB CaT-KCa: 0.3493123331599074 / 0.9745482045383833; signs 4/4; Holm=0.5380119801337032; associated=False
+AB CaT-Kd: 0.4042233894476667 / 0.9680303836446366; signs 4/4; Holm=0.07392764739034606; associated=False
+AB CaT-H: -0.2539578761685123 / 0.971886135926752; signs 4/4; Holm=0.04208673161473574; associated=True
+AB CaT-leak: 0.06937886134510109 / -0.1672998543359362; signs 3/4; Holm=1.0; associated=False
+AB CaS-A: 0.7543340907433234 / 0.9882119930290185; signs 4/4; Holm=0.709946025047643; associated=False
+AB CaS-KCa: 0.6626347647050912 / 0.9659623824240422; signs 4/4; Holm=1.0; associated=False
+AB CaS-Kd: 0.5047226348603581 / 0.975455910513678; signs 4/4; Holm=0.955731131912593; associated=False
+AB CaS-H: -0.4282739890607157 / 0.973053684827338; signs 3/4; Holm=0.6101494233381185; associated=False
+AB CaS-leak: -0.0036068572980700406 / -0.21106284468079145; signs 2/4; Holm=1.0; associated=False
+AB A-KCa: 0.288699190642842 / 0.9689558747326736; signs 4/4; Holm=0.4076372743763127; associated=False
+AB A-Kd: 0.22085778921730465 / 0.9771739362272835; signs 2/4; Holm=0.9659462363848147; associated=False
+AB A-H: -0.14149893366314298 / 0.9806904462542783; signs 3/4; Holm=0.49720318248584966; associated=False
+AB A-leak: 0.05834190956464874 / -0.2010309889709469; signs 3/4; Holm=1.0; associated=False
+AB KCa-Kd: 0.4197294019848371 / 0.9707982797701227; signs 4/4; Holm=0.4144157969587847; associated=False
+AB KCa-H: -0.5098080153557589 / 0.971421890950947; signs 4/4; Holm=0.09305592314601349; associated=False
+AB KCa-leak: -0.11025836213379735 / -0.1665699505567383; signs 3/4; Holm=1.0; associated=False
+AB Kd-H: -0.37035788133320297 / 0.9738313053806721; signs 4/4; Holm=0.006197554456129094; associated=True
+AB Kd-leak: 0.006094299230167181 / -0.16937448368978703; signs 2/4; Holm=1.0; associated=False
+AB H-leak: 0.1751159212372087 / -0.15341099941312766; signs 3/4; Holm=1.0; associated=False
+LP NaV-CaT: 0.39820468046920277 / 0.8289031810952268; signs 4/4; Holm=1.0; associated=False
+LP NaV-CaS: 0.5247805798624882 / 0.8325697817277811; signs 4/4; Holm=1.0; associated=False
+LP NaV-A: 0.22852066697677928 / 0.8380301240854824; signs 3/4; Holm=0.9394848661094785; associated=False
+LP NaV-KCa: 0.3652235574603505 / 0.8467456665227877; signs 4/4; Holm=1.0; associated=False
+LP NaV-Kd: 0.24246136245800515 / 0.8802238718658871; signs 3/4; Holm=1.0; associated=False
+LP NaV-H: -0.21714042953647783 / 0.8102596418718091; signs 4/4; Holm=0.0556753473774789; associated=False
+LP NaV-leak: 0.3184633556121517 / 0.09204964540324621; signs 4/4; Holm=1.0; associated=False
+LP CaT-CaS: 0.4560293748755435 / 0.8793852629104532; signs 4/4; Holm=1.0; associated=False
+LP CaT-A: 0.31308473950388116 / 0.8814433555270609; signs 4/4; Holm=0.9248555284660434; associated=False
+LP CaT-KCa: 0.18877775563853463 / 0.8831224077132669; signs 3/4; Holm=0.8839303813832635; associated=False
+LP CaT-Kd: 0.26949486603932116 / 0.8541843358581931; signs 3/4; Holm=1.0; associated=False
+LP CaT-H: -0.32466602776645875 / 0.8251436716760631; signs 4/4; Holm=0.11697414875210757; associated=False
+LP CaT-leak: 0.14433272025869584 / 0.08482257562062519; signs 3/4; Holm=1.0; associated=False
+LP CaS-A: 0.810923316033413 / 0.9408118620354319; signs 4/4; Holm=1.0; associated=False
+LP CaS-KCa: 0.4483949797324493 / 0.8953788106509692; signs 4/4; Holm=1.0; associated=False
+LP CaS-Kd: 0.7572303036038702 / 0.8920785175235115; signs 4/4; Holm=1.0; associated=False
+LP CaS-H: -0.11653117663802694 / 0.8199559482058996; signs 4/4; Holm=0.00734518415027606; associated=True
+LP CaS-leak: 0.4653592194495146 / 0.06803347305739085; signs 3/4; Holm=1.0; associated=False
+LP A-KCa: 0.2757065576110873 / 0.8988850087144697; signs 4/4; Holm=0.29661502967520537; associated=False
+LP A-Kd: 0.5189550206353946 / 0.8476094170793927; signs 4/4; Holm=0.08724264913647387; associated=False
+LP A-H: -0.018299809146651386 / 0.8579228489107662; signs 2/4; Holm=0.044683294714435495; associated=False
+LP A-leak: 0.3395961183385524 / 0.06986244858473412; signs 3/4; Holm=1.0; associated=False
+LP KCa-Kd: 0.43264958695884664 / 0.8812415117314509; signs 4/4; Holm=1.0; associated=False
+LP KCa-H: -0.17146135100666715 / 0.8033719933492873; signs 3/4; Holm=0.3345926339100532; associated=False
+LP KCa-leak: 0.27082594131337534 / 0.08398589538482523; signs 3/4; Holm=1.0; associated=False
+LP Kd-H: -0.1301160245592088 / 0.8253129169867063; signs 2/4; Holm=0.23829640026873117; associated=False
+LP Kd-leak: 0.2583548724109226 / 0.0902065847307485; signs 3/4; Holm=1.0; associated=False
+LP H-leak: 0.15184802375721182 / 0.05156529380048784; signs 4/4; Holm=1.0; associated=False
+PY NaV-CaT: 0.6135411142483613 / 0.9570181569738745; signs 4/4; Holm=1.0; associated=False
+PY NaV-CaS: 0.6050467496370926 / 0.9639884034315835; signs 4/4; Holm=1.0; associated=False
+PY NaV-A: 0.5972591041070495 / 0.975319898521726; signs 4/4; Holm=1.0; associated=False
+PY NaV-KCa: 0.19497762157232162 / 0.954478174971938; signs 2/4; Holm=1.0; associated=False
+PY NaV-Kd: 0.6172785715947176 / 0.9500886434874234; signs 4/4; Holm=1.0; associated=False
+PY NaV-H: -0.09359732564837715 / 0.9615237286667473; signs 2/4; Holm=0.9394848661094785; associated=False
+PY NaV-leak: 0.012619321304790217 / -0.11379680447750135; signs 3/4; Holm=1.0; associated=False
+PY CaT-CaS: 0.9566730960670434 / 0.9691811477171773; signs 4/4; Holm=1.0; associated=False
+PY CaT-A: 0.9874738424759159 / 0.9805157017370993; signs 4/4; Holm=1.0; associated=False
+PY CaT-KCa: 0.46484367633119267 / 0.9670289785866371; signs 4/4; Holm=1.0; associated=False
+PY CaT-Kd: 0.9657061576492484 / 0.9754331353451713; signs 4/4; Holm=1.0; associated=False
+PY CaT-H: 0.3690359473927698 / 0.9629583862704861; signs 3/4; Holm=1.0; associated=False
+PY CaT-leak: 0.21822034070614338 / -0.08846593789010868; signs 4/4; Holm=1.0; associated=False
+PY CaS-A: 0.9684406149254338 / 0.9876975101481785; signs 4/4; Holm=1.0; associated=False
+PY CaS-KCa: 0.4615857934701636 / 0.9675604308969443; signs 4/4; Holm=1.0; associated=False
+PY CaS-Kd: 0.9618354640475111 / 0.9727423496573993; signs 4/4; Holm=1.0; associated=False
+PY CaS-H: 0.3514344540142019 / 0.9600802210086693; signs 3/4; Holm=1.0; associated=False
+PY CaS-leak: 0.2750080342286295 / -0.15483106723275109; signs 4/4; Holm=1.0; associated=False
+PY A-KCa: 0.45964991799747773 / 0.9739471159392142; signs 4/4; Holm=1.0; associated=False
+PY A-Kd: 0.9448768979368093 / 0.9701752892390936; signs 4/4; Holm=1.0; associated=False
+PY A-H: 0.38338855944272554 / 0.9745114381691302; signs 3/4; Holm=1.0; associated=False
+PY A-leak: 0.1757922127569977 / -0.10674317075606865; signs 3/4; Holm=1.0; associated=False
+PY KCa-Kd: 0.4670479617806461 / 0.9676293432364373; signs 4/4; Holm=1.0; associated=False
+PY KCa-H: 0.23876414921701788 / 0.9458685111583854; signs 4/4; Holm=0.3345926339100532; associated=False
+PY KCa-leak: 0.170133864504803 / -0.15046597572322074; signs 3/4; Holm=0.49167365228283577; associated=False
+PY Kd-H: 0.31732939525606874 / 0.9581725819237017; signs 3/4; Holm=1.0; associated=False
+PY Kd-leak: 0.19267065986592977 / -0.13351527123188223; signs 4/4; Holm=1.0; associated=False
+PY H-leak: 0.3044710807845881 / -0.09770311465529288; signs 4/4; Holm=1.0; associated=False
+
+(Trimmed: lines over 600 characters, the per-individual convergence dumps, removed. Full summary and JSON: gs://fearn-neuro-evo/E3/)

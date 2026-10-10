@@ -1,0 +1,27 @@
+Experiment G (full run): generalized swimmer, cuda:0
+N=64, K=16, steps=300, adaptation=500, burn=2000, drift=2000
+Gain=0.125; initial action RMS/max=0.139/0.321
+Adaptation return 17.902 -> 37.77; plateau=True
+Learning curve (generation:return): 0:17.9, 100:37.39, 200:37.88, 300:37.69, 400:37.77, 500:37.77
+Fixed return scales: adaptation=7.5502, phase 2=5.5724
+fork s=3, arm s=3: return 37.856 -> 38.791; CKA divergence=0.03051; tuning changes=44.9%; importance rank vs ancestor=0.4104779411764706, between lineages=0.49240196078431375
+  t*=1100; omega={'x0': 0.30155277981352663, 'x1': 0.5200511919560491, 'x2': 0.4523951710816941, 'z': 0.2781309602831151, 'M1': 0.8869087478019625, 'M2': 0.9184853011287312, 'M3': 0.8391347511766656, 'theta': 0.23031345296759478, 'representation': 0.3339479159798419, 'return': 0.0165073561422978, 'gait': 0.004823001899161377}; intact return within 10% of fork: 16/16
+  Si1-like example: unit 14, lineage 10 drop=47.762, lineage 14 drop=0.25988
+  Hybrid return=15.963; parent return=39.601
+fork s=3, arm s=0: return 37.856 -> 8.6971; CKA divergence=0.0886; tuning changes=81.2%; importance rank vs ancestor=0.11360294117647059, between lineages=0.014534313725490192
+  t*=1100; omega={'x0': 1.0, 'x1': 1.0, 'x2': 1.0, 'z': 1.0, 'M1': 1.0, 'M2': 1.0, 'M3': 1.0, 'theta': 1.0, 'representation': 1.0, 'return': 1.0, 'gait': 1.0}; intact return within 10% of fork: 0/16
+  Largest contrast (no qualifying Si1-like example): unit 14, lineage 9 drop=30.441, lineage 5 drop=-41.587
+  Hybrid return=4.5522; parent return=9.2938
+fork s=30, arm s=30: return 30.529 -> 33.811; CKA divergence=0.01603; tuning changes=43.4%; importance rank vs ancestor=0.45312500000000006, between lineages=0.5936274509803922
+  t*=1140; omega={'x0': 0.01120039404091178, 'x1': 0.09130589072482798, 'x2': 0.1264618112427436, 'z': 0.0885749381281992, 'M1': 0.39687769941162815, 'M2': 0.4724868923834387, 'M3': 0.43769079169839914, 'theta': 0.07511619946964129, 'representation': 0.08416293828471631, 'return': 0.07574125294369616, 'gait': 0.008089278763219788}; intact return within 10% of fork: 15/16
+  Si1-like example: unit 6, lineage 7 drop=51.842, lineage 11 drop=-0.27946
+  Hybrid return=22.445; parent return=39.172
+fork s=30, arm s=0: return 30.529 -> 9.0019; CKA divergence=0.1004; tuning changes=78.1%; importance rank vs ancestor=0.11893382352941176, between lineages=0.0066176470588235285
+  t*=1140; omega={'x0': 1.0, 'x1': 1.0, 'x2': 1.0, 'z': 1.0, 'M1': 1.0, 'M2': 1.0, 'M3': 1.0, 'theta': 1.0, 'representation': 1.0, 'return': 1.0, 'gait': 1.0}; intact return within 10% of fork: 0/16
+  Largest contrast (no qualifying Si1-like example): unit 1, lineage 4 drop=44.726, lineage 5 drop=-28.117
+  Hybrid return=4.673; parent return=11.858
+Warmed CPU/GPU throughput: 52,081 agent-steps/s; elapsed=71021.1s.
+Default full evolution: 2,572,876,800 agent-steps; CPU extrapolation=13.7h.
+B300 not measured: assuming 0.1--1 million agent-steps/s gives 0.71--7.15h, plus compilation and assays.
+Fixed-reset performance selection does not constrain gait; inspect returns AND gait before claiming conserved behaviour.
+Short runs validate machinery, not drift, plateau, or functional reassignment; missing omega means neutral x0 never reached .25.

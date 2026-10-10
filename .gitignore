@@ -87,3 +87,8 @@ output/code2.json
 output/code4.json
 output/code4-part*.json
 output/stg-homeo.json
+# G: large JSONs and final genomes live in gs://fearn-neuro-evo/G/
+output/neuroevo.json
+output/neuroevo-seed*.json
+output/neuroevo-combined.json
+output/*.npy

@@ -1,0 +1,253 @@
+Experiment G: combined independent seeds
+Equal weight per distinct seed; duplicate (seed, s) inputs count once.
+Divergences are final-generation values; omega uses each seed's own neutral t*.
+Means use available values (n shown); NA is not zero. Range is [min, max]; no CIs.
+Ancestors, calibrated gains and return scales remain specific to each (seed, s).
+Example units/lineages are local identities; their indices are not averaged.
+
+s=3; seeds=0, 1
+  seed 0: gain=0.125, adaptation scale=7.55019, phase-2 scale=5.5724
+    arm s=3: Si1-like example: unit 14, lineages 10/14
+    arm s=0: no qualifying Si1-like example; largest contrast: unit 14, lineages 9/5
+  seed 1: gain=0.25, adaptation scale=1.28541, phase-2 scale=2.75589
+    arm s=3: no qualifying Si1-like example; largest contrast: unit 0, lineages 9/7
+    arm s=0: no qualifying Si1-like example; largest contrast: unit 2, lineages 12/14
+  selected:
+    divergence.x0: seed 0=0.134718, seed 1=0.00931597; mean=0.0720169; range=[0.00931597, 0.134718]; spread=0.125402; n=2
+    divergence.x1: seed 0=0.386257, seed 1=0.0810488; mean=0.233653; range=[0.0810488, 0.386257]; spread=0.305208; n=2
+    divergence.x2: seed 0=0.339671, seed 1=0.157179; mean=0.248425; range=[0.157179, 0.339671]; spread=0.182492; n=2
+    divergence.z: seed 0=0.203522, seed 1=0.176; mean=0.189761; range=[0.176, 0.203522]; spread=0.0275215; n=2
+    divergence.M1: seed 0=0.42481, seed 1=0.141197; mean=0.283003; range=[0.141197, 0.42481]; spread=0.283613; n=2
+    divergence.M2: seed 0=0.418012, seed 1=0.164263; mean=0.291137; range=[0.164263, 0.418012]; spread=0.253749; n=2
+    divergence.M3: seed 0=0.408934, seed 1=0.158924; mean=0.283929; range=[0.158924, 0.408934]; spread=0.25001; n=2
+    divergence.theta: seed 0=0.157958, seed 1=0.18351; mean=0.170734; range=[0.157958, 0.18351]; spread=0.0255518; n=2
+    divergence.representation: seed 0=0.0305132, seed 1=0.0441124; mean=0.0373128; range=[0.0305132, 0.0441124]; spread=0.0135992; n=2
+    divergence.return: seed 0=0.00676745, seed 1=0.0302812; mean=0.0185243; range=[0.00676745, 0.0302812]; spread=0.0235138; n=2
+    divergence.gait: seed 0=0.00156362, seed 1=0.270719; mean=0.136141; range=[0.00156362, 0.270719]; spread=0.269156; n=2
+    omega.x0: seed 0=0.301553, seed 1=0.0238555; mean=0.162704; range=[0.0238555, 0.301553]; spread=0.277697; n=2
+    omega.x1: seed 0=0.520051, seed 1=0.0838279; mean=0.30194; range=[0.0838279, 0.520051]; spread=0.436223; n=2
+    omega.x2: seed 0=0.452395, seed 1=0.177499; mean=0.314947; range=[0.177499, 0.452395]; spread=0.274897; n=2
+    omega.z: seed 0=0.278131, seed 1=0.273925; mean=0.276028; range=[0.273925, 0.278131]; spread=0.00420607; n=2
+    omega.M1: seed 0=0.886909, seed 1=0.198853; mean=0.542881; range=[0.198853, 0.886909]; spread=0.688056; n=2
+    omega.M2: seed 0=0.918485, seed 1=0.24815; mean=0.583318; range=[0.24815, 0.918485]; spread=0.670336; n=2
+    omega.M3: seed 0=0.839135, seed 1=0.211898; mean=0.525516; range=[0.211898, 0.839135]; spread=0.627237; n=2
+    omega.theta: seed 0=0.230313, seed 1=0.306085; mean=0.268199; range=[0.230313, 0.306085]; spread=0.0757716; n=2
+    omega.representation: seed 0=0.333948, seed 1=0.324997; mean=0.329472; range=[0.324997, 0.333948]; spread=0.00895128; n=2
+    omega.return: seed 0=0.0165074, seed 1=0.397509; mean=0.207008; range=[0.0165074, 0.397509]; spread=0.381001; n=2
+    omega.gait: seed 0=0.004823, seed 1=1.35813; mean=0.681479; range=[0.004823, 1.35813]; spread=1.35331; n=2
+    t_star: seed 0=1100, seed 1=1000; mean=1050; range=[1000, 1100]; spread=100; n=2
+    return_initial: seed 0=37.8561, seed 1=44.809; mean=41.3325; range=[37.8561, 44.809]; spread=6.95291; n=2
+    return_final: seed 0=38.791, seed 1=102.463; mean=70.6272; range=[38.791, 102.463]; spread=63.6723; n=2
+    tuning_change: seed 0=0.449219, seed 1=0.824219; mean=0.636719; range=[0.449219, 0.824219]; spread=0.375; n=2
+    tuning_change_since_fork: seed 0=0.328125, seed 1=0.757812; mean=0.542969; range=[0.328125, 0.757812]; spread=0.429688; n=2
+    importance_rank_vs_ancestor: seed 0=0.410478, seed 1=0.200919; mean=0.305699; range=[0.200919, 0.410478]; spread=0.209559; n=2
+    importance_rank_between_lineages: seed 0=0.492402, seed 1=0.391544; mean=0.441973; range=[0.391544, 0.492402]; spread=0.100858; n=2
+    return_maintained_count: seed 0=16, seed 1=0; mean=8; range=[0, 16]; spread=16; n=2
+    return_maintained_fraction: seed 0=1, seed 1=0; mean=0.5; range=[0, 1]; spread=1; n=2
+    si1_qualifies: seed 0=1, seed 1=0; mean=0.5; range=[0, 1]; spread=1; n=2
+    example_drop_high: seed 0=47.7615, seed 1=134.673; mean=91.217; range=[47.7615, 134.673]; spread=86.9111; n=2
+    example_drop_low: seed 0=0.259884, seed 1=5.43069; mean=2.84529; range=[0.259884, 5.43069]; spread=5.1708; n=2
+    example_reference_scale: seed 0=39.3668, seed 1=55.4412; mean=47.404; range=[39.3668, 55.4412]; spread=16.0744; n=2
+    hybrid_return: seed 0=15.9628, seed 1=48.8839; mean=32.4233; range=[15.9628, 48.8839]; spread=32.9211; n=2
+    parent_return: seed 0=39.6014, seed 1=116.413; mean=78.007; range=[39.6014, 116.413]; spread=76.8112; n=2
+    hybrid_minus_parent: seed 0=-23.6386, seed 1=-67.5287; mean=-45.5836; range=[-67.5287, -23.6386]; spread=43.8901; n=2
+  neutral:
+    divergence.x0: seed 0=0.421091, seed 1=0.433892; mean=0.427491; range=[0.421091, 0.433892]; spread=0.012801; n=2
+    divergence.x1: seed 0=0.65707, seed 1=0.717573; mean=0.687322; range=[0.65707, 0.717573]; spread=0.0605033; n=2
+    divergence.x2: seed 0=0.825976, seed 1=0.79523; mean=0.810603; range=[0.79523, 0.825976]; spread=0.0307463; n=2
+    divergence.z: seed 0=0.934789, seed 1=0.816074; mean=0.875432; range=[0.816074, 0.934789]; spread=0.118715; n=2
+    divergence.M1: seed 0=0.476988, seed 1=0.460105; mean=0.468546; range=[0.460105, 0.476988]; spread=0.0168828; n=2
+    divergence.M2: seed 0=0.467024, seed 1=0.461471; mean=0.464247; range=[0.461471, 0.467024]; spread=0.00555278; n=2
+    divergence.M3: seed 0=0.465586, seed 1=0.459895; mean=0.462741; range=[0.459895, 0.465586]; spread=0.00569048; n=2
+    divergence.theta: seed 0=0.917018, seed 1=0.826856; mean=0.871937; range=[0.826856, 0.917018]; spread=0.0901629; n=2
+    divergence.representation: seed 0=0.0886004, seed 1=0.0777466; mean=0.0831735; range=[0.0777466, 0.0886004]; spread=0.0108537; n=2
+    divergence.return: seed 0=0.418822, seed 1=0.604703; mean=0.511762; range=[0.418822, 0.604703]; spread=0.185882; n=2
+    divergence.gait: seed 0=0.414981, seed 1=0.361101; mean=0.388041; range=[0.361101, 0.414981]; spread=0.0538797; n=2
+    omega.x0: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.x1: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.x2: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.z: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M1: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M2: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M3: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.theta: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.representation: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.return: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.gait: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    t_star: seed 0=1100, seed 1=1000; mean=1050; range=[1000, 1100]; spread=100; n=2
+    return_initial: seed 0=37.8561, seed 1=44.809; mean=41.3325; range=[37.8561, 44.809]; spread=6.95291; n=2
+    return_final: seed 0=8.69712, seed 1=8.78213; mean=8.73963; range=[8.69712, 8.78213]; spread=0.0850055; n=2
+    tuning_change: seed 0=0.8125, seed 1=0.84375; mean=0.828125; range=[0.8125, 0.84375]; spread=0.03125; n=2
+    tuning_change_since_fork: seed 0=0.753906, seed 1=0.738281; mean=0.746094; range=[0.738281, 0.753906]; spread=0.015625; n=2
+    importance_rank_vs_ancestor: seed 0=0.113603, seed 1=-0.0378676; mean=0.0378676; range=[-0.0378676, 0.113603]; spread=0.151471; n=2
+    importance_rank_between_lineages: seed 0=0.0145343, seed 1=-0.00919118; mean=0.00267157; range=[-0.00919118, 0.0145343]; spread=0.0237255; n=2
+    return_maintained_count: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    return_maintained_fraction: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    si1_qualifies: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    example_drop_high: seed 0=30.4414, seed 1=41.294; mean=35.8677; range=[30.4414, 41.294]; spread=10.8526; n=2
+    example_drop_low: seed 0=-41.5872, seed 1=-21.0457; mean=-31.3164; range=[-41.5872, -21.0457]; spread=20.5415; n=2
+    example_reference_scale: seed 0=39.3668, seed 1=55.4412; mean=47.404; range=[39.3668, 55.4412]; spread=16.0744; n=2
+    hybrid_return: seed 0=4.55218, seed 1=5.91136; mean=5.23177; range=[4.55218, 5.91136]; spread=1.35918; n=2
+    parent_return: seed 0=9.29379, seed 1=7.65985; mean=8.47682; range=[7.65985, 9.29379]; spread=1.63395; n=2
+    hybrid_minus_parent: seed 0=-4.74161, seed 1=-1.74848; mean=-3.24505; range=[-4.74161, -1.74848]; spread=2.99313; n=2
+
+s=30; seeds=0, 1
+  seed 0: gain=0.125, adaptation scale=7.55019, phase-2 scale=5.5724
+    arm s=30: Si1-like example: unit 6, lineages 7/11
+    arm s=0: no qualifying Si1-like example; largest contrast: unit 1, lineages 4/5
+  seed 1: gain=0.25, adaptation scale=1.2854, phase-2 scale=9.28642
+    arm s=30: no qualifying Si1-like example; largest contrast: unit 10, lineages 13/6
+    arm s=0: no qualifying Si1-like example; largest contrast: unit 0, lineages 5/6
+  selected:
+    divergence.x0: seed 0=0.00485928, seed 1=0.0152806; mean=0.0100699; range=[0.00485928, 0.0152806]; spread=0.0104213; n=2
+    divergence.x1: seed 0=0.0884824, seed 1=0.0659235; mean=0.0772029; range=[0.0659235, 0.0884824]; spread=0.0225589; n=2
+    divergence.x2: seed 0=0.145186, seed 1=0.107263; mean=0.126224; range=[0.107263, 0.145186]; spread=0.0379231; n=2
+    divergence.z: seed 0=0.128475, seed 1=0.146763; mean=0.137619; range=[0.128475, 0.146763]; spread=0.0182881; n=2
+    divergence.M1: seed 0=0.199634, seed 1=0.136721; mean=0.168177; range=[0.136721, 0.199634]; spread=0.0629135; n=2
+    divergence.M2: seed 0=0.227825, seed 1=0.146004; mean=0.186914; range=[0.146004, 0.227825]; spread=0.081821; n=2
+    divergence.M3: seed 0=0.221888, seed 1=0.116126; mean=0.169007; range=[0.116126, 0.221888]; spread=0.105762; n=2
+    divergence.theta: seed 0=0.103453, seed 1=0.146074; mean=0.124764; range=[0.103453, 0.146074]; spread=0.0426209; n=2
+    divergence.representation: seed 0=0.0160316, seed 1=0.00470538; mean=0.0103685; range=[0.00470538, 0.0160316]; spread=0.0113262; n=2
+    divergence.return: seed 0=0.0376061, seed 1=0.119727; mean=0.0786667; range=[0.0376061, 0.119727]; spread=0.0821213; n=2
+    divergence.gait: seed 0=0.00539116, seed 1=0.456887; mean=0.231139; range=[0.00539116, 0.456887]; spread=0.451496; n=2
+    omega.x0: seed 0=0.0112004, seed 1=0.00853001; mean=0.0098652; range=[0.00853001, 0.0112004]; spread=0.00267038; n=2
+    omega.x1: seed 0=0.0913059, seed 1=0.0710021; mean=0.081154; range=[0.0710021, 0.0913059]; spread=0.0203037; n=2
+    omega.x2: seed 0=0.126462, seed 1=0.085537; mean=0.105999; range=[0.085537, 0.126462]; spread=0.0409248; n=2
+    omega.z: seed 0=0.0885749, seed 1=0.0920617; mean=0.0903183; range=[0.0885749, 0.0920617]; spread=0.00348675; n=2
+    omega.M1: seed 0=0.396878, seed 1=0.300685; mean=0.348781; range=[0.300685, 0.396878]; spread=0.0961929; n=2
+    omega.M2: seed 0=0.472487, seed 1=0.320062; mean=0.396275; range=[0.320062, 0.472487]; spread=0.152424; n=2
+    omega.M3: seed 0=0.437691, seed 1=0.258091; mean=0.347891; range=[0.258091, 0.437691]; spread=0.1796; n=2
+    omega.theta: seed 0=0.0751162, seed 1=0.0886504; mean=0.0818833; range=[0.0751162, 0.0886504]; spread=0.0135342; n=2
+    omega.representation: seed 0=0.0841629, seed 1=0.0933953; mean=0.0887791; range=[0.0841629, 0.0933953]; spread=0.00923233; n=2
+    omega.return: seed 0=0.0757413, seed 1=0.213139; mean=0.14444; range=[0.0757413, 0.213139]; spread=0.137398; n=2
+    omega.gait: seed 0=0.00808928, seed 1=0.680924; mean=0.344507; range=[0.00808928, 0.680924]; spread=0.672834; n=2
+    t_star: seed 0=1140, seed 1=1020; mean=1080; range=[1020, 1140]; spread=120; n=2
+    return_initial: seed 0=30.5291, seed 1=49.184; mean=39.8565; range=[30.5291, 49.184]; spread=18.6549; n=2
+    return_final: seed 0=33.8114, seed 1=78.5711; mean=56.1913; range=[33.8114, 78.5711]; spread=44.7597; n=2
+    tuning_change: seed 0=0.433594, seed 1=0.835938; mean=0.634766; range=[0.433594, 0.835938]; spread=0.402344; n=2
+    tuning_change_since_fork: seed 0=0.144531, seed 1=0.65625; mean=0.400391; range=[0.144531, 0.65625]; spread=0.511719; n=2
+    importance_rank_vs_ancestor: seed 0=0.453125, seed 1=-0.144669; mean=0.154228; range=[-0.144669, 0.453125]; spread=0.597794; n=2
+    importance_rank_between_lineages: seed 0=0.593627, seed 1=0.635662; mean=0.614645; range=[0.593627, 0.635662]; spread=0.0420343; n=2
+    return_maintained_count: seed 0=15, seed 1=0; mean=7.5; range=[0, 15]; spread=15; n=2
+    return_maintained_fraction: seed 0=0.9375, seed 1=0; mean=0.46875; range=[0, 0.9375]; spread=0.9375; n=2
+    si1_qualifies: seed 0=1, seed 1=0; mean=0.5; range=[0, 1]; spread=1; n=2
+    example_drop_high: seed 0=51.8421, seed 1=105.43; mean=78.6361; range=[51.8421, 105.43]; spread=53.588; n=2
+    example_drop_low: seed 0=-0.279457, seed 1=3.64561; mean=1.68308; range=[-0.279457, 3.64561]; spread=3.92507; n=2
+    example_reference_scale: seed 0=39.8591, seed 1=54.8143; mean=47.3367; range=[39.8591, 54.8143]; spread=14.9553; n=2
+    hybrid_return: seed 0=22.4449, seed 1=28.0805; mean=25.2627; range=[22.4449, 28.0805]; spread=5.63561; n=2
+    parent_return: seed 0=39.1718, seed 1=94.2118; mean=66.6918; range=[39.1718, 94.2118]; spread=55.0401; n=2
+    hybrid_minus_parent: seed 0=-16.7269, seed 1=-66.1313; mean=-41.4291; range=[-66.1313, -16.7269]; spread=49.4045; n=2
+  neutral:
+    divergence.x0: seed 0=0.421162, seed 1=0.430297; mean=0.42573; range=[0.421162, 0.430297]; spread=0.00913499; n=2
+    divergence.x1: seed 0=0.730907, seed 1=0.681639; mean=0.706273; range=[0.681639, 0.730907]; spread=0.0492682; n=2
+    divergence.x2: seed 0=0.883133, seed 1=0.855064; mean=0.869098; range=[0.855064, 0.883133]; spread=0.028069; n=2
+    divergence.z: seed 0=0.963488, seed 1=0.910971; mean=0.93723; range=[0.910971, 0.963488]; spread=0.0525174; n=2
+    divergence.M1: seed 0=0.472999, seed 1=0.459349; mean=0.466174; range=[0.459349, 0.472999]; spread=0.0136493; n=2
+    divergence.M2: seed 0=0.463013, seed 1=0.461315; mean=0.462164; range=[0.461315, 0.463013]; spread=0.00169824; n=2
+    divergence.M3: seed 0=0.464092, seed 1=0.460088; mean=0.46209; range=[0.460088, 0.464092]; spread=0.00400375; n=2
+    divergence.theta: seed 0=0.945922, seed 1=0.915876; mean=0.930899; range=[0.915876, 0.945922]; spread=0.0300459; n=2
+    divergence.representation: seed 0=0.100445, seed 1=0.01783; mean=0.0591376; range=[0.01783, 0.100445]; spread=0.0826151; n=2
+    divergence.return: seed 0=0.52197, seed 1=0.438089; mean=0.480029; range=[0.438089, 0.52197]; spread=0.0838814; n=2
+    divergence.gait: seed 0=0.412571, seed 1=0.472955; mean=0.442763; range=[0.412571, 0.472955]; spread=0.0603837; n=2
+    omega.x0: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.x1: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.x2: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.z: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M1: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M2: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.M3: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.theta: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.representation: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.return: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    omega.gait: seed 0=1, seed 1=1; mean=1; range=[1, 1]; spread=0; n=2
+    t_star: seed 0=1140, seed 1=1020; mean=1080; range=[1020, 1140]; spread=120; n=2
+    return_initial: seed 0=30.5291, seed 1=49.184; mean=39.8565; range=[30.5291, 49.184]; spread=18.6549; n=2
+    return_final: seed 0=9.00187, seed 1=8.98786; mean=8.99486; range=[8.98786, 9.00187]; spread=0.0140071; n=2
+    tuning_change: seed 0=0.78125, seed 1=0.886719; mean=0.833984; range=[0.78125, 0.886719]; spread=0.105469; n=2
+    tuning_change_since_fork: seed 0=0.746094, seed 1=0.808594; mean=0.777344; range=[0.746094, 0.808594]; spread=0.0625; n=2
+    importance_rank_vs_ancestor: seed 0=0.118934, seed 1=0.0641544; mean=0.0915441; range=[0.0641544, 0.118934]; spread=0.0547794; n=2
+    importance_rank_between_lineages: seed 0=0.00661765, seed 1=0.038848; mean=0.0227328; range=[0.00661765, 0.038848]; spread=0.0322304; n=2
+    return_maintained_count: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    return_maintained_fraction: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    si1_qualifies: seed 0=0, seed 1=0; mean=0; range=[0, 0]; spread=0; n=2
+    example_drop_high: seed 0=44.7264, seed 1=45.5985; mean=45.1625; range=[44.7264, 45.5985]; spread=0.872143; n=2
+    example_drop_low: seed 0=-28.1173, seed 1=-16.9496; mean=-22.5335; range=[-28.1173, -16.9496]; spread=11.1677; n=2
+    example_reference_scale: seed 0=39.8591, seed 1=54.8143; mean=47.3367; range=[39.8591, 54.8143]; spread=14.9553; n=2
+    hybrid_return: seed 0=4.67297, seed 1=4.04865; mean=4.36081; range=[4.04865, 4.67297]; spread=0.624326; n=2
+    parent_return: seed 0=11.8585, seed 1=12.0856; mean=11.972; range=[11.8585, 12.0856]; spread=0.227142; n=2
+    hybrid_minus_parent: seed 0=-7.1855, seed 1=-8.03697; mean=-7.61124; range=[-8.03697, -7.1855]; spread=0.851468; n=2
+
+Qualitative disagreements (NA differences indicate availability, not opposite conclusions):
+  s=3 selected: si1_qualifies vs 0: seed 0=>, seed 1==
+  s=3 selected: return_maintained_fraction vs 1: seed 0==, seed 1=<
+  s=3: omega.gait vs 1: seed 0=<, seed 1=>
+  s=3: omega ordering x0 vs z: seed 0=>, seed 1=<
+  s=3: omega ordering x0 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering x0 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering x0 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs x2: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs z: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs representation: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering x1 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering x2 vs z: seed 0=>, seed 1=<
+  s=3: omega ordering x2 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering x2 vs representation: seed 0=>, seed 1=<
+  s=3: omega ordering x2 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering x2 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering z vs M1: seed 0=<, seed 1=>
+  s=3: omega ordering z vs M2: seed 0=<, seed 1=>
+  s=3: omega ordering z vs M3: seed 0=<, seed 1=>
+  s=3: omega ordering z vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering z vs return: seed 0=>, seed 1=<
+  s=3: omega ordering z vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering M1 vs M3: seed 0=>, seed 1=<
+  s=3: omega ordering M1 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering M1 vs representation: seed 0=>, seed 1=<
+  s=3: omega ordering M1 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering M1 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering M2 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering M2 vs representation: seed 0=>, seed 1=<
+  s=3: omega ordering M2 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering M2 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering M3 vs theta: seed 0=>, seed 1=<
+  s=3: omega ordering M3 vs representation: seed 0=>, seed 1=<
+  s=3: omega ordering M3 vs return: seed 0=>, seed 1=<
+  s=3: omega ordering M3 vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering theta vs return: seed 0=>, seed 1=<
+  s=3: omega ordering theta vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering representation vs return: seed 0=>, seed 1=<
+  s=3: omega ordering representation vs gait: seed 0=>, seed 1=<
+  s=3: omega ordering return vs gait: seed 0=>, seed 1=<
+  s=3 neutral: importance_rank_vs_ancestor vs 0: seed 0=>, seed 1=<
+  s=3 neutral: importance_rank_between_lineages vs 0: seed 0=>, seed 1=<
+  s=30 selected: si1_qualifies vs 0: seed 0=>, seed 1==
+  s=30 selected: importance_rank_vs_ancestor vs 0: seed 0=>, seed 1=<
+  s=30: omega ordering x0 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering x1 vs z: seed 0=>, seed 1=<
+  s=30: omega ordering x1 vs theta: seed 0=>, seed 1=<
+  s=30: omega ordering x1 vs representation: seed 0=>, seed 1=<
+  s=30: omega ordering x1 vs return: seed 0=>, seed 1=<
+  s=30: omega ordering x1 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering x2 vs z: seed 0=>, seed 1=<
+  s=30: omega ordering x2 vs theta: seed 0=>, seed 1=<
+  s=30: omega ordering x2 vs representation: seed 0=>, seed 1=<
+  s=30: omega ordering x2 vs return: seed 0=>, seed 1=<
+  s=30: omega ordering x2 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering z vs representation: seed 0=>, seed 1=<
+  s=30: omega ordering z vs return: seed 0=>, seed 1=<
+  s=30: omega ordering z vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering M1 vs M3: seed 0=<, seed 1=>
+  s=30: omega ordering M1 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering M2 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering M3 vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering theta vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering representation vs return: seed 0=>, seed 1=<
+  s=30: omega ordering representation vs gait: seed 0=>, seed 1=<
+  s=30: omega ordering return vs gait: seed 0=>, seed 1=<
+  omega.M1: s=3 vs s=30: seed 0=>, seed 1=<
+  omega.M2: s=3 vs s=30: seed 0=>, seed 1=<
+  omega.M3: s=3 vs s=30: seed 0=>, seed 1=<
+  omega.return: s=3 vs s=30: seed 0=<, seed 1=>
+  omega.gait: s=3 vs s=30: seed 0=<, seed 1=>

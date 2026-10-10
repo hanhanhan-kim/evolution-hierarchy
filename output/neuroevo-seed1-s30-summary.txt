@@ -1,0 +1,19 @@
+Experiment G (full run): generalized swimmer, cuda:0
+N=64, K=16, steps=300, adaptation=500, burn=2000, drift=2000
+Gain=0.25; initial action RMS/max=0.357/0.581
+Adaptation return 29.608 -> 31.251; plateau=True
+Learning curve (generation:return): 0:29.61, 100:33.77, 200:33.69, 300:33.88, 400:33.81, 500:31.25
+Fixed return scales: adaptation=1.2854, phase 2=9.2864
+fork s=30, arm s=30: return 49.184 -> 78.571; CKA divergence=0.004705; tuning changes=83.6%; importance rank vs ancestor=-0.1446691176470588, between lineages=0.6356617647058823
+  t*=1020; omega={'x0': 0.008530014377748323, 'x1': 0.07100214816730809, 'x2': 0.0855370422967228, 'z': 0.09206168573159323, 'M1': 0.30068475110735643, 'M2': 0.3200624768724986, 'M3': 0.25809065517313035, 'theta': 0.08865042736654742, 'representation': 0.09339527136233029, 'return': 0.21313933102059426, 'gait': 0.680923741900895}; intact return within 10% of fork: 0/16
+  Largest contrast (no qualifying Si1-like example): unit 10, lineage 13 drop=105.43, lineage 6 drop=3.6456
+  Hybrid return=28.08; parent return=94.212
+fork s=30, arm s=0: return 49.184 -> 8.9879; CKA divergence=0.01783; tuning changes=88.7%; importance rank vs ancestor=0.06415441176470588, between lineages=0.03884803921568627
+  t*=1020; omega={'x0': 1.0, 'x1': 1.0, 'x2': 1.0, 'z': 1.0, 'M1': 1.0, 'M2': 1.0, 'M3': 1.0, 'theta': 1.0, 'representation': 1.0, 'return': 1.0, 'gait': 1.0}; intact return within 10% of fork: 0/16
+  Largest contrast (no qualifying Si1-like example): unit 0, lineage 5 drop=45.599, lineage 6 drop=-16.95
+  Hybrid return=4.0486; parent return=12.086
+Warmed CPU/GPU throughput: 127,299 agent-steps/s; elapsed=16738.3s.
+Default full evolution: 2,572,876,800 agent-steps; CPU extrapolation=5.6h.
+B300 not measured: assuming 0.1--1 million agent-steps/s gives 0.71--7.15h, plus compilation and assays.
+Fixed-reset performance selection does not constrain gait; inspect returns AND gait before claiming conserved behaviour.
+Short runs validate machinery, not drift, plateau, or functional reassignment; missing omega means neutral x0 never reached .25.

@@ -92,3 +92,4 @@ output/neuroevo.json
 output/neuroevo-seed*.json
 output/neuroevo-combined.json
 output/*.npy
+output/code4-step4*.json

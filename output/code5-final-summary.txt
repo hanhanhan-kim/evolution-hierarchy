@@ -1,0 +1,1551 @@
+F5 F4 bracket re-analysis
+Sources: /root/evolution-hierarchy/output/code4.json, /root/evolution-hierarchy/output/code4-step4a.json, /root/evolution-hierarchy/output/code4-step4b1.json, /root/evolution-hierarchy/output/code4-step4b2.json; A reproduction: exact per input (saved A checked wherever present); combined A recomputed
+Tail=last quarter; changes=split last half; paired Student-t 95% intervals.
+Crossing=negative width with pointwise 95% interval below zero: unadjusted diagnostic only; never invalidates a bracket.
+Point endpoint inversions within noise remain unbracketed. Width upper bound must be <=0.01 for BOTH metrics.
+N Ns u F4 | mean [random,optimum] width [95%] valid | consensus [random,optimum] width [95%] valid | bracketed admitted
+  10 300 1.0e-04 met | [0.982256,0.985942] 0.003686 [-0.001545,0.008918] True | [0.983602,0.987506] 0.003904 [-0.001153,0.008961] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=3 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+  10 300 3.0e-04 met | [0.975711,0.980042] 0.004331 [0.000658,0.008003] True | [0.981911,0.985374] 0.003463 [-0.000269,0.007195] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=3 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+  10 300 1.0e-03 cap reached | [0.959284,0.959154] -0.000129 [-0.004050,0.003791] True | [0.970278,0.973083] 0.002805 [-0.010020,0.015631] True | False False
+    efficiency: crossing records=4, first T=141000.0; noisy point inversions=138 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=2, first T=29000.0; noisy point inversions=132 (unadjusted)
+  10 300 3.0e-03 cap reached | [0.926533,0.935878] 0.009345 [-0.001484,0.020174] True | [0.952168,0.963922] 0.011754 [-0.006108,0.029617] True | False False
+    efficiency: crossing records=7, first T=10000.0; noisy point inversions=144 (unadjusted)
+    consensus: crossing records=4, first T=22000.0; noisy point inversions=135 (unadjusted)
+  10 3000 1.0e-04 met | [0.992817,0.997979] 0.005162 [0.001486,0.008839] True | [0.993179,0.998695] 0.005516 [0.001947,0.009085] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+  10 3000 3.0e-04 met | [0.992412,0.995304] 0.002892 [0.000728,0.005055] True | [0.994319,0.998043] 0.003724 [0.001740,0.005708] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=2 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+  10 3000 1.0e-03 met | [0.991598,0.988769] -0.002829 [-0.007023,0.001365] True | [0.996416,0.996370] -0.000046 [-0.001208,0.001115] True | False False
+    efficiency: crossing records=1, first T=15000.0; noisy point inversions=7 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=0, first T=None; noisy point inversions=2 (unadjusted)
+    consensus: point endpoints inverted within noise
+  10 3000 3.0e-03 cap reached | [0.845059,0.834605] -0.010454 [-0.069737,0.048829] True | [0.659773,0.634258] -0.025514 [-0.251522,0.200494] True | False False
+    efficiency: crossing records=12, first T=38000.0; noisy point inversions=185 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=11, first T=104000.0; noisy point inversions=178 (unadjusted)
+    consensus: point endpoints inverted within noise
+ 100 30 1.0e-04 cap reached | [0.843076,0.842646] -0.000431 [-0.008597,0.007736] True | [0.863146,0.861756] -0.001391 [-0.009286,0.006505] True | False False
+    efficiency: crossing records=10, first T=242000.0; noisy point inversions=369 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=8, first T=239000.0; noisy point inversions=369 (unadjusted)
+    consensus: point endpoints inverted within noise
+ 100 30 3.0e-04 cap reached | [0.790953,0.788365] -0.002588 [-0.010741,0.005565] False | [0.829407,0.826968] -0.002439 [-0.010735,0.005856] False | False False
+    efficiency: crossing records=33, first T=130000.0; noisy point inversions=558 (unadjusted)
+    efficiency: random arm decreasing beyond noise
+    consensus: crossing records=32, first T=133000.0; noisy point inversions=570 (unadjusted)
+    consensus: random arm decreasing beyond noise
+ 100 30 1.0e-03 met | [0.724580,0.727699] 0.003119 [-0.001749,0.007987] True | [0.794728,0.799055] 0.004326 [-0.000749,0.009401] True | True False
+    efficiency: crossing records=12, first T=25000.0; noisy point inversions=366 (unadjusted)
+    consensus: crossing records=19, first T=24000.0; noisy point inversions=356 (unadjusted)
+ 100 30 3.0e-03 met | [0.635533,0.636141] 0.000608 [-0.003314,0.004531] True | [0.733881,0.733336] -0.000545 [-0.004833,0.003744] True | False False
+    efficiency: crossing records=8, first T=7000.0; noisy point inversions=209 (unadjusted)
+    consensus: crossing records=7, first T=7000.0; noisy point inversions=203 (unadjusted)
+    consensus: point endpoints inverted within noise
+ 100 100 1.0e-04 met | [0.938539,0.941702] 0.003163 [-0.003593,0.009919] True | [0.954163,0.956914] 0.002751 [-0.003421,0.008923] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=12 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=14 (unadjusted)
+ 100 100 3.0e-04 met | [0.914130,0.915649] 0.001520 [-0.004972,0.008011] True | [0.945834,0.946935] 0.001101 [-0.004258,0.006460] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=10 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=11 (unadjusted)
+ 100 100 1.0e-03 met | [0.875883,0.876297] 0.000413 [-0.006300,0.007127] True | [0.934566,0.935642] 0.001076 [-0.003762,0.005914] False | False False
+    efficiency: crossing records=1, first T=60000.0; noisy point inversions=30 (unadjusted)
+    consensus: crossing records=1, first T=32000.0; noisy point inversions=27 (unadjusted)
+    consensus: optimum arm increasing beyond noise
+ 100 100 3.0e-03 met | [0.821556,0.818352] -0.003204 [-0.007220,0.000813] True | [0.911872,0.909215] -0.002657 [-0.006881,0.001568] True | False False
+    efficiency: crossing records=4, first T=44000.0; noisy point inversions=52 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=2, first T=45000.0; noisy point inversions=52 (unadjusted)
+    consensus: point endpoints inverted within noise
+ 100 300 1.0e-04 met | [0.971801,0.975381] 0.003580 [-0.002151,0.009311] True | [0.981330,0.984826] 0.003496 [-0.002762,0.009755] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=6 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=5 (unadjusted)
+ 100 300 3.0e-04 met | [0.958502,0.960163] 0.001661 [-0.005919,0.009241] False | [0.978623,0.980654] 0.002031 [-0.004253,0.008314] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=9 (unadjusted)
+    efficiency: optimum arm increasing beyond noise
+    consensus: crossing records=0, first T=None; noisy point inversions=6 (unadjusted)
+ 100 300 1.0e-03 met | [0.937990,0.939446] 0.001456 [-0.002844,0.005757] True | [0.976037,0.976335] 0.000298 [-0.003932,0.004529] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=10 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=9 (unadjusted)
+ 100 300 3.0e-03 met | [0.907670,0.906858] -0.000813 [-0.004997,0.003371] True | [0.967548,0.968310] 0.000762 [-0.002728,0.004251] True | False False
+    efficiency: crossing records=3, first T=57000.0; noisy point inversions=56 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=2, first T=68000.0; noisy point inversions=47 (unadjusted)
+ 100 1000 1.0e-04 met | [0.984692,0.991314] 0.006621 [0.003993,0.009249] True | [0.989393,0.995945] 0.006552 [0.003981,0.009122] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+ 100 1000 3.0e-04 met | [0.979350,0.984397] 0.005047 [0.000722,0.009372] True | [0.989599,0.994633] 0.005035 [0.000954,0.009115] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+ 100 1000 1.0e-03 met | [0.969821,0.972363] 0.002542 [0.000168,0.004915] False | [0.990671,0.992670] 0.001999 [0.000783,0.003215] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    efficiency: optimum arm increasing beyond noise
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+ 100 1000 3.0e-03 met | [0.955461,0.957208] 0.001747 [-0.000158,0.003653] True | [0.989757,0.990196] 0.000439 [-0.000512,0.001390] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=4 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=5 (unadjusted)
+ 100 3000 1.0e-04 met | [0.990954,0.996211] 0.005258 [0.001693,0.008823] True | [0.993231,0.998679] 0.005448 [0.001910,0.008985] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+ 100 3000 3.0e-04 met | [0.989431,0.991654] 0.002222 [-0.000485,0.004929] True | [0.994960,0.998103] 0.003143 [0.000722,0.005565] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+ 100 3000 1.0e-03 met | [0.982018,0.984788] 0.002770 [-0.000818,0.006359] True | [0.996258,0.997110] 0.000852 [-0.000822,0.002526] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+ 100 3000 3.0e-03 met | [0.976564,0.977155] 0.000590 [-0.005445,0.006626] True | [0.995854,0.996152] 0.000298 [-0.000691,0.001288] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=7 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=3 (unadjusted)
+1000 30 1.0e-04 cap reached | [0.734040,0.727520] -0.006520 [-0.017148,0.004108] True | [0.805203,0.799479] -0.005724 [-0.017374,0.005925] True | False False
+    efficiency: crossing records=21, first T=220000.0; noisy point inversions=390 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=22, first T=221000.0; noisy point inversions=427 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 30 3.0e-04 cap reached | [0.630639,0.635829] 0.005190 [-0.004121,0.014501] True | [0.725846,0.732157] 0.006311 [-0.005058,0.017680] True | False False
+    efficiency: crossing records=11, first T=107000.0; noisy point inversions=407 (unadjusted)
+    consensus: crossing records=13, first T=96000.0; noisy point inversions=420 (unadjusted)
+1000 30 1.0e-03 cap reached | [0.513855,0.513901] 0.000046 [-0.005432,0.005524] True | [0.618587,0.619018] 0.000431 [-0.007923,0.008785] True | True True
+    efficiency: crossing records=15, first T=76000.0; noisy point inversions=468 (unadjusted)
+    consensus: crossing records=21, first T=308000.0; noisy point inversions=482 (unadjusted)
+1000 30 3.0e-03 met | [0.387514,0.385719] -0.001796 [-0.004552,0.000961] True | [0.475188,0.474112] -0.001076 [-0.006739,0.004586] True | False False
+    efficiency: crossing records=23, first T=73000.0; noisy point inversions=424 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=21, first T=45000.0; noisy point inversions=400 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 100 1.0e-04 met | [0.874552,0.874357] -0.000195 [-0.009605,0.009214] True | [0.932932,0.934525] 0.001593 [-0.006185,0.009370] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=46 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=0, first T=None; noisy point inversions=31 (unadjusted)
+1000 100 3.0e-04 met | [0.824990,0.824346] -0.000644 [-0.006449,0.005161] True | [0.912434,0.912820] 0.000385 [-0.005828,0.006599] True | False False
+    efficiency: crossing records=6, first T=124000.0; noisy point inversions=102 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=2, first T=147000.0; noisy point inversions=104 (unadjusted)
+1000 100 1.0e-03 met | [0.731670,0.734482] 0.002812 [-0.001569,0.007193] True | [0.855992,0.857317] 0.001325 [-0.004051,0.006702] True | True False
+    efficiency: crossing records=4, first T=55000.0; noisy point inversions=164 (unadjusted)
+    consensus: crossing records=7, first T=55000.0; noisy point inversions=169 (unadjusted)
+1000 100 3.0e-03 met | [0.606586,0.607120] 0.000533 [-0.002818,0.003884] True | [0.740730,0.741202] 0.000473 [-0.004785,0.005731] True | True False
+    efficiency: crossing records=10, first T=128000.0; noisy point inversions=291 (unadjusted)
+    consensus: crossing records=13, first T=15000.0; noisy point inversions=282 (unadjusted)
+1000 300 1.0e-04 cap reached | [0.941943,0.944254] 0.002311 [-0.007287,0.011909] True | [0.977699,0.977649] -0.000050 [-0.006358,0.006259] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=49 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=62 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 300 3.0e-04 met | [0.913741,0.912894] -0.000847 [-0.009078,0.007383] True | [0.971972,0.971304] -0.000669 [-0.003914,0.002577] True | False False
+    efficiency: crossing records=1, first T=84000.0; noisy point inversions=32 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=1, first T=71000.0; noisy point inversions=31 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 300 1.0e-03 cap reached | [0.861533,0.857921] -0.003612 [-0.009393,0.002169] True | [0.946235,0.943915] -0.002319 [-0.008049,0.003410] True | False False
+    efficiency: crossing records=2, first T=283000.0; noisy point inversions=156 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=6, first T=53000.0; noisy point inversions=154 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 300 3.0e-03 cap reached | [0.778397,0.781746] 0.003348 [-0.000798,0.007495] True | [0.894477,0.897257] 0.002779 [-0.006604,0.012163] True | False False
+    efficiency: crossing records=3, first T=110000.0; noisy point inversions=127 (unadjusted)
+    consensus: crossing records=5, first T=35000.0; noisy point inversions=154 (unadjusted)
+1000 1000 1.0e-04 met | [0.967425,0.973030] 0.005605 [0.001880,0.009330] True | [0.987681,0.992955] 0.005274 [0.002153,0.008395] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+1000 1000 3.0e-04 met | [0.954572,0.959605] 0.005033 [0.002614,0.007452] False | [0.987246,0.991174] 0.003929 [0.002202,0.005655] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    efficiency: optimum arm increasing beyond noise
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+1000 1000 1.0e-03 met | [0.930857,0.933902] 0.003045 [-0.000131,0.006221] True | [0.979366,0.981262] 0.001895 [-0.001514,0.005305] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=3 (unadjusted)
+1000 1000 3.0e-03 met | [0.891152,0.892471] 0.001320 [-0.001524,0.004163] True | [0.964379,0.961714] -0.002665 [-0.007839,0.002509] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=5 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=10 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 3000 1.0e-04 met | [0.981583,0.987175] 0.005592 [0.001202,0.009981] True | [0.993072,0.997921] 0.004849 [0.000982,0.008717] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+1000 3000 3.0e-04 met | [0.975505,0.977977] 0.002472 [-0.000315,0.005259] False | [0.993713,0.996868] 0.003155 [0.000775,0.005535] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    efficiency: optimum arm increasing beyond noise
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+1000 3000 1.0e-03 met | [0.967212,0.966799] -0.000414 [-0.003562,0.002734] True | [0.993485,0.993465] -0.000021 [-0.002569,0.002528] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=7 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=0, first T=None; noisy point inversions=7 (unadjusted)
+    consensus: point endpoints inverted within noise
+1000 3000 3.0e-03 met | [0.944785,0.945182] 0.000397 [-0.002927,0.003720] True | [0.985914,0.984567] -0.001347 [-0.007592,0.004898] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=23 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=16 (unadjusted)
+    consensus: point endpoints inverted within noise
+3000 100 1.0e-04 met | [0.826083,0.829221] 0.003139 [-0.003542,0.009820] True | [0.914458,0.915628] 0.001170 [-0.005617,0.007957] True | True False
+    efficiency: crossing records=1, first T=340000.0; noisy point inversions=154 (unadjusted)
+    consensus: crossing records=2, first T=356000.0; noisy point inversions=228 (unadjusted)
+3000 100 3.0e-04 met | [0.741309,0.744174] 0.002865 [-0.001703,0.007434] True | [0.862393,0.865047] 0.002655 [-0.004556,0.009865] True | True False
+    efficiency: crossing records=33, first T=48000.0; noisy point inversions=405 (unadjusted)
+    consensus: crossing records=25, first T=53000.0; noisy point inversions=407 (unadjusted)
+3000 100 1.0e-03 cap reached | [0.607727,0.606017] -0.001710 [-0.005226,0.001806] True | [0.742458,0.738723] -0.003735 [-0.010129,0.002660] True | False False
+    efficiency: crossing records=30, first T=27000.0; noisy point inversions=491 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=26, first T=91000.0; noisy point inversions=495 (unadjusted)
+    consensus: point endpoints inverted within noise
+3000 100 3.0e-03 met | [0.444948,0.446078] 0.001130 [-0.001244,0.003504] True | [0.558682,0.562489] 0.003807 [-0.001359,0.008972] True | True False
+    efficiency: crossing records=18, first T=83000.0; noisy point inversions=422 (unadjusted)
+    consensus: crossing records=29, first T=77000.0; noisy point inversions=423 (unadjusted)
+3000 300 1.0e-04 cap reached | [0.905412,0.913410] 0.007999 [-0.000235,0.016232] True | [0.967639,0.968674] 0.001035 [-0.004215,0.006285] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=19 (unadjusted)
+    consensus: crossing records=1, first T=291000.0; noisy point inversions=45 (unadjusted)
+3000 300 3.0e-04 cap reached | [0.862173,0.865175] 0.003002 [-0.004684,0.010689] True | [0.946071,0.946895] 0.000824 [-0.008486,0.010134] True | False False
+    efficiency: crossing records=6, first T=87000.0; noisy point inversions=136 (unadjusted)
+    consensus: crossing records=4, first T=104000.0; noisy point inversions=120 (unadjusted)
+3000 300 1.0e-03 cap reached | [0.782108,0.780401] -0.001707 [-0.011643,0.008230] True | [0.887874,0.895257] 0.007383 [-0.003657,0.018423] True | False False
+    efficiency: crossing records=8, first T=95000.0; noisy point inversions=172 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=6, first T=39000.0; noisy point inversions=137 (unadjusted)
+3000 300 3.0e-03 cap reached | [0.649788,0.649616] -0.000172 [-0.006703,0.006359] True | [0.785886,0.789635] 0.003749 [-0.011965,0.019463] True | False False
+    efficiency: crossing records=3, first T=18000.0; noisy point inversions=120 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=7, first T=85000.0; noisy point inversions=121 (unadjusted)
+3000 1000 1.0e-04 met | [0.952513,0.958747] 0.006234 [0.003087,0.009380] True | [0.985224,0.990928] 0.005704 [0.003296,0.008112] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+3000 1000 3.0e-04 met | [0.934515,0.937310] 0.002794 [-0.000371,0.005960] True | [0.981385,0.984622] 0.003236 [0.000875,0.005598] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+3000 1000 1.0e-03 met | [0.893021,0.891946] -0.001075 [-0.004857,0.002707] True | [0.963423,0.962817] -0.000606 [-0.004490,0.003278] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=22 (unadjusted)
+    efficiency: point endpoints inverted within noise
+    consensus: crossing records=0, first T=None; noisy point inversions=19 (unadjusted)
+    consensus: point endpoints inverted within noise
+3000 1000 3.0e-03 met | [0.817789,0.818843] 0.001054 [-0.001211,0.003318] True | [0.917198,0.918929] 0.001732 [-0.004622,0.008086] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=37 (unadjusted)
+    consensus: crossing records=1, first T=89000.0; noisy point inversions=36 (unadjusted)
+3000 3000 1.0e-04 met | [0.972312,0.976905] 0.004594 [-0.000776,0.009964] True | [0.992062,0.996983] 0.004921 [0.001326,0.008516] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=0 (unadjusted)
+3000 3000 3.0e-04 met | [0.965731,0.967499] 0.001768 [-0.001718,0.005254] True | [0.990674,0.993663] 0.002989 [-0.000979,0.006957] True | True False
+    efficiency: crossing records=0, first T=None; noisy point inversions=1 (unadjusted)
+    consensus: crossing records=0, first T=None; noisy point inversions=2 (unadjusted)
+3000 3000 1.0e-03 met | [0.947024,0.947570] 0.000546 [-0.003020,0.004113] True | [0.985527,0.985547] 0.000020 [-0.003871,0.003911] True | True False
+    efficiency: crossing records=2, first T=37000.0; noisy point inversions=18 (unadjusted)
+    consensus: crossing records=1, first T=27000.0; noisy point inversions=21 (unadjusted)
+3000 3000 3.0e-03 met | [0.906300,0.907406] 0.001106 [-0.002844,0.005056] True | [0.966707,0.965357] -0.001350 [-0.007687,0.004986] True | False False
+    efficiency: crossing records=0, first T=None; noisy point inversions=42 (unadjusted)
+    consensus: crossing records=2, first T=89000.0; noisy point inversions=59 (unadjusted)
+    consensus: point endpoints inverted within noise
+
+STATIONARY: last half; pooled 2K trajectories; OLS drift over window; paired arm difference.
+Level and arm difference use max(batch-means SE, replicate-window SE); 95% Student-t intervals.
+  (10, 300, 0.0001): newly admitted=no; usable in S=True; records=81
+    efficiency: estimate=0.983358, half-width=0.00308519; drift=[-0.000332,0.006567]; arm difference (optimum-random)=[-0.000926,0.011296]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.984801, half-width=0.00307827; drift=[-0.000249,0.006966]; arm difference (optimum-random)=[-0.000583,0.011457]; admitted=no; arm-difference interval too wide: more replicates
+  (10, 300, 0.0003): newly admitted=no; usable in S=True; records=41
+    efficiency: estimate=0.977871, half-width=0.00304669; drift=[-0.004791,0.004223]; arm difference (optimum-random)=[0.001486,0.008987]; admitted=yes; all three criteria pass
+    consensus: estimate=0.983260, half-width=0.00282566; drift=[-0.002773,0.005029]; arm difference (optimum-random)=[0.000572,0.008668]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (10, 300, 0.001): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.959705, half-width=0.00303132; drift=[-0.009870,0.003837]; arm difference (optimum-random)=[-0.004618,0.002969]; admitted=yes; all three criteria pass
+    consensus: estimate=0.971537, half-width=0.00762856; drift=[-0.013279,0.011124]; arm difference (optimum-random)=[-0.018411,0.014949]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (10, 300, 0.003): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.934542, half-width=0.00517085; drift=[-0.024717,0.000219]; arm difference (optimum-random)=[-0.002153,0.014667]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.962451, half-width=0.0059055; drift=[-0.031189,-0.001230]; arm difference (optimum-random)=[-0.004656,0.017866]; admitted=no; significant drift: longer runs; arm-difference interval too wide: more replicates
+  (10, 3000, 0.0001): newly admitted=no; usable in S=True; records=61
+    efficiency: estimate=0.994563, half-width=0.0027217; drift=[0.000088,0.006424]; arm difference (optimum-random)=[0.002710,0.010937]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.995130, half-width=0.00280113; drift=[0.000077,0.006394]; arm difference (optimum-random)=[0.003207,0.011240]; admitted=no; arm-difference interval too wide: more replicates
+  (10, 3000, 0.0003): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.992923, half-width=0.00253152; drift=[-0.002820,0.009382]; arm difference (optimum-random)=[0.001111,0.009183]; admitted=yes; all three criteria pass
+    consensus: estimate=0.995017, half-width=0.00248631; drift=[-0.001119,0.010260]; arm difference (optimum-random)=[0.002464,0.009934]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (10, 3000, 0.001): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.988984, half-width=0.00264243; drift=[-0.001423,0.009968]; arm difference (optimum-random)=[-0.008101,0.003996]; admitted=yes; all three criteria pass
+    consensus: estimate=0.995857, half-width=0.00130784; drift=[-0.001605,0.006334]; arm difference (optimum-random)=[-0.001182,0.004046]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (10, 3000, 0.003): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.840955, half-width=0.0194025; drift=[-0.041707,0.018078]; arm difference (optimum-random)=[-0.060211,0.035451]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates; wide level half-width: more replicates
+    consensus: estimate=0.674412, half-width=0.0817302; drift=[-0.285893,-0.018714]; arm difference (optimum-random)=[-0.249834,0.164041]; admitted=no; significant drift: longer runs; arm-difference interval too wide: more replicates; wide level half-width: more replicates
+  (100, 30.0, 0.0001): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.839817, half-width=0.00408848; drift=[-0.000659,0.022676]; arm difference (optimum-random)=[-0.007406,0.007639]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.859011, half-width=0.00402934; drift=[0.000634,0.024376]; arm difference (optimum-random)=[-0.007273,0.007706]; admitted=no; significant drift: longer runs
+  (100, 30.0, 0.0003): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.791897, half-width=0.00309661; drift=[-0.011183,0.005626]; arm difference (optimum-random)=[-0.011444,0.002146]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.830242, half-width=0.00304389; drift=[-0.011049,0.005951]; arm difference (optimum-random)=[-0.011630,0.001638]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (100, 30.0, 0.001): newly admitted=no; usable in S=True; records=406
+    efficiency: estimate=0.724425, half-width=0.00233673; drift=[-0.000996,0.011492]; arm difference (optimum-random)=[-0.002521,0.007761]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.794561, half-width=0.00248807; drift=[0.000465,0.014210]; arm difference (optimum-random)=[-0.001480,0.009085]; admitted=no; significant drift: longer runs
+  (100, 30.0, 0.003): newly admitted=no; usable in S=True; records=211
+    efficiency: estimate=0.635595, half-width=0.00217802; drift=[-0.004693,0.009196]; arm difference (optimum-random)=[-0.006134,0.002726]; admitted=yes; all three criteria pass
+    consensus: estimate=0.733016, half-width=0.00248865; drift=[-0.004965,0.012547]; arm difference (optimum-random)=[-0.007415,0.002171]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (100, 100.0, 0.0001): newly admitted=no; usable in S=True; records=136
+    efficiency: estimate=0.939339, half-width=0.00359058; drift=[-0.003949,0.011498]; arm difference (optimum-random)=[0.000094,0.015142]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.954638, half-width=0.00351288; drift=[-0.003636,0.011556]; arm difference (optimum-random)=[-0.000245,0.014761]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (100, 100.0, 0.0003): newly admitted=no; usable in S=True; records=41
+    efficiency: estimate=0.913026, half-width=0.00310545; drift=[0.001304,0.014492]; arm difference (optimum-random)=[-0.001666,0.011911]; admitted=no; significant drift: longer runs; arm-difference interval too wide: more replicates
+    consensus: estimate=0.944652, half-width=0.00267674; drift=[0.001576,0.013051]; arm difference (optimum-random)=[-0.002055,0.009644]; admitted=no; significant drift: longer runs
+  (100, 100.0, 0.001): newly admitted=no; usable in S=True; records=41
+    efficiency: estimate=0.875371, half-width=0.00336703; drift=[-0.003320,0.009645]; arm difference (optimum-random)=[-0.007729,0.006326]; admitted=yes; all three criteria pass
+    consensus: estimate=0.933839, half-width=0.00268789; drift=[-0.001005,0.010294]; arm difference (optimum-random)=[-0.006149,0.004352]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (100, 100.0, 0.003): newly admitted=no; usable in S=True; records=66
+    efficiency: estimate=0.820267, half-width=0.001633; drift=[-0.005481,0.003365]; arm difference (optimum-random)=[-0.005048,0.001249]; admitted=yes; all three criteria pass
+    consensus: estimate=0.910447, half-width=0.00161701; drift=[-0.004405,0.004731]; arm difference (optimum-random)=[-0.004792,0.001718]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 300, 0.0001): newly admitted=no; usable in S=True; records=81
+    efficiency: estimate=0.971706, half-width=0.00368472; drift=[-0.000153,0.015089]; arm difference (optimum-random)=[-0.000700,0.013570]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.981501, half-width=0.00402293; drift=[-0.001104,0.014344]; arm difference (optimum-random)=[-0.001521,0.014118]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (100, 300, 0.0003): newly admitted=no; usable in S=True; records=26
+    efficiency: estimate=0.957404, half-width=0.00339868; drift=[0.002785,0.011889]; arm difference (optimum-random)=[-0.006178,0.009298]; admitted=no; significant drift: longer runs
+    consensus: estimate=0.978767, half-width=0.00318542; drift=[0.000750,0.006759]; arm difference (optimum-random)=[-0.003368,0.008330]; admitted=yes; all three criteria pass
+  (100, 300, 0.001): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.939426, half-width=0.00261818; drift=[-0.010191,0.004557]; arm difference (optimum-random)=[-0.002156,0.006656]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.976648, half-width=0.00252203; drift=[-0.007035,0.002948]; arm difference (optimum-random)=[-0.000784,0.005181]; admitted=yes; all three criteria pass
+  (100, 300, 0.003): newly admitted=no; usable in S=True; records=56
+    efficiency: estimate=0.907648, half-width=0.00191434; drift=[-0.003688,0.004141]; arm difference (optimum-random)=[-0.005626,0.002039]; admitted=yes; all three criteria pass
+    consensus: estimate=0.967867, half-width=0.0013278; drift=[-0.002392,0.004587]; arm difference (optimum-random)=[-0.003654,0.001862]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 1000.0, 0.0001): newly admitted=no; usable in S=True; records=41
+    efficiency: estimate=0.987197, half-width=0.00216231; drift=[0.001270,0.005480]; arm difference (optimum-random)=[0.004760,0.012024]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.991820, half-width=0.00215104; drift=[0.001472,0.005667]; arm difference (optimum-random)=[0.004744,0.011879]; admitted=no; arm-difference interval too wide: more replicates
+  (100, 1000.0, 0.0003): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.980886, half-width=0.00258201; drift=[0.001478,0.005890]; arm difference (optimum-random)=[0.002072,0.011750]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.991248, half-width=0.00249457; drift=[0.001158,0.005556]; arm difference (optimum-random)=[0.002161,0.011442]; admitted=no; arm-difference interval too wide: more replicates
+  (100, 1000.0, 0.001): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.970155, half-width=0.00175175; drift=[0.001049,0.005113]; arm difference (optimum-random)=[-0.000293,0.006027]; admitted=yes; all three criteria pass
+    consensus: estimate=0.991449, half-width=0.00111603; drift=[0.000030,0.002226]; arm difference (optimum-random)=[0.000520,0.004406]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 1000.0, 0.003): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.956241, half-width=0.00148274; drift=[-0.001616,0.003039]; arm difference (optimum-random)=[-0.001808,0.003964]; admitted=yes; all three criteria pass
+    consensus: estimate=0.990165, half-width=0.000544415; drift=[-0.001431,0.000579]; arm difference (optimum-random)=[-0.000452,0.001797]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 3000, 0.0001): newly admitted=no; usable in S=True; records=41
+    efficiency: estimate=0.993035, half-width=0.00258092; drift=[-0.000235,0.004429]; arm difference (optimum-random)=[0.002897,0.010320]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.995309, half-width=0.0025982; drift=[0.000312,0.004869]; arm difference (optimum-random)=[0.003082,0.010291]; admitted=no; arm-difference interval too wide: more replicates
+  (100, 3000, 0.0003): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.990067, half-width=0.00207443; drift=[0.000262,0.003106]; arm difference (optimum-random)=[-0.000520,0.006956]; admitted=yes; all three criteria pass
+    consensus: estimate=0.996248, half-width=0.00195637; drift=[0.000027,0.002122]; arm difference (optimum-random)=[0.001138,0.006813]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 3000, 0.001): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.983319, half-width=0.0029028; drift=[-0.001938,0.002018]; arm difference (optimum-random)=[-0.001002,0.007499]; admitted=yes; all three criteria pass
+    consensus: estimate=0.996348, half-width=0.00123098; drift=[-0.000481,0.002270]; arm difference (optimum-random)=[-0.000594,0.004112]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (100, 3000, 0.003): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.976962, half-width=0.00201195; drift=[-0.002889,0.004976]; arm difference (optimum-random)=[-0.003969,0.006061]; admitted=yes; all three criteria pass
+    consensus: estimate=0.996158, half-width=0.000399616; drift=[-0.001185,0.000387]; arm difference (optimum-random)=[-0.000370,0.001445]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 30.0, 0.0001): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.732762, half-width=0.00549202; drift=[-0.020797,0.008246]; arm difference (optimum-random)=[-0.010128,0.011218]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.803685, half-width=0.00586799; drift=[-0.019318,0.011734]; arm difference (optimum-random)=[-0.011537,0.010771]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (1000, 30.0, 0.0003): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.634668, half-width=0.00406628; drift=[-0.019749,0.006072]; arm difference (optimum-random)=[-0.003295,0.011335]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.730874, half-width=0.00516531; drift=[-0.022256,0.008420]; arm difference (optimum-random)=[-0.003569,0.013786]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (1000, 30.0, 0.001): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.514561, half-width=0.00247308; drift=[-0.009541,0.003109]; arm difference (optimum-random)=[-0.005839,0.004511]; admitted=yes; all three criteria pass
+    consensus: estimate=0.619074, half-width=0.00338199; drift=[-0.011381,0.006430]; arm difference (optimum-random)=[-0.009690,0.005261]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (1000, 30.0, 0.003): newly admitted=no; usable in S=True; records=416
+    efficiency: estimate=0.386374, half-width=0.00124271; drift=[-0.003192,0.003927]; arm difference (optimum-random)=[-0.002800,0.002041]; admitted=yes; all three criteria pass
+    consensus: estimate=0.473459, half-width=0.00236231; drift=[-0.005050,0.008035]; arm difference (optimum-random)=[-0.004058,0.005665]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 100.0, 0.0001): newly admitted=no; usable in S=True; records=121
+    efficiency: estimate=0.874202, half-width=0.00424623; drift=[-0.004777,0.011447]; arm difference (optimum-random)=[-0.007043,0.012291]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.933275, half-width=0.00371544; drift=[-0.003702,0.010449]; arm difference (optimum-random)=[-0.004873,0.010705]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (1000, 100.0, 0.0003): newly admitted=no; usable in S=True; records=171
+    efficiency: estimate=0.823444, half-width=0.00288789; drift=[-0.002395,0.012732]; arm difference (optimum-random)=[-0.003865,0.008018]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.912122, half-width=0.00290905; drift=[-0.003889,0.008839]; arm difference (optimum-random)=[-0.004563,0.008087]; admitted=yes; all three criteria pass
+  (1000, 100.0, 0.001): newly admitted=no; usable in S=True; records=176
+    efficiency: estimate=0.733485, half-width=0.00218281; drift=[-0.005324,0.005639]; arm difference (optimum-random)=[-0.002233,0.006268]; admitted=yes; all three criteria pass
+    consensus: estimate=0.856990, half-width=0.00261327; drift=[-0.006269,0.005841]; arm difference (optimum-random)=[-0.005430,0.005087]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 100.0, 0.003): newly admitted=no; usable in S=True; records=306
+    efficiency: estimate=0.607153, half-width=0.00117304; drift=[-0.004433,0.003481]; arm difference (optimum-random)=[-0.002798,0.001835]; admitted=yes; all three criteria pass
+    consensus: estimate=0.741928, half-width=0.0020443; drift=[-0.008882,0.005880]; arm difference (optimum-random)=[-0.003289,0.004616]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 300, 0.0001): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.941849, half-width=0.00418241; drift=[-0.001113,0.008078]; arm difference (optimum-random)=[-0.007011,0.012018]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.976918, half-width=0.00313117; drift=[-0.000289,0.004706]; arm difference (optimum-random)=[-0.005582,0.007312]; admitted=yes; all three criteria pass
+  (1000, 300, 0.0003): newly admitted=no; usable in S=True; records=56
+    efficiency: estimate=0.911744, half-width=0.00422933; drift=[-0.002541,0.012281]; arm difference (optimum-random)=[-0.007527,0.008770]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.970990, half-width=0.002243; drift=[-0.003630,0.007076]; arm difference (optimum-random)=[-0.004037,0.005547]; admitted=yes; all three criteria pass
+  (1000, 300, 0.001): newly admitted=yes; usable in S=True; records=151
+    efficiency: estimate=0.860530, half-width=0.00180362; drift=[-0.005483,0.006584]; arm difference (optimum-random)=[-0.006054,0.002276]; admitted=yes; all three criteria pass
+    consensus: estimate=0.945831, half-width=0.00189615; drift=[-0.005166,0.006149]; arm difference (optimum-random)=[-0.005973,0.002158]; admitted=yes; all three criteria pass
+  (1000, 300, 0.003): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.780661, half-width=0.00200523; drift=[-0.005467,0.003324]; arm difference (optimum-random)=[-0.001292,0.006228]; admitted=yes; all three criteria pass
+    consensus: estimate=0.896100, half-width=0.00266726; drift=[-0.005218,0.010587]; arm difference (optimum-random)=[-0.005832,0.005684]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (1000, 1000.0, 0.0001): newly admitted=no; usable in S=True; records=61
+    efficiency: estimate=0.969309, half-width=0.00236833; drift=[0.001327,0.006337]; arm difference (optimum-random)=[0.002809,0.012085]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.989694, half-width=0.00221166; drift=[0.000441,0.005010]; arm difference (optimum-random)=[0.002882,0.011144]; admitted=no; arm-difference interval too wide: more replicates
+  (1000, 1000.0, 0.0003): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.955220, half-width=0.00179381; drift=[0.004261,0.010219]; arm difference (optimum-random)=[0.003859,0.009977]; admitted=no; significant drift: longer runs
+    consensus: estimate=0.988337, half-width=0.00140659; drift=[0.001207,0.005777]; arm difference (optimum-random)=[0.002901,0.007679]; admitted=yes; all three criteria pass
+  (1000, 1000.0, 0.001): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.931415, half-width=0.00209313; drift=[0.001281,0.007032]; arm difference (optimum-random)=[-0.000604,0.007487]; admitted=yes; all three criteria pass
+    consensus: estimate=0.980269, half-width=0.0018742; drift=[-0.003453,0.003190]; arm difference (optimum-random)=[-0.002219,0.004974]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 1000.0, 0.003): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.892000, half-width=0.00166224; drift=[-0.003521,0.002099]; arm difference (optimum-random)=[-0.002770,0.003991]; admitted=yes; all three criteria pass
+    consensus: estimate=0.963121, half-width=0.00262889; drift=[-0.008381,0.005319]; arm difference (optimum-random)=[-0.008074,0.003401]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 3000, 0.0001): newly admitted=no; usable in S=True; records=51
+    efficiency: estimate=0.983551, half-width=0.00387372; drift=[-0.001254,0.007470]; arm difference (optimum-random)=[0.000623,0.013361]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.994815, half-width=0.00347472; drift=[-0.002078,0.006818]; arm difference (optimum-random)=[-0.000056,0.012522]; admitted=no; arm-difference interval too wide: more replicates
+  (1000, 3000, 0.0003): newly admitted=no; usable in S=True; records=16
+    efficiency: estimate=0.975025, half-width=0.00291453; drift=[0.001056,0.012476]; arm difference (optimum-random)=[0.000241,0.008879]; admitted=no; significant drift: longer runs
+    consensus: estimate=0.994282, half-width=0.00274278; drift=[-0.001764,0.010268]; arm difference (optimum-random)=[0.000275,0.009936]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (1000, 3000, 0.001): newly admitted=no; usable in S=True; records=11
+    efficiency: estimate=0.966254, half-width=0.00174295; drift=[0.001959,0.005604]; arm difference (optimum-random)=[-0.004128,0.003807]; admitted=yes; all three criteria pass
+    consensus: estimate=0.993100, half-width=0.000952039; drift=[-0.000805,0.005748]; arm difference (optimum-random)=[-0.001427,0.001791]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (1000, 3000, 0.003): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.945236, half-width=0.000896682; drift=[-0.004205,0.000469]; arm difference (optimum-random)=[-0.002984,0.001489]; admitted=yes; all three criteria pass
+    consensus: estimate=0.985106, half-width=0.00197932; drift=[-0.005472,0.006542]; arm difference (optimum-random)=[-0.005218,0.004210]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 100.0, 0.0001): newly admitted=no; usable in S=True; records=366
+    efficiency: estimate=0.825458, half-width=0.00256508; drift=[-0.000733,0.013911]; arm difference (optimum-random)=[-0.001214,0.008889]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.914045, half-width=0.00259616; drift=[-0.003867,0.011460]; arm difference (optimum-random)=[-0.004027,0.006564]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (3000, 100.0, 0.0003): newly admitted=no; usable in S=True; records=401
+    efficiency: estimate=0.742337, half-width=0.00218659; drift=[-0.008074,0.005676]; arm difference (optimum-random)=[-0.002390,0.006510]; admitted=yes; all three criteria pass
+    consensus: estimate=0.862559, half-width=0.00255467; drift=[-0.007292,0.009350]; arm difference (optimum-random)=[-0.004283,0.006295]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 100.0, 0.001): newly admitted=no; usable in S=False; records=501
+    efficiency: estimate=0.607760, half-width=0.00139582; drift=[-0.006192,0.003512]; arm difference (optimum-random)=[-0.004444,0.001432]; admitted=yes; all three criteria pass
+    consensus: estimate=0.741685, half-width=0.00253079; drift=[-0.010542,0.007051]; arm difference (optimum-random)=[-0.009511,0.000387]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (3000, 100.0, 0.003): newly admitted=no; usable in S=True; records=451
+    efficiency: estimate=0.445334, half-width=0.000943497; drift=[-0.002790,0.003072]; arm difference (optimum-random)=[-0.001920,0.001928]; admitted=yes; all three criteria pass
+    consensus: estimate=0.560583, half-width=0.00218669; drift=[-0.008786,0.006133]; arm difference (optimum-random)=[-0.003373,0.005157]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 300, 0.0001): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.907856, half-width=0.00540719; drift=[-0.003946,0.019861]; arm difference (optimum-random)=[-0.001923,0.019048]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.967808, half-width=0.00333219; drift=[-0.004648,0.010116]; arm difference (optimum-random)=[-0.003306,0.009110]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.0003): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.864425, half-width=0.00451025; drift=[-0.015257,0.006232]; arm difference (optimum-random)=[-0.006566,0.010111]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.947554, half-width=0.00420073; drift=[-0.016803,0.006653]; arm difference (optimum-random)=[-0.005009,0.009138]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.001): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.780199, half-width=0.00367397; drift=[-0.005507,0.012442]; arm difference (optimum-random)=[-0.013968,0.004766]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.891504, half-width=0.00422753; drift=[-0.016197,0.013612]; arm difference (optimum-random)=[-0.006267,0.009882]; admitted=no; drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.003): newly admitted=no; usable in S=False; records=151
+    efficiency: estimate=0.651104, half-width=0.00228724; drift=[-0.010842,0.001742]; arm difference (optimum-random)=[-0.004250,0.005960]; admitted=no; drift interval too wide: more replicates to resolve trend
+    consensus: estimate=0.788429, half-width=0.00554696; drift=[-0.025609,0.018477]; arm difference (optimum-random)=[-0.008643,0.015846]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (3000, 1000.0, 0.0001): newly admitted=no; usable in S=True; records=56
+    efficiency: estimate=0.954219, half-width=0.00206379; drift=[0.003447,0.007421]; arm difference (optimum-random)=[0.004794,0.012131]; admitted=no; arm-difference interval too wide: more replicates
+    consensus: estimate=0.987517, half-width=0.0017534; drift=[0.001032,0.003633]; arm difference (optimum-random)=[0.003775,0.009770]; admitted=yes; all three criteria pass
+  (3000, 1000.0, 0.0003): newly admitted=no; usable in S=True; records=31
+    efficiency: estimate=0.934512, half-width=0.00185154; drift=[0.002942,0.008676]; arm difference (optimum-random)=[0.001677,0.008055]; admitted=yes; all three criteria pass
+    consensus: estimate=0.981823, half-width=0.00160866; drift=[0.001725,0.006206]; arm difference (optimum-random)=[0.001856,0.007367]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 1000.0, 0.001): newly admitted=no; usable in S=True; records=31
+    efficiency: estimate=0.893119, half-width=0.00131259; drift=[-0.004437,0.001877]; arm difference (optimum-random)=[-0.003338,0.002818]; admitted=yes; all three criteria pass
+    consensus: estimate=0.962108, half-width=0.00182191; drift=[-0.001588,0.008692]; arm difference (optimum-random)=[-0.004022,0.004062]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 1000.0, 0.003): newly admitted=no; usable in S=True; records=46
+    efficiency: estimate=0.818384, half-width=0.00088203; drift=[-0.003997,0.001619]; arm difference (optimum-random)=[-0.001062,0.002985]; admitted=yes; all three criteria pass
+    consensus: estimate=0.917245, half-width=0.00244939; drift=[-0.007804,0.007519]; arm difference (optimum-random)=[-0.000814,0.008127]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 3000, 0.0001): newly admitted=no; usable in S=True; records=36
+    efficiency: estimate=0.972605, half-width=0.00534127; drift=[-0.002227,0.018751]; arm difference (optimum-random)=[-0.001693,0.018009]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+    consensus: estimate=0.993025, half-width=0.00453227; drift=[-0.003707,0.016135]; arm difference (optimum-random)=[-0.000072,0.016052]; admitted=no; drift interval too wide: more replicates to resolve trend; arm-difference interval too wide: more replicates
+  (3000, 3000, 0.0003): newly admitted=no; usable in S=True; records=21
+    efficiency: estimate=0.964997, half-width=0.00180927; drift=[0.002648,0.008917]; arm difference (optimum-random)=[-0.000220,0.007047]; admitted=yes; all three criteria pass
+    consensus: estimate=0.991154, half-width=0.00232046; drift=[-0.000911,0.005614]; arm difference (optimum-random)=[0.000909,0.009534]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 3000, 0.001): newly admitted=no; usable in S=True; records=31
+    efficiency: estimate=0.947349, half-width=0.000802194; drift=[-0.004392,0.003038]; arm difference (optimum-random)=[-0.002028,0.001596]; admitted=yes; all three criteria pass
+    consensus: estimate=0.985247, half-width=0.00166799; drift=[-0.005087,0.003112]; arm difference (optimum-random)=[-0.004121,0.003484]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+  (3000, 3000, 0.003): newly admitted=no; usable in S=True; records=61
+    efficiency: estimate=0.906966, half-width=0.0010704; drift=[-0.002760,0.002481]; arm difference (optimum-random)=[-0.000894,0.004604]; admitted=yes; all three criteria pass
+    consensus: estimate=0.966515, half-width=0.00211184; drift=[-0.008364,0.004568]; arm difference (optimum-random)=[-0.005928,0.003025]; admitted=yes; all three criteria pass
+    Admission gate: already F4 confirmed
+Midpoints and worst-case endpoint bounds (bracket bounds, not statistical confidence intervals):
+  (10, 300, 0.0001): efficiency=0.984099 +/- 0.00184311; consensus=0.985554 +/- 0.00195208; G=0.001455 bounds=[-0.0023398473858833313, 0.0052505359053611755]; D=0.014446 bounds=[0.012493640184402466, 0.016397804021835327]
+  (10, 300, 0.0003): efficiency=0.977877 +/- 0.00216537; consensus=0.983643 +/- 0.00173139; G=0.005766 bounds=[0.0018691495060920715, 0.009662657976150513]; D=0.016357 bounds=[0.01462603360414505, 0.01808881014585495]
+  (10, 300, 0.001): efficiency=0.959219 +/- unresolved; consensus=0.971680 +/- 0.00140269; G=0.012461 bounds=None; D=0.028320 bounds=None
+  (10, 300, 0.003): efficiency=0.931206 +/- 0.00467241; consensus=0.958045 +/- 0.0058772; G=0.026839 bounds=[0.01628982275724411, 0.037389032542705536]; D=0.041955 bounds=[0.036077529191970825, 0.04783192276954651]
+  (10, 3000, 0.0001): efficiency=0.995398 +/- 0.00258104; consensus=0.995937 +/- 0.00275797; G=0.000539 bounds=[-0.004800237715244293, 0.005877770483493805]; D=0.004063 bounds=[0.00130540132522583, 0.006821334362030029]
+  (10, 3000, 0.0003): efficiency=0.993858 +/- 0.00144599; consensus=0.996181 +/- 0.00186194; G=0.002323 bounds=[-0.0009846389293670654, 0.0056312307715415955]; D=0.003819 bounds=[0.0019570887088775635, 0.005680978298187256]
+  (10, 3000, 0.001): efficiency=0.990184 +/- unresolved; consensus=0.996393 +/- unresolved; G=0.006209 bounds=None; D=0.003607 bounds=None
+  (10, 3000, 0.003): efficiency=0.839832 +/- unresolved; consensus=0.647015 +/- unresolved; G=-0.192816 bounds=None; D=0.352985 bounds=None
+  (100, 30.0, 0.0001): efficiency=0.842861 +/- unresolved; consensus=0.862451 +/- unresolved; G=0.019590 bounds=None; D=0.137549 bounds=None
+  (100, 30.0, 0.0003): efficiency=0.789659 +/- unresolved; consensus=0.828188 +/- unresolved; G=0.038529 bounds=None; D=0.171812 bounds=None
+  (100, 30.0, 0.001): efficiency=0.726140 +/- 0.0015593; consensus=0.796892 +/- 0.00216312; G=0.070752 bounds=[0.06702934019267559, 0.07447418756783009]; D=0.203108 bounds=[0.20094537921249866, 0.2052716203033924]
+  (100, 30.0, 0.003): efficiency=0.635837 +/- 0.000304249; consensus=0.733609 +/- unresolved; G=0.097772 bounds=None; D=0.266391 bounds=None
+  (100, 100.0, 0.0001): efficiency=0.940120 +/- 0.00158144; consensus=0.955539 +/- 0.00137565; G=0.015418 bounds=[0.01246110163629055, 0.018375268206000328]; D=0.044461 bounds=[0.04308583773672581, 0.04583713039755821]
+  (100, 100.0, 0.0003): efficiency=0.914890 +/- 0.000759754; consensus=0.946385 +/- 0.00055048; G=0.031495 bounds=[0.03018513321876526, 0.03280560113489628]; D=0.053615 bounds=[0.05306459777057171, 0.0541655570268631]
+  (100, 100.0, 0.001): efficiency=0.876090 +/- 0.000206698; consensus=0.935104 +/- 0.000537988; G=0.059014 bounds=None; D=0.064896 bounds=None
+  (100, 100.0, 0.003): efficiency=0.819954 +/- unresolved; consensus=0.910544 +/- unresolved; G=0.090589 bounds=None; D=0.089456 bounds=None
+  (100, 300, 0.0001): efficiency=0.973591 +/- 0.00178987; consensus=0.983078 +/- 0.00174823; G=0.009487 bounds=[0.005948945879936218, 0.013025149703025818]; D=0.016922 bounds=[0.015173688530921936, 0.01867014914751053]
+  (100, 300, 0.0003): efficiency=0.959333 +/- 0.000830449; consensus=0.979639 +/- 0.00101525; G=0.020306 bounds=None; D=0.020361 bounds=None
+  (100, 300, 0.001): efficiency=0.938718 +/- 0.000728246; consensus=0.976186 +/- 0.000149082; G=0.037468 bounds=[0.03659116476774216, 0.0383458212018013]; D=0.023814 bounds=[0.02366459369659424, 0.023962758481502533]
+  (100, 300, 0.003): efficiency=0.907264 +/- unresolved; consensus=0.967929 +/- 0.000380762; G=0.060665 bounds=None; D=0.032071 bounds=None
+  (100, 1000.0, 0.0001): efficiency=0.988003 +/- 0.00331058; consensus=0.992669 +/- 0.00327579; G=0.004666 bounds=[-0.0019200202077627182, 0.011252712458372116]; D=0.007331 bounds=[0.004054943099617958, 0.010606518015265465]
+  (100, 1000.0, 0.0003): efficiency=0.981873 +/- 0.00252355; consensus=0.992116 +/- 0.00251737; G=0.010243 bounds=[0.005201859399676323, 0.01528371125459671]; D=0.007884 bounds=[0.005366550758481026, 0.010401293635368347]
+  (100, 1000.0, 0.001): efficiency=0.971092 +/- 0.00127083; consensus=0.991671 +/- 0.000999571; G=0.020579 bounds=None; D=0.008329 bounds=None
+  (100, 1000.0, 0.003): efficiency=0.956334 +/- 0.000873618; consensus=0.989976 +/- 0.000219462; G=0.033642 bounds=[0.03254867531359196, 0.03473483584821224]; D=0.010024 bounds=[0.009804466739296913, 0.010243391618132591]
+  (100, 3000, 0.0001): efficiency=0.993582 +/- 0.00262884; consensus=0.995955 +/- 0.0027238; G=0.002372 bounds=[-0.002980254590511322, 0.007725037634372711]; D=0.004045 bounds=[0.001321457326412201, 0.006769061088562012]
+  (100, 3000, 0.0003): efficiency=0.990542 +/- 0.00111111; consensus=0.996532 +/- 0.00157162; G=0.005989 bounds=[0.003306664526462555, 0.00867212563753128]; D=0.003468 bounds=[0.0018965378403663635, 0.005039781332015991]
+  (100, 3000, 0.001): efficiency=0.983403 +/- 0.00138514; consensus=0.996684 +/- 0.000425987; G=0.013281 bounds=[0.011469557881355286, 0.015091821551322937]; D=0.003316 bounds=[0.0028904303908348083, 0.003742404282093048]
+  (100, 3000, 0.003): efficiency=0.976860 +/- 0.000295214; consensus=0.996003 +/- 0.000149217; G=0.019143 bounds=[0.018698982894420624, 0.019587844610214233]; D=0.003997 bounds=[0.003847859799861908, 0.004146292805671692]
+  (1000, 30.0, 0.0001): efficiency=0.730780 +/- unresolved; consensus=0.802341 +/- unresolved; G=0.071561 bounds=None; D=0.197659 bounds=None
+  (1000, 30.0, 0.0003): efficiency=0.633234 +/- 0.00259491; consensus=0.729001 +/- 0.00315541; G=0.095767 bounds=[0.09001679718494415, 0.10151743702590466]; D=0.270999 bounds=[0.26784310303628445, 0.2741539254784584]
+  (1000, 30.0, 0.001): efficiency=0.513878 +/- 2.28318e-05; consensus=0.618802 +/- 0.000215607; G=0.104924 bounds=[0.1046857824549079, 0.10516265965998173]; D=0.381198 bounds=[0.3809820618480444, 0.38141327537596226]
+  (1000, 30.0, 0.003): efficiency=0.386616 +/- unresolved; consensus=0.474650 +/- unresolved; G=0.088034 bounds=None; D=0.525350 bounds=None
+  (1000, 100.0, 0.0001): efficiency=0.874454 +/- unresolved; consensus=0.933729 +/- 0.000796357; G=0.059274 bounds=None; D=0.066271 bounds=None
+  (1000, 100.0, 0.0003): efficiency=0.824668 +/- unresolved; consensus=0.912627 +/- 0.000192613; G=0.087959 bounds=None; D=0.087373 bounds=None
+  (1000, 100.0, 0.001): efficiency=0.733076 +/- 0.00140605; consensus=0.856654 +/- 0.000662674; G=0.123578 bounds=[0.12150945141911507, 0.1256469041109085]; D=0.143346 bounds=[0.14268296025693417, 0.1440083086490631]
+  (1000, 100.0, 0.003): efficiency=0.606853 +/- 0.000266715; consensus=0.740966 +/- 0.000236419; G=0.134113 bounds=[0.13360987044870853, 0.13461613841354847]; D=0.259034 bounds=[0.2587975189089775, 0.25927035696804523]
+  (1000, 300, 0.0001): efficiency=0.943099 +/- 0.00115536; consensus=0.977674 +/- unresolved; G=0.034575 bounds=None; D=0.022326 bounds=None
+  (1000, 300, 0.0003): efficiency=0.913317 +/- unresolved; consensus=0.971638 +/- unresolved; G=0.058321 bounds=None; D=0.028362 bounds=None
+  (1000, 300, 0.001): efficiency=0.859727 +/- unresolved; consensus=0.945075 +/- unresolved; G=0.085348 bounds=None; D=0.054925 bounds=None
+  (1000, 300, 0.003): efficiency=0.780071 +/- 0.00167424; consensus=0.895867 +/- 0.00138965; G=0.115796 bounds=[0.11273165047168732, 0.1188594251871109]; D=0.104133 bounds=[0.10274333506822586, 0.10552262514829636]
+  (1000, 1000.0, 0.0001): efficiency=0.970228 +/- 0.00280234; consensus=0.990318 +/- 0.0026369; G=0.020090 bounds=[0.014651073142886162, 0.02552955597639084]; D=0.009682 bounds=[0.0070451851934194565, 0.01231897808611393]
+  (1000, 1000.0, 0.0003): efficiency=0.957088 +/- 0.00251651; consensus=0.989210 +/- 0.0019643; G=0.032122 bounds=None; D=0.010790 bounds=None
+  (1000, 1000.0, 0.001): efficiency=0.932380 +/- 0.00152245; consensus=0.980314 +/- 0.000947664; G=0.047934 bounds=[0.045464279130101204, 0.05040451139211655]; D=0.019686 bounds=[0.018738247454166412, 0.020633574575185776]
+  (1000, 1000.0, 0.003): efficiency=0.891811 +/- 0.000659858; consensus=0.963046 +/- unresolved; G=0.071235 bounds=None; D=0.036954 bounds=None
+  (1000, 3000, 0.0001): efficiency=0.984379 +/- 0.00279589; consensus=0.995496 +/- 0.00242465; G=0.011117 bounds=[0.005896627902984619, 0.016337715089321136]; D=0.004504 bounds=[0.002079114317893982, 0.0069284215569496155]
+  (1000, 3000, 0.0003): efficiency=0.976741 +/- 0.00123606; consensus=0.995291 +/- 0.00157745; G=0.018550 bounds=None; D=0.004709 bounds=None
+  (1000, 3000, 0.001): efficiency=0.967005 +/- unresolved; consensus=0.993475 +/- unresolved; G=0.026469 bounds=None; D=0.006525 bounds=None
+  (1000, 3000, 0.003): efficiency=0.944984 +/- 0.000198353; consensus=0.985241 +/- unresolved; G=0.040257 bounds=None; D=0.014759 bounds=None
+  (3000, 100.0, 0.0001): efficiency=0.827652 +/- 0.00156936; consensus=0.915043 +/- 0.000584995; G=0.087391 bounds=[0.08523702435195446, 0.08954573422670364]; D=0.084957 bounds=[0.08437175117433071, 0.08554174192249775]
+  (3000, 100.0, 0.0003): efficiency=0.742742 +/- 0.00143255; consensus=0.863720 +/- 0.00132733; G=0.120978 bounds=[0.11821819096803665, 0.12373794801533222]; D=0.136280 bounds=[0.1349527109414339, 0.1376073732972145]
+  (3000, 100.0, 0.001): efficiency=0.606872 +/- unresolved; consensus=0.740591 +/- unresolved; G=0.133719 bounds=None; D=0.259409 bounds=None
+  (3000, 100.0, 0.003): efficiency=0.445513 +/- 0.000564985; consensus=0.560586 +/- 0.00190336; G=0.115072 bounds=[0.11260410491377115, 0.11754078976809978]; D=0.439414 bounds=[0.4375110622495413, 0.4413177762180567]
+  (3000, 300, 0.0001): efficiency=0.909411 +/- 0.00399936; consensus=0.968156 +/- 0.000517499; G=0.058745 bounds=[0.054228149354457855, 0.06326186656951904]; D=0.031844 bounds=[0.03132639825344086, 0.03236139565706253]
+  (3000, 300, 0.0003): efficiency=0.863674 +/- 0.00150106; consensus=0.946483 +/- 0.000412073; G=0.082809 bounds=[0.08089552074670792, 0.08472179621458054]; D=0.053517 bounds=[0.05310496687889099, 0.05392911285161972]
+  (3000, 300, 0.001): efficiency=0.781254 +/- unresolved; consensus=0.891565 +/- 0.00369151; G=0.110311 bounds=None; D=0.108435 bounds=None
+  (3000, 300, 0.003): efficiency=0.649702 +/- unresolved; consensus=0.787760 +/- 0.00187452; G=0.138059 bounds=None; D=0.212240 bounds=None
+  (3000, 1000.0, 0.0001): efficiency=0.955630 +/- 0.00311676; consensus=0.988076 +/- 0.002852; G=0.032446 bounds=[0.026477089151740074, 0.03841462358832359]; D=0.011924 bounds=[0.00907202810049057, 0.014776034280657768]
+  (3000, 1000.0, 0.0003): efficiency=0.935912 +/- 0.00139718; consensus=0.983003 +/- 0.00161817; G=0.047091 bounds=[0.04407554119825363, 0.0501062236726284]; D=0.016997 bounds=[0.015378482639789581, 0.018614813685417175]
+  (3000, 1000.0, 0.001): efficiency=0.892484 +/- unresolved; consensus=0.963120 +/- unresolved; G=0.070637 bounds=None; D=0.036880 bounds=None
+  (3000, 1000.0, 0.003): efficiency=0.818316 +/- 0.000526913; consensus=0.918064 +/- 0.00086585; G=0.099747 bounds=[0.09835443831980228, 0.1011399645358324]; D=0.081936 bounds=[0.08107063360512257, 0.08280233293771744]
+  (3000, 3000, 0.0001): efficiency=0.974608 +/- 0.00229692; consensus=0.994523 +/- 0.00246041; G=0.019914 bounds=[0.015156768262386322, 0.024671420454978943]; D=0.005477 bounds=[0.0030170083045959473, 0.007937818765640259]
+  (3000, 3000, 0.0003): efficiency=0.966615 +/- 0.000884086; consensus=0.992168 +/- 0.00149458; G=0.025553 bounds=[0.023174621164798737, 0.027931950986385345]; D=0.007832 bounds=[0.006336964666843414, 0.00932612270116806]
+  (3000, 3000, 0.001): efficiency=0.947297 +/- 0.000273202; consensus=0.985537 +/- 1.00434e-05; G=0.038240 bounds=[0.03795723617076874, 0.03852372616529465]; D=0.014463 bounds=[0.014452651143074036, 0.014472737908363342]
+  (3000, 3000, 0.003): efficiency=0.906853 +/- 0.000553206; consensus=0.966032 +/- unresolved; G=0.059179 bounds=None; D=0.033968 bounds=None
+
+FIT A: F4 confirmed only
+  G: poor held-out fit (> .02); thresholds unsupported; cells=48; nonpositive=0; winner=U
+    U/s: a=0.0474653402 log_a=-3.04775551 exponents=[0.42214186743632603] held-out RMSE=0.0494971733 log RMSE=0.422772627; FAILING HELD-OUT (>0.02)
+    NU: a=0.00285464115 log_a=-5.85880913 exponents=[0.4503393298292636] held-out RMSE=0.0470370904 log RMSE=0.81697356; FAILING HELD-OUT (>0.02)
+    Ns: a=0.422296505 log_a=-0.862047593 exponents=[-0.4375991085920334] held-out RMSE=0.0365997819 log RMSE=1.25926695; FAILING HELD-OUT (>0.02)
+    U: a=0.0424597604 log_a=-3.15919847 exponents=[0.5425726772877418] held-out RMSE=0.0361919942 log RMSE=1.23340402; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0376251108 log_a=-3.28008361 exponents=[0.3948119990595532, 0.03933301768483318] held-out RMSE=0.0503199879 log RMSE=0.449709139; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0376251108 log_a=-3.28008361 exponents=[0.43414501674438616, 0.03933301768483301] held-out RMSE=0.0503199879 log RMSE=0.449709139; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0473463132 log_a=-3.05026633 exponents=[0.4234297575324478, -0.004930530292785229] held-out RMSE=0.0506441546 log RMSE=0.458617586; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0376251108 log_a=-3.28008361 exponents=[0.43414501674438605, -0.39481199905955316] held-out RMSE=0.0503199879 log RMSE=0.449709139; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00321537082 log_a=-5.73981259 exponents=[0.4343927344882467, 0.04609958958810035] held-out RMSE=0.0476757487 log RMSE=0.890936679; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.460711426 log_a=-0.774983405 exponents=[-0.3846748411761887, 0.4848302202663656] held-out RMSE=0.0447828298 log RMSE=1.12559093; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=48; nonpositive=0; winner=Ns
+    Ns: a=3.88806189 log_a=1.35791081 exponents=[-0.8142644236509015] held-out RMSE=0.0825457244 log RMSE=0.818019162; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.1165826 log_a=1.41502335 exponents=[-0.7795470516369825, 0.31803994542470415] held-out RMSE=0.101549623 log RMSE=0.77131657; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 209.918 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1515.16 unresolved interpolated False
+  consensus None 3.0e-04 0.95 209.918 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1515.16 unresolved interpolated False
+  consensus None 1.0e-03 0.95 209.918 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1515.16 unresolved interpolated False
+  consensus None 3.0e-03 0.95 209.918 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1515.16 unresolved interpolated False
+  individual 10 1.0e-04 0.95 281.865 359.522 extrapolated False
+  individual 10 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 10 3.0e-04 0.95 383.062 162.867 interpolated False
+  individual 10 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 10 1.0e-03 0.95 1119.76 142.827 extrapolated False
+  individual 10 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 10 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 10 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-04 0.95 281.865 35.9522 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 383.062 16.2867 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 1119.76 14.2827 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 281.865 3.59522 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 383.062 1.62867 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 1119.76 1.42827 interpolated False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 281.865 1.19841 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 383.062 0.542888 interpolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 1119.76 0.476089 interpolated False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+FIT B: confirmed + bracketed midpoints
+  G: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    U/s: a=0.0465102875 log_a=-3.06808175 exponents=[0.41561831369558977] held-out RMSE=0.0494399502 log RMSE=0.434215641; FAILING HELD-OUT (>0.02)
+    NU: a=0.00283450904 log_a=-5.86588653 exponents=[0.45423101239176084] held-out RMSE=0.0484577773 log RMSE=0.811476137; FAILING HELD-OUT (>0.02)
+    Ns: a=0.429472127 log_a=-0.845198436 exponents=[-0.4399746696957524] held-out RMSE=0.0361344975 log RMSE=1.24566678; FAILING HELD-OUT (>0.02)
+    U: a=0.0436705977 log_a=-3.13108023 exponents=[0.5506891085409172] held-out RMSE=0.0373868263 log RMSE=1.23541442; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0348404091 log_a=-3.35697738 exponents=[0.38216104043335447, 0.04934863735336003] held-out RMSE=0.0501067456 log RMSE=0.459999965; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0348404091 log_a=-3.35697738 exponents=[0.4315096777867148, 0.04934863735336016] held-out RMSE=0.0501067456 log RMSE=0.459999965; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.046540287 log_a=-3.06743695 exponents=[0.41530828352965055, 0.0012174312360986072] held-out RMSE=0.0504649436 log RMSE=0.469737443; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0348404091 log_a=-3.35697738 exponents=[0.43150967778671473, -0.3821610404333552] held-out RMSE=0.0501067456 log RMSE=0.459999965; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00319607159 log_a=-5.74583285 exponents=[0.4381353480257676, 0.046502230483889684] held-out RMSE=0.0490806971 log RMSE=0.879291551; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.456414037 log_a=-0.784354906 exponents=[-0.38337955067666857, 0.4846369075704886] held-out RMSE=0.0420230744 log RMSE=1.10952731; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    Ns: a=4.2058461 log_a=1.43647549 exponents=[-0.8253412506773887] held-out RMSE=0.0857796088 log RMSE=0.815962338; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.37787323 log_a=1.47656304 exponents=[-0.7880528158585226, 0.319309368934544] held-out RMSE=0.100701224 log RMSE=0.763202107; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 214.895 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1510.47 unresolved interpolated False
+  consensus None 3.0e-04 0.95 214.895 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1510.47 unresolved interpolated False
+  consensus None 1.0e-03 0.95 214.895 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1510.47 unresolved interpolated False
+  consensus None 3.0e-03 0.95 214.895 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1510.47 unresolved interpolated False
+  individual 10 1.0e-04 0.95 545.841 696.226 interpolated False
+  individual 10 1.0e-04 0.99 9191.38 11723.7 extrapolated False
+  individual 10 3.0e-04 0.95 545.841 232.075 interpolated False
+  individual 10 3.0e-04 0.99 9191.38 3907.9 extrapolated False
+  individual 10 1.0e-03 0.95 545.841 69.6226 extrapolated False
+  individual 10 1.0e-03 0.99 9191.38 1172.37 extrapolated False
+  individual 10 3.0e-03 0.95 545.841 23.2075 extrapolated False
+  individual 10 3.0e-03 0.99 9191.38 390.79 extrapolated False
+  individual 100 1.0e-04 0.95 545.841 69.6226 interpolated False
+  individual 100 1.0e-04 0.99 9191.38 1172.37 extrapolated False
+  individual 100 3.0e-04 0.95 545.841 23.2075 interpolated False
+  individual 100 3.0e-04 0.99 9191.38 390.79 extrapolated False
+  individual 100 1.0e-03 0.95 545.841 6.96226 interpolated False
+  individual 100 1.0e-03 0.99 9191.38 117.237 extrapolated False
+  individual 100 3.0e-03 0.95 545.841 2.32075 interpolated False
+  individual 100 3.0e-03 0.99 9191.38 39.079 extrapolated False
+  individual 1000 1.0e-04 0.95 545.841 6.96226 interpolated False
+  individual 1000 1.0e-04 0.99 9191.38 117.237 extrapolated False
+  individual 1000 3.0e-04 0.95 545.841 2.32075 interpolated False
+  individual 1000 3.0e-04 0.99 9191.38 39.079 extrapolated False
+  individual 1000 1.0e-03 0.95 545.841 0.696226 interpolated False
+  individual 1000 1.0e-03 0.99 9191.38 11.7237 extrapolated False
+  individual 1000 3.0e-03 0.95 545.841 0.232075 interpolated False
+  individual 1000 3.0e-03 0.99 9191.38 3.9079 extrapolated False
+  individual 3000 1.0e-04 0.95 545.841 2.32075 interpolated False
+  individual 3000 1.0e-04 0.99 9191.38 39.079 extrapolated False
+  individual 3000 3.0e-04 0.95 545.841 0.773584 interpolated False
+  individual 3000 3.0e-04 0.99 9191.38 13.0263 extrapolated False
+  individual 3000 1.0e-03 0.95 545.841 0.232075 extrapolated False
+  individual 3000 1.0e-03 0.99 9191.38 3.9079 extrapolated False
+  individual 3000 3.0e-03 0.95 545.841 0.0773584 interpolated False
+  individual 3000 3.0e-03 0.99 9191.38 1.30263 extrapolated False
+
+FIT C: B at random-start ends
+  G: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    U/s: a=0.0465073122 log_a=-3.06814573 exponents=[0.4155977821007395] held-out RMSE=0.0494439169 log RMSE=0.434298496; FAILING HELD-OUT (>0.02)
+    NU: a=0.00283457022 log_a=-5.86586495 exponents=[0.45421914485778997] held-out RMSE=0.0484466188 log RMSE=0.811442926; FAILING HELD-OUT (>0.02)
+    Ns: a=0.429333376 log_a=-0.845521561 exponents=[-0.43992911223521713] held-out RMSE=0.0361300494 log RMSE=1.24564599; FAILING HELD-OUT (>0.02)
+    U: a=0.0436684195 log_a=-3.1311301 exponents=[0.5506747112773861] held-out RMSE=0.0373787905 log RMSE=1.23536969; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0348310249 log_a=-3.35724677 exponents=[0.38211671993764074, 0.04938372538437065] held-out RMSE=0.0501101391 log RMSE=0.460088498; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0348310249 log_a=-3.35724677 exponents=[0.43150044532201165, 0.049383725384370726] held-out RMSE=0.0501101391 log RMSE=0.460088498; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0465377844 log_a=-3.06749073 exponents=[0.4152828486728993, 0.0012366854405384642] held-out RMSE=0.0504684952 log RMSE=0.469817047; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0348310249 log_a=-3.35724677 exponents=[0.4315004453220115, -0.3821167199376407] held-out RMSE=0.0501101391 log RMSE=0.460088498; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00319613041 log_a=-5.74581445 exponents=[0.4381239065416166, 0.046500999576829] held-out RMSE=0.0490698298 log RMSE=0.879272193; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.456266199 log_a=-0.784678871 exponents=[-0.38333477360555274, 0.48463022491796093] held-out RMSE=0.0420132332 log RMSE=1.10951055; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    Ns: a=4.20626399 log_a=1.43657484 exponents=[-0.8253552586346268] held-out RMSE=0.0857907338 log RMSE=0.815979472; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.37830934 log_a=1.47666265 exponents=[-0.7880665838624904, 0.31931142370910204] held-out RMSE=0.10071648 log RMSE=0.763221112; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 214.902 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1510.47 unresolved interpolated False
+  consensus None 3.0e-04 0.95 214.902 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1510.47 unresolved interpolated False
+  consensus None 1.0e-03 0.95 214.902 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1510.47 unresolved interpolated False
+  consensus None 3.0e-03 0.95 214.902 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1510.47 unresolved interpolated False
+  individual 10 1.0e-04 0.95 545.829 696.21 interpolated False
+  individual 10 1.0e-04 0.99 9192.52 11725.2 extrapolated False
+  individual 10 3.0e-04 0.95 545.829 232.07 interpolated False
+  individual 10 3.0e-04 0.99 9192.52 3908.38 extrapolated False
+  individual 10 1.0e-03 0.95 545.829 69.621 extrapolated False
+  individual 10 1.0e-03 0.99 9192.52 1172.52 extrapolated False
+  individual 10 3.0e-03 0.95 545.829 23.207 extrapolated False
+  individual 10 3.0e-03 0.99 9192.52 390.838 extrapolated False
+  individual 100 1.0e-04 0.95 545.829 69.621 interpolated False
+  individual 100 1.0e-04 0.99 9192.52 1172.52 extrapolated False
+  individual 100 3.0e-04 0.95 545.829 23.207 interpolated False
+  individual 100 3.0e-04 0.99 9192.52 390.838 extrapolated False
+  individual 100 1.0e-03 0.95 545.829 6.9621 interpolated False
+  individual 100 1.0e-03 0.99 9192.52 117.252 extrapolated False
+  individual 100 3.0e-03 0.95 545.829 2.3207 interpolated False
+  individual 100 3.0e-03 0.99 9192.52 39.0838 extrapolated False
+  individual 1000 1.0e-04 0.95 545.829 6.9621 interpolated False
+  individual 1000 1.0e-04 0.99 9192.52 117.252 extrapolated False
+  individual 1000 3.0e-04 0.95 545.829 2.3207 interpolated False
+  individual 1000 3.0e-04 0.99 9192.52 39.0838 extrapolated False
+  individual 1000 1.0e-03 0.95 545.829 0.69621 interpolated False
+  individual 1000 1.0e-03 0.99 9192.52 11.7252 extrapolated False
+  individual 1000 3.0e-03 0.95 545.829 0.23207 interpolated False
+  individual 1000 3.0e-03 0.99 9192.52 3.90838 extrapolated False
+  individual 3000 1.0e-04 0.95 545.829 2.3207 interpolated False
+  individual 3000 1.0e-04 0.99 9192.52 39.0838 extrapolated False
+  individual 3000 3.0e-04 0.95 545.829 0.773567 interpolated False
+  individual 3000 3.0e-04 0.99 9192.52 13.0279 extrapolated False
+  individual 3000 1.0e-03 0.95 545.829 0.23207 extrapolated False
+  individual 3000 1.0e-03 0.99 9192.52 3.90838 extrapolated False
+  individual 3000 3.0e-03 0.95 545.829 0.0773567 interpolated False
+  individual 3000 3.0e-03 0.99 9192.52 1.30279 extrapolated False
+
+FIT D: B at optimum-start ends
+  G: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    U/s: a=0.0465132575 log_a=-3.0680179 exponents=[0.41563880760279986] held-out RMSE=0.0494359932 log RMSE=0.434133095; FAILING HELD-OUT (>0.02)
+    NU: a=0.00283444798 log_a=-5.86590808 exponents=[0.45424285814177634] held-out RMSE=0.0484689384 log RMSE=0.811509375; FAILING HELD-OUT (>0.02)
+    Ns: a=0.429610668 log_a=-0.844875903 exponents=[-0.4400201435313584] held-out RMSE=0.0361389653 log RMSE=1.24568759; FAILING HELD-OUT (>0.02)
+    U: a=0.0436727719 log_a=-3.13103044 exponents=[0.5507034793769406] held-out RMSE=0.0373948803 log RMSE=1.23545912; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0348497786 log_a=-3.35670849 exponents=[0.382205279574702, 0.049313613729673175] held-out RMSE=0.0501033618 log RMSE=0.459911749; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0348497786 log_a=-3.35670849 exponents=[0.4315188933043758, 0.04931361372967317] held-out RMSE=0.0501033618 log RMSE=0.459911749; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0465427852 log_a=-3.06738328 exponents=[0.4153336716983715, 0.0011982123745310242] held-out RMSE=0.050461402 log RMSE=0.469658137; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0348497786 log_a=-3.35670849 exponents=[0.4315188933043755, -0.3822052795747025] held-out RMSE=0.0501033618 log RMSE=0.459911749; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00319601288 log_a=-5.74585122 exponents=[0.43814676850801737, 0.046503459131505845] held-out RMSE=0.0490915675 log RMSE=0.879310958; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.456561651 log_a=-0.784031536 exponents=[-0.38342424555533133, 0.48464357795638996] held-out RMSE=0.0420329221 log RMSE=1.10954411; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    Ns: a=4.20542801 log_a=1.43637608 exponents=[-0.8253272347949588] held-out RMSE=0.085768493 log RMSE=0.815945203; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.37743691 log_a=1.47646337 exponents=[-0.7880390400651192, 0.3193073129974694] held-out RMSE=0.100685972 log RMSE=0.763183102; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 214.889 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1510.48 unresolved interpolated False
+  consensus None 3.0e-04 0.95 214.889 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1510.48 unresolved interpolated False
+  consensus None 1.0e-03 0.95 214.889 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1510.48 unresolved interpolated False
+  consensus None 3.0e-03 0.95 214.889 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1510.48 unresolved interpolated False
+  individual 10 1.0e-04 0.95 545.854 696.242 interpolated False
+  individual 10 1.0e-04 0.99 9190.24 11722.2 extrapolated False
+  individual 10 3.0e-04 0.95 545.854 232.081 interpolated False
+  individual 10 3.0e-04 0.99 9190.24 3907.42 extrapolated False
+  individual 10 1.0e-03 0.95 545.854 69.6242 extrapolated False
+  individual 10 1.0e-03 0.99 9190.24 1172.22 extrapolated False
+  individual 10 3.0e-03 0.95 545.854 23.2081 extrapolated False
+  individual 10 3.0e-03 0.99 9190.24 390.742 extrapolated False
+  individual 100 1.0e-04 0.95 545.854 69.6242 interpolated False
+  individual 100 1.0e-04 0.99 9190.24 1172.22 extrapolated False
+  individual 100 3.0e-04 0.95 545.854 23.2081 interpolated False
+  individual 100 3.0e-04 0.99 9190.24 390.742 extrapolated False
+  individual 100 1.0e-03 0.95 545.854 6.96242 interpolated False
+  individual 100 1.0e-03 0.99 9190.24 117.222 extrapolated False
+  individual 100 3.0e-03 0.95 545.854 2.32081 interpolated False
+  individual 100 3.0e-03 0.99 9190.24 39.0742 extrapolated False
+  individual 1000 1.0e-04 0.95 545.854 6.96242 interpolated False
+  individual 1000 1.0e-04 0.99 9190.24 117.222 extrapolated False
+  individual 1000 3.0e-04 0.95 545.854 2.32081 interpolated False
+  individual 1000 3.0e-04 0.99 9190.24 39.0742 extrapolated False
+  individual 1000 1.0e-03 0.95 545.854 0.696242 interpolated False
+  individual 1000 1.0e-03 0.99 9190.24 11.7222 extrapolated False
+  individual 1000 3.0e-03 0.95 545.854 0.232081 interpolated False
+  individual 1000 3.0e-03 0.99 9190.24 3.90742 extrapolated False
+  individual 3000 1.0e-04 0.95 545.854 2.32081 interpolated False
+  individual 3000 1.0e-04 0.99 9190.24 39.0742 extrapolated False
+  individual 3000 3.0e-04 0.95 545.854 0.773602 interpolated False
+  individual 3000 3.0e-04 0.99 9190.24 13.0247 extrapolated False
+  individual 3000 1.0e-03 0.95 545.854 0.232081 extrapolated False
+  individual 3000 1.0e-03 0.99 9190.24 3.90742 extrapolated False
+  individual 3000 3.0e-03 0.95 545.854 0.0773602 interpolated False
+  individual 3000 3.0e-03 0.99 9190.24 1.30247 extrapolated False
+
+FIT E: B excluding N=10
+  G: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=NU + U
+    U/s: a=0.0468442287 log_a=-3.06092746 exponents=[0.37213826458721844] held-out RMSE=0.0395247964 log RMSE=0.385808528; FAILING HELD-OUT (>0.02)
+    NU: a=0.00491290882 log_a=-5.31588908 exponents=[0.3642047467626908] held-out RMSE=0.0382327974 log RMSE=0.715735428; FAILING HELD-OUT (>0.02)
+    Ns: a=0.345173393 log_a=-1.0637084 exponents=[-0.36577931863015656] held-out RMSE=0.0378485684 log RMSE=0.976062176; FAILING HELD-OUT (>0.02)
+    U: a=0.0493027468 log_a=-3.00977548 exponents=[0.40758194169498013] held-out RMSE=0.0379523993 log RMSE=0.991576643; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0480327451 log_a=-3.03587231 exponents=[0.37466244029017737, -0.004253852100935378] held-out RMSE=0.0407362411 log RMSE=0.422261325; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0480327451 log_a=-3.03587231 exponents=[0.37040858818924216, -0.004253852100934748] held-out RMSE=0.0407362411 log RMSE=0.422261325; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0466270896 log_a=-3.06557359 exponents=[0.3747831947981259, -0.008472860388743422] held-out RMSE=0.0398539041 log RMSE=0.392409489; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0480327451 log_a=-3.03587231 exponents=[0.3704085881892423, -0.37466244029017737] held-out RMSE=0.0407362411 log RMSE=0.422261325; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00691157037 log_a=-4.97455841 exponents=[0.31686601491672095, 0.10712274768347768] held-out RMSE=0.03573057 log RMSE=0.763889985; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.35676174 log_a=-1.03068711 exponents=[-0.3270251157871343, 0.35463667240013] held-out RMSE=0.0379601413 log RMSE=0.896074477; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=Ns
+    Ns: a=4.16938223 log_a=1.42776788 exponents=[-0.8129207628257978] held-out RMSE=0.0918081569 log RMSE=0.861934699; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.29179879 log_a=1.45670594 exponents=[-0.7789586795521649, 0.3107843618593684] held-out RMSE=0.107779357 log RMSE=0.811111598; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 230.786 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1671.22 unresolved interpolated False
+  consensus None 3.0e-04 0.95 230.786 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1671.22 unresolved interpolated False
+  consensus None 1.0e-03 0.95 230.786 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1671.22 unresolved interpolated False
+  consensus None 3.0e-03 0.95 230.786 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1671.22 unresolved interpolated False
+  individual 100 1.0e-04 0.95 304.662 38.8599 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 372.226 15.8259 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 594.231 7.57948 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 2476.33 10.5286 interpolated False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 450.272 5.74327 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 895.543 3.80758 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 698.911 2.97156 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 8363.64 11.8532 extrapolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+FIT A_no10: A excluding N=10
+  G: poor held-out fit (> .02); thresholds unsupported; cells=43; nonpositive=0; winner=NU + U
+    U/s: a=0.0475538783 log_a=-3.04589193 exponents=[0.379108513942294] held-out RMSE=0.0395950303 log RMSE=0.377585691; FAILING HELD-OUT (>0.02)
+    NU: a=0.00497734439 log_a=-5.30285879 exponents=[0.35910284360555395] held-out RMSE=0.0365083012 log RMSE=0.709799152; FAILING HELD-OUT (>0.02)
+    Ns: a=0.341434117 log_a=-1.07460054 exponents=[-0.36423251535126006] held-out RMSE=0.0391351138 log RMSE=0.991609701; FAILING HELD-OUT (>0.02)
+    U: a=0.0480898719 log_a=-3.03468369 exponents=[0.40112560601132374] held-out RMSE=0.0369285426 log RMSE=0.988706816; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.051266905 log_a=-2.97070986 exponents=[0.38687961819320194, -0.012672241798035831] held-out RMSE=0.0404669239 log RMSE=0.419754746; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.051266905 log_a=-2.97070986 exponents=[0.37420737639516666, -0.012672241798035392] held-out RMSE=0.0404669239 log RMSE=0.419754746; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0471710826 log_a=-3.05397423 exponents=[0.38413017008275085, -0.015481817073664623] held-out RMSE=0.0399683862 log RMSE=0.382569363; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.051266905 log_a=-2.97070986 exponents=[0.3742073763951664, -0.386879618193202] held-out RMSE=0.0404669239 log RMSE=0.419754746; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00700298239 log_a=-4.96141916 exponents=[0.3117478493011425, 0.1071555067466829] held-out RMSE=0.0340563641 log RMSE=0.733865212; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.358612727 log_a=-1.02551223 exponents=[-0.3277491883054664, 0.3547249818824743] held-out RMSE=0.0403641222 log RMSE=0.913044878; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=43; nonpositive=0; winner=Ns
+    Ns: a=3.8635061 log_a=1.35157509 exponents=[-0.8021005516624469] held-out RMSE=0.0893522456 log RMSE=0.867278432; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.03269812 log_a=1.39443566 exponents=[-0.7702457927840668, 0.3097217189600221] held-out RMSE=0.109799107 log RMSE=0.821531472; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 225.857 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1679.8 unresolved interpolated False
+  consensus None 3.0e-04 0.95 225.857 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1679.8 unresolved interpolated False
+  consensus None 1.0e-03 0.95 225.857 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1679.8 unresolved interpolated False
+  consensus None 3.0e-03 0.95 225.857 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1679.8 unresolved interpolated False
+  individual 100 1.0e-04 0.95 299.513 38.2031 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 365.969 15.5599 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 581.323 7.41483 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 2256.88 9.59556 interpolated False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 440.984 5.62479 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 860.662 3.65928 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 676.031 2.87428 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 5882.45 8.3368 extrapolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+FIT S: confirmed + stationary window estimates
+  G: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=U
+    U/s: a=0.0477080228 log_a=-3.0426557 exponents=[0.42320019010114646] held-out RMSE=0.0492783877 log RMSE=0.417500758; FAILING HELD-OUT (>0.02)
+    NU: a=0.00284140522 log_a=-5.86345655 exponents=[0.4528948280776395] held-out RMSE=0.0473287317 log RMSE=0.808295428; FAILING HELD-OUT (>0.02)
+    Ns: a=0.444152871 log_a=-0.811586472 exponents=[-0.44269200608908155] held-out RMSE=0.0374001906 log RMSE=1.25789033; FAILING HELD-OUT (>0.02)
+    U: a=0.0434260412 log_a=-3.13669599 exponents=[0.5490680979970354] held-out RMSE=0.0366644521 log RMSE=1.23073433; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.0377653828 log_a=-3.2763624 exponents=[0.39569909498436834, 0.03954935777574835] held-out RMSE=0.0500287044 log RMSE=0.443007762; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.0377653828 log_a=-3.2763624 exponents=[0.43524845276011614, 0.039549357775748195] held-out RMSE=0.0500287044 log RMSE=0.443007762; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0475897105 log_a=-3.04513871 exponents=[0.4244753037632933, -0.004879979117998346] held-out RMSE=0.0504056348 log RMSE=0.451835871; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.0377653828 log_a=-3.2763624 exponents=[0.43524845276011626, -0.395699094984368] held-out RMSE=0.0500287044 log RMSE=0.443007762; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00320270131 log_a=-5.74376067 exponents=[0.43684713333089764, 0.046363640722079026] held-out RMSE=0.0479844497 log RMSE=0.87764773; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.477534616 log_a=-0.739118627 exponents=[-0.38773127037923955, 0.48925574370454017] held-out RMSE=0.0458532997 log RMSE=1.11994349; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=49; nonpositive=0; winner=Ns
+    Ns: a=3.97007486 log_a=1.37878495 exponents=[-0.8163711917454404] held-out RMSE=0.081759709 log RMSE=0.811042686; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.16241284 log_a=1.42609492 exponents=[-0.780490580351948, 0.3194061175704576] held-out RMSE=0.0985477078 log RMSE=0.757698161; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 212.404 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1525.3 unresolved interpolated False
+  consensus None 3.0e-04 0.95 212.404 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1525.3 unresolved interpolated False
+  consensus None 1.0e-03 0.95 212.404 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1525.3 unresolved interpolated False
+  consensus None 3.0e-03 0.95 212.404 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1525.3 unresolved interpolated False
+  individual 10 1.0e-04 0.95 285.554 364.227 extrapolated False
+  individual 10 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 10 3.0e-04 0.95 390.984 166.235 interpolated False
+  individual 10 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 10 1.0e-03 0.95 1219.34 155.528 extrapolated False
+  individual 10 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 10 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 10 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-04 0.95 285.554 36.4227 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 390.984 16.6235 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 1219.34 15.5528 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 285.554 3.64227 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 390.984 1.66235 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 1219.34 1.55528 interpolated False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 285.554 1.21409 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 390.984 0.554116 interpolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 1219.34 0.518428 interpolated False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+FIT S_no10: S excluding N=10
+  G: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=NU + U
+    U/s: a=0.0478491878 log_a=-3.03970113 exponents=[0.3806792750748168] held-out RMSE=0.0395355411 log RMSE=0.374158487; FAILING HELD-OUT (>0.02)
+    NU: a=0.00493318274 log_a=-5.31177091 exponents=[0.3625923116859824] held-out RMSE=0.0371416872 log RMSE=0.709196685; FAILING HELD-OUT (>0.02)
+    Ns: a=0.354906921 log_a=-1.03589972 exponents=[-0.3679263374495976] held-out RMSE=0.0396145564 log RMSE=0.987799309; FAILING HELD-OUT (>0.02)
+    U: a=0.049013923 log_a=-3.01565088 exponents=[0.4060590088483664] held-out RMSE=0.0372061272 log RMSE=0.985705953; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.051438034 log_a=-2.96737742 exponents=[0.3881622696086049, -0.012182226206916768] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.051438034 log_a=-2.96737742 exponents=[0.37598004340168845, -0.012182226206917064] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0474595796 log_a=-3.04787689 exponents=[0.385746343999629, -0.015633133353614572] held-out RMSE=0.0398830329 log RMSE=0.377868392; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.051438034 log_a=-2.96737742 exponents=[0.37598004340168806, -0.38816226960860495] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00694032096 log_a=-4.97040726 exponents=[0.3152490061742595, 0.10713309742507963] held-out RMSE=0.0346883189 log RMSE=0.749361618; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.369353746 log_a=-0.996000433 exponents=[-0.3301629531678409, 0.35819743721333497] held-out RMSE=0.0406304331 log RMSE=0.905963157; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=Ns
+    Ns: a=3.93072923 log_a=1.36882496 exponents=[-0.8037469760103358] held-out RMSE=0.0880425535 log RMSE=0.855245218; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.06918458 log_a=1.40344263 exponents=[-0.7709824714891841, 0.3107815089737854] held-out RMSE=0.105570077 log RMSE=0.803283378; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 228.209 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1690.33 unresolved interpolated False
+  consensus None 3.0e-04 0.95 228.209 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1690.33 unresolved interpolated False
+  consensus None 1.0e-03 0.95 228.209 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1690.33 unresolved interpolated False
+  consensus None 3.0e-03 0.95 228.209 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1690.33 unresolved interpolated False
+  individual 100 1.0e-04 0.95 302.292 38.5577 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 369.872 15.7259 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 591.503 7.54468 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 2432.68 10.343 interpolated False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 447.479 5.70765 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 888.93 3.77946 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 693.976 2.95058 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 7542.12 10.689 extrapolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+FIT main: S_no10 over all inputs: stationary admission, excluding N=10
+  G: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=NU + U
+    U/s: a=0.0478491878 log_a=-3.03970113 exponents=[0.3806792750748168] held-out RMSE=0.0395355411 log RMSE=0.374158487; FAILING HELD-OUT (>0.02)
+    NU: a=0.00493318274 log_a=-5.31177091 exponents=[0.3625923116859824] held-out RMSE=0.0371416872 log RMSE=0.709196685; FAILING HELD-OUT (>0.02)
+    Ns: a=0.354906921 log_a=-1.03589972 exponents=[-0.3679263374495976] held-out RMSE=0.0396145564 log RMSE=0.987799309; FAILING HELD-OUT (>0.02)
+    U: a=0.049013923 log_a=-3.01565088 exponents=[0.4060590088483664] held-out RMSE=0.0372061272 log RMSE=0.985705953; FAILING HELD-OUT (>0.02)
+    U/s + NU: a=0.051438034 log_a=-2.96737742 exponents=[0.3881622696086049, -0.012182226206916768] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    U/s + Ns: a=0.051438034 log_a=-2.96737742 exponents=[0.37598004340168845, -0.012182226206917064] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    U/s + U: a=0.0474595796 log_a=-3.04787689 exponents=[0.385746343999629, -0.015633133353614572] held-out RMSE=0.0398830329 log RMSE=0.377868392; FAILING HELD-OUT (>0.02)
+    NU + Ns: a=0.051438034 log_a=-2.96737742 exponents=[0.37598004340168806, -0.38816226960860495] held-out RMSE=0.0404934092 log RMSE=0.418570055; FAILING HELD-OUT (>0.02)
+    NU + U: a=0.00694032096 log_a=-4.97040726 exponents=[0.3152490061742595, 0.10713309742507963] held-out RMSE=0.0346883189 log RMSE=0.749361618; FAILING HELD-OUT (>0.02)
+    Ns + U: a=0.369353746 log_a=-0.996000433 exponents=[-0.3301629531678409, 0.35819743721333497] held-out RMSE=0.0406304331 log RMSE=0.905963157; FAILING HELD-OUT (>0.02)
+  D: poor held-out fit (> .02); thresholds unsupported; cells=44; nonpositive=0; winner=Ns
+    Ns: a=3.93072923 log_a=1.36882496 exponents=[-0.8037469760103358] held-out RMSE=0.0880425535 log RMSE=0.855245218; FAILING HELD-OUT (>0.02)
+    Ns + U: a=4.06918458 log_a=1.40344263 exponents=[-0.7709824714891841, 0.3107815089737854] held-out RMSE=0.105570077 log RMSE=0.803283378; FAILING HELD-OUT (>0.02)
+  kind N u target Ns s/U region supported
+  consensus None 1.0e-04 0.95 228.209 unresolved interpolated False
+  consensus None 1.0e-04 0.99 1690.33 unresolved interpolated False
+  consensus None 3.0e-04 0.95 228.209 unresolved interpolated False
+  consensus None 3.0e-04 0.99 1690.33 unresolved interpolated False
+  consensus None 1.0e-03 0.95 228.209 unresolved interpolated False
+  consensus None 1.0e-03 0.99 1690.33 unresolved interpolated False
+  consensus None 3.0e-03 0.95 228.209 unresolved interpolated False
+  consensus None 3.0e-03 0.99 1690.33 unresolved interpolated False
+  individual 100 1.0e-04 0.95 302.292 38.5577 interpolated False
+  individual 100 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-04 0.95 369.872 15.7259 interpolated False
+  individual 100 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 100 1.0e-03 0.95 591.503 7.54468 interpolated False
+  individual 100 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 100 3.0e-03 0.95 2432.68 10.343 interpolated False
+  individual 100 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-04 0.95 447.479 5.70765 interpolated False
+  individual 1000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-04 0.95 888.93 3.77946 interpolated False
+  individual 1000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 1000 3.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-04 0.95 693.976 2.95058 interpolated False
+  individual 3000 1.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-04 0.95 7542.12 10.689 extrapolated False
+  individual 3000 3.0e-04 0.99 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 1.0e-03 0.99 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.95 unresolved unresolved unresolved False
+  individual 3000 3.0e-03 0.99 unresolved unresolved unresolved False
+
+C–D is an endpoint sensitivity envelope, not a confidence interval; winners are refitted.
+
+U BOOTSTRAP: whole trajectories within cells (B/E paired; S/S_no10 within arms); fixed membership; delta = RMSE(Ns+U)-RMSE(Ns)
+  B: descriptive paired-replicate bootstrap; 2000/2000 draws; seed=2315
+    U exponent: {'mean': 0.3211654588835514, 'median': 0.32081467703237887, 'ci95': [0.3051210620807273, 0.3378863877408411]}; excludes 0=True
+    RMSE difference: {'mean': 0.01525388992983662, 'median': 0.015202363701821639, 'ci95': [0.011859045911346804, 0.018791588901798825]}; P(U improves)=0.0000
+  E: descriptive paired-replicate bootstrap; 2000/2000 draws; seed=2315
+    U exponent: {'mean': 0.31202992702243776, 'median': 0.31207856770585213, 'ci95': [0.29447048364817424, 0.3289125571409465]}; excludes 0=True
+    RMSE difference: {'mean': 0.016235016122596525, 'median': 0.01620482160165755, 'ci95': [0.012795982293702868, 0.019804585610537842]}; P(U improves)=0.0000
+  S: descriptive whole-trajectory bootstrap within arms; 2000/2000 draws; seed=2315
+    U exponent: {'mean': 0.32116174612411413, 'median': 0.3210037139848161, 'ci95': [0.3046286811044769, 0.3388005580131173]}; excludes 0=True
+    RMSE difference: {'mean': 0.017183901306152202, 'median': 0.01709730355492596, 'ci95': [0.01354421640320401, 0.02134169957248005]}; P(U improves)=0.0000
+  S_no10: descriptive whole-trajectory bootstrap within arms; 2000/2000 draws; seed=2315
+    U exponent: {'mean': 0.3122490598802157, 'median': 0.31216699776165124, 'ci95': [0.29569567554088877, 0.33003647829110055]}; excludes 0=True
+    RMSE difference: {'mean': 0.017847007597843398, 'median': 0.0177444606098683, 'ci95': [0.014191484488596707, 0.021938802370366935]}; P(U improves)=0.0000
+  main: descriptive whole-trajectory bootstrap within arms; 2000/2000 draws; seed=2315
+    U exponent: {'mean': 0.3122490598802157, 'median': 0.31216699776165124, 'ci95': [0.29569567554088877, 0.33003647829110055]}; excludes 0=True
+    RMSE difference: {'mean': 0.017847007597843398, 'median': 0.0177444606098683, 'ci95': [0.014191484488596707, 0.021938802370366935]}; P(U improves)=0.0000
+
+STEP 5 PREP: extension times only for significant unresolved drift; late log(drift bound) versus T.
+N Ns u completed_T projected_total_T metric details
+10 300 1.0e-03 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+10 300 3.0e-03 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=1.34144e-05, extra_T=unresolved; longer run needed; drift bound not decaying, extension time unresolved
+10 3000 3.0e-03 300000 5.9975e+07
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=-5.61882e-08, extra_T=5.9675e+07; descriptive drift projection only; no runtime/admission guarantee
+1000 300 1.0e-04 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+1000 300 3.0e-03 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+3000 300 1.0e-04 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+3000 300 3.0e-04 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+3000 300 1.0e-03 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+3000 300 3.0e-03 300000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+100 30 1.0e-04 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=1.18335e-06, extra_T=unresolved; longer run needed; drift bound not decaying, extension time unresolved
+100 30 3.0e-04 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+1000 30 1.0e-04 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+1000 30 3.0e-04 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+1000 30 1.0e-03 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+3000 100 1.0e-03 1000000 unresolved
+    efficiency: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+    consensus: slope=unresolved, extra_T=unresolved; no time projection: no significant unresolved drift
+
+THRESHOLD CHANGES
+  A_to_B:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 214.895, ratio=1.02371; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1510.47, ratio=0.99691; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 214.895, ratio=1.02371; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1510.47, ratio=0.99691; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 214.895, ratio=1.02371; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1510.47, ratio=0.99691; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 214.895, ratio=1.02371; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1510.47, ratio=0.99691; interpolated -> interpolated
+    ('individual', 10, 0.0001, 0.95): 281.865 -> 545.841, ratio=1.93653; extrapolated -> interpolated
+    ('individual', 10, 0.0003, 0.95): 383.062 -> 545.841, ratio=1.42494; interpolated -> interpolated
+    ('individual', 10, 0.001, 0.95): 1119.76 -> 545.841, ratio=0.487462; extrapolated -> extrapolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 545.841, ratio=1.93653; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 545.841, ratio=1.42494; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 545.841, ratio=0.487462; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 545.841, ratio=1.93653; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 545.841, ratio=1.42494; interpolated -> interpolated
+    ('individual', 1000, 0.001, 0.95): 1119.76 -> 545.841, ratio=0.487462; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 545.841, ratio=1.93653; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 545.841, ratio=1.42494; interpolated -> interpolated
+    ('individual', 3000, 0.001, 0.95): 1119.76 -> 545.841, ratio=0.487462; interpolated -> extrapolated
+  A_to_A_no10:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 225.857, ratio=1.07593; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1679.8, ratio=1.10867; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 225.857, ratio=1.07593; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1679.8, ratio=1.10867; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 225.857, ratio=1.07593; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1679.8, ratio=1.10867; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 225.857, ratio=1.07593; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1679.8, ratio=1.10867; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 299.513, ratio=1.06261; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 365.969, ratio=0.955378; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 581.323, ratio=0.519148; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 440.984, ratio=1.56452; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 860.662, ratio=2.2468; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 676.031, ratio=2.39842; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 5882.45, ratio=15.3564; interpolated -> extrapolated
+  B_to_E:
+    ('consensus', None, 0.0001, 0.95): 214.895 -> 230.786, ratio=1.07394; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1510.47 -> 1671.22, ratio=1.10642; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 214.895 -> 230.786, ratio=1.07394; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1510.47 -> 1671.22, ratio=1.10642; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 214.895 -> 230.786, ratio=1.07394; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1510.47 -> 1671.22, ratio=1.10642; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 214.895 -> 230.786, ratio=1.07394; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1510.47 -> 1671.22, ratio=1.10642; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 545.841 -> 304.662, ratio=0.558151; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 545.841 -> 372.226, ratio=0.681931; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 545.841 -> 594.231, ratio=1.08865; interpolated -> interpolated
+    ('individual', 100, 0.003, 0.95): 545.841 -> 2476.33, ratio=4.53671; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 545.841 -> 450.272, ratio=0.824914; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 545.841 -> 895.543, ratio=1.64067; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 545.841 -> 698.911, ratio=1.28043; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 545.841 -> 8363.64, ratio=15.3225; interpolated -> extrapolated
+  A_to_E:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 230.786, ratio=1.09941; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1671.22, ratio=1.103; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 230.786, ratio=1.09941; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1671.22, ratio=1.103; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 230.786, ratio=1.09941; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1671.22, ratio=1.103; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 230.786, ratio=1.09941; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1671.22, ratio=1.103; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 304.662, ratio=1.08088; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 372.226, ratio=0.971712; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 594.231, ratio=0.530676; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 450.272, ratio=1.59747; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 895.543, ratio=2.33785; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 698.911, ratio=2.47959; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 8363.64, ratio=21.8336; interpolated -> extrapolated
+  A_to_S:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 212.404, ratio=1.01184; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1525.3, ratio=1.00669; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 212.404, ratio=1.01184; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1525.3, ratio=1.00669; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 212.404, ratio=1.01184; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1525.3, ratio=1.00669; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 212.404, ratio=1.01184; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1525.3, ratio=1.00669; interpolated -> interpolated
+    ('individual', 10, 0.0001, 0.95): 281.865 -> 285.554, ratio=1.01309; extrapolated -> extrapolated
+    ('individual', 10, 0.0003, 0.95): 383.062 -> 390.984, ratio=1.02068; interpolated -> interpolated
+    ('individual', 10, 0.001, 0.95): 1119.76 -> 1219.34, ratio=1.08893; extrapolated -> extrapolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 285.554, ratio=1.01309; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 390.984, ratio=1.02068; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 1219.34, ratio=1.08893; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 285.554, ratio=1.01309; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 390.984, ratio=1.02068; interpolated -> interpolated
+    ('individual', 1000, 0.001, 0.95): 1119.76 -> 1219.34, ratio=1.08893; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 285.554, ratio=1.01309; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 390.984, ratio=1.02068; interpolated -> interpolated
+    ('individual', 3000, 0.001, 0.95): 1119.76 -> 1219.34, ratio=1.08893; interpolated -> interpolated
+  A_to_S_no10:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 302.292, ratio=1.07247; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 369.872, ratio=0.965567; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 591.503, ratio=0.52824; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 447.479, ratio=1.58756; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 888.93, ratio=2.32059; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 693.976, ratio=2.46208; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 7542.12, ratio=19.689; interpolated -> extrapolated
+  S_to_S_no10:
+    ('consensus', None, 0.0001, 0.95): 212.404 -> 228.209, ratio=1.07441; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1525.3 -> 1690.33, ratio=1.1082; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 212.404 -> 228.209, ratio=1.07441; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1525.3 -> 1690.33, ratio=1.1082; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 212.404 -> 228.209, ratio=1.07441; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1525.3 -> 1690.33, ratio=1.1082; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 212.404 -> 228.209, ratio=1.07441; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1525.3 -> 1690.33, ratio=1.1082; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 285.554 -> 302.292, ratio=1.05862; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 390.984 -> 369.872, ratio=0.946003; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1219.34 -> 591.503, ratio=0.4851; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 285.554 -> 447.479, ratio=1.56706; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 390.984 -> 888.93, ratio=2.27357; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 285.554 -> 693.976, ratio=2.43028; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 390.984 -> 7542.12, ratio=19.2901; interpolated -> extrapolated
+  A_to_main:
+    ('consensus', None, 0.0001, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 209.918 -> 228.209, ratio=1.08713; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1515.16 -> 1690.33, ratio=1.11562; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 281.865 -> 302.292, ratio=1.07247; interpolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 383.062 -> 369.872, ratio=0.965567; interpolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 1119.76 -> 591.503, ratio=0.52824; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 281.865 -> 447.479, ratio=1.58756; interpolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 383.062 -> 888.93, ratio=2.32059; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 281.865 -> 693.976, ratio=2.46208; interpolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 383.062 -> 7542.12, ratio=19.689; interpolated -> extrapolated
+  original_main_to_main:
+    ('consensus', None, 0.0001, 0.95): 110.378 -> 228.209, ratio=2.06752; extrapolated -> interpolated
+    ('consensus', None, 0.0001, 0.99): 1549.91 -> 1690.33, ratio=1.0906; interpolated -> interpolated
+    ('consensus', None, 0.0003, 0.95): 110.378 -> 228.209, ratio=2.06752; extrapolated -> interpolated
+    ('consensus', None, 0.0003, 0.99): 1549.91 -> 1690.33, ratio=1.0906; interpolated -> interpolated
+    ('consensus', None, 0.001, 0.95): 110.378 -> 228.209, ratio=2.06752; extrapolated -> interpolated
+    ('consensus', None, 0.001, 0.99): 1549.91 -> 1690.33, ratio=1.0906; interpolated -> interpolated
+    ('consensus', None, 0.003, 0.95): 110.378 -> 228.209, ratio=2.06752; extrapolated -> interpolated
+    ('consensus', None, 0.003, 0.99): 1549.91 -> 1690.33, ratio=1.0906; interpolated -> interpolated
+    ('individual', 100, 0.0001, 0.95): 198.286 -> 302.292, ratio=1.52453; extrapolated -> interpolated
+    ('individual', 100, 0.0003, 0.95): 267.573 -> 369.872, ratio=1.38232; extrapolated -> interpolated
+    ('individual', 100, 0.001, 0.95): 422.485 -> 591.503, ratio=1.40006; interpolated -> interpolated
+    ('individual', 100, 0.003, 0.95): 726.508 -> 2432.68, ratio=3.34845; interpolated -> interpolated
+    ('individual', 1000, 0.0001, 0.95): 422.485 -> 447.479, ratio=1.05916; extrapolated -> interpolated
+    ('individual', 1000, 0.0003, 0.95): 726.508 -> 888.93, ratio=1.22357; interpolated -> interpolated
+    ('individual', 3000, 0.0001, 0.95): 726.508 -> 693.976, ratio=0.955222; extrapolated -> interpolated
+    ('individual', 3000, 0.0003, 0.95): 1396.28 -> 7542.12, ratio=5.40157; extrapolated -> extrapolated
+
+VERDICT
+MODEL-FREE THRESHOLDS
+Main membership = S_no10; all estimates = pooled last-half trajectory window means.
+Sensitivity includes non-admitted cells; adjacent available Ns; log Ns / log(1-efficiency) interpolation.
+95% CI: 2000 whole-trajectory resamples within arms, fixed seed=2315, fixed bracket; censored draws retained.
+Monotonicity: all-pair Bonferroni 95% difference intervals using stationary level SE and minimum df.
+set N u target kind | crossing Ns [95% CI] | s/U | flags
+main 100 1.0e-04 95% consensus | below range (100) | <=12.7551 | none
+main 100 1.0e-04 95% individual | 132.104 [124.18, 140.879] | 16.8499 | none
+main 100 1.0e-04 99% consensus | 743.472 [611.985, 986.777] | 94.8307 | none
+main 100 1.0e-04 99% individual | 1561.79 [1292.15, 1963.66] | 199.208 | none
+main 100 3.0e-04 95% consensus | 112.358 [107.475, 117.307] | 4.77713 | none
+main 100 3.0e-04 95% individual | 234.429 [218.206, 254.754] | 9.9672 | none
+main 100 3.0e-04 99% consensus | 834.31 [688.736, >=1000] | 35.4724 | 95% CI censored at bracket edges
+main 100 3.0e-04 99% individual | 2966.19 [2506.21, >=3000] | 126.113 | 95% CI censored at bracket edges
+main 100 1.0e-03 95% consensus | 134.373 [129.708, 139.635] | 1.71395 | none
+main 100 1.0e-03 95% individual | 415.752 [396.131, 435.742] | 5.30295 | none
+main 100 1.0e-03 99% consensus | 828.969 [765.31, 914.13] | 10.5736 | none
+main 100 1.0e-03 99% individual | above range (3000) | >38.2653 | none
+main 100 3.0e-03 95% consensus | 186.767 [182.847, 191.232] | 0.794076 | none
+main 100 3.0e-03 95% individual | 806.601 [783.246, 834.221] | 3.42942 | none
+main 100 3.0e-03 99% consensus | 983.201 [946.962, >=1000] | 4.18028 | 95% CI censored at bracket edges
+main 100 3.0e-03 99% individual | above range (3000) | >12.7551 | none
+main 1000 1.0e-04 95% consensus | 142.72 [135.429, 151.388] | 1.82041 | none
+main 1000 1.0e-04 95% individual | 450.857 [424.662, 484.24] | 5.75073 | none
+main 1000 1.0e-04 99% consensus | 1049.4 [<=1000, 1389.69] | 13.3852 | 95% CI censored at bracket edges; bootstrap includes unidentified crossings
+main 1000 1.0e-04 99% individual | above range (3000) | >38.2653 | none
+main 1000 3.0e-04 95% consensus | 174.891 [169.147, 181.705] | 0.743583 | none
+main 1000 3.0e-04 95% individual | 822.293 [787.572, 859.324] | 3.49615 | none
+main 1000 3.0e-04 99% consensus | 1267.56 [1105.53, 1545.26] | 5.38928 | none
+main 1000 3.0e-04 99% individual | above range (3000) | >12.7551 | none
+main 1000 1.0e-03 95% consensus | 330.055 [321.539, 339.158] | 0.420988 | none
+main 1000 1.0e-03 95% individual | 1631.63 [1586.17, 1682.57] | 2.08117 | none
+main 1000 1.0e-03 99% consensus | 2035.26 [1906.4, 2181.12] | 2.596 | none
+main 1000 1.0e-03 99% individual | above range (3000) | >3.82653 | none
+main 1000 3.0e-03 95% consensus | 697.516 [663.479, 732.218] | 0.296563 | none
+main 1000 3.0e-03 95% individual | above range (3000) | >1.27551 | none
+main 1000 3.0e-03 99% consensus | above range (3000) | >1.27551 | none
+main 1000 3.0e-03 99% individual | above range (3000) | >1.27551 | none
+main 3000 1.0e-04 95% consensus | 190.897 [183.508, 199.018] | 0.811639 | none
+main 3000 1.0e-04 95% individual | 859.265 [816.939, 903.914] | 3.65334 | none
+main 3000 1.0e-04 99% consensus | 1519.84 [1197.91, >=3000] | 6.46192 | 95% CI censored at bracket edges; bootstrap includes unidentified crossings
+main 3000 1.0e-04 99% individual | above range (3000) | >12.7551 | none
+main 3000 3.0e-04 95% consensus | 316.101 [304.266, 330.361] | 0.447989 | none
+main 3000 3.0e-04 95% individual | 1605.2 [1548.88, 1658.93] | 2.27494 | none
+main 3000 3.0e-04 99% consensus | 2488.34 [2076.87, >=3000] | 3.52656 | 95% CI censored at bracket edges
+main 3000 3.0e-04 99% individual | above range (3000) | >4.2517 | none
+main 3000 1.0e-03 95% consensus | below range (1000) | <=0.42517 | none
+main 3000 1.0e-03 95% individual | above range (3000) | >1.27551 | none
+main 3000 1.0e-03 99% consensus | above range (3000) | >1.27551 | none
+main 3000 1.0e-03 99% individual | above range (3000) | >1.27551 | none
+main 3000 3.0e-03 95% consensus | 1843.74 [1777.26, 1913.47] | 0.261302 | none
+main 3000 3.0e-03 95% individual | above range (3000) | >0.42517 | none
+main 3000 3.0e-03 99% consensus | above range (3000) | >0.42517 | none
+main 3000 3.0e-03 99% individual | above range (3000) | >0.42517 | none
+sensitivity 100 1.0e-04 95% consensus | 90.1813 [85.2764, 96.5553] | 11.5027 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 100 1.0e-04 95% individual | 132.104 [124.18, 140.879] | 16.8499 | includes non-admitted cells
+sensitivity 100 1.0e-04 99% consensus | 743.472 [611.985, 986.777] | 94.8307 | includes non-admitted cells
+sensitivity 100 1.0e-04 99% individual | 1561.79 [1292.15, 1963.66] | 199.208 | includes non-admitted cells
+sensitivity 100 3.0e-04 95% consensus | 112.358 [107.475, 117.307] | 4.77713 | includes non-admitted cells
+sensitivity 100 3.0e-04 95% individual | 234.429 [218.206, 254.754] | 9.9672 | includes non-admitted cells
+sensitivity 100 3.0e-04 99% consensus | 834.31 [688.736, >=1000] | 35.4724 | includes non-admitted cells; 95% CI censored at bracket edges
+sensitivity 100 3.0e-04 99% individual | 2966.19 [2506.21, >=3000] | 126.113 | includes non-admitted cells; 95% CI censored at bracket edges
+sensitivity 100 1.0e-03 95% consensus | 134.373 [129.708, 139.635] | 1.71395 | none
+sensitivity 100 1.0e-03 95% individual | 415.752 [396.131, 435.742] | 5.30295 | none
+sensitivity 100 1.0e-03 99% consensus | 828.969 [765.31, 914.13] | 10.5736 | none
+sensitivity 100 1.0e-03 99% individual | above range (3000) | >38.2653 | none
+sensitivity 100 3.0e-03 95% consensus | 186.767 [182.847, 191.232] | 0.794076 | none
+sensitivity 100 3.0e-03 95% individual | 806.601 [783.246, 834.221] | 3.42942 | none
+sensitivity 100 3.0e-03 99% consensus | 983.201 [946.962, >=1000] | 4.18028 | 95% CI censored at bracket edges
+sensitivity 100 3.0e-03 99% individual | above range (3000) | >12.7551 | none
+sensitivity 1000 1.0e-04 95% consensus | 134.801 [128.71, 141.655] | 1.7194 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 1000 1.0e-04 95% individual | 398.738 [361.611, 433.879] | 5.08595 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 1000 1.0e-04 99% consensus | 1049.4 [<=1000, 1389.69] | 13.3852 | includes non-admitted cells; 95% CI censored at bracket edges; bootstrap includes unidentified crossings
+sensitivity 1000 1.0e-04 99% individual | above range (3000) | >38.2653 | includes non-admitted cells
+sensitivity 1000 3.0e-04 95% consensus | 174.891 [169.147, 181.705] | 0.743583 | includes non-admitted cells
+sensitivity 1000 3.0e-04 95% individual | 822.293 [787.572, 859.324] | 3.49615 | includes non-admitted cells
+sensitivity 1000 3.0e-04 99% consensus | 1267.56 [1105.53, 1545.26] | 5.38928 | includes non-admitted cells
+sensitivity 1000 3.0e-04 99% individual | above range (3000) | >12.7551 | includes non-admitted cells
+sensitivity 1000 1.0e-03 95% consensus | 330.055 [321.539, 339.158] | 0.420988 | includes non-admitted cells
+sensitivity 1000 1.0e-03 95% individual | 1631.63 [1586.17, 1682.57] | 2.08117 | includes non-admitted cells
+sensitivity 1000 1.0e-03 99% consensus | 2035.26 [1906.4, 2181.12] | 2.596 | includes non-admitted cells
+sensitivity 1000 1.0e-03 99% individual | above range (3000) | >3.82653 | includes non-admitted cells
+sensitivity 1000 3.0e-03 95% consensus | 702.012 [675.996, 733.079] | 0.298475 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 1000 3.0e-03 95% individual | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 1000 3.0e-03 99% consensus | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 1000 3.0e-03 99% individual | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 3000 1.0e-04 95% consensus | 183.322 [174.453, 194.369] | 0.779431 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 3000 1.0e-04 95% individual | 859.212 [818.963, 905.772] | 3.65311 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 3000 1.0e-04 99% consensus | 1519.84 [1197.91, >=3000] | 6.46192 | includes non-admitted cells; 95% CI censored at bracket edges; bootstrap includes unidentified crossings
+sensitivity 3000 1.0e-04 99% individual | above range (3000) | >12.7551 | includes non-admitted cells
+sensitivity 3000 3.0e-04 95% consensus | 316.733 [<=300, 338.955] | 0.448884 | includes non-admitted cells; NON-ADMITTED BRACKET; 95% CI censored at bracket edges
+sensitivity 3000 3.0e-04 95% individual | 1605.2 [1548.88, 1658.93] | 2.27494 | includes non-admitted cells
+sensitivity 3000 3.0e-04 99% consensus | 2488.34 [2076.87, >=3000] | 3.52656 | includes non-admitted cells; 95% CI censored at bracket edges
+sensitivity 3000 3.0e-04 99% individual | above range (3000) | >4.2517 | includes non-admitted cells
+sensitivity 3000 1.0e-03 95% consensus | 728.073 [702.718, 756.223] | 0.309555 | includes non-admitted cells; NON-ADMITTED BRACKET
+sensitivity 3000 1.0e-03 95% individual | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 3000 1.0e-03 99% consensus | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 3000 1.0e-03 99% individual | above range (3000) | >1.27551 | includes non-admitted cells
+sensitivity 3000 3.0e-03 95% consensus | 1843.74 [1777.26, 1913.47] | 0.261302 | includes non-admitted cells
+sensitivity 3000 3.0e-03 95% individual | above range (3000) | >0.42517 | includes non-admitted cells
+sensitivity 3000 3.0e-03 99% consensus | above range (3000) | >0.42517 | includes non-admitted cells
+sensitivity 3000 3.0e-03 99% individual | above range (3000) | >0.42517 | includes non-admitted cells
+Descriptive crossing-Ns ratios (finite crossings only; no fitted scaling law):
+  main consensus 95%: N=100: u=3e-3/1e-4=unresolved; N=1000: u=3e-3/1e-4=4.8873; N=3000: u=3e-3/1e-4=9.6583; u=1.0e-04: N=3000/100=unresolved; u=3.0e-04: N=3000/100=2.81333; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=9.87192
+  main consensus 99%: N=100: u=3e-3/1e-4=1.32244; N=1000: u=3e-3/1e-4=unresolved; N=3000: u=3e-3/1e-4=unresolved; u=1.0e-04: N=3000/100=2.04425; u=3.0e-04: N=3000/100=2.98251; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+  main individual 95%: N=100: u=3e-3/1e-4=6.10582; N=1000: u=3e-3/1e-4=unresolved; N=3000: u=3e-3/1e-4=unresolved; u=1.0e-04: N=3000/100=6.50448; u=3.0e-04: N=3000/100=6.84728; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+  main individual 99%: N=100: u=3e-3/1e-4=unresolved; N=1000: u=3e-3/1e-4=unresolved; N=3000: u=3e-3/1e-4=unresolved; u=1.0e-04: N=3000/100=unresolved; u=3.0e-04: N=3000/100=unresolved; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+  sensitivity consensus 95%: N=100: u=3e-3/1e-4=2.07101 [non-admitted bracket]; N=1000: u=3e-3/1e-4=5.20776 [non-admitted bracket]; N=3000: u=3e-3/1e-4=10.0574 [non-admitted bracket]; u=1.0e-04: N=3000/100=2.03282 [non-admitted bracket]; u=3.0e-04: N=3000/100=2.81895 [non-admitted bracket]; u=1.0e-03: N=3000/100=5.41828 [non-admitted bracket]; u=3.0e-03: N=3000/100=9.87192
+  sensitivity consensus 99%: N=100: u=3e-3/1e-4=1.32244; N=1000: u=3e-3/1e-4=unresolved; N=3000: u=3e-3/1e-4=unresolved; u=1.0e-04: N=3000/100=2.04425; u=3.0e-04: N=3000/100=2.98251; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+  sensitivity individual 95%: N=100: u=3e-3/1e-4=6.10582; N=1000: u=3e-3/1e-4=unresolved [non-admitted bracket]; N=3000: u=3e-3/1e-4=unresolved [non-admitted bracket]; u=1.0e-04: N=3000/100=6.50408 [non-admitted bracket]; u=3.0e-04: N=3000/100=6.84728; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+  sensitivity individual 99%: N=100: u=3e-3/1e-4=unresolved; N=1000: u=3e-3/1e-4=unresolved; N=3000: u=3e-3/1e-4=unresolved; u=1.0e-04: N=3000/100=unresolved; u=3.0e-04: N=3000/100=unresolved; u=1.0e-03: N=3000/100=unresolved; u=3.0e-03: N=3000/100=unresolved
+
+POWER-LAW RESULTS (retained for comparison)
+  Main gap: failing held-out (>0.02): U/s, NU, Ns, U, U/s + NU, U/s + Ns, U/s + U, NU + Ns, NU + U, Ns + U; ALL power-law fits fail; their thresholds are unsupported.
+  Main deficit: failing held-out (>0.02): Ns, Ns + U; ALL power-law fits fail; their thresholds are unsupported.
+Main = S_no10 across all inputs: stationary admission, excluding N=10.
+  main ('consensus', None, 0.0001, 0.95): Ns=228.209; s/U=unresolved; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('consensus', None, 0.0001, 0.99): Ns=1690.33; s/U=unresolved; interpolated; supported fit=False
+  main ('consensus', None, 0.0003, 0.95): Ns=228.209; s/U=unresolved; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('consensus', None, 0.0003, 0.99): Ns=1690.33; s/U=unresolved; interpolated; supported fit=False
+  main ('consensus', None, 0.001, 0.95): Ns=228.209; s/U=unresolved; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('consensus', None, 0.001, 0.99): Ns=1690.33; s/U=unresolved; interpolated; supported fit=False
+  main ('consensus', None, 0.003, 0.95): Ns=228.209; s/U=unresolved; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('consensus', None, 0.003, 0.99): Ns=1690.33; s/U=unresolved; interpolated; supported fit=False
+  main ('individual', 100, 0.0001, 0.95): Ns=302.292; s/U=38.5577; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('individual', 100, 0.0001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 100, 0.0003, 0.95): Ns=369.872; s/U=15.7259; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('individual', 100, 0.0003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 100, 0.001, 0.95): Ns=591.503; s/U=7.54468; interpolated; supported fit=False
+  main ('individual', 100, 0.001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 100, 0.003, 0.95): Ns=2432.68; s/U=10.343; interpolated; supported fit=False
+  main ('individual', 100, 0.003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.0001, 0.95): Ns=447.479; s/U=5.70765; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('individual', 1000, 0.0001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.0003, 0.95): Ns=888.93; s/U=3.77946; interpolated; supported fit=False
+  main ('individual', 1000, 0.0003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.001, 0.95): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.003, 0.95): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 1000, 0.003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.0001, 0.95): Ns=693.976; s/U=2.95058; interpolated; supported fit=False; NOW INTERPOLATED (original F4 main was extrapolated)
+  main ('individual', 3000, 0.0001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.0003, 0.95): Ns=7542.12; s/U=10.689; extrapolated; supported fit=False
+  main ('individual', 3000, 0.0003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.001, 0.95): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.001, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.003, 0.95): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+  main ('individual', 3000, 0.003, 0.99): Ns=unresolved; s/U=unresolved; unresolved; supported fit=False
+Main interpolated thresholds: [('consensus', None, 0.0001, 0.95), ('consensus', None, 0.0001, 0.99), ('consensus', None, 0.0003, 0.95), ('consensus', None, 0.0003, 0.99), ('consensus', None, 0.001, 0.95), ('consensus', None, 0.001, 0.99), ('consensus', None, 0.003, 0.95), ('consensus', None, 0.003, 0.99), ('individual', 100, 0.0001, 0.95), ('individual', 100, 0.0003, 0.95), ('individual', 100, 0.001, 0.95), ('individual', 100, 0.003, 0.95), ('individual', 1000, 0.0001, 0.95), ('individual', 1000, 0.0003, 0.95), ('individual', 3000, 0.0001, 0.95)]
+Newly interpolated versus original F4 main: [('consensus', None, 0.0001, 0.95), ('consensus', None, 0.0003, 0.95), ('consensus', None, 0.001, 0.95), ('consensus', None, 0.003, 0.95), ('individual', 100, 0.0001, 0.95), ('individual', 100, 0.0003, 0.95), ('individual', 1000, 0.0001, 0.95), ('individual', 3000, 0.0001, 0.95)]
+F4 confirmed=48/64
+Scope | strict | stationary
+all N | B: usable=49/64; threshold ratios vs F4=0.4875..1.937; U exponent median [95%]=0.3208 [0.3051,0.3379]; P(held-out RMSE lower with U)=0 | S: usable=49/64; threshold ratios vs F4=1.007..1.089; U exponent median [95%]=0.321 [0.3046,0.3388]; P(held-out RMSE lower with U)=0
+without N=10 | E: usable=44/56; threshold ratios vs F4=0.5307..21.83; U exponent median [95%]=0.3121 [0.2945,0.3289]; P(held-out RMSE lower with U)=0 | S_no10: usable=44/56; threshold ratios vs F4=0.5282..19.69; U exponent median [95%]=0.3122 [0.2957,0.33]; P(held-out RMSE lower with U)=0
+B extrapolated/unresolved/unsupported thresholds:
+  ('consensus', None, 0.0001, 0.95): Ns=214.895; interpolated; supported fit=False
+  ('consensus', None, 0.0001, 0.99): Ns=1510.47; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.95): Ns=214.895; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.99): Ns=1510.47; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.95): Ns=214.895; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.99): Ns=1510.47; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.95): Ns=214.895; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.99): Ns=1510.47; interpolated; supported fit=False
+  ('individual', 10, 0.0001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 10, 0.0001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 10, 0.0003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 10, 0.0003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 10, 0.001, 0.95): Ns=545.841; extrapolated; supported fit=False
+  ('individual', 10, 0.001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 10, 0.003, 0.95): Ns=545.841; extrapolated; supported fit=False
+  ('individual', 10, 0.003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 100, 0.0001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 100, 0.0003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 100, 0.0003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 100, 0.001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 100, 0.001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 100, 0.003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 100, 0.003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 1000, 0.0001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 1000, 0.0001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 1000, 0.0003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 1000, 0.0003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 1000, 0.001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 1000, 0.001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 1000, 0.003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 1000, 0.003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 3000, 0.0001, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 3000, 0.0001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 3000, 0.0003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 3000, 0.0003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 3000, 0.001, 0.95): Ns=545.841; extrapolated; supported fit=False
+  ('individual', 3000, 0.001, 0.99): Ns=9191.38; extrapolated; supported fit=False
+  ('individual', 3000, 0.003, 0.95): Ns=545.841; interpolated; supported fit=False
+  ('individual', 3000, 0.003, 0.99): Ns=9191.38; extrapolated; supported fit=False
+E extrapolated/unresolved/unsupported thresholds:
+  ('consensus', None, 0.0001, 0.95): Ns=230.786; interpolated; supported fit=False
+  ('consensus', None, 0.0001, 0.99): Ns=1671.22; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.95): Ns=230.786; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.99): Ns=1671.22; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.95): Ns=230.786; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.99): Ns=1671.22; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.95): Ns=230.786; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.99): Ns=1671.22; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.95): Ns=304.662; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.0003, 0.95): Ns=372.226; interpolated; supported fit=False
+  ('individual', 100, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.001, 0.95): Ns=594.231; interpolated; supported fit=False
+  ('individual', 100, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.003, 0.95): Ns=2476.33; interpolated; supported fit=False
+  ('individual', 100, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0001, 0.95): Ns=450.272; interpolated; supported fit=False
+  ('individual', 1000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0003, 0.95): Ns=895.543; interpolated; supported fit=False
+  ('individual', 1000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.001, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0001, 0.95): Ns=698.911; interpolated; supported fit=False
+  ('individual', 3000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0003, 0.95): Ns=8363.64; extrapolated; supported fit=False
+  ('individual', 3000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.001, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+S extrapolated/unresolved/unsupported thresholds:
+  ('consensus', None, 0.0001, 0.95): Ns=212.404; interpolated; supported fit=False
+  ('consensus', None, 0.0001, 0.99): Ns=1525.3; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.95): Ns=212.404; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.99): Ns=1525.3; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.95): Ns=212.404; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.99): Ns=1525.3; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.95): Ns=212.404; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.99): Ns=1525.3; interpolated; supported fit=False
+  ('individual', 10, 0.0001, 0.95): Ns=285.554; extrapolated; supported fit=False
+  ('individual', 10, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 10, 0.0003, 0.95): Ns=390.984; interpolated; supported fit=False
+  ('individual', 10, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 10, 0.001, 0.95): Ns=1219.34; extrapolated; supported fit=False
+  ('individual', 10, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 10, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 10, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.0001, 0.95): Ns=285.554; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.0003, 0.95): Ns=390.984; interpolated; supported fit=False
+  ('individual', 100, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.001, 0.95): Ns=1219.34; interpolated; supported fit=False
+  ('individual', 100, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0001, 0.95): Ns=285.554; interpolated; supported fit=False
+  ('individual', 1000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0003, 0.95): Ns=390.984; interpolated; supported fit=False
+  ('individual', 1000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.001, 0.95): Ns=1219.34; interpolated; supported fit=False
+  ('individual', 1000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0001, 0.95): Ns=285.554; interpolated; supported fit=False
+  ('individual', 3000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0003, 0.95): Ns=390.984; interpolated; supported fit=False
+  ('individual', 3000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.001, 0.95): Ns=1219.34; interpolated; supported fit=False
+  ('individual', 3000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+S_no10 extrapolated/unresolved/unsupported thresholds:
+  ('consensus', None, 0.0001, 0.95): Ns=228.209; interpolated; supported fit=False
+  ('consensus', None, 0.0001, 0.99): Ns=1690.33; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.95): Ns=228.209; interpolated; supported fit=False
+  ('consensus', None, 0.0003, 0.99): Ns=1690.33; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.95): Ns=228.209; interpolated; supported fit=False
+  ('consensus', None, 0.001, 0.99): Ns=1690.33; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.95): Ns=228.209; interpolated; supported fit=False
+  ('consensus', None, 0.003, 0.99): Ns=1690.33; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.95): Ns=302.292; interpolated; supported fit=False
+  ('individual', 100, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.0003, 0.95): Ns=369.872; interpolated; supported fit=False
+  ('individual', 100, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.001, 0.95): Ns=591.503; interpolated; supported fit=False
+  ('individual', 100, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 100, 0.003, 0.95): Ns=2432.68; interpolated; supported fit=False
+  ('individual', 100, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0001, 0.95): Ns=447.479; interpolated; supported fit=False
+  ('individual', 1000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.0003, 0.95): Ns=888.93; interpolated; supported fit=False
+  ('individual', 1000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.001, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 1000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0001, 0.95): Ns=693.976; interpolated; supported fit=False
+  ('individual', 3000, 0.0001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.0003, 0.95): Ns=7542.12; extrapolated; supported fit=False
+  ('individual', 3000, 0.0003, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.001, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.001, 0.99): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.95): Ns=unresolved; unresolved; supported fit=False
+  ('individual', 3000, 0.003, 0.99): Ns=unresolved; unresolved; supported fit=False
+Remaining unresolved cells under S (extension times only address drift):
+  (10, 300, 0.001): consensus: drift interval too wide: more replicates to resolve trend; consensus: arm-difference interval too wide: more replicates
+  (10, 300, 0.003): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: significant drift: longer runs; consensus: arm-difference interval too wide: more replicates
+  (10, 3000, 0.003): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; efficiency: wide level half-width: more replicates; consensus: significant drift: longer runs; consensus: arm-difference interval too wide: more replicates; consensus: wide level half-width: more replicates
+  (1000, 300, 0.0001): efficiency: arm-difference interval too wide: more replicates
+  (1000, 300, 0.003): consensus: drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.0001): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.0003): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.001): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend
+  (3000, 300, 0.003): efficiency: drift interval too wide: more replicates to resolve trend; consensus: drift interval too wide: more replicates to resolve trend; consensus: arm-difference interval too wide: more replicates
+  (100, 30.0, 0.0001): efficiency: drift interval too wide: more replicates to resolve trend; consensus: significant drift: longer runs
+  (100, 30.0, 0.0003): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend; consensus: arm-difference interval too wide: more replicates
+  (1000, 30.0, 0.0001): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend; consensus: arm-difference interval too wide: more replicates
+  (1000, 30.0, 0.0003): efficiency: drift interval too wide: more replicates to resolve trend; efficiency: arm-difference interval too wide: more replicates; consensus: drift interval too wide: more replicates to resolve trend; consensus: arm-difference interval too wide: more replicates
+  (1000, 30.0, 0.001): consensus: drift interval too wide: more replicates to resolve trend
+  (3000, 100.0, 0.001): consensus: drift interval too wide: more replicates to resolve trend
+S: 2 thresholds remain extrapolated; additional admitted Ns must bracket these crossings at the relevant N,u.
+S_no10: 1 thresholds remain extrapolated; additional admitted Ns must bracket these crossings at the relevant N,u.
+N=10 is the strong-selection sensitivity; 5 observed Ns values constrain shape.

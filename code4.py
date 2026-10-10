@@ -27,6 +27,17 @@ chunk retain completed cells. Resume skips these, and deterministically replays
 unfinished cells from their seeds; it does not restore populations from JSON.
 Batch size/device changes may cause small floating-point differences on replay.
 
+Custom grids: --populations 100 1000 3000 --ns 30 100 1000
+--mutations 1e-4 3e-4 1e-3 3e-3 --replicates 32 --cap 300000
+--exclude 3000:30 --output output/code4-step4 (no --part).
+Unspecified dimensions retain full defaults; quick uses small defaults and its
+--generations cap. Custom caps must be multiples of 1000. For a single B300,
+start with --config-chunk 2 --individual-chunk 128: one cell, two starts,
+32 replicates per start. At N=3000 the float32 genome carry is about 0.60 GB;
+temporary genomes/responses add memory, while information stencils are bounded
+by individual-chunk. Keep config-chunk=2 until bench at K=32 verifies headroom;
+bench reports device peak memory when available. No genomes accumulate in JSON.
+
 Descriptive fits: positive power laws y=a*product(x**p), log least squares,
 ranked by leave-one-N-out efficiency-unit RMSE (also report log RMSE), using a
 common positive-response subset of confirmed cells. No pseudocounts. G tests
@@ -89,17 +100,65 @@ class Engine(f3.Engine):
         return lax.scan(block, carry, None, length=T // every)
 
 
-def grid(seed=0, quick=False, generations=20, part=None):
+def custom_spec(args, quick=False):
+    """Canonical requested spec, separate from the effective quick schedule."""
+    names = ("populations", "ns", "mutations", "replicates", "cap", "exclude")
+    if not any(getattr(args, name, None) is not None for name in names):
+        return None
+    if args.part is not None or args.output is None:
+        raise ValueError("Custom grid options require --output and forbid --part")
+    spec = dict(populations=sorted(args.populations if args.populations is not None else
+                                   ((4, 8) if quick else POPULATIONS)),
+                ns=sorted(args.ns if args.ns is not None else NS),
+                mutations=sorted(args.mutations if args.mutations is not None else
+                                 ((1e-3,) if quick else MUTATIONS)),
+                replicates=args.replicates if args.replicates is not None else (2 if quick else 8),
+                cap=args.cap if args.cap is not None else CAP)
+    for name in ("populations", "ns", "mutations"):
+        values = spec[name]
+        if not values or len(set(values)) != len(values) or any(not np.isfinite(v) or v <= 0 for v in values):
+            raise ValueError(f"{name} must contain distinct positive finite values")
+    if any(u > 1 for u in spec["mutations"]):
+        raise ValueError("mutations are Bernoulli probabilities, at most 1")
+    if spec["replicates"] < 2 or spec["cap"] < 1000 or spec["cap"] % 1000:
+        raise ValueError("replicates must be >=2; cap must be a positive multiple of 1000")
+    excluded = set()
+    for value in args.exclude or []:
+        try:
+            n, ns = value.split(":")
+            pair = (int(n), float(ns))
+        except ValueError:
+            raise ValueError(f"Invalid --exclude {value!r}; expected N:Ns") from None
+        if pair[0] not in spec["populations"] or pair[1] not in spec["ns"]:
+            raise ValueError(f"Excluded pair {value} is outside the requested grid")
+        excluded.add(pair)
+    spec["exclude"] = [list(pair) for pair in sorted(excluded)]
+    if len(excluded) == len(spec["populations"])*len(spec["ns"]):
+        raise ValueError("Exclusions leave an empty grid")
+    return spec
+
+
+def grid(seed=0, quick=False, generations=20, part=None, spec=None):
+    if spec is not None and part is not None:
+        raise ValueError("Custom grids cannot use --part")
+    populations = spec["populations"] if spec else ((4, 8) if quick else POPULATIONS)
+    strengths = spec["ns"] if spec else NS
+    mutations = spec["mutations"] if spec else ((1e-3,) if quick else MUTATIONS)
+    K = spec["replicates"] if spec else (2 if quick else 8)
+    cap = generations if quick else spec["cap"] if spec else CAP
+    excluded = {tuple(pair) for pair in spec["exclude"]} if spec else set()
     rows = []
-    for N in ((4, 8) if quick else POPULATIONS):
-        for Ns in NS:
+    for N in populations:
+        for Ns in strengths:
             if part is not None and Ns != NS[part]:
                 continue
-            for u in ((1e-3,) if quick else MUTATIONS):
-                first = min(CAP, int(np.ceil(max(20000, 20000*N/Ns)/1000))*1000)
-                row = f2.config(N, Ns/N, K=2 if quick else 8, u=u, seed=seed,
+            if (N, Ns) in excluded:
+                continue
+            for u in mutations:
+                first = min(cap, int(np.ceil(max(20000, 20000*N/Ns)/1000))*1000)
+                row = f2.config(N, Ns/N, K=K, u=u, seed=seed,
                                 T=generations if quick else first, every=1 if quick else 1000)
-                rows.append(dict(**row, Ns=Ns, cap=generations if quick else CAP, mode="clonal"))
+                rows.append(dict(**row, Ns=Ns, cap=cap, mode="clonal"))
     return rows
 
 
@@ -109,14 +168,40 @@ def identity(row):
 
 def pending(data):
     done = {identity(r) for r in data["cells"] if r["status"] in ("met", "cap reached")}
-    return [r for r in data["planned"] if identity(r) not in done]
+    return sorted((r for r in data["planned"] if identity(r) not in done), key=first_work)
 
 
-def new_data(planned, quick, part, env, chunk):
+def first_work(row):
+    return 2*row["N"]*row["K"]*row["T"]
+
+
+def pending_batches(data, config_chunk):
+    # Shape grouping may collect nonadjacent rows; sort the resulting batches too.
+    return sorted(f2.groups(pending(data), config_chunk//2), key=lambda batch: first_work(batch[0]))
+
+
+def new_data(planned, quick, part, env, chunk, spec=None):
     return dict(experiment="F4", version=VERSION, quick=quick, part=part,
                 seed=planned[0]["seed"], generations=planned[0]["cap"] if quick else None,
                 sigma_n=env.sigma_n, environment=env.params, calibration=env.calibration,
-                chunk_generations=chunk, planned=planned, cells=[], elapsed_seconds=0., definitions=__doc__)
+                chunk_generations=chunk, planned=planned, cells=[], elapsed_seconds=0., definitions=__doc__,
+                **({"grid_spec": spec} if spec is not None else {}))
+
+
+def validate_resume(previous, requested):
+    fields = ("experiment", "version", "planned", "environment", "calibration", "sigma_n",
+              "quick", "part", "seed", "generations", "chunk_generations", "grid_spec")
+    if any(previous.get(k) != requested.get(k) for k in fields):
+        raise ValueError("Resume configuration/environment differs from checkpoint")
+    planned = {identity(c): c for c in requested["planned"]}
+    seen = set()
+    for c in previous["cells"]:
+        key = identity(c)
+        if (key in seen or key not in planned or
+                any(c.get(k) != v for k, v in planned[key].items()) or
+                c["status"] not in ("running", "met", "cap reached")):
+            raise ValueError("Resume checkpoint contains duplicate or mismatched cells")
+        seen.add(key)
 
 
 def summarize_cell(row, times, records, quick=False):
@@ -315,7 +400,9 @@ def summary(data):
         print("VERDICT: 95%/99% selection thresholds unresolved; need equilibrated cells across >=3 N and both Ns.")
     else:
         print("VERDICT: conditional selection thresholds above; capped cells remain unresolved and are excluded from fits.")
-    print("Only two Ns constrain functional shape; collapse is descriptive. Algebraic aliases are not causal evidence; census N is not calibrated Ne.")
+    scope = (f"{len({r['Ns'] for r in data['planned']})} Ns values constrain functional shape"
+             if "grid_spec" in data else "Only two Ns constrain functional shape")
+    print(scope + "; collapse is descriptive. Algebraic aliases are not causal evidence; census N is not calibrated Ne.")
 
 
 def save(data, stem, echo=False):
@@ -366,15 +453,15 @@ def main(args, quick=False):
     if not quick and jax.default_backend() != "gpu":
         raise RuntimeError("Full run requires GPU; use quick or bench --tiny on CPU")
     env = f2.channel("vanhateren", args.contrasts, args.seed, f2.DEFAULT_SIGMA_N)
-    planned = grid(args.seed, quick, args.generations, args.part)
+    spec = custom_spec(args, quick)
+    planned = grid(args.seed, quick, args.generations, args.part, spec)
     chunk = min(args.chunk_generations, args.generations) if quick else args.chunk_generations
-    data = new_data(planned, quick, args.part, env, chunk)
+    data = new_data(planned, quick, args.part, env, chunk, spec)
     if args.resume:
         if not stem.with_suffix(".json").exists():
             raise ValueError("No JSON checkpoint at requested output stem")
         previous = json.loads(stem.with_suffix(".json").read_text())
-        if any(previous[k] != data[k] for k in ("version", "planned", "environment", "calibration", "quick", "chunk_generations")):
-            raise ValueError("Resume configuration/environment differs from checkpoint")
+        validate_resume(previous, data)
         data = previous
     elif stem.with_suffix(".json").exists():
         raise ValueError("Output exists; use --resume or a new --output stem")
@@ -387,7 +474,7 @@ def main(args, quick=False):
         save(data, stem)
         print(f"N={cells[0]['N']} T={cells[0]['completed_T']}: " +
               ", ".join(f"Ns={c['Ns']:g} u={c['u']:g} {c['status']}" for c in cells) + f" ({seconds:.2f}s)", flush=True)
-    for batch in f2.groups(pending(data), args.config_chunk//2):
+    for batch in pending_batches(data, args.config_chunk):
         execute(engine, batch, quick, chunk, checkpoint)
     save(data, stem, echo=True)
     figure(stem)
@@ -397,6 +484,9 @@ def bench(args):
     gpu = jax.default_backend() == "gpu"
     if not gpu and not args.tiny:
         raise ValueError("CPU benchmark requires --tiny; representative throughput belongs on GPU")
+    spec = custom_spec(args)
+    if spec is not None:
+        return bench_grid(args, spec)
     N, K, T, every = (4, 2, 4, 1) if args.tiny else (1000, 8, 1000, 1000)
     row = dict(**f2.config(N, 300/N, K=K, T=T, every=every, seed=args.seed), Ns=300, cap=T, mode="clonal")
     env = f2.channel("vanhateren", args.contrasts, args.seed, f2.DEFAULT_SIGMA_N)
@@ -416,6 +506,50 @@ def bench(args):
                   cold_seconds=cold, warm_seconds=warm, rate=rate, parts=parts,
                   note="Same-device single-cell extrapolation, excluding setup/IO/other-shape compilation; adaptive runtime lies between schedule and cap. Tiny rates are smoke tests, NOT pod throughput.")
     stem = args.output or OUTPUT / ("code4-bench-quick" if args.tiny else "code4-bench")
+    if args.tiny and not stem.name.endswith("-quick"):
+        stem = stem.with_name(stem.name+"-quick")
+    stem.parent.mkdir(parents=True, exist_ok=True)
+    stem.with_suffix(".json").write_text(json.dumps(result, separators=(",", ":"), allow_nan=False)+"\n")
+    print(json.dumps(result, indent=2))
+
+
+def scheduled_T(row, chunk):
+    return min(row["cap"], ((row["T"]+chunk-1)//chunk)*chunk)
+
+
+def bench_grid(args, spec):
+    """Requested K, cold compile then warm timing at two representative shapes."""
+    rows = grid(args.seed, spec=spec)
+    env = f2.channel("vanhateren", args.contrasts, args.seed, f2.DEFAULT_SIGMA_N)
+    engine = Engine(env, args.individual_chunk)
+    probes = []
+    for N in ((4,) if args.tiny else (1000, 3000)):
+        T, every = (4, 1) if args.tiny else (1000, 1000)
+        row = dict(**f2.config(N, spec["ns"][0]/N, K=spec["replicates"],
+                              u=max(spec["mutations"]), T=T, every=every, seed=args.seed),
+                   Ns=spec["ns"][0], cap=T, mode="clonal")
+        _, cold = execute(engine, [row], True, T)
+        _, warm = execute(engine, [row], True, T)
+        probes.append(dict(N=N, K=row["K"], T=T, cold_seconds=cold, warm_seconds=warm,
+                           rate=2*N*row["K"]*T/warm))
+    estimates = []
+    for row in sorted(rows, key=first_work):
+        probe = min(probes, key=lambda p: abs(np.log(row["N"]/p["N"])))
+        first = scheduled_T(row, args.chunk_generations)
+        hours = 2*row["N"]*row["K"]/probe["rate"]/3600
+        estimates.append(dict(N=row["N"], Ns=row["Ns"], u=row["u"], K=row["K"],
+                              first_T=row["T"], scheduled_T=first, cap=row["cap"],
+                              probe_N=probe["N"], scheduled_hours=hours*first, cap_hours=hours*row["cap"]))
+    memory = jax.devices()[0].memory_stats() or {}
+    result = dict(device=str(jax.devices()[0]), tiny=args.tiny, grid_spec=spec, probes=probes,
+                  individual_chunk=args.individual_chunk, config_chunk=args.config_chunk,
+                  peak_bytes_in_use=memory.get("peak_bytes_in_use"), cells=estimates,
+                  scheduled_hours=sum(r["scheduled_hours"] for r in estimates),
+                  cap_hours=sum(r["cap_hours"] for r in estimates),
+                  note="Warm paired single-cell estimates at requested K, nearest probe N in log space; "
+                       "excludes setup/IO/other-shape compilation. Uses highest requested u. "
+                       "Larger config-chunk throughput is not measured. Tiny rates are smoke tests, NOT GPU throughput.")
+    stem = args.output
     if args.tiny and not stem.name.endswith("-quick"):
         stem = stem.with_name(stem.name+"-quick")
     stem.parent.mkdir(parents=True, exist_ok=True)
@@ -444,7 +578,10 @@ def figure(stem=OUTPUT / "code4"):
     style = dict(fontsize=5.5, family="monospace")
     populations = sorted({r["N"] for r in data["planned"]})
     mutations = sorted({r["u"] for r in data["planned"]})
-    markers = {300: "o", 3000: "^"}
+    strengths = sorted({r["Ns"] for r in data["planned"]})
+    markers = {ns: ("o", "^", "s", "D", "v", "P", "X")[i % 7] for i, ns in enumerate(strengths)}
+    if "grid_spec" not in data:
+        markers = {300: "o", 3000: "^"}  # Preserve original part figures/legends.
     ax = axes[0]
     ax.set(xscale="log", yscale="log")
     skipped = 0
@@ -478,7 +615,9 @@ def figure(stem=OUTPUT / "code4"):
     ax.legend(handles=handles, loc="lower right", **legend_style)
     ax = axes[1]
     colors = plt.get_cmap("Purples")(np.linspace(.4, .95, len(mutations)))
-    linestyles = {300: "-", 3000: "--"}
+    linestyles = {ns: ("-", "--", ":", "-.")[i % 4] for i, ns in enumerate(strengths)}
+    if "grid_spec" not in data:
+        linestyles = {300: "-", 3000: "--"}
     for i, u in enumerate(mutations):
         for Ns, linestyle in linestyles.items():
             group = sorted((c for c in cells if c["u"] == u and c["Ns"] == Ns),
@@ -539,6 +678,30 @@ def check(args):
     assert set(map(identity, split[0])).isdisjoint(map(identity, split[1]))
     assert set(map(identity, full)) == set(map(identity, split[0]+split[1]))
     assert all(r["K"] == 8 and r["L"] == 3 and r["cap"] == CAP for r in full)
+    custom_args = argparse.Namespace(populations=[3000, 10, 1000], ns=[1000., 30., 100.],
+        mutations=[.001, .0001], replicates=32, cap=250000, exclude=["3000:30", "10:100"],
+        part=None, output=Path("unused"))
+    spec = custom_spec(custom_args)
+    custom = grid(spec=spec)
+    assert len(custom) == 14 and all(r["K"] == 32 for r in custom)
+    assert not any((r["N"], r["Ns"]) in ((3000, 30), (10, 100)) for r in custom)
+    assert all(r["T"] == min(250000, int(np.ceil(max(20000, 20000*r["N"]/r["Ns"])/1000))*1000)
+               for r in custom)
+    assert {r["T"] for r in custom} >= {20000, 200000, 250000}
+    for chunk_size in (2, 4, 8):
+        ordered = [r for batch in pending_batches(dict(planned=custom, cells=[]), chunk_size) for r in batch]
+        assert list(map(first_work, ordered)) == sorted(map(first_work, custom))
+    assert scheduled_T(dict(T=21000, cap=25000), 10000) == 25000
+    for changes in (dict(part=0), dict(output=None), dict(replicates=1), dict(cap=250001),
+                    dict(ns=[0]), dict(ns=[float("nan")]), dict(mutations=[1.1]),
+                    dict(populations=[10, 10]), dict(exclude=["bad"]), dict(exclude=["7:30"]),
+                    dict(exclude=[f"{n}:{ns}" for n in custom_args.populations for ns in custom_args.ns])):
+        try:
+            custom_spec(argparse.Namespace(**(vars(custom_args) | changes)))
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Invalid custom spec accepted: {changes}")
     synthetic = []
     for r in full:
         U = 784*r["u"]
@@ -569,6 +732,18 @@ def check(args):
     assert not summarize_cell(row, times, records, quick=True)["confirmed"]
     # Real tiny executions: splitting and merging must reproduce a single run.
     env = f2.channel("vanhateren", args.contrasts, args.seed, f2.DEFAULT_SIGMA_N)
+    requested = new_data(custom, False, None, env, 10000, spec)
+    roundtrip = json.loads(json.dumps(requested))
+    validate_resume(roundtrip, requested)
+    for key in ("grid_spec", "planned", "sigma_n", "environment", "calibration", "chunk_generations"):
+        bad = deepcopy(roundtrip)
+        bad[key] = None
+        try:
+            validate_resume(bad, requested)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Resume accepted changed {key}")
     engine = Engine(env, 8)
     planned = grid(args.seed, True, 2)
     single = new_data(planned, True, None, env, 1)
@@ -587,6 +762,7 @@ def check(args):
     assert merged["cells"] == sorted(single["cells"], key=identity)
     assert analysis(merged) == analysis(single)
     assert not pending(json.loads(json.dumps(merged)))  # resume schedules zero work
+    validate_resume(json.loads(json.dumps(merged)), new_data(planned, True, None, env, 1))
     partial = deepcopy(merged)
     partial["cells"][0]["status"] = "running"
     assert list(map(identity, pending(partial))) == [identity(partial["cells"][0])]
@@ -604,7 +780,42 @@ def check(args):
     for k in METRICS:
         assert np.allclose(a["records"][k], b["records"][k], atol=1e-7)
     assert np.all(np.array(a["records"]["segregating_sites"])[0] == 0)
-    print(f"check ok ({perf_counter()-begin:.2f}s): split/merge execution, resume skip, chunk continuity, convergence gate, synthetic scaling/exponent, thresholds")
+    # Real K=32 smoke, batched paired cells and a remainder individual chunk.
+    small_args = argparse.Namespace(**(vars(custom_args) | dict(populations=[4], ns=[30, 100],
+        mutations=[.001], exclude=None)))
+    small_spec = custom_spec(small_args, quick=True)
+    small = grid(args.seed, True, 2, spec=small_spec)
+    batched, _ = execute(engine, small, True, 1)
+    unbatched, _ = execute(Engine(env, 7), [small[0]], True, 2)
+    assert all(np.asarray(c["records"]["efficiency"]).shape == (3, 2, 32) for c in batched)
+    for key in METRICS:
+        assert np.allclose(batched[0]["records"][key], unbatched[0]["records"][key], atol=1e-6)
+    from tempfile import TemporaryDirectory
+    with TemporaryDirectory(prefix="f4-check-") as directory:
+        stem = Path(directory)/"custom"
+        checkpoint = new_data(small, True, None, env, 1, small_spec)
+        checkpoint["cells"] = batched
+        save(checkpoint, stem)
+        restored = json.loads(stem.with_suffix(".json").read_text())
+        validate_resume(restored, new_data(small, True, None, env, 1, small_spec))
+        assert not pending(restored) and not stem.with_suffix(".json.tmp").exists()
+        for field, value in (("replicates", 8), ("cap", 300000), ("exclude", [[4, 30]])):
+            changed = deepcopy(checkpoint)
+            changed["grid_spec"][field] = value
+            try:
+                validate_resume(restored, changed)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError(f"Resume accepted changed {field}")
+        restored["cells"].append(restored["cells"][0])
+        try:
+            validate_resume(restored, checkpoint)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("Resume accepted duplicate cells")
+    print(f"check ok ({perf_counter()-begin:.2f}s): custom grid, work order, resume validation, atomic checkpoint, K=32 batching, split/merge execution, chunk continuity, convergence gate, synthetic scaling/exponent, thresholds")
 
 
 if __name__ == "__main__":
@@ -621,12 +832,24 @@ if __name__ == "__main__":
     parser.add_argument("--tiny", action="store_true", help="Tiny bench smoke test; required on CPU")
     parser.add_argument("--output", type=Path, help="Output stem without extension; quick appends -quick")
     parser.add_argument("--inputs", type=Path, nargs=2, help="Merge input JSONs; defaults to output/code4-part{0,1}.json")
+    parser.add_argument("--populations", type=int, nargs="+", help="Custom N list")
+    parser.add_argument("--ns", type=float, nargs="+", help="Custom N*s list")
+    parser.add_argument("--mutations", type=float, nargs="+", help="Custom per-site u list")
+    parser.add_argument("--replicates", type=int, help="Replicates per start (default 8; quick 2)")
+    parser.add_argument("--cap", type=int, help="Custom generation cap, multiple of 1000")
+    parser.add_argument("--exclude", action="append", help="Drop N:Ns pair, repeatable")
     args = parser.parse_args()
+    try:
+        spec = custom_spec(args, quick=args.command == "quick")
+        if spec is not None and args.command not in ("run", "quick", "bench", "check"):
+            parser.error("Custom grid options apply to run, quick, bench, or check")
+    except ValueError as error:
+        parser.error(str(error))
     if args.config_chunk < 2 or args.config_chunk % 2 or args.individual_chunk < 1:
         parser.error("config-chunk must be positive/even (>=2); individual-chunk must be positive")
     if args.generations < 1 or args.chunk_generations < 1:
         parser.error("generations and chunk-generations must be positive")
-    if args.command == "run" and args.chunk_generations % 1000:
+    if args.command in ("run", "bench") and args.chunk_generations % 1000:
         parser.error("Full chunk-generations must be a multiple of 1000")
     if args.command == "run" and args.generations != 20:
         parser.error("--generations is quick-only; full schedule is fixed")

@@ -1,6 +1,6 @@
 """F5: CPU-only re-analysis of F4; never simulates or modifies the input.
 
-python code5.py [check|run|figure] [--input output/code4.json] [--output STEM]
+python code5.py [check|run|figure] [--input output/code4.json output/code4-step4.json] [--output STEM]
 run writes output/code5.{json,png,pdf} and output/code5-summary.txt by default;
 --output changes the stem. figure re-renders the saved F5 JSON (and checks its source against --input).
 Requires numpy/scipy; rendering also needs matplotlib. JAX is not required.
@@ -27,6 +27,20 @@ Quick input can never promote cells or support inference.
 Bootstrap membership is fixed; B/E sample paired replicate indices within
 each cell, never individual correlated time records. Model rank/positivity,
 folds, scoring, winners, and threshold inversion follow code4 unchanged.
+Inputs must share environment, calibration, sigma_n and quick/full mode, and
+have disjoint (N,Ns,u) cells. K may differ between cells. All fit sets use the
+combined cells; main is S_no10 (stationary admission, excluding N=10).
+Each source's A analysis is reproduced separately, including saved F4 fits.
+
+Model-free thresholds use main's membership and pooled last-half trajectory
+window means for ALL cells (including confirmed cells); existing F4 estimators
+and fits remain unchanged. Sensitivity adds non-admitted window means. Crossings
+interpolate adjacent available cells in log Ns / log deficit, never extrapolate.
+Bonferroni two-sided 95% difference intervals across all ordered Ns pairs,
+using stationary level SEs and the smaller df, gate significant reversals.
+Bootstrap intervals resample whole trajectories independently within each arm
+of the fixed bracketing cells, 2000 times. Draws leaving that bracket are
+censored, not discarded; unidentified draws conservatively widen both bounds.
 """
 
 import argparse
@@ -96,7 +110,8 @@ METRICS = ("efficiency", "consensus")
 SETS = {"A": "F4 confirmed only", "B": "confirmed + bracketed midpoints",
         "C": "B at random-start ends", "D": "B at optimum-start ends",
         "E": "B excluding N=10", "A_no10": "A excluding N=10",
-        "S": "confirmed + stationary window estimates", "S_no10": "S excluding N=10"}
+        "S": "confirmed + stationary window estimates", "S_no10": "S excluding N=10",
+        "main": "S_no10 over all inputs: stationary admission, excluding N=10"}
 
 
 @lru_cache(None)
@@ -247,6 +262,7 @@ def stationary_cell(cell):
         if len(late) < 4:
             metrics[key] = dict(estimate=float(late.mean()), half_width=None, drift=None,
                 arm_difference=None, admitted=False, reasons=["insufficient window records"],
+                trajectory_means=windows[key].tolist(),
                 significant_drift=False, wide_half_width=False)
             continue
         drift = drift_interval(times[mask], late, .5*times[-1])
@@ -326,7 +342,8 @@ def build_sets(cells, brackets):
             "D": [fit_cell(c, r, 1) for c, r in zip(cells, brackets)],
             "E": [c for c in b if c["N"] != 10],
             "A_no10": [c for c in cells if c["N"] != 10],
-            "S": stationary, "S_no10": [c for c in stationary if c["N"] != 10]}
+            "S": stationary, "S_no10": [c for c in stationary if c["N"] != 10],
+            "main": [c for c in stationary if c["N"] != 10]}
 
 
 def bootstrap_distribution(values):
@@ -401,6 +418,159 @@ def bootstrap_u(cells, resamples=BOOTSTRAPS, seed=SEED):
     return result
 
 
+def log_crossing(ns, efficiency, target):
+    """Invert the line through two positive deficits; caller checks brackets."""
+    x = np.log(ns)
+    y = np.log1p(-np.asarray(efficiency))
+    return np.exp(x[0]+(np.log1p(-target)-y[0])*(x[1]-x[0])/(y[1]-y[0]))
+
+
+def crossing_bootstrap(pair, metric, target, resamples=BOOTSTRAPS, seed=SEED):
+    rng = np.random.default_rng(seed)
+    draws = []
+    for cell in pair:
+        arms = np.asarray(cell["stationary"]["metrics"][metric]["trajectory_means"])
+        draws.append(np.mean([arm[rng.integers(len(arm), size=(resamples, len(arm)))].mean(1)
+                              for arm in arms], axis=0))
+    left, right = draws
+    physical = (left >= 0) & (left <= 1) & (right >= 0) & (right <= 1) & (right >= left)
+    below = physical & (left >= target) & (right >= target)
+    above = physical & (left < target) & (right < target)
+    inside = physical & (left < target) & (right >= target) & (right < 1)
+    unknown = ~(below | above | inside)
+    # Extended-real bounds retain every draw, including lost brackets. They
+    # become JSON null plus explicit censor labels, never a conditional CI.
+    low, high = np.full(resamples, -np.inf), np.full(resamples, np.inf)
+    low[above] = high[above] = np.inf
+    low[below] = high[below] = -np.inf
+    ns = [c["Ns"] for c in pair]
+    low[inside] = high[inside] = log_crossing(ns, [left[inside], right[inside]], target)
+    bounds = [np.quantile(low, .025, method="inverted_cdf"),
+              np.quantile(high, .975, method="inverted_cdf")]
+    return dict(seed=seed, requested=resamples, inside=int(inside.sum()),
+                below_bracket=int(below.sum()), above_bracket=int(above.sum()),
+                unidentified=int(unknown.sum()),
+                ci95=[float(v) if np.isfinite(v) else None for v in bounds],
+                censor=[None if np.isfinite(v) else ("below bracket" if v < 0 else "above bracket")
+                        for v in bounds])
+
+
+def model_free_series(cells, metric, target, version, resamples=BOOTSTRAPS, seed=SEED):
+    """A single (N,u) series, with membership fixed before any resampling."""
+    first = cells[0]
+    selected = sorted([c for c in cells if version == "sensitivity" or c["stationary"]["usable"]],
+                      key=lambda c: c["Ns"])
+    row = dict(version=version, N=first["N"], u=first["u"], U=first["U"],
+               kind="consensus" if metric == "consensus" else "individual", target=target,
+               Ns=None, Ns_ci95=None, s_over_U=None, bracket=None, flags=[],
+               measured_Ns=[c["Ns"] for c in selected], status="no admitted cells")
+    if not selected:
+        return row
+    stats = [c["stationary"]["metrics"][metric] for c in selected]
+    levels = np.array([m["estimate"] for m in stats])
+    if any(not c["stationary"]["usable"] for c in selected):
+        row["flags"].append("includes non-admitted cells")
+    if not np.isfinite(levels).all() or np.any((levels < 0) | (levels > 1)):
+        row["status"] = "unresolved: efficiency outside [0,1]"
+        return row
+    if any("level" not in m for m in stats):
+        row["status"] = "unresolved: insufficient window records for noise check"
+        return row
+    pairs = len(selected)*(len(selected)-1)//2
+    reversals = []
+    for i in range(len(selected)):
+        for j in range(i+1, len(selected)):
+            a, b = stats[i]["level"], stats[j]["level"]
+            radius = student_t.ppf(1-.025/max(pairs, 1), min(a["df"], b["df"])) * np.hypot(a["se"], b["se"])
+            if levels[j]-levels[i]+radius < -1e-12:
+                reversals.append([selected[i]["Ns"], selected[j]["Ns"]])
+    row["significant_reversals"] = reversals
+    if reversals:
+        row["status"] = "non-monotone beyond noise"
+        return row
+    if np.any(np.diff(levels) < 0):
+        row["flags"].append("reversals within noise")
+    if levels[0] >= target or levels[-1] < target:
+        below = levels[0] >= target
+        row["status"] = "below range" if below else "above range"
+        endpoint = selected[0 if below else -1]
+        row["range_bound_Ns"] = endpoint["Ns"]
+        row["range_bound_s_over_U"] = endpoint["Ns"]/(first["N"]*first["U"])
+        if not endpoint["stationary"]["usable"]:
+            row["flags"].append("non-admitted range endpoint")
+        return row
+    crossings = [i for i in range(len(selected)-1) if levels[i] < target <= levels[i+1]]
+    if len(crossings) != 1:
+        row["status"] = "unresolved: multiple crossings within noise"
+        return row
+    i = crossings[0]
+    pair = selected[i:i+2]
+    row["bracket"] = [c["Ns"] for c in pair]
+    if any(not c["stationary"]["usable"] for c in pair):
+        row["flags"].append("NON-ADMITTED BRACKET")
+    if levels[i+1] == 1:
+        row["status"] = "unresolved: zero deficit at bracket endpoint"
+        return row
+    crossing = float(log_crossing(row["bracket"], levels[i:i+2], target))
+    bootstrap = crossing_bootstrap(pair, metric, target, resamples, seed)
+    row.update(status="interpolated", Ns=crossing, Ns_ci95=bootstrap["ci95"],
+               s_over_U=crossing/(first["N"]*first["U"]), bootstrap=bootstrap)
+    if any(bootstrap["censor"]):
+        row["flags"].append("95% CI censored at bracket edges")
+    if bootstrap["unidentified"]:
+        row["flags"].append("bootstrap includes unidentified crossings")
+    return row
+
+
+def model_free_thresholds(cells, resamples=BOOTSTRAPS, seed=SEED):
+    groups = {}
+    for c in cells:
+        if c["N"] != 10:
+            groups.setdefault((c["N"], c["u"]), []).append(c)
+    return [model_free_series(groups[key], metric, target, version, resamples, seed)
+            for version in ("main", "sensitivity") for key in sorted(groups)
+            for target in (.95, .99) for metric in ("consensus", "efficiency")]
+
+
+def model_free_summary(rows):
+    print("MODEL-FREE THRESHOLDS")
+    print("Main membership = S_no10; all estimates = pooled last-half trajectory window means.")
+    print("Sensitivity includes non-admitted cells; adjacent available Ns; log Ns / log(1-efficiency) interpolation.")
+    print("95% CI: 2000 whole-trajectory resamples within arms, fixed seed=2315, fixed bracket; censored draws retained.")
+    print("Monotonicity: all-pair Bonferroni 95% difference intervals using stationary level SE and minimum df.")
+    print("set N u target kind | crossing Ns [95% CI] | s/U | flags")
+    for r in rows:
+        value, ratio = r["status"], "—"
+        if r["Ns"] is not None:
+            bounds = [number(v) if v is not None else
+                      (f"<={r['bracket'][0]:g}" if c == "below bracket" else f">={r['bracket'][1]:g}")
+                      for v, c in zip(r["Ns_ci95"], r["bootstrap"]["censor"])]
+            value = f"{r['Ns']:.6g} [{', '.join(bounds)}]"
+            ratio = number(r["s_over_U"])
+        elif "range_bound_Ns" in r:
+            value += f" ({r['range_bound_Ns']:g})"
+            ratio = f"{'<=' if r['status'] == 'below range' else '>'}{r['range_bound_s_over_U']:.6g}"
+        print(f"{r['version']} {r['N']} {r['u']:.1e} {r['target']:.0%} {r['kind']} | "
+              f"{value} | {ratio} | {'; '.join(r['flags']) or 'none'}")
+    print("Descriptive crossing-Ns ratios (finite crossings only; no fitted scaling law):")
+    for version in ("main", "sensitivity"):
+        subset = [r for r in rows if r["version"] == version]
+        for kind in ("consensus", "individual"):
+            for target in (.95, .99):
+                lookup = {(r["N"], r["u"]): r for r in subset if r["kind"] == kind and r["target"] == target}
+                comparisons = [(f"N={n}: u=3e-3/1e-4", (n, .003), (n, .0001))
+                               for n in sorted({k[0] for k in lookup})]
+                comparisons += [(f"u={u:.1e}: N=3000/100", (3000, u), (100, u))
+                                for u in sorted({k[1] for k in lookup})]
+                bits = []
+                for label, numerator, denominator in comparisons:
+                    a, b = lookup.get(numerator, {}), lookup.get(denominator, {})
+                    ratio = number(a["Ns"]/b["Ns"]) if a.get("Ns") and b.get("Ns") else "unresolved"
+                    flagged = any("NON-ADMITTED BRACKET" in r.get("flags", []) for r in (a, b))
+                    bits.append(f"{label}={ratio}" + (" [non-admitted bracket]" if flagged else ""))
+                print(f"  {version} {kind} {target:.0%}: " + "; ".join(bits))
+
+
 def extension(bracket):
     """Project only unresolved significant drift; precision is not a clock.
 
@@ -451,6 +621,63 @@ def threshold_changes(fits, first, second):
     return changes
 
 
+def merge_inputs(inputs, sources):
+    """Validate before combining; never mutate or average the source records."""
+    if not inputs or len(inputs) != len(sources):
+        raise ValueError("Need one or more JSON inputs and matching source paths")
+    fields = ("environment", "calibration", "sigma_n", "quick")
+    first = inputs[0]
+    cells, seen, reproduction = [], set(), []
+    for data, source in zip(inputs, sources):
+        if any(k not in data or k not in first or data[k] != first[k] for k in fields):
+            raise ValueError(f"Input environment/calibration/sigma_n/quick mismatch: {source}")
+        if not data["cells"]:
+            raise ValueError(f"Empty cell list: {source}")
+        for cell in data["cells"]:
+            key = f4.identity(cell)
+            if key in seen:
+                raise ValueError(f"Duplicate (N, Ns, u) cell {key}: {source}")
+            seen.add(key)
+            cells.append(cell)
+        # Retain the published A assert for code4.json even in a combined run.
+        a = f4.analysis(data)
+        if "analysis" in data:
+            assert a == data["analysis"], f"Saved F4 A reproduction failed: {source}"
+        reproduction.append(dict(source=str(Path(source).resolve()), cells=len(data["cells"]),
+                                 saved_analysis="analysis" in data))
+    merged = dict(first, cells=cells)
+    if len(inputs) > 1:
+        merged.pop("analysis", None)  # A now refers to the combined cell list.
+    return merged, reproduction
+
+
+def analyze_inputs(inputs, sources):
+    data, reproduction = merge_inputs(inputs, sources)
+    result = analysis(data, sources[0])
+    result["sources"] = [r["source"] for r in reproduction]
+    result["source_reproduction"] = reproduction
+    result["f4_reproduction"] = "exact per input (saved A checked wherever present); combined A recomputed"
+    # Identify newly interpolated main thresholds relative to the original F4
+    # stationary/no10 analysis, with the same admission gates and estimators.
+    originals = [d for d, p in zip(inputs, sources) if Path(p).name == "code4.json"]
+    if originals:
+        original = originals[0]
+        lookup = {f4.identity(c): c for c in result["cells"]}
+        brackets = [lookup[f4.identity(c)] for c in original["cells"]]
+        baseline = f4.analysis({"cells": build_sets(original["cells"], brackets)["main"]})
+        result["original_main"] = baseline
+        result["threshold_changes"]["original_main_to_main"] = threshold_changes(
+            {"original_main": baseline, "main": result["fit_sets"]["main"]}, "original_main", "main")
+    return result
+
+
+def load_inputs(paths):
+    for path in paths:
+        if not path.is_file():
+            raise ValueError(f"F4 input missing: {path}")
+    return analyze_inputs([json.loads(path.read_text()) for path in paths], paths)
+
+
 def analysis(data, source):
     cells = data["cells"]
     if not cells or len({f4.identity(c) for c in cells}) != len(cells):
@@ -473,13 +700,16 @@ def analysis(data, source):
     if "analysis" in data:
         assert fits["A"] == data["analysis"], "Saved F4 fits differ: input/code4 version or row order mismatch"
     bootstrap = {name: bootstrap_u(sets[name]) for name in ("B", "E", "S", "S_no10")}
-    return dict(experiment="F5", version=2, source=str(Path(source).resolve()),
+    bootstrap["main"] = bootstrap["S_no10"]
+    return dict(experiment="F5", version=4, source=str(Path(source).resolve()),
+        sources=[str(Path(source).resolve())], main_set="main",
         quick=bool(data["quick"]), tolerance=TOL, definitions=__doc__,
         f4_reproduction="exact (including saved analysis)" if "analysis" in data else "exact (recomputed; no saved analysis)",
         cells=brackets, fit_sets=fits, set_definitions=SETS, bootstrap=bootstrap,
+        model_free_thresholds=model_free_thresholds(brackets),
         threshold_changes={f"{a}_to_{b}": threshold_changes(fits, a, b)
                            for a, b in (("A", "B"), ("A", "A_no10"), ("B", "E"),
-                                       ("A", "E"), ("A", "S"), ("A", "S_no10"), ("S", "S_no10"))},
+                                       ("A", "E"), ("A", "S"), ("A", "S_no10"), ("S", "S_no10"), ("A", "main"))},
         extensions=[extension(r) for r in brackets if not r["stationary"]["usable"]])
 
 
@@ -490,7 +720,7 @@ def number(value):
 def summary(result):
     cells = result["cells"]
     print("F5 " + ("QUICK SMOKE TEST — no scientific inference" if result["quick"] else "F4 bracket re-analysis"))
-    print(f"Source: {result['source']}; A reproduction: {result['f4_reproduction']}")
+    print(f"Sources: {', '.join(result.get('sources', [result['source']]))}; A reproduction: {result['f4_reproduction']}")
     print("Tail=last quarter; changes=split last half; paired Student-t 95% intervals.")
     print("Crossing=negative width with pointwise 95% interval below zero: unadjusted diagnostic only; never invalidates a bracket.")
     print("Point endpoint inversions within noise remain unbracketed. Width upper bound must be <=0.01 for BOTH metrics.")
@@ -541,7 +771,8 @@ def summary(result):
             print(f"  {label}: {model['status']}; cells={model['cells']}; nonpositive={model['excluded_nonpositive']}; winner={model['winner']}")
             for law, f in model["fits"].items():
                 print(f"    {law}: a={f['a']:.9g} log_a={f['log_a']:.9g} exponents={f['exponents']} "
-                      f"held-out RMSE={f['cv_rmse']:.9g} log RMSE={f['cv_log_rmse']:.9g}")
+                      f"held-out RMSE={f['cv_rmse']:.9g} log RMSE={f['cv_log_rmse']:.9g}" +
+                      ("; FAILING HELD-OUT (>0.02)" if f['cv_rmse'] > .02 else "; passes held-out (<=0.02)"))
         print("  kind N u target Ns s/U region supported")
         for r in fit["thresholds"]:
             print(f"  {r['kind']} {r['N']} {r['u']:.1e} {r['target']:.2f} {number(r['Ns'])} "
@@ -570,8 +801,30 @@ def summary(result):
         if not changes:
             print("    unresolved: no matched finite thresholds")
     print("\nVERDICT")
+    model_free_summary(result["model_free_thresholds"] if "model_free_thresholds" in result
+                       else model_free_thresholds(cells))
     if result["quick"]:
         print("SMOKE TEST ONLY: no threshold, mutation-rate, N=10, or GPU allocation conclusion.")
+    print("\nPOWER-LAW RESULTS (retained for comparison)")
+    for key in ("gap", "deficit"):
+        laws = result["fit_sets"]["main"][key]["fits"]
+        failed = [name for name, law in laws.items() if law["cv_rmse"] > .02]
+        print(f"  Main {key}: failing held-out (>0.02): {', '.join(failed) or 'none'}" +
+              ("; ALL power-law fits fail; their thresholds are unsupported." if laws and len(failed) == len(laws) else ""))
+    print("Main = S_no10 across all inputs: stationary admission, excluding N=10.")
+    main_rows = result["fit_sets"]["main"]["thresholds"]
+    newly_inside = {threshold_key(r) for r in result["threshold_changes"].get("original_main_to_main", [])
+                    if r["from_region"] != "interpolated" and r["to_region"] == "interpolated"}
+    for r in main_rows:
+        print(f"  main {threshold_key(r)}: Ns={number(r['Ns'])}; s/U={number(r['s_over_U'])}; "
+              f"{r['region']}; supported fit={r['adequate']}" +
+              ("; NOW INTERPOLATED (original F4 main was extrapolated)" if threshold_key(r) in newly_inside else ""))
+    if not main_rows:
+        print("  Main 95%/99% thresholds unresolved: no identifiable thresholds.")
+    inside = [threshold_key(r) for r in main_rows if r["region"] == "interpolated"]
+    print(f"Main interpolated thresholds: {inside or 'none'}")
+    if "original_main" in result:
+        print(f"Newly interpolated versus original F4 main: {sorted(newly_inside, key=str) or 'none'}")
     print(f"F4 confirmed={sum(c['f4_confirmed'] for c in cells)}/{len(cells)}")
     print("Scope | strict | stationary")
     for strict, stationary in (("B", "S"), ("E", "S_no10")):
@@ -609,16 +862,13 @@ def summary(result):
             rows = result["fit_sets"][name]["thresholds"]
             outside = [r for r in rows if r["region"] == "extrapolated"]
             if outside:
-                print(f"{name}: extrapolation remains; GPU validation at Ns=30,100,1000 is still needed "
-                      "to constrain thresholds between/below the existing Ns grid.")
-                beyond = [r for r in outside if r["Ns"] < 30 or r["Ns"] > 3000]
-                if beyond:
-                    print(f"  {len(beyond)} thresholds also lie outside Ns=30..3000; the proposed grid alone cannot bracket them.")
+                print(f"{name}: {len(outside)} thresholds remain extrapolated; additional admitted Ns "
+                      "must bracket these crossings at the relevant N,u.")
             elif not rows or any(r["region"] == "unresolved" or not r["adequate"] for r in rows):
-                print(f"{name}: threshold support unresolved; additional Ns=30,100,1000 GPU evidence remains necessary.")
+                print(f"{name}: threshold support unresolved; more admitted cells or better held-out fits are needed.")
             else:
-                print(f"{name}: no extrapolated thresholds; this criterion does not require Ns=30,100,1000 GPU runs.")
-    print("N=10 is the strong-selection sensitivity (A_no10, E, S_no10); only two original Ns constrain shape.")
+                print(f"{name}: no extrapolated thresholds; this criterion does not require additional Ns runs.")
+    print(f"N=10 is the strong-selection sensitivity; {len({c['Ns'] for c in cells})} observed Ns values constrain shape.")
 
 
 def save(result, stem=STEM):
@@ -646,14 +896,16 @@ def figure(result, stem=STEM):
     populations = sorted({c["N"] for c in cells})
     mutations = sorted({c["u"] for c in cells})
     strengths = sorted({c["Ns"] for c in cells})
-    fig = plt.figure(figsize=(10, 8))
-    grid = fig.add_gridspec(3, 1, height_ratios=(1, 1.1, 1.3), hspace=.68)
+    heatmap_rows = (len(strengths)+1)//2
+    heatmap_cols = min(2, len(strengths))
+    fig = plt.figure(figsize=(10, 12+2*(heatmap_rows-1)))
+    grid = fig.add_gridspec(4, 1, height_ratios=(heatmap_rows, 1.1, 1.3, 1.5), hspace=.85)
     axes = []
-    top = grid[0].subgridspec(1, len(strengths)+1,
-                            width_ratios=[1]*len(strengths)+[.035], wspace=.45)
+    top = grid[0].subgridspec(heatmap_rows, heatmap_cols+1,
+                            width_ratios=[1]*heatmap_cols+[.035], wspace=.45, hspace=.9)
     vmax = max(TOL, *(max(c["metrics"][k]["width"]["high"], 0) for c in cells for k in METRICS))
     for index, ns in enumerate(strengths):
-        ax = fig.add_subplot(top[0, index]); axes.append(ax)
+        ax = fig.add_subplot(top[index//heatmap_cols, index % heatmap_cols]); axes.append(ax)
         values = np.full((len(populations), len(mutations)), np.nan)
         lookup = {(c["N"], c["u"]): c for c in cells if c["Ns"] == ns}
         for i, n in enumerate(populations):
@@ -680,7 +932,7 @@ def figure(result, stem=STEM):
         ax.grid(False)
         if index == 0:
             f4.panel_letter(ax, "A")
-    colorbar = fig.colorbar(im, cax=fig.add_subplot(top[0, -1]))
+    colorbar = fig.colorbar(im, cax=fig.add_subplot(top[:, -1]))
     colorbar.ax.tick_params(labelsize=6)
     colorbar.set_label("max width; × invalid, * narrow; diamond stationary", fontsize=6)
     middle = grid[1].subgridspec(1, 2, wspace=.4)
@@ -753,6 +1005,54 @@ def figure(result, stem=STEM):
         ax.legend(handles=handles, fontsize=5.5, frameon=False, ncol=4, loc="upper left")
         if index == 0:
             f4.panel_letter(ax, "C")
+    threshold_rows = (result["model_free_thresholds"] if "model_free_thresholds" in result
+                      else model_free_thresholds(cells))
+    threshold_ns = [n for n in populations if n != 10]
+    panel = grid[3].subgridspec(1, max(1, len(threshold_ns)), wspace=.25)
+    if not threshold_ns:
+        ax = fig.add_subplot(panel[0, 0]); axes.append(ax)
+        ax.text(.5, .5, "Model-free thresholds: no N != 10 cells", ha="center", transform=ax.transAxes)
+    for index, n in enumerate(threshold_ns):
+        ax = fig.add_subplot(panel[0, index]); axes.append(ax)
+        for target in (.95, .99):
+            ax.axhline(target, color=".5", lw=.6, ls=":")
+            ax.text(.99, target, f"{target:.0%}", transform=ax.get_yaxis_transform(),
+                    va="bottom", ha="right", fontsize=6)
+        for j, u in enumerate(mutations):
+            series = sorted([c for c in cells if c["N"] == n and c["u"] == u], key=lambda c: c["Ns"])
+            admitted = [c for c in series if c["stationary"]["usable"]]
+            rejected = [c for c in series if not c["stationary"]["usable"]]
+            color = f"C{j}"
+            for metric, style, marker in (("consensus", "-", "o"), ("efficiency", "--", "s")):
+                for selected, alpha, width in ((series, .3, .7), (admitted, 1, 1.1)):
+                    ax.plot([c["Ns"] for c in selected],
+                            [c["stationary"]["metrics"][metric]["estimate"] for c in selected],
+                            color=color, ls=style, lw=width, alpha=alpha)
+                for selected, fill in ((admitted, color), (rejected, "none")):
+                    ax.plot([c["Ns"] for c in selected],
+                            [c["stationary"]["metrics"][metric]["estimate"] for c in selected],
+                            color=color, marker=marker, mfc=fill, ls="", ms=3)
+            for r in threshold_rows:
+                if r["N"] != n or r["u"] != u or r["Ns"] is None:
+                    continue
+                main = r["version"] == "main"
+                ax.plot(r["Ns"], r["target"], marker="^" if main else "v", ls="", color=color,
+                        mfc=color if main else "none", ms=5, zorder=5)
+                if main and all(v is not None for v in r["Ns_ci95"]):
+                    ax.hlines(r["target"], *r["Ns_ci95"], color=color, lw=1, alpha=.7)
+        ax.set(xscale="log", xlabel="Ns", ylabel="efficiency" if index == 0 else "",
+               title=f"N = {n}", ylim=(0, 1.045))
+        if index == 0:
+            f4.panel_letter(ax, "D")
+    handles = [Line2D([], [], color=f"C{j}", label=f"u={u:.0e}") for j, u in enumerate(mutations)]
+    handles += [Line2D([], [], color="black", ls=style, marker=marker, ms=3, label=label)
+                for label, style, marker in (("consensus", "-", "o"), ("mean individual", "--", "s"))]
+    handles += [Line2D([], [], color="black", ls="", marker=marker, mfc=fill, ms=4, label=label)
+                for label, marker, fill in (("non-admitted cell", "o", "none"),
+                                            ("main crossing / finite 95% CI", "^", "black"),
+                                            ("sensitivity crossing", "v", "none"))]
+    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(.5, .042),
+               fontsize=6.5, frameon=False, ncol=4)
     for ax in axes:
         ax.tick_params(labelsize=5.5)
         ax.xaxis.label.set_size(6)
@@ -761,18 +1061,171 @@ def figure(result, stem=STEM):
     note = "QUICK SMOKE TEST — no inference. " if result["quick"] else ""
     fig.text(.5, .025, note+"B: bars = bracket bounds; diamonds = stationary mean ±95%. C: open = extrapolated; × = poor fit; shade = C–D sensitivity.",
              ha="center", fontsize=6, family="monospace")
-    fig.subplots_adjust(left=.08, right=.94, top=.95, bottom=.18)
+    fig.subplots_adjust(left=.08, right=.94, top=.95, bottom=.13)
     fig.savefig(stem.with_suffix(".png"), dpi=200)
     fig.savefig(stem.with_suffix(".pdf"))
     plt.close(fig)
+    threshold_figure(result, stem, threshold_rows)
 
 
-def synthetic_cell(n=100, ns=300, u=.001, width=.004, confirmed=False):
+def displayed_threshold(rows, n, u, kind, target):
+    """Choose the saved crossing for display, flagging an admission-only fallback."""
+    matching = {r["version"]: r for r in rows
+                if (r["N"], r["u"], r["kind"], r["target"]) == (n, u, kind, target)}
+    main, sensitivity = matching.get("main"), matching.get("sensitivity")
+    if (main and main["status"] == "below range" and sensitivity
+            and sensitivity["status"] == "interpolated"
+            and "NON-ADMITTED BRACKET" in sensitivity["flags"]
+            and sensitivity["bracket"][0] < min(main["measured_Ns"])):
+        return sensitivity, True
+    return main, False
+
+
+def threshold_figure(result, stem, rows):
+    """Focused companion figure; consumes saved intervals and crossings only."""
+    import matplotlib.pyplot as plt
+    from matplotlib.colors import LogNorm
+    from matplotlib.lines import Line2D
+    from matplotlib.ticker import FixedLocator, FuncFormatter
+
+    populations = (100, 1000, 3000)
+    cells = [c for c in result["cells"] if c["N"] in populations]
+    mutations = sorted({c["u"] for c in cells})
+    if not cells:
+        return
+    strengths = sorted({c["Ns"] for c in cells})
+    fig = plt.figure(figsize=(10, 7.2))
+    grid = fig.add_gridspec(2, 1, height_ratios=(1.35, 1), hspace=.55)
+    top = grid[0].subgridspec(1, 3, wspace=.15)
+    axes = []
+    positive = [.01, .05]
+    for c in cells:
+        for metric in ("consensus", "efficiency"):
+            stats = c["stationary"]["metrics"][metric]
+            positive.append(1-stats["estimate"])
+            if "level" in stats:
+                positive.extend((1-stats["level"]["high"], 1-stats["level"]["low"]))
+    positive = [v for v in positive if np.isfinite(v) and v > 0]
+    limits = (min(positive)/1.4, max(positive)*1.3)
+    for index, n in enumerate(populations):
+        ax = fig.add_subplot(top[index], sharey=axes[0] if axes else None)
+        axes.append(ax)
+        ax.set(xscale="log", yscale="log", xlabel="Ns", title=f"N = {n}",
+               ylim=limits, xlim=(min(strengths)/1.2, max(strengths)*1.25))
+        ax.xaxis.set_major_locator(FixedLocator(strengths))
+        ax.xaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}"))
+        ax.tick_params(labelleft=index == 0)
+        if index == 0:
+            ax.set_ylabel("shortfall  1 − efficiency")
+        for target in (.95, .99):
+            deficit = 1-target
+            ax.axhline(deficit, color=".5", lw=.7, ls=":")
+            ax.text(.99, deficit, f"{target:.0%}", transform=ax.get_yaxis_transform(),
+                    va="bottom", ha="right", fontsize=7,
+                    bbox=dict(facecolor="white", edgecolor="none", pad=.3, alpha=.85))
+        for j, u in enumerate(mutations):
+            series = sorted([c for c in cells if (c["N"], c["u"]) == (n, u)],
+                            key=lambda c: c["Ns"])
+            color = f"C{j}"
+            for metric, style, marker in (("consensus", "-", "o"), ("efficiency", "--", "s")):
+                ax.plot([c["Ns"] for c in series],
+                        [1-c["stationary"]["metrics"][metric]["estimate"] for c in series],
+                        color=color, ls=style, lw=1, zorder=2)
+                for c in series:
+                    stats = c["stationary"]["metrics"][metric]
+                    deficit = 1-stats["estimate"]
+                    if deficit <= 0:
+                        continue  # Exact zero has no location on a logarithmic axis.
+                    bounds = stats.get("level")
+                    # Reverse the efficiency interval under 1 − efficiency.
+                    error = ([[max(0, bounds["high"]-stats["estimate"])],
+                              [max(0, stats["estimate"]-bounds["low"])]] if bounds else None)
+                    ax.errorbar(c["Ns"], deficit, yerr=error, fmt=marker, color=color,
+                                mfc=color if c["stationary"]["usable"] else "white",
+                                ms=3.5, mew=.8, elinewidth=.65, capsize=1.5, zorder=3)
+            for kind in ("consensus", "individual"):
+                for target in (.95, .99):
+                    row, fallback = displayed_threshold(rows, n, u, kind, target)
+                    if row and row["Ns"] is not None:
+                        ax.plot(row["Ns"], 1-target, marker="^", ls="", color=color,
+                                mfc="white" if fallback else color, ms=5, mew=.9, zorder=5)
+        f4.panel_letter(ax, chr(ord("A")+index))
+
+    # One shared log normalization permits direct comparison between both metrics.
+    chosen = {(n, u, kind): displayed_threshold(rows, n, u, kind, .95)
+              for n in populations for u in mutations for kind in ("consensus", "individual")}
+    finite = [r["Ns"] for r, _ in chosen.values() if r and r["Ns"] is not None]
+    vmin, vmax = min([100]+finite), max([3000]+finite)
+    norm = LogNorm(vmin=vmin, vmax=vmax)
+    cmap = plt.get_cmap("YlGnBu")
+    symbol_fonts = [*plt.rcParams["font.family"], "DejaVu Sans"]
+    bottom = grid[1].subgridspec(1, 3, width_ratios=(1, 1, .035), wspace=.3)
+    for index, (kind, title) in enumerate((("consensus", "Consensus"), ("individual", "Mean individual"))):
+        ax = fig.add_subplot(bottom[index]); axes.append(ax)
+        values = np.full((len(populations), len(mutations)), np.nan)
+        labels = {}
+        for i, n in enumerate(populations):
+            for j, u in enumerate(mutations):
+                row, fallback = chosen[n, u, kind]
+                label = "unresolved"
+                if row and row["Ns"] is not None:
+                    values[i, j] = row["Ns"]
+                    bounds = []
+                    for k, value in enumerate(row["Ns_ci95"]):
+                        if value is not None:
+                            bounds.append(f"{value:.0f}")
+                        else:
+                            censor = row["bootstrap"]["censor"][k]
+                            edge = row["bracket"][0 if censor == "below bracket" else 1]
+                            bounds.append(f"{'<' if censor == 'below bracket' else '>'}{edge:g}")
+                    label = f"{row['Ns']:.0f}{'†' if fallback else ''}\n[{bounds[0]}, {bounds[1]}]"
+                elif row and row["status"] in ("above range", "below range"):
+                    above = row["status"] == "above range"
+                    label = f"{'>' if above else '<'}{row['range_bound_Ns']:g}"
+                    values[i, j] = vmax if above else vmin
+                labels[i, j] = label
+        im = ax.imshow(values, cmap=cmap, norm=norm, aspect="auto")
+        for (i, j), label in labels.items():
+            rgba = cmap(norm(values[i, j])) if np.isfinite(values[i, j]) else (1, 1, 1, 1)
+            luminance = np.dot(rgba[:3], [.299, .587, .114])
+            ax.text(j, i, label, ha="center", va="center", fontsize=7.5,
+                    color="white" if luminance < .45 else "black", linespacing=1.6,
+                    fontfamily=symbol_fonts)
+        ax.set_xticks(range(len(mutations)), [f"{u:.0e}" for u in mutations])
+        ax.set_yticks(range(len(populations)), [str(n) for n in populations])
+        ax.set(xlabel="u", ylabel="N", title=f"{title}: 95% threshold Ns [95% CI]")
+        ax.grid(False)
+        f4.panel_letter(ax, chr(ord("D")+index))
+    colorbar = fig.colorbar(im, cax=fig.add_subplot(bottom[2]), extend="both")
+    colorbar.set_ticks([100, 300, 1000, 3000], labels=["100", "300", "1000", "3000"])
+    colorbar.set_label("threshold Ns (log)", fontsize=8)
+    colorbar.ax.tick_params(labelsize=7)
+    handles = [Line2D([], [], color=f"C{j}", label=f"u={u:.0e}") for j, u in enumerate(mutations)]
+    handles += [Line2D([], [], color="black", ls=style, marker=marker, ms=3.5, label=label)
+                for label, style, marker in (("consensus", "-", "o"), ("mean individual", "--", "s"))]
+    fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(.5, .995),
+               fontsize=7.5, frameon=False, ncol=len(handles))
+    for ax in axes:
+        ax.tick_params(labelsize=7)
+        ax.xaxis.label.set_size(8)
+        ax.yaxis.label.set_size(8)
+        ax.title.set_size(8)
+    note = "SMOKE TEST. " if result["quick"] else ""
+    fig.text(.5, .025, note+"○/□ open: non-admitted; bars: 95% CI; ▲: main crossing; △ / †: sensitivity crossing, lower-Ns bracket not admitted.",
+             ha="center", fontsize=7, fontfamily=symbol_fonts)
+    fig.subplots_adjust(left=.075, right=.94, top=.89, bottom=.12)
+    target = stem.with_name(stem.name+"-thresholds")
+    fig.savefig(target.with_suffix(".png"), dpi=200)
+    fig.savefig(target.with_suffix(".pdf"))
+    plt.close(fig)
+
+
+def synthetic_cell(n=100, ns=300, u=.001, width=.004, confirmed=False, K=8):
     """Known smooth approach from both sides, with paired replicate variation."""
     times = np.arange(0, 101, 2)
     U = 784*u
     deficit, gap = .3*ns**-.5*U**.2, .015*(U/(ns/n))**.5
-    noise = np.linspace(-.0001, .0001, 8)
+    noise = np.linspace(-.0001, .0001, K)
     records = {}
     # Constant final-quarter separation; approaching arms in the last half.
     half = width/2 + .02*np.maximum(.75-times/100, 0)
@@ -781,15 +1234,82 @@ def synthetic_cell(n=100, ns=300, u=.001, width=.004, confirmed=False):
     tails = {k: v[times >= 75].mean(0) for k, v in records.items()}
     tail = {k: v.mean(0) if confirmed else v[0] for k, v in tails.items()}
     tail.update(G=tail["consensus"]-tail["efficiency"], D=1-tail["consensus"])
-    return dict(N=n, Ns=ns, s=ns/n, u=u, U=U, K=8, L=3, confirmed=confirmed,
+    return dict(N=n, Ns=ns, s=ns/n, u=u, U=U, K=K, L=3, confirmed=confirmed,
         status="met" if confirmed else "cap reached", completed_T=100,
         times=times.tolist(), records={k: v.tolist() for k, v in records.items()},
         arms=[dict(tail={k: v[i].tolist() for k, v in tails.items()}) for i in range(2)],
         tail={k: v.tolist() for k, v in tail.items()}, stats={k: f4.f3.interval(v) for k, v in tail.items()})
 
 
-def check(input_path):
+def check(input_paths):
     begin = perf_counter()
+    # Exact log-deficit lines, using only tiny synthetic trajectory records.
+    def threshold_cells(levels=None, noise=.0001, n=100):
+        rows = []
+        for index, ns in enumerate((30, 100, 300, 1000, 3000)):
+            c = synthetic_cell(n=n, ns=ns)
+            for metric, deficit in (("consensus", 9), ("efficiency", 18)):
+                center = 1-deficit/ns if levels is None else levels[index]
+                c["records"][metric] = np.broadcast_to(
+                    center+np.linspace(-noise, noise, c["K"]), (51, 2, c["K"])).tolist()
+            station = stationary_cell(c)
+            station.update(usable=True, admitted=True)
+            rows.append(dict(c, stationary=station))
+        return rows
+
+    threshold_grid = threshold_cells()
+    free = model_free_thresholds(threshold_grid)
+    assert len(free) == 8
+    assert free == model_free_thresholds(threshold_grid)
+    # Independently reproduce percentile bounds from whole-arm trajectory draws.
+    rng = np.random.default_rng(SEED)
+    sampled = []
+    for c in threshold_grid[1:3]:
+        arms = np.asarray(c["stationary"]["metrics"]["consensus"]["trajectory_means"])
+        sampled.append(np.mean([arm[rng.integers(len(arm), size=(2000, len(arm)))].mean(1)
+                                for arm in arms], axis=0))
+    fraction = (np.log(.05)-np.log1p(-sampled[0]))/(np.log1p(-sampled[1])-np.log1p(-sampled[0]))
+    manual = np.exp(np.log(100)+fraction*np.log(3))
+    assert np.allclose(free[0]["Ns_ci95"], np.quantile(manual, [.025, .975], method="inverted_cdf"))
+    for r in free:
+        expected = (9 if r["kind"] == "consensus" else 18)/(1-r["target"])
+        assert r["status"] == "interpolated" and np.isclose(r["Ns"], expected)
+        assert np.isclose(r["s_over_U"], expected/(100*784*.001))
+        assert r["Ns_ci95"][0] < expected < r["Ns_ci95"][1]
+        assert r["bootstrap"]["requested"] == 2000 and r["bootstrap"]["inside"] == 2000
+        assert not r["flags"]
+    assert model_free_thresholds(threshold_cells(n=10)) == []
+    below = model_free_thresholds(threshold_cells([.999]*5))
+    above = model_free_thresholds(threshold_cells([.5, .6, .7, .8, .9]))
+    assert all(r["status"] == "below range" and r["range_bound_Ns"] == 30 for r in below)
+    assert all(r["status"] == "above range" and r["range_bound_Ns"] == 3000 for r in above)
+    nonmonotone = model_free_thresholds(threshold_cells([.8, .96, .9, .98, .995]))
+    assert all(r["status"] == "non-monotone beyond noise" and r["Ns"] is None for r in nonmonotone)
+    noisy_turn = model_free_series(threshold_cells([.94, .9501, .9499, .98, .995], noise=.004),
+                                  "consensus", .95, "main")
+    assert noisy_turn["status"] == "unresolved: multiple crossings within noise"
+    assert "reversals within noise" in noisy_turn["flags"]
+    sensitivity_cells = deepcopy(threshold_grid)
+    sensitivity_cells[2]["stationary"].update(usable=False, admitted=False)
+    main = model_free_series(sensitivity_cells, "consensus", .95, "main")
+    sensitivity = model_free_series(sensitivity_cells, "consensus", .95, "sensitivity")
+    assert main["bracket"] == [100, 1000] and not main["flags"]
+    assert sensitivity["bracket"] == [100, 300] and "NON-ADMITTED BRACKET" in sensitivity["flags"]
+    assert np.isclose(main["Ns"], sensitivity["Ns"])
+    for c in sensitivity_cells:
+        c["stationary"]["usable"] = False
+    assert model_free_series(sensitivity_cells, "consensus", .95, "main")["status"] == "no admitted cells"
+    censored = model_free_series(threshold_cells([.94999, .98, .99, .995, .999], noise=.002),
+                                 "consensus", .95, "main")
+    assert censored["bootstrap"]["below_bracket"] > 50
+    assert censored["Ns_ci95"][0] is None and censored["bootstrap"]["censor"][0] == "below bracket"
+    assert sum(censored["bootstrap"][k] for k in ("inside", "above_bracket", "below_bracket", "unidentified")) == 2000
+    exact = model_free_series(threshold_cells([.8, .9, .95, .98, .99], noise=0), "consensus", .95, "main")
+    assert np.isclose(exact["Ns"], 300)
+    zero = model_free_series(threshold_cells([.8, .9, 1., 1., 1.], noise=0), "consensus", .95, "main")
+    assert zero["status"] == "unresolved: zero deficit at bracket endpoint"
+    # No NaN/Infinity may leak into saved JSON, including censored intervals.
+    json.dumps([*free, *below, *above, *nonmonotone, noisy_turn, censored, zero], allow_nan=False)
     cell = synthetic_cell()
     bracket = bracket_cell(cell)
     assert bracket["bracketed"] and bracket["valid"]
@@ -910,6 +1430,7 @@ def check(input_path):
     assert result["fit_sets"]["E"]["deficit"]["cells"] == 18
     assert result["fit_sets"]["S"]["deficit"]["cells"] == len(cells)
     assert result["fit_sets"]["S_no10"]["deficit"]["cells"] == 18
+    assert result["fit_sets"]["main"] == result["fit_sets"]["S_no10"]
     b = result["bootstrap"]["B"]
     assert b["valid_resamples"] == BOOTSTRAPS and b["excludes_zero"]
     assert abs(b["u_exponent"]["median"]-.2) < .005
@@ -948,34 +1469,107 @@ def check(input_path):
         assert np.isclose(sum(f4.predict(law, probe) for law in laws), 1-r["target"])
     quick = analysis(dict(data, quick=True), "synthetic-quick")
     assert not any(c["admitted"] or c["stationary"]["admitted"] for c in quick["cells"])
-    path = input_path if input_path.exists() else f4.OUTPUT / "code4-quick.json"
-    if path.exists():
-        real = analysis(json.loads(path.read_text()), path)
-        print(f"F4 exact reproduction passed: {path}; {len(real['cells'])} cells")
+    # Disjoint extra strengths at K=32; metadata and A reproduction are checked
+    # per source, while every fit set and bootstrap sees the combined grid.
+    metadata = dict(environment={"channel": "synthetic"}, calibration={"Imax": 1}, sigma_n=.0128)
+    original_input = dict(data, **metadata)
+    extra = dict(cells=[synthetic_cell(n, ns, u, K=32, confirmed=(u == .0001))
+                        for n in (10, 100, 1000, 3000) for ns in (30, 100, 1000)
+                        for u in (.0001, .001, .003)], quick=False, **metadata)
+    extra["analysis"] = f4.analysis(extra)
+    sources = [Path("code4.json"), Path("step4.json")]
+    merged = analyze_inputs([original_input, extra], sources)
+    assert len(merged["cells"]) == 60 and {c["K"] for c in merged["cells"]} == {8, 32}
+    assert merged["fit_sets"]["main"] == merged["fit_sets"]["S_no10"]
+    assert merged["fit_sets"]["main"]["deficit"]["cells"] == 45
+    assert merged["original_main"] == result["fit_sets"]["main"]
+    assert all(r["saved_analysis"] for r in merged["source_reproduction"])
+    assert merged["bootstrap"]["main"]["valid_resamples"] == BOOTSTRAPS
+    assert merged["bootstrap"]["B"]["valid_resamples"] == BOOTSTRAPS
+    for K in (8, 32):
+        v = np.linspace(-.1, .1, K)
+        assert np.isclose(interval(v)["high"], v.mean()+student_t.ppf(.975, K-1)*v.std(ddof=1)/np.sqrt(K))
+    for field in (*metadata, "quick", "duplicate"):
+        bad = deepcopy(extra)
+        if field == "duplicate":
+            bad["cells"].append(cells[0])
+        else:
+            bad[field] = None
+        try:
+            merge_inputs([original_input, bad], sources)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Accepted mismatched/duplicate input: {field}")
+    bad = deepcopy(original_input)
+    bad["analysis"]["gap"]["winner"] = "tampered"
+    try:
+        merge_inputs([bad, extra], sources)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("Lost saved code4.json A reproduction assert")
+    stream = StringIO()
+    with redirect_stdout(stream):
+        summary(merged)
+    verdict = stream.getvalue().split("\nVERDICT\n")[1]
+    assert verdict.startswith("MODEL-FREE THRESHOLDS") and "Main interpolated thresholds:" in verdict
+    assert "NON-ADMITTED BRACKET" in verdict or not any(
+        "NON-ADMITTED BRACKET" in r["flags"] for r in merged["model_free_thresholds"])
+    assert "Descriptive crossing-Ns ratios" in verdict and "POWER-LAW RESULTS" in verdict
+    assert "NOW INTERPOLATED" in verdict
+    # Exercise multi-row heatmaps only in a temporary directory.
+    from tempfile import TemporaryDirectory
+    with TemporaryDirectory(prefix="f5-check-") as directory:
+        stem = Path(directory)/"five-strengths"
+        figure(merged, stem)
+        for suffix in (".png", ".pdf", "-thresholds.png", "-thresholds.pdf"):
+            assert (stem.parent/(stem.name+suffix)).stat().st_size > 0
+    # The display may substitute sensitivity only for an admission-lost lower bracket.
+    display_main = dict(version="main", N=100, u=.001, kind="consensus", target=.95,
+                        status="below range", measured_Ns=[1000, 3000], Ns=None)
+    display_sensitivity = dict(display_main, version="sensitivity", status="interpolated",
+                               bracket=[300, 1000], Ns=700, flags=["NON-ADMITTED BRACKET"])
+    display_rows = [display_main, display_sensitivity]
+    assert displayed_threshold(display_rows, 100, .001, "consensus", .95) == (display_sensitivity, True)
+    for status in ("interpolated", "above range", "non-monotone beyond noise", "no admitted cells"):
+        display_main["status"] = status
+        assert displayed_threshold(display_rows, 100, .001, "consensus", .95) == (display_main, False)
+    display_main.update(status="below range", measured_Ns=[100, 1000, 3000])
+    assert displayed_threshold(display_rows, 100, .001, "consensus", .95) == (display_main, False)
+    paths = input_paths
+    if paths == [f4.OUTPUT / "code4.json"] and not paths[0].exists():
+        paths = [f4.OUTPUT / "code4-quick.json"]
+    if all(p.exists() for p in paths) or input_paths != [f4.OUTPUT / "code4.json"]:
+        real = load_inputs(paths)
+        print(f"F4 exact reproduction passed: {paths}; {len(real['cells'])} cells")
     else:
         print("No local F4 JSON; saved-data reproduction skipped")
     print(f"F5 check passed: brackets, unadjusted crossing, stationary noise/drift/precision, fit sets, "
-          f"bootstrap and thresholds ({perf_counter()-begin:.2f}s; no simulation).")
+          f"mixed-K merging, duplicate/metadata refusal, main verdict, five-Ns figure, "
+          f"bootstrap, model-free known crossings/range bounds/non-monotonicity/censoring and thresholds "
+          f"({perf_counter()-begin:.2f}s; no simulation).")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("check", "run", "figure"), nargs="?", default="check")
-    parser.add_argument("--input", type=Path, default=f4.OUTPUT / "code4.json")
+    parser.add_argument("--input", type=Path, nargs="+", default=[f4.OUTPUT / "code4.json"])
     parser.add_argument("--output", type=Path, default=STEM, help="output stem (also used by figure)")
     args = parser.parse_args()
     if args.command == "check":
         check(args.input)
     elif args.command == "run":
-        if not args.input.exists():
-            parser.error(f"F4 input missing: {args.input}; use --input output/code4-quick.json for smoke testing")
-        result = analysis(json.loads(args.input.read_text()), args.input)
+        try:
+            result = load_inputs(args.input)
+        except ValueError as error:
+            parser.error(str(error))
         save(result, args.output)
         figure(result, args.output)
     else:
         result = json.loads(args.output.with_suffix(".json").read_text())
-        if Path(result["source"]).resolve() != args.input.resolve():
-            parser.error("Saved F5 source differs from --input; run analysis for this input first")
+        if result.get("sources", [result["source"]]) != [str(p.resolve()) for p in args.input]:
+            parser.error("Saved F5 sources differ from --input; run analysis for these inputs first")
         figure(result, args.output)
 
 

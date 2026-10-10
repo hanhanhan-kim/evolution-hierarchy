@@ -1,0 +1,13 @@
+F4 variation load and selection strength
+Completed 2/2 cells; met=2, cap reached=0; sigma_n=0.0128
+Paired starts, last-quarter tails; both mean and consensus: starts and late-tail changes within .01 including 95% replicate intervals.
+N    Ns      u       U       T status       mean    cons.   best    G       D       distance seg.sites var(z)
+3000  100 1.0e-04 0.0784 730000 met         0.82765 0.91504 0.94037 0.08739 0.08496 0.05629 784.0 0.03613
+3000  100 3.0e-04 0.2352 800000 met         0.74274 0.86372 0.91774 0.12098 0.13628 0.14776 784.0 0.09067
+Unresolved cells use random-start tails; confirmed cells pool paired starts. Both arms and replicate SE are in JSON.
+Segregating sites = unequal normalized coordinates, not independent loci; normalization spreads coordinate differences.
+G: unresolved: need positive equilibrated cells at >=3 N; 2 fitted cells, 0 nonpositive excluded.
+D: unresolved: need positive equilibrated cells at >=3 N; 2 fitted cells, 0 nonpositive excluded.
+Revised numbers: invert D for consensus and D+G for average individuals; s=Ns/N. Conditional descriptive fits, not confidence bounds.
+VERDICT: 95%/99% selection thresholds unresolved; need equilibrated cells across >=3 N and both Ns.
+1 Ns values constrain functional shape; collapse is descriptive. Algebraic aliases are not causal evidence; census N is not calibrated Ne.

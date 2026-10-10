@@ -1,0 +1,97 @@
+F4 variation load and selection strength
+Completed 32/32 cells; met=22, cap reached=10; sigma_n=0.0128
+Paired starts, last-quarter tails; both mean and consensus: starts and late-tail changes within .01 including 95% replicate intervals.
+N    Ns      u       U       T status       mean    cons.   best    G       D       distance seg.sites var(z)
+  10  300 1.0e-04 0.0784 160000 met         0.98410 0.98555 0.98640 0.00146 0.01445 0.00019 522.9 0.00020
+  10  300 3.0e-04 0.2352  80000 met         0.97788 0.98364 0.98564 0.00577 0.01636 0.00051 707.2 0.00101
+  10  300 1.0e-03 0.7840 300000 cap reached 0.95928 0.97028 0.98209 0.01099 0.02972 0.00171 770.6 0.00763
+  10  300 3.0e-03 2.3520 300000 cap reached 0.92653 0.95217 0.97173 0.02563 0.04783 0.00430 777.0 0.01643
+  10 3000 1.0e-04 0.0784 120000 met         0.99540 0.99594 0.99603 0.00054 0.00406 0.00011 439.0 0.00007
+  10 3000 3.0e-04 0.2352  40000 met         0.99386 0.99618 0.99660 0.00232 0.00382 0.00028 686.0 0.00047
+  10 3000 1.0e-03 0.7840  20000 met         0.99018 0.99639 0.99726 0.00621 0.00361 0.00088 765.3 0.00079
+  10 3000 3.0e-03 2.3520 300000 cap reached 0.84506 0.65977 0.99279 -0.18529 0.34023 0.00209 773.7 0.15961
+ 100  300 1.0e-04 0.0784 160000 met         0.97359 0.98308 0.98524 0.00949 0.01692 0.00154 776.0 0.00144
+ 100  300 3.0e-04 0.2352  50000 met         0.95933 0.97964 0.98104 0.02031 0.02036 0.00453 782.8 0.00372
+ 100  300 1.0e-03 0.7840  40000 met         0.93872 0.97619 0.97772 0.03747 0.02381 0.01612 784.0 0.00841
+ 100  300 3.0e-03 2.3520 110000 met         0.90726 0.96793 0.97052 0.06066 0.03207 0.04443 784.0 0.01958
+ 100 3000 1.0e-04 0.0784  80000 met         0.99358 0.99595 0.99606 0.00237 0.00405 0.00075 773.3 0.00037
+ 100 3000 3.0e-04 0.2352  20000 met         0.99054 0.99653 0.99654 0.00599 0.00347 0.00208 779.5 0.00096
+ 100 3000 1.0e-03 0.7840  20000 met         0.98340 0.99668 0.99619 0.01328 0.00332 0.00800 783.5 0.00234
+ 100 3000 3.0e-03 2.3520  20000 met         0.97686 0.99600 0.99495 0.01914 0.00400 0.02637 784.0 0.00487
+1000  300 1.0e-04 0.0784 300000 cap reached 0.94194 0.97770 0.98123 0.03576 0.02230 0.01662 784.0 0.00867
+1000  300 3.0e-04 0.2352 110000 met         0.91332 0.97164 0.97738 0.05832 0.02836 0.04393 784.0 0.01816
+1000  300 1.0e-03 0.7840 300000 cap reached 0.86153 0.94623 0.96639 0.08470 0.05377 0.12787 784.0 0.04491
+1000  300 3.0e-03 2.3520 300000 cap reached 0.77840 0.89448 0.94757 0.11608 0.10552 0.30539 784.0 0.10805
+1000 3000 1.0e-04 0.0784 100000 met         0.98438 0.99550 0.99529 0.01112 0.00450 0.00765 784.0 0.00270
+1000 3000 3.0e-04 0.2352  30000 met         0.97674 0.99529 0.99505 0.01855 0.00471 0.02468 784.0 0.00550
+1000 3000 1.0e-03 0.7840  20000 met         0.96701 0.99347 0.99437 0.02647 0.00653 0.08268 784.0 0.01164
+1000 3000 3.0e-03 2.3520  40000 met         0.94498 0.98524 0.99180 0.04026 0.01476 0.19307 784.0 0.02410
+3000  300 1.0e-04 0.0784 300000 cap reached 0.90541 0.96764 0.97538 0.06223 0.03236 0.04223 784.0 0.02090
+3000  300 3.0e-04 0.2352 300000 cap reached 0.86217 0.94607 0.96659 0.08390 0.05393 0.12155 784.0 0.04579
+3000  300 1.0e-03 0.7840 300000 cap reached 0.78211 0.88787 0.95003 0.10577 0.11213 0.31681 784.0 0.10973
+3000  300 3.0e-03 2.3520 300000 cap reached 0.64979 0.78589 0.91868 0.13610 0.21411 0.63576 784.0 0.26400
+3000 3000 1.0e-04 0.0784  70000 met         0.97461 0.99452 0.99437 0.01991 0.00548 0.02333 784.0 0.00660
+3000 3000 3.0e-04 0.2352  40000 met         0.96662 0.99217 0.99396 0.02555 0.00783 0.07882 784.0 0.01272
+3000 3000 1.0e-03 0.7840  60000 met         0.94730 0.98554 0.99304 0.03824 0.01446 0.19934 784.0 0.02463
+3000 3000 3.0e-03 2.3520 120000 met         0.90685 0.96603 0.98798 0.05918 0.03397 0.39681 784.0 0.05385
+Unresolved cells use random-start tails; confirmed cells pool paired starts. Both arms and replicate SE are in JSON.
+Segregating sites = unequal normalized coordinates, not independent loci; normalization spreads coordinate differences.
+G: descriptive equilibrium fit; 22 fitted cells, 0 nonpositive excluded.
+  U/s          a=0.0584468, exponents=[0.4951], LO-N-out RMSE=0.0119716, log RMSE=0.37379 BEST
+  NU           a=0.00208308, exponents=[0.4311], LO-N-out RMSE=0.0248102, log RMSE=0.75753
+  Ns           a=0.0331529, exponents=[-0.1334], LO-N-out RMSE=0.0248923, log RMSE=1.5937
+  U            a=0.0251154, exponents=[0.6566], LO-N-out RMSE=0.0172389, log RMSE=1.2406
+  U/s + NU     a=0.0592436, exponents=[0.4969, -0.0019], LO-N-out RMSE=0.0142453, log RMSE=0.42424
+  U/s + Ns     a=0.0592436, exponents=[0.495, -0.0019], LO-N-out RMSE=0.0142453, log RMSE=0.42424
+  U/s + U      a=0.059017, exponents=[0.4721, 0.0768], LO-N-out RMSE=0.0139648, log RMSE=0.39483
+  NU + Ns      a=0.0592436, exponents=[0.495, -0.4969], LO-N-out RMSE=0.0142453, log RMSE=0.42424
+  NU + U       a=0.00285444, exponents=[0.3903, 0.1373], LO-N-out RMSE=0.025003, log RMSE=0.79621
+  Ns + U       a=0.129651, exponents=[-0.2223, 0.6794], LO-N-out RMSE=0.0179821, log RMSE=1.3007
+D: descriptive equilibrium fit; 22 fitted cells, 0 nonpositive excluded.
+  Ns           a=0.466501, exponents=[-0.5442], LO-N-out RMSE=0.00836784, log RMSE=0.67877 BEST
+  Ns + U       a=0.774123, exponents=[-0.5772, 0.2523], LO-N-out RMSE=0.00924492, log RMSE=0.65301
+Best collapsing scaling: G = 0.0584468 * (U/s)^0.4951
+At fixed consensus deficit D<1-target: s/U >= (0.0584468/(1-target-D))^(1/0.49507).
+Revised numbers: invert D for consensus and D+G for average individuals; s=Ns/N. Conditional descriptive fits, not confidence bounds.
+  consensus  N=None u=1.0e-04 target=0.95: Ns >= 60.5846; extrapolated
+  consensus  N=None u=1.0e-04 target=0.99: Ns >= 1166.45; interpolated
+  consensus  N=None u=3.0e-04 target=0.95: Ns >= 60.5846; extrapolated
+  consensus  N=None u=3.0e-04 target=0.99: Ns >= 1166.45; interpolated
+  consensus  N=None u=1.0e-03 target=0.95: Ns >= 60.5846; extrapolated
+  consensus  N=None u=1.0e-03 target=0.99: Ns >= 1166.45; interpolated
+  consensus  N=None u=3.0e-03 target=0.95: Ns >= 60.5846; extrapolated
+  consensus  N=None u=3.0e-03 target=0.99: Ns >= 1166.45; interpolated
+  individual N=10 u=1.0e-04 target=0.95: Ns >= 76.7617, s/U >= 97.9104; extrapolated
+  individual N=10 u=1.0e-04 target=0.99: Ns >= 1530.25, s/U >= 1951.86; interpolated
+  individual N=10 u=3.0e-04 target=0.95: Ns >= 89.7722, s/U >= 38.1685; extrapolated
+  individual N=10 u=3.0e-04 target=0.99: Ns >= 1827.2, s/U >= 776.869; interpolated
+  individual N=10 u=1.0e-03 target=0.95: Ns >= 118.249, s/U >= 15.0828; extrapolated
+  individual N=10 u=1.0e-03 target=0.99: Ns >= 2486.73, s/U >= 317.185; extrapolated
+  individual N=10 u=3.0e-03 target=0.95: Ns >= 173.085, s/U >= 7.35905; extrapolated
+  individual N=10 u=3.0e-03 target=0.99: Ns >= 3780.94, s/U >= 160.754; extrapolated
+  individual N=100 u=1.0e-04 target=0.95: Ns >= 118.249, s/U >= 15.0828; extrapolated
+  individual N=100 u=1.0e-04 target=0.99: Ns >= 2486.73, s/U >= 317.185; interpolated
+  individual N=100 u=3.0e-04 target=0.95: Ns >= 173.085, s/U >= 7.35905; extrapolated
+  individual N=100 u=3.0e-04 target=0.99: Ns >= 3780.94, s/U >= 160.754; extrapolated
+  individual N=100 u=1.0e-03 target=0.95: Ns >= 311.919, s/U >= 3.97856; interpolated
+  individual N=100 u=1.0e-03 target=0.99: Ns >= 7130.84, s/U >= 90.9546; extrapolated
+  individual N=100 u=3.0e-03 target=0.95: Ns >= 626.729, s/U >= 2.66466; interpolated
+  individual N=100 u=3.0e-03 target=0.99: Ns >= 14886.2, s/U >= 63.2915; extrapolated
+  individual N=1000 u=1.0e-04 target=0.95: Ns >= 311.919, s/U >= 3.97856; extrapolated
+  individual N=1000 u=1.0e-04 target=0.99: Ns >= 7130.84, s/U >= 90.9546; extrapolated
+  individual N=1000 u=3.0e-04 target=0.95: Ns >= 626.729, s/U >= 2.66466; interpolated
+  individual N=1000 u=3.0e-04 target=0.99: Ns >= 14886.2, s/U >= 63.2915; extrapolated
+  individual N=1000 u=1.0e-03 target=0.95: Ns >= 1566.92, s/U >= 1.99863; extrapolated
+  individual N=1000 u=1.0e-03 target=0.99: Ns >= 38452, s/U >= 49.0459; extrapolated
+  individual N=1000 u=3.0e-03 target=0.95: Ns >= 4007.9, s/U >= 1.70404; extrapolated
+  individual N=1000 u=3.0e-03 target=0.99: Ns >= 100364, s/U >= 42.6717; extrapolated
+  individual N=3000 u=1.0e-04 target=0.95: Ns >= 626.729, s/U >= 2.66466; extrapolated
+  individual N=3000 u=1.0e-04 target=0.99: Ns >= 14886.2, s/U >= 63.2915; extrapolated
+  individual N=3000 u=3.0e-04 target=0.95: Ns >= 1438.5, s/U >= 2.03869; extrapolated
+  individual N=3000 u=3.0e-04 target=0.99: Ns >= 35215.7, s/U >= 49.9088; extrapolated
+  individual N=3000 u=1.0e-03 target=0.95: Ns >= 4007.9, s/U >= 1.70404; extrapolated
+  individual N=3000 u=1.0e-03 target=0.99: Ns >= 100364, s/U >= 42.6717; extrapolated
+  individual N=3000 u=3.0e-03 target=0.95: Ns >= 10939.3, s/U >= 1.55035; extrapolated
+  individual N=3000 u=3.0e-03 target=0.99: Ns >= 277463, s/U >= 39.323; extrapolated
+VERDICT: conditional selection thresholds above; capped cells remain unresolved and are excluded from fits.
+Only two Ns constrain functional shape; collapse is descriptive. Algebraic aliases are not causal evidence; census N is not calibrated Ne.
